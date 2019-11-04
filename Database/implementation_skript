@@ -1,0 +1,208 @@
+
+
+DROP DATABASE IF EXISTS KSWD;
+CREATE DATABASE IF NOT EXISTS KSWD;
+USE KSWD;
+
+-- 
+
+DROP TABLE IF EXISTS Address;
+CREATE TABLE IF NOT EXISTS Address(
+addressID			int(6)		NOT NULL	AUTO_INCREMENT,
+country				varchar(50)	NOT NULL,
+city				varchar(50)	NOT NULL,
+zip					varchar(15)	NOT NULL,
+street				varchar(50)	NOT NULL,
+
+CONSTRAINT Address_PK PRIMARY KEY (addressID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Customer;
+CREATE TABLE IF NOT EXISTS Customer(
+customerID			int(6)		NOT NULL	AUTO_INCREMENT,
+firstName			varchar(50)	NOT NULL,
+lastName			varchar(50)	NOT NULL,
+dateOfBirth			date		NOT NULL,
+phoneNumber			varchar(20)	NOT NULL,
+email				varchar(50)	NOT NULL,
+addressID			int(6)		NOT NULL,
+
+CONSTRAINT Customer_PK PRIMARY KEY (customerID),
+CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (addressID),
+CONSTRAINT Customer_UQ unique (email)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Account;
+CREATE TABLE IF NOT EXISTS Account(
+accountID			int(6)		NOT NULL	AUTO_INCREMENT,
+username			varchar(50)	NOT NULL,
+password			varchar(20)	NOT NULL,
+customerID			int(6)		NOT NULL,
+
+CONSTRAINT Account_PK PRIMARY KEY (accountID),
+CONSTRAINT Account_FK FOREIGN KEY (customerID) REFERENCES Customer (customerID),
+CONSTRAINT Account_UQ_username unique (username),
+CONSTRAINT Account_UQ_password unique (password)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Vendor;
+CREATE TABLE IF NOT EXISTS Vendor(
+vendorID			int(6)		NOT NULL	AUTO_INCREMENT,
+name				varchar(50)	NOT NULL,
+description			varchar(100)NOT NULL,
+phoneNumber			varchar(20) NOT NULL,
+email				varchar(50) NOT NULL,
+addressID			int(6)		NOT NULL,
+
+CONSTRAINT Vendor_PK PRIMARY KEY (vendorID),
+CONSTRAINT Vendor_FK FOREIGN KEY (addressID) REFERENCES Address (addressID),
+CONSTRAINT Vendor_UQ unique (email)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Product;
+CREATE TABLE IF NOT EXISTS Product(
+productID			int(6)		NOT NULL	AUTO_INCREMENT,
+name				varchar(50)	NOT NULL,
+description			varchar(100)NOT NULL,
+standartPrice		decimal(9,2)NOT NULL,
+productType			varchar(50) NOT NULL,	
+vendorID			int(6)		NOT NULL,
+
+CONSTRAINT Product_PK PRIMARY KEY (productID),
+CONSTRAINT Product_FK FOREIGN KEY (vendorID) REFERENCES Vendor (vendorID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Picture;
+CREATE TABLE IF NOT EXISTS Picture(
+pictureID			int(6)		NOT NULL	AUTO_INCREMENT,
+path				varchar(200)NOT NULL,
+productID			int(6)		NOT NULL,
+
+CONSTRAINT Pictur_PK PRIMARY KEY (pictureID),
+CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (productID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Drink;
+CREATE TABLE IF NOT EXISTS Drink(
+drinkID				int(6)		NOT NULL	AUTO_INCREMENT,
+category			varchar(50)	NOT NULL,
+year			    date 		NOT NULL,
+alcoholPercentage	decimal(5,2)NOT NULL,
+residualSugar		decimal(5,2)NOT NULL,
+bottleSize			decimal(5,2)NOT NULL,	
+productID			int(6)		NOT NULL,
+
+CONSTRAINT Drink_PK PRIMARY KEY (drinkID),
+CONSTRAINT Drink_FK FOREIGN KEY (productID) REFERENCES Product (productID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS GrapeSort;
+CREATE TABLE IF NOT EXISTS GrapeSort(
+grapeSortID			int(6)		NOT NULL	AUTO_INCREMENT,
+sort				varchar(100)NOT NULL,
+percent				decimal(5,2)NOT NULL,
+drinkID				int(6)		NOT NULL,
+
+CONSTRAINT GrapeSort_PK PRIMARY KEY (grapeSortID),
+CONSTRAINT GrapeSort_FK FOREIGN KEY (drinkID) REFERENCES Drink (drinkID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Accessory;
+CREATE TABLE IF NOT EXISTS Accessory(
+accessoryID			int(6)		NOT NULL	AUTO_INCREMENT,
+category			varchar(100)NOT NULL,
+material			varchar(100)NOT NULL,
+productID			int(6)		NOT NULL,
+
+CONSTRAINT Accessory_PK PRIMARY KEY (accessoryID),
+CONSTRAINT Accessory_FK FOREIGN KEY (productID) REFERENCES Product (productID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Order_;
+CREATE TABLE IF NOT EXISTS Order_(
+orderID				int(6)		NOT NULL	AUTO_INCREMENT,
+orderDate			date		NOT NULL,
+shipDate			date		NOT NULL,
+payStatus			varchar(50)	NOT NULL,	
+payMethod			varchar(50)	NOT NULL,	
+payDate				date 		NOT NULL,
+customerID			int(6)		NOT NULL,
+addressID			int(6)		NOT NULL,
+
+CONSTRAINT Order_PK PRIMARY KEY (orderID),
+CONSTRAINT Basket_FK_Customer FOREIGN KEY (customerID) REFERENCES Customer (customerID),
+CONSTRAINT Basket_FK_Address FOREIGN KEY (addressID) REFERENCES Address (addressID)
+);
+
+-- ---------------------------------------------------------
+
+--
+
+DROP TABLE IF EXISTS Basket;
+CREATE TABLE IF NOT EXISTS Basket(
+basketID			int(6)		NOT NULL	AUTO_INCREMENT,
+actualPrice			decimal(9,2)NOT NULL,
+qty					int(6)		NOT NULL,
+productID			int(6)		NOT NULL,		
+orderID				int(6)		NOT NULL,
+
+CONSTRAINT Basket_PK PRIMARY KEY (basketID),
+CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (productID),
+CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Order_ (orderID)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
