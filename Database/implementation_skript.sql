@@ -78,8 +78,8 @@ CONSTRAINT Vendor_UQ unique (email)
 DROP TABLE IF EXISTS Product;
 CREATE TABLE IF NOT EXISTS Product(
 productID			int			NOT NULL	AUTO_INCREMENT,
-name				varchar(50)	NOT NULL,
-description			varchar(100)	NULL,
+name				varchar(100)NOT NULL,
+description			varchar(200)	NULL,
 standartPrice		decimal(7,2)NOT NULL,
 productType			enum('Drink','Accessory') NOT NULL,	
 vendorID			int			NOT NULL,
