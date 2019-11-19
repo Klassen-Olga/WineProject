@@ -110,10 +110,11 @@ DROP TABLE IF EXISTS Drink;
 CREATE TABLE IF NOT EXISTS Drink(
 drinkID				int			NOT NULL	AUTO_INCREMENT,
 category			enum ( 'wine', 'sparkling wine')	NOT NULL,
-year			    date 		NOT NULL,-- ?
+year			    year 		NOT NULL,
 alcoholPercentage	decimal(5,2)NOT NULL,
-residualSugar		decimal(5,2)NOT NULL,
-bottleSize			decimal(4,3)NOT NULL,	
+residualSugar		enum ('bone dry', 'dry', 'off-dry', 'medium-sweet', 'sweet')	NOT NULL,
+bottleSize			decimal(5,2)NOT NULL,
+color				enum ('white', 'red', 'rosé')	NULL,
 productID			int			NOT NULL,
 
 CONSTRAINT Drink_PK PRIMARY KEY (drinkID),
