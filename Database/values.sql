@@ -64,6 +64,27 @@ values
 ('Bottle Packaging Pro', null, 3.20, 'Accessory',5);
 -- ---------------------------------------------------------
 
+insert into Drink(category, year, alcoholPercentage, residualSugar, bottleSize, color, ProductID)
+values
+('wine', 2017, 14.50, 'dry', 0.75, 'red', 1),
+('wine', 2015, 13.00, 'medium-sweet', 0.75, 'rosé', 2),
+('wine', 2016, 12.21, 'sweet', 0.50, 'red', 3),
+('wine', 2014, 13.54, 'off-dry', 0.75, 'white', 4),
+('wine', 2015, 14.00, 'dry', 1.00, 'rosé', 5),
+('wine', 2012, 13.78, 'bone dry', 0.75, 'red', 6),
+('wine', 2017, 12.56, 'medium-sweet', 0.75, 'white', 7),
+('wine', 2016, 14.37, 'bone dry', 0.75, 'red', 8),
+('wine', 2017, 13.00, 'sweet', 0.75, 'rosé', 9),
+('sparkling wine', 2016, 13.64, 'medium-sweet', 1.00, 'rosé', 10);
+
+-- ---------------------------------------------------------
+
+insert into Accessory(category, material, productID)
+values
+('pack', ' ', 11),
+('pack', ' ', 12);
+
+
 
 
 
