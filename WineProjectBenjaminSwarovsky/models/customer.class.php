@@ -1,6 +1,6 @@
 <?php
 class Customer{
-    const TABLENAME = '`Customer`';
+    const TABLENAME = 'Customer';
     private $data;
 
     public function __construct($id, $name, $description, $standartPrice, $productType){

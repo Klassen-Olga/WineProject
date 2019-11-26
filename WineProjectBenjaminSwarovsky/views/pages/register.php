@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
 
-<header>
-    <title>Registration</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</header>
-
-<body>
-    <div>
-        <h2>Sign-Up</h2>
-    </div>
 
     <form method="POST" action=views/register.php> <fieldset>
         <legend>Personal data</legend>
@@ -98,5 +86,3 @@
         <br>
         <input type="submit" id="submitRegister" value="Sign-Up">
     </form>
-</body>
-<html>

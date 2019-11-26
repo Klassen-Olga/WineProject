@@ -21,7 +21,7 @@
 
             <br>
             
-            <a href="<?=$_SERVER['SCRIPT_NAME']?>/?p=register">no account yet?</a>
+            <a href="<?=$_SERVER['SCRIPT_NAME']?>/?a=register">no account yet?</a>
             
             
         </form>

@@ -1,6 +1,6 @@
 <?php
 
-$dbName = 'S&K Weindepot';
+$dbName = 'kswd';
 $dns = 'mysql:dbname'.$dbName.';host=localhost';
 $user = 'root';
 $pw = '';
