@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+
 class PagesController extends \app\core\Controller
 {
 	
@@ -41,6 +42,15 @@ class PagesController extends \app\core\Controller
 	}
 
 	public function actionStart(){
+
+		include __DIR__.'/../models/customer.class.php';
+		//Customer::find('');
+	/*	
+			ob_start();
+			{
+				
+			}
+			$test = ob_get_clean();*/
 
 	}
 	public function actionBasket(){
