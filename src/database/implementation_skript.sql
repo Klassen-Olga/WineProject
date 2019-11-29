@@ -1,8 +1,8 @@
 
 
-DROP DATABASE IF EXISTS KSWD;
-CREATE DATABASE IF NOT EXISTS KSWD;
-USE KSWD;
+DROP DATABASE IF EXISTS SKWD;
+CREATE DATABASE IF NOT EXISTS SKWD;
+USE SKWD;
 
 -- 
 
@@ -26,14 +26,12 @@ CREATE TABLE IF NOT EXISTS Customer(
 customerID			int			NOT NULL	AUTO_INCREMENT,
 firstName			varchar(50)	NOT NULL,
 lastName			varchar(50)	NOT NULL,
-dateOfBirth			date		NOT NULL,
+dateOfBirth			varchar(50)		NOT NULL,
 phoneNumber			varchar(20)		NULL,
-email				varchar(50)	NOT NULL,
 addressID			int			NOT NULL,
 
 CONSTRAINT Customer_PK PRIMARY KEY (customerID),
-CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (addressID),
-CONSTRAINT Customer_UQ unique (email)
+CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (addressID)
 );
 
 -- ---------------------------------------------------------
@@ -43,13 +41,13 @@ CONSTRAINT Customer_UQ unique (email)
 DROP TABLE IF EXISTS Account;
 CREATE TABLE IF NOT EXISTS Account(
 accountID			int			NOT NULL	AUTO_INCREMENT,
-username			varchar(50)	NOT NULL,
+email				varchar(50)	NOT NULL,
 password			varchar(20)	NOT NULL,
 customerID			int			NOT NULL,
 
 CONSTRAINT Account_PK PRIMARY KEY (accountID),
 CONSTRAINT Account_FK FOREIGN KEY (customerID) REFERENCES Customer (customerID),
-CONSTRAINT Account_UQ_username unique (username)
+CONSTRAINT Customer_UQ unique (email)
 -- CONSTRAINT Account_UQ_password unique (password)
 );
 
@@ -106,49 +104,31 @@ CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (productID)
 
 --
 
-DROP TABLE IF EXISTS Drink;
-CREATE TABLE IF NOT EXISTS Drink(
-drinkID				int			NOT NULL	AUTO_INCREMENT,
-category			enum ( 'wine', 'sparkling wine')	NOT NULL,
+
+
+DROP TABLE IF EXISTS Property;
+CREATE TABLE IF NOT EXISTS Property(
+propertyID			int			NOT NULL	AUTO_INCREMENT,
 year			    year 		NOT NULL,
 alcoholPercentage	decimal(5,2)NOT NULL,
 residualSugar		enum ('bone dry', 'dry', 'off-dry', 'medium-sweet', 'sweet')	NOT NULL,
 bottleSize			decimal(5,2)NOT NULL,
 color				enum ('white', 'red', 'rosé')	NULL,
-productID			int			NOT NULL,
-
-CONSTRAINT Drink_PK PRIMARY KEY (drinkID),
-CONSTRAINT Drink_FK FOREIGN KEY (productID) REFERENCES Product (productID)
-);
-
--- ---------------------------------------------------------
-
---
-
-DROP TABLE IF EXISTS GrapeSort;
-CREATE TABLE IF NOT EXISTS GrapeSort(
-grapeSortID			int			NOT NULL	AUTO_INCREMENT,
-sort				varchar(100)NOT NULL,
-percent				decimal(5,2)NOT NULL,
-drinkID				int			NOT NULL,
-
-CONSTRAINT GrapeSort_PK PRIMARY KEY (grapeSortID),
-CONSTRAINT GrapeSort_FK FOREIGN KEY (drinkID) REFERENCES Drink (drinkID)
-);
-
--- ---------------------------------------------------------
-
---
-
-DROP TABLE IF EXISTS Accessory;
-CREATE TABLE IF NOT EXISTS Accessory(
-accessoryID			int			NOT NULL	AUTO_INCREMENT,
-category			enum('pack','others') 	NOT NULL,
+categoryAcc			enum('pack','others') 	NOT NULL,
 material			varchar(100)NOT NULL,
-productID			int			NOT NULL,
+CONSTRAINT Property_PK PRIMARY KEY (propertyID)
+);
+-- ---------------------------------------------------------
 
-CONSTRAINT Accessory_PK PRIMARY KEY (accessoryID),
-CONSTRAINT Accessory_FK FOREIGN KEY (productID) REFERENCES Product (productID)
+ DROP TABLE IF EXISTS PropertyProProduct;
+CREATE TABLE IF NOT EXISTS PropertyProProduct(
+pppID			int			NOT NULL	AUTO_INCREMENT,
+productID		int			not null,
+propertyID		int 		not null,
+value			varchar(60)	not null,
+CONSTRAINT ppp_PK PRIMARY KEY (pppID),
+CONSTRAINT product_FKK FOREIGN KEY(productID) references Product(productID),
+CONSTRAINT property_FKK FOREIGN KEY(propertyID) references Property(propertyID)
 );
 
 -- ---------------------------------------------------------
@@ -164,7 +144,7 @@ payStatus			enum('unpaid','paid')	NOT NULL,
 payMethod			enum('transfer','cash on delivery','paypal')	NOT NULL,	
 payDate				date 			NULL,
 customerID			int			NOT NULL,
-addressID			int			NOT NULL,
+addressID			int			    NULL,
 
 CONSTRAINT Order_PK PRIMARY KEY (orderID),
 CONSTRAINT Basket_FK_Customer FOREIGN KEY (customerID) REFERENCES Customer (customerID),
