@@ -1,37 +1,28 @@
-<!DOCTYPE html>
-<html lang="de">
 
-<header>
-    <title>Registration</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</header>
-
-<body>
     <div>
         <h2>Sign-Up</h2>
     </div>
 
-    <form method="POST" action=views/register.php> <fieldset>
+    <form method="POST" action="index.php"> <fieldset>
         <legend>Personal data</legend>
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" value="<?=isset($_Post['fname'])?htmlspecialchars($_Post['fname']): '' ?>"
+        <input type="text" id="fname"  name="fname" value="<?=isset($_Post['fname'])?htmlspecialchars($_Post['fname']): '' ?>"
             required /><br>
         <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" value="<?=isset($_Post['lname'])?htmlspecialchars($_Post['lname']): '' ?>"
+        <input type="text" id="lname" name="lname" value="<?=isset($_Post['lname'])?htmlspecialchars($_Post['lname']): '' ?>"
             required /><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" value="<?=isset($_Post['email'])?htmlspecialchars($_Post['email']): '' ?>"
+        <input type="email" id="email" name="email" value="<?=isset($_Post['email'])?htmlspecialchars($_Post['email']): '' ?>"
             required /><br>
-        <label for="dob">Password:</label><br>
+        <label for="password1">Password:</label><br>
         <input type="password" id="password1"
             value="<?=isset($_Post['password1'])?htmlspecialchars($_Post['password1']): '' ?>" required /><br>
-        <label for="dob">Repeat password:</label><br>
+        <label for="password2">Repeat password:</label><br>
         <input type="password" id="password2"
             value="<?=isset($_Post['password2'])?htmlspecialchars($_Post['password2']): '' ?>" required /><br>
         <label for="fname">Phone number:</label><br>
-        <input type="tel" id="phone" value="<?=isset($_Post['phone'])?htmlspecialchars($_Post['phone']): '' ?>" /><br>
+        <input type="tel" id="phone" name="phone" value="<?=isset($_Post['phone'])?htmlspecialchars($_Post['phone']): '' ?>" /><br>
         <label for="select">Date of birth:</label><br>
 
         <select name="month" id="select">
@@ -72,16 +63,15 @@
         <fieldset>
             <legend>Address</legend>
             <label for="zipCode">Zip:</label><br>
-            <input type="text" id="zipCode"
-                value="<?=isset($_Post['zipCode'])?htmlspecialchars($_Post['zipCode']): '' ?>" required /><br>
+            <input type="text" id="zipCode" name= "zip" value="<?=isset($_POST['zipCode'])?htmlspecialchars($_POST['zipCode']): '' ?>" required /><br>
             <label for="city">City:</label><br>
-            <input type="text" id="city" value="<?=isset($_Post['city'])?htmlspecialchars($_Post['city']): '' ?>"
+            <input type="text" id="city" name="city" value="<?=isset($_POST['city'])?htmlspecialchars($_POST['city']): '' ?>"
                 required /><br>
             <label for="street">Street:</label><br>
-            <input type="text" id="street" value="<?=isset($_Post['street'])?htmlspecialchars($_Post['street']): '' ?>"
+            <input type="text" id="street" name= "street" "value="<?=isset($_POST['street'])?htmlspecialchars($_POST['street']): '' ?>"
                 required /><br>
             <label for="select">Country:<br>
-                <select name="country" id="select">
+                <select name="country" name= "country" id="select">
                 <option value="country">Country</option>
                     <?php
                     $array=['Germany', 'Austria', 'Belgium', 'Bulgaria', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
@@ -90,13 +80,11 @@
                             foreach($array as $value){
                                 echo '<option value ='. strtolower($value).'>'.$value.'</option>';
                             }
-                    ?>
+                     ?>
                    
 
                 </select>
         </fieldset>
         <br>
-        <input type="submit" id="submitRegister" value="Sign-Up">
+        <input type="submit" id="submitRegister" value="Sign-Up" name="submitR">
     </form>
-</body>
-<html>
