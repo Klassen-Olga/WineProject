@@ -109,13 +109,7 @@ CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (productID)
 DROP TABLE IF EXISTS Property;
 CREATE TABLE IF NOT EXISTS Property(
 propertyID			int			NOT NULL	AUTO_INCREMENT,
-year			    year 		NOT NULL,
-alcoholPercentage	decimal(5,2)NOT NULL,
-residualSugar		enum ('bone dry', 'dry', 'off-dry', 'medium-sweet', 'sweet')	NOT NULL,
-bottleSize			decimal(5,2)NOT NULL,
-color				enum ('white', 'red', 'rosé')	NULL,
-categoryAcc			enum('pack','others') 	NOT NULL,
-material			varchar(100)NOT NULL,
+name				varchar(50)not null,
 CONSTRAINT Property_PK PRIMARY KEY (propertyID)
 );
 -- ---------------------------------------------------------
@@ -167,6 +161,7 @@ CONSTRAINT Basket_PK PRIMARY KEY (basketID),
 CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (productID),
 CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Orders (orderID)
 );
+
 
 
 
