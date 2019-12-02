@@ -9,7 +9,7 @@
                 <a href="?a=products">Products</a>
                 <a href="?a=wineInformation">Wine Information</a>
                 <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) : ?>
-                <li><a href="?a=logout">Logout</a></li>
+                    <li><a href="?a=logout">Logout</a></li>
                 <?php endif; ?>
                 <a href="?a=basket">Basket</a>
                 <a href="?a=account">Account</a>

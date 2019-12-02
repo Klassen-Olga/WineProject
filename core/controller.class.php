@@ -5,6 +5,7 @@ class Controller{
 
     private $controllerName;
     private $actionName;
+    protected $_params = [];
 
     public function __construct($controller, $action)
     {

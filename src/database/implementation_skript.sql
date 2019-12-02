@@ -8,13 +8,13 @@ USE SKWD;
 
 DROP TABLE IF EXISTS Address;
 CREATE TABLE IF NOT EXISTS Address(
-addressID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 country				varchar(50)	NOT NULL,
 city				varchar(50)	NOT NULL,
 zip					varchar(15)	NOT NULL,
 street				varchar(50)	NOT NULL,
 
-CONSTRAINT Address_PK PRIMARY KEY (addressID)
+CONSTRAINT Address_PK PRIMARY KEY (id)
 );
 
 -- ---------------------------------------------------------
@@ -23,15 +23,15 @@ CONSTRAINT Address_PK PRIMARY KEY (addressID)
 
 DROP TABLE IF EXISTS Customer;
 CREATE TABLE IF NOT EXISTS Customer(
-customerID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 firstName			varchar(50)	NOT NULL,
 lastName			varchar(50)	NOT NULL,
 dateOfBirth			varchar(50)		NOT NULL,
 phoneNumber			varchar(20)		NULL,
 addressID			int			NOT NULL,
 
-CONSTRAINT Customer_PK PRIMARY KEY (customerID),
-CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (addressID)
+CONSTRAINT Customer_PK PRIMARY KEY (id),
+CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (id)
 );
 
 -- ---------------------------------------------------------
@@ -40,13 +40,13 @@ CONSTRAINT Customer_FK FOREIGN KEY (addressID) REFERENCES Address (addressID)
 
 DROP TABLE IF EXISTS Account;
 CREATE TABLE IF NOT EXISTS Account(
-accountID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 email				varchar(50)	NOT NULL,
 password			varchar(20)	NOT NULL,
 customerID			int			NOT NULL,
 
-CONSTRAINT Account_PK PRIMARY KEY (accountID),
-CONSTRAINT Account_FK FOREIGN KEY (customerID) REFERENCES Customer (customerID),
+CONSTRAINT Account_PK PRIMARY KEY (id),
+CONSTRAINT Account_FK FOREIGN KEY (customerID) REFERENCES Customer (id),
 CONSTRAINT Customer_UQ unique (email)
 -- CONSTRAINT Account_UQ_password unique (password)
 );
@@ -65,7 +65,7 @@ email				varchar(50) NOT NULL,
 addressID			int			NOT NULL,
 
 CONSTRAINT Vendor_PK PRIMARY KEY (vendorID),
-CONSTRAINT Vendor_FK FOREIGN KEY (addressID) REFERENCES Address (addressID),
+CONSTRAINT Vendor_FK FOREIGN KEY (addressID) REFERENCES Address (id),
 CONSTRAINT Vendor_UQ unique (email)
 );
 
@@ -141,8 +141,8 @@ customerID			int			NOT NULL,
 addressID			int			    NULL,
 
 CONSTRAINT Order_PK PRIMARY KEY (orderID),
-CONSTRAINT Basket_FK_Customer FOREIGN KEY (customerID) REFERENCES Customer (customerID),
-CONSTRAINT Basket_FK_Address FOREIGN KEY (addressID) REFERENCES Address (addressID)
+CONSTRAINT Basket_FK_Customer FOREIGN KEY (customerID) REFERENCES Customer (id),
+CONSTRAINT Basket_FK_Address FOREIGN KEY (addressID) REFERENCES Address (id)
 );
 
 -- ---------------------------------------------------------
