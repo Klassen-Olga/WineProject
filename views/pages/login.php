@@ -1,7 +1,7 @@
 <div class="login">
     
 
-        <form action="<?=$_SERVER['PHP_SELF'].'?p=login';?>" method="post">
+        <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
             <label for="email">email: </label>
             <input type="text" name="email" id="email" placeholder="your e-mail" required
             <?=isset($_POST['email']) ? 'value="'.htmlspecialchars($_POST['email']).'"' : ''?>> <br>
@@ -20,7 +20,7 @@
 
             <br>
             
-            <a href="<?=$_SERVER['SCRIPT_NAME']?>/?p=register">no account yet?</a>
+            <a href="?a=register">no account yet?</a>
             
             
         </form>

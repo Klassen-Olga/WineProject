@@ -7,7 +7,11 @@ class PagesController extends \skwd\core\Controller
 
     public function actionLogin()
     {
-        $_SESSION['loggedIn'] = true;//unter bedingungen
+       
+        if(isset($_POST['submitLogin'])){
+       $_SESSION['a']=true;
+        }
+        
     }
 
     public function actionMyOrders()
@@ -25,7 +29,13 @@ class PagesController extends \skwd\core\Controller
 
     public function actionStart()
     {
-
+        if(isset($_POST['submitLogin'])){
+            $_SESSION['logged']=true;
+            $_SESSION['loginName']= $_POST['email'];
+             }
+             if(isset($_POST['submitLogout'])){
+                $_SESSION['logged']=false;
+                 }
     }
 
     public function actionProducts()

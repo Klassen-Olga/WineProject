@@ -5,6 +5,10 @@ require_once 'models/address.class.php';
 require_once 'models/customer.class.php';
 require_once 'core/controller.class.php';
 
+/*if(!isset($_SESSION['logged'])){
+$_SESSION['logged'] = '';
+$_SESSION['loginName'] = '';
+}*/
 
 
 if (isset($_POST['submitR'])) {
@@ -17,6 +21,8 @@ if (isset($_POST['submitR'])) {
     $customer = new Customer(1, $_POST['fname'], $_POST['lname'], $_POST['year'] . $_POST['month'] . $_POST['day'], $_POST['phone']);
     $customer->insert();
 }
+
+
 
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
