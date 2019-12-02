@@ -1,8 +1,18 @@
 <?php
-class Customer{
-    private $data;
+namespace  skwd\models;
+class Customer extends BaseModel{
+
     const TABLENAME = 'Customer';
-    public function __construct($id, $firstName, $lastName, $dateOfBirth, $phoneNumber)
+
+    protected $schema=[
+        'id'=>['type'=>BaseModel::TYPE_INT]	,
+        'firstName'	=>['type'=>BaseModel::TYPE_STRING, 'min'=>2, 'max'=>50],
+        'lastName'	=>['type'=>BaseModel::TYPE_STRING, 'min'=>2, 'max'=>50],
+        'dateOfBirth'=>['type'=>BaseModel::TYPE_STRING, 'min'=>2, 'max'=>50],
+        'phoneNumber'=>['type'=>BaseModel::TYPE_STRING, 'min'=>2, 'max'=>20],
+        'addressID'=>['type'=>BaseModel::TYPE_INT]	,
+    ];
+ /*   public function __construct($id, $firstName, $lastName, $dateOfBirth, $phoneNumber)
     {
         $this->data['id']=$id;
         $this->data['firstName']=$firstName;
@@ -11,8 +21,8 @@ class Customer{
         $this->data['phoneNumber']=$phoneNumber;
 
     }
-
-    public function insert(){
+*/
+/*    public function insert(){
         $db=$GLOBALS['db'];
         try{
             $sql= 'insert into '. self::TABLENAME. ' (firstName, lastName, dateOfBirth, phoneNumber, addressID) values (:firstName, :lastName, :dateOfBirth, :phoneNumber, :addressID)';
@@ -33,5 +43,5 @@ class Customer{
             die("Query error: ". $e->getMessage());
         }
         return false;
-    }
+    }*/
 }
