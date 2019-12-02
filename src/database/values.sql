@@ -1,7 +1,7 @@
 
 
 
-USE KSWD;
+USE SKWD;
 
 
 insert into Address(country, city, zip, street)
@@ -15,23 +15,23 @@ values
 -- ---------------------------------------------------------
 
 
-insert into Customer(firstName, lastName, dateOfBirth, phoneNumber, email, addressID)
+insert into Customer(firstName, lastName, dateOfBirth, phoneNumber, addressID)
 values
-('Antonio', 'Buendia', '1980-03-04', null, 'r.bing@gmail.com', 6),
-('Jennifer', 'Nord', '1955-04-05', null, 'nord@gmail.com', 4),
-('Ralf', 'Vesco', '1995-12-12', '8382929745', 'vesko95@gmail.com', 5),
-('Justine', 'Lanissia', '1971-08-09', null, 'lanissia@gmail.com', 1),
-('Junga', 'Jungali', '2000-03-04', null, 'jungali@gmail.com', 6);
+('Antonio', 'Buendia', '1980-03-04', null, 6),
+('Jennifer', 'Nord', '1955-04-05', null, 4),
+('Ralf', 'Vesco', '1995-12-12', '8382929745', 5),
+('Justine', 'Lanissia', '1971-08-09', null, 1),
+('Junga', 'Jungali', '2000-03-04', null, 6);
 
 -- ---------------------------------------------------------
 
-insert into Account(username, password, customerID)
+insert into Account(email, password, customerID)
 values
-('bunda', '1234', 1),
-('jenn', '1234', 2),
-('ralf', '1234', 3),
-('jus', '1234', 4),
-('junga', '1234', 5);
+('bunda@gmail.com', '1234', 1),
+('jenn@gmail.com', '1234', 2),
+('ralf@gmail.com', '1234', 3),
+('jus@gmail.com', '1234', 4),
+('junga@gmail.com', '1234', 5);
 -- ---------------------------------------------------------
 
 
@@ -64,25 +64,35 @@ values
 ('Bottle Packaging Pro', null, 3.20, 'Accessory',5);
 -- ---------------------------------------------------------
 
-insert into Drink(category, year, alcoholPercentage, residualSugar, bottleSize, color, ProductID)
-values
-('wine', 2017, 14.50, 'dry', 0.75, 'red', 1),
-('wine', 2015, 13.00, 'medium-sweet', 0.75, 'rosé', 2),
-('wine', 2016, 12.21, 'sweet', 0.50, 'red', 3),
-('wine', 2014, 13.54, 'off-dry', 0.75, 'white', 4),
-('wine', 2015, 14.00, 'dry', 1.00, 'rosé', 5),
-('wine', 2012, 13.78, 'bone dry', 0.75, 'red', 6),
-('wine', 2017, 12.56, 'medium-sweet', 0.75, 'white', 7),
-('wine', 2016, 14.37, 'bone dry', 0.75, 'red', 8),
-('wine', 2017, 13.00, 'sweet', 0.75, 'rosé', 9),
-('sparkling wine', 2016, 13.64, 'medium-sweet', 1.00, 'rosé', 10);
+/*
+-- Query: 
+-- Date: 2019-11-30 21:16
+*/
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'category',NULL,NULL);
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'year',NULL,NULL);
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'alcoholPercentage',NULL,NULL);
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'residualSugar',NULL,NULL);
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'bottleSize',NULL,NULL);
+INSERT INTO `Property` (`propertyID`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'color',NULL,NULL);
 
 -- ---------------------------------------------------------
 
-insert into Accessory(category, material, productID)
-values
-('pack', ' ', 11),
-('pack', ' ', 12);
+/*
+-- Query: 
+-- Date: 2019-11-30 21:22
+*/
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,1,'wine',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,2,'2017',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,3,'14,50',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,4,'dry',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,5,'0,75',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,1,6,'red',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,1,'wine',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,2,'2015',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,3,'13,00',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,4,'medium-sweet',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,5,'0,75',NULL,NULL);
+INSERT INTO `PropertyProProduct` (`pppID`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,6,'rosé',NULL,NULL);
 
 
 
