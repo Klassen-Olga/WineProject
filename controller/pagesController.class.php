@@ -9,12 +9,10 @@ class PagesController extends \skwd\core\Controller
     public function actionLogin()
     {
 
-       
-        if(isset($_POST['submitLogin'])){
-       $_SESSION['a']=true;
-        }
-        
 
+        if (isset($_POST['submitLogin'])) {
+            $_SESSION['a'] = true;
+        }
 
 
     }
@@ -23,10 +21,12 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
+
     public function actionError()
     {
 
     }
+
     public function actionRegister()
     {
 
@@ -36,28 +36,28 @@ class PagesController extends \skwd\core\Controller
     public function actionStart()
     {
 
-        if(isset($_POST['submitLogin'])){
-            $_SESSION['logged']=true;
-            $_SESSION['loginName']= $_POST['email'];
-             }
-             if(isset($_POST['submitLogout'])){
-                $_SESSION['logged']=false;
-                 }
+        if (isset($_POST['submitLogin'])) {
+            $_SESSION['logged'] = true;
+            $_SESSION['loginName'] = $_POST['email'];
+        }
+        if (isset($_POST['submitLogout'])) {
+            $_SESSION['logged'] = false;
+        }
 
         if (isset($_POST['submitR'])) {
-            $address=['country'=>$_POST['country'],
-                'city'=> $_POST['city'],
-                'zip'=>$_POST['zip'],
-                'street'=>$_POST['street']
-                ];
+            $address = ['country' => $_POST['country'],
+                'city' => $_POST['city'],
+                'zip' => $_POST['zip'],
+                'street' => $_POST['street']
+            ];
 
             $addressO = new \skwd\models\Address($address);
             $addressO->save();
-            $customer=['firstName'=>$_POST['fname'],
-                'lastName'=>$_POST['lname'],
-                'dateOfBirth'=>$_POST['year'] . $_POST['month'] . $_POST['day'],
-                'phoneNumber'=>$_POST['phone'],
-                'addressID'=>$addressO->__get('id')
+            $customer = ['firstName' => $_POST['fname'],
+                'lastName' => $_POST['lname'],
+                'dateOfBirth' => dateOfBirthFilter($_POST['year'] . $_POST['month'] . $_POST['day']),
+                'phoneNumber' => $_POST['phone'],
+                'addressID' => $addressO->__get('id')
             ];
             $customerO = new \skwd\models\Customer($customer);
             $customerO->save();
@@ -69,6 +69,7 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
+
     public function actionBasket()
     {
 
@@ -83,10 +84,14 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
-    public function actionImprint(){
+
+    public function actionImprint()
+    {
 
     }
-    public function actionAccount(){
+
+    public function actionAccount()
+    {
 
     }
 }

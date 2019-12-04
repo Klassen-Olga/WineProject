@@ -5,6 +5,7 @@ require_once 'config/database.php';
 require_once 'models/address.class.php';
 require_once 'models/customer.class.php';
 require_once 'core/controller.class.php';
+require_once 'helper/functions.php';
 
 
 
