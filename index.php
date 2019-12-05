@@ -9,8 +9,6 @@ require_once 'helper/functions.php';
 
 
 
-
-
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
