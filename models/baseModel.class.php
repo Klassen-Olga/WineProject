@@ -34,6 +34,25 @@ abstract class BaseModel{
         }
         return null;
     }
+    public static function find($where =''){
+        $db = $GLOBALS['db'];
+        $result = null;
+          
+    try{
+        
+        $sql = 'SELECT * FROM ' . self::tableName();
+        if(!empty($where)){
+            $sql .= ' WHERE '. $where . ';';
+        }
+        $result = $db->query($sql)->fetchall();
+    }
+    catch(\PDOException $e){
+        die('select statement failed: ' . $e.getMessage());
+    }
+        
+        return $result;
+    
+    }
 
     public function __get($key){
         if (array_key_exists($key, $this->data)){

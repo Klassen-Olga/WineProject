@@ -8,8 +8,6 @@ require_once 'core/controller.class.php';
 
 
 
-
-
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 

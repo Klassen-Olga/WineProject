@@ -5,7 +5,10 @@ namespace skwd\controller;
 class PagesController extends \skwd\core\Controller
 {
 
+    public function actionTheProduct()
+    {
 
+    }
     public function actionLogin()
     {
 
