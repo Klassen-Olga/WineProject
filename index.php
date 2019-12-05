@@ -1,16 +1,30 @@
 <?php
-session_start();
+//session_start();
 require_once  'models/baseModel.class.php';
 require_once 'config/database.php';
 require_once 'models/address.class.php';
 require_once 'models/customer.class.php';
+require_once 'models/account.class.php';
 require_once 'core/controller.class.php';
 require_once 'helper/functions.php';
 
-
+/*$str=dateOfBirthFilter('2000February03');
+$_POST['submitR']="dd";
+$_POST['fname']="dd";
+$_POST['lname']="dd";
+$_POST['year'] ='2001';
+$_POST['month'] ='February';
+$_POST['day']='19';
+$_POST['phone']="fahh";
+$_POST['country']="dhhh";
+$_POST['city']="dd";
+$_POST['zip']="dd";
+$_POST['street']="dd";
+$_POST['email']="ddjjjjj";
+$_POST['password1']="dd";*/
 
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$actionName=$_GET['a'] ?? 'register';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
@@ -22,18 +36,6 @@ if (file_exists($controllerPath)){
         $controllerInstance= new $className($controllerName, $actionName);
         $controllerMethod='action'.ucfirst($actionName);
         if (method_exists($controllerInstance, $controllerMethod)){
-/*
-                                    $_POST['submitR']="d";
-                                    $_POST['fname']="d";
-                                    $_POST['lname']="d";
-                                    $_POST['year'] ='djs';
-                                    $_POST['month'] ='djs';
-                                     $_POST['day']='djs';
-                                     $_POST['phone']="fa";
-                                    $_POST['country']="d";
-                                    $_POST['city']="d";
-                                    $_POST['zip']="d";
-                                    $_POST['street']="d";*/
             $controllerInstance->{$controllerMethod}();
             $controllerInstance->renderHTML();
         }
