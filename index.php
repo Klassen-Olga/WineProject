@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require_once  'models/baseModel.class.php';
 require_once 'config/database.php';
 require_once 'models/address.class.php';
@@ -8,7 +8,8 @@ require_once 'models/account.class.php';
 require_once 'core/controller.class.php';
 require_once 'helper/functions.php';
 
-$str=dateOfBirthFilter('2000February03');
+
+//$str=dateOfBirthFilter('2000February03');
 /*$str=dateOfBirthFilter('2000February03');
 $_POST['submitR']="dd";
 $_POST['fname']="df";
