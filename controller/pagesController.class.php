@@ -12,13 +12,6 @@ class PagesController extends \skwd\core\Controller
     public function actionLogin()
     {
 
-       
-        if(isset($_POST['submitLogin'])){
-       $_SESSION['a']=true;
-        }
-        
-
-
 
     }
 

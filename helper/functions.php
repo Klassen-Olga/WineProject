@@ -7,3 +7,8 @@ function login(){
     }
     return $test;
 }
+
+function isPasswordFromUser($password, $email){
+    
+    skwd\models\Account::find();
+}
