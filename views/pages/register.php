@@ -25,8 +25,8 @@
         <input type="tel" id="phone" name="phone" value="<?=isset($_POST['phone'])?htmlspecialchars($_POST['phone']): '' ?>" /><br>
         <label for="select">Date of birth:</label><br>
 
-        <select name="month" id="Month">
-        <option value="Month"><?=isset($_POST['month'])?htmlspecialchars($_POST['month']): 'Month' ?></option>
+        <select name="Month" id="Month">
+        <option value="Month"><?=isset($_POST['Month'])?htmlspecialchars($_POST['Month']): 'Month' ?></option>
         <?php
         $array=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         foreach($array  as $value){
@@ -35,8 +35,8 @@
         ?>
         </select>
 
-        <select name="day" id="Day">
-        <option value="Day"><?=isset($_POST['day'])?htmlspecialchars($_POST['day']): 'Day' ?></option>
+        <select name="Day" id="Day">
+        <option value="Day"><?=isset($_POST['Day'])?htmlspecialchars($_POST['Day']): 'Day' ?></option>
         <?php
         
         for($i=1; $i<=31; $i++){
@@ -50,8 +50,8 @@
         }
         ?>
         </select>
-        <select name="year" id="Year">
-            <option value="Year"><?=isset($_POST['year'])?htmlspecialchars($_POST['year']): 'Year' ?></option>
+        <select name="Year" id="Year">
+            <option value="Year"><?=isset($_POST['Year'])?htmlspecialchars($_POST['Year']): 'Year' ?></option>
            <?php
            for($i=2020;$i>=1919; $i--){
             echo '<option value= '. $i . '>' .$i. '</option>';
