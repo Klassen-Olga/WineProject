@@ -18,9 +18,13 @@
                 if(isset($_SESSION['logged']) && $_SESSION['logged']==true){
                 include __DIR__ . '/logout.php';
                 }
+                if (isset($this->_params['error'])){
+                    foreach ($this->_params['error'] as $value) {
+                        echo nl2br($value . "\r\n");
+                    }
+                }
                 ?>
             </nav>
-             
         </header>
         <main>
             <?php echo $body;?>

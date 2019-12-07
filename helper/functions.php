@@ -33,8 +33,47 @@ function dateOfBirthFilter($str)
 
 }
 
+function requiredCheck(&$errors){
+    if (!isset($_POST['fname'])){
+        array_push($errors, "Please fill out first name field");
+    }
+    if (!isset($_POST['lname'])){
+        array_push($errors, "Please fill out last name field");
+    }
+    if (!isset($_POST['email'])){
+        array_push($errors, "Please fill out email field");
+    }
+    if (!isset($_POST['password1'])){
+        array_push($errors, "Please fill out password field");
+    }
+    if (!isset($_POST['password2'])){
+        array_push($errors, "Please fill out repeat password field");
+    }
+    if (!isset($_POST['phone'])){
+        array_push($errors, "Please fill out phone number field");
+    }
+    if (!isset($_POST['Month']) || $_POST['Day'] || $_POST['Year']){
+        array_push($errors, "Please fill out all date of birth fields");
+    }
+    if (!isset($_POST['genderRadio'])){
+        array_push($errors, "Please set your gender");
+    }
+    if (!isset($_POST['zip'])){
+        array_push($errors, "Please fill out zip field");
+    }
+    if (!isset($_POST['city'])){
+        array_push($errors, "Please fill out city field");
+    }
+    if (!isset($_POST['street'])){
+        array_push($errors, "Please fill out street field");
+    }
+    if (!isset($_POST['country'])){
+        array_push($errors, "Please fill out country field");
+    }
+}
+
 //should have minimum 1 char and 1 number
-function validatePassword(&$errors, $password)
+function validatePasswordForm(&$errors, $password)
 {
 
     if (!preg_match('/[a-zA-Z]/', $password)) {
@@ -53,53 +92,132 @@ function validatePassword(&$errors, $password)
     return true;
 }
 
-
-function register(&$errors)
-{
-
-    $db=$GLOBALS['db'];
-    $db->beginTransaction();
+function validatePassword(&$errors, $password1, $password2){
     //the passwords1 and password 2 should be equal
-    if ($_POST['password1']!==$_POST['password2']){
+    if ($password1!==$password2){
         array_push($errors,"The both passwords should be equal");
         return false;
     }
     //the password should be valid
-    if (validatePassword($errors,$_POST['password1'])===false){
+    if (validatePasswordForm($errors,$password1)===false){
         return false;
     }
+    return true;
+}
+function isUnique(&$errors, $email){
+   $result= \skwd\models\Account::find('email= '.'\''. $email. '\'');
+    if (count($result)===0){
+        return true;
+    }
+    array_push($errors, "The user with this email already exists");
+    return false;
+}
+function validateDateOfBirth(&$errors){
+    if ($_POST['Year']==='Year'){
+        array_push($errors, "Please enter valid year in your date of birth");
+    }
+    if ( $_POST['Month']==='Month'){
+        array_push($errors, "Please enter valid month in your date of birth");
+    }
+    if ($_POST['Day']==='Day'){
+        array_push($errors, "Please enter valid day in your date of birth");
+    }
+}
+function validateCountry(&$errors){
+    if ($_POST['country']==='Country'){
+        array_push($errors, "Please enter valid country");
+    }
+}
+function findAddressInDb($address){
+    $country=$address->__get('country');
+    $city=$address->__get('city');
+    $zip=$address->__get('zip');
+    $street=$address->__get('street');
+    $id=\skwd\models\Address::find('country= '. '\''. $country. '\''. ' and city= ' .
+                        '\'' .$city.  '\''. ' and zip= '. '\''.  $zip.  '\''. ' and street= '. '\''. $street. ' \' ');
+    if (count($id)===0){
+        return null;
+    }
+    return $id[0]['id'];
+}
+function validateCustomerTable(&$errors){
     $customer = ['firstName' => $_POST['fname'],
         'lastName' => $_POST['lname'],
-        'dateOfBirth' => dateOfBirthFilter($_POST['Year'] . $_POST['Month'] . $_POST['Day']),
+        'gender'=>$_POST['genderRadio'],
         'phoneNumber' => $_POST['phone']
     ];
-    $address = ['country' => $_POST['country'],
+    $customerInstance = new \skwd\models\Customer($customer);
+    $customerInstance->validate($errors);
+    validateDateOfBirth($errors);
+    if (count($errors)===0){
+        $customerInstance->__set('dateOfBirth',dateOfBirthFilter($_POST['Year'] . $_POST['Month'] . $_POST['Day']));
+        return $customerInstance;
+    }
+    else{
+        return false;
+    }
+
+}
+function validateAddressTable(&$errors){
+
+    $address = [
         'city' => $_POST['city'],
         'zip' => $_POST['zip'],
         'street' => $_POST['street']
     ];
+    $addressInstance = new \skwd\models\Address($address);
+    $addressInstance->validate($errors);
+    validateCountry($errors);
+    if (count($errors)===0){
+        $addressInstance->__set('country', $_POST['country']);
+        //it is not allowed to save the same addresses to the database
+        $addressID=findAddressInDb($addressInstance);
+        if (!is_null($addressID)){
+            $addressInstance->__set('id', $addressID);
+        }
+        return $addressInstance;
+    }
+    else {
+        return false;
+    }
+}
+function validateAccountTable(&$errors){
+    if (!validatePassword($errors, $_POST['password1'], $_POST['password2']) || !isUnique($errors, $_POST['email'])) {
+        return false;
+    }
     $password=password_hash($_POST['password1'], PASSWORD_DEFAULT);
-
     $account=[
         'email'=>$_POST['email'],
         'password'=>$password
     ];
-    $customerInstance = new \skwd\models\Customer($customer);
-    $addressInstance = new \skwd\models\Address($address);
     $accountInstance=new \skwd\models\Account($account);
-    //validate if the attributes have the right data type and all constraints are
-    $customerInstance->validate($errors);
-    $addressInstance->validate($errors);
     $accountInstance->validate($errors);
-    if (count($errors)!==0){
+    if (count($errors)===0){
+        return $accountInstance;
+    }
+    else{
         return false;
     }
-    $addressInstance->save($errors);
+}
+function register(&$errors)
+{
+    $db=$GLOBALS['db'];
+    $db->beginTransaction();
+    $customerInstance=validateCustomerTable($errors);
+    $addressInstance=validateAddressTable($errors);
+    $accountInstance=validateAccountTable($errors);
+    if ($customerInstance===false || $addressInstance===false || $accountInstance===false){
+        return false;
+    }
+
+    if($addressInstance->__get('id')===null){
+        $addressInstance->save($errors);
+    }
     //only if the address is inserted we can go forward
     if (count($errors)===0){
         $customerInstance->__set('addressID', $addressInstance->__get('id'));
         $customerInstance->save($errors);
-        //only if the customer is inserted we can go forrward
+        //only if the customer is inserted we can go forward
         if (count($errors)===0){
             $accountInstance->__set('customerID', $customerInstance->__get('id'));
             $accountInstance->save($errors);
@@ -122,10 +240,4 @@ function register(&$errors)
     else{
         return false;
     }
-
-    //todo keine doppelte addresse in db erlaubt
-    //todo country month day year
-    //todo trigger for unique login name
-    //tofo
-
 }
