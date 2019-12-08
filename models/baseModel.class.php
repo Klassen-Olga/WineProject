@@ -6,6 +6,7 @@ abstract class BaseModel{
     const TYPE_INT='int';
     const TYPE_STRING='string';
     const TYPE_FLOAT='float';
+    const TYPE_ENUM_G='enum';
     protected $data=[];
     protected $schema=[];
 
@@ -45,6 +46,7 @@ abstract class BaseModel{
             $sql .= ' WHERE '. $where . ';';
         }
         $result = $db->query($sql)->fetchall();
+
     }
     catch(\PDOException $e){
         die('select statement failed: ' . $e.getMessage());

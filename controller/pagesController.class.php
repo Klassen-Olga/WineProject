@@ -26,17 +26,21 @@ class PagesController extends \skwd\core\Controller
 
     }
 
+
     public function actionRegister()
     {
         if (isset($_POST['submitR'])) {
             $errors = [];
+/*            requiredCheck($errors);
+            if (count($errors)!==0){
+                $this->_params['error']=$errors;
+                return;
+            }*/
             $good = register($errors);
             if ($good === true) {
                 header('Location: index.php?c=pages&a=start');
             } else {
-                foreach ($errors as $value) {
-                    echo nl2br($value . "\r\n");
-                }
+                $this->_params['error']=$errors;
             }
 
         }
