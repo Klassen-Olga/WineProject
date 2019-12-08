@@ -1,6 +1,8 @@
 
 <?php 
+
 if(isset($_SESSION['logged'])&& $_SESSION['logged']==true){
+
     include __DIR__.'/../accountLogged.php';
 }
 else{

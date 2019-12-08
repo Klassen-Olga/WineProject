@@ -3,50 +3,55 @@
         <h2>Sign-Up</h2>
     </div>
 
-    <form method="POST" action="index.php"> <fieldset>
+    <form method="POST" action="<?=$_SERVER['PHP_SELF'].'?a=register';?>"> <fieldset>
         <legend>Personal data</legend>
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname"  name="fname" value="<?=isset($_Post['fname'])?htmlspecialchars($_Post['fname']): '' ?>"
-            required /><br>
+        <input type="text" id="fname" name="fname" value="<?=isset($_POST['fname'])?htmlspecialchars($_POST['fname']): '' ?>" required /><br>
+
         <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname" value="<?=isset($_Post['lname'])?htmlspecialchars($_Post['lname']): '' ?>"
+        <input type="text" id="lname" name="lname" value="<?=isset($_POST['lname'])?htmlspecialchars($_POST['lname']): '' ?>"
             required /><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?=isset($_Post['email'])?htmlspecialchars($_Post['email']): '' ?>"
+        <input type="email" id="email" name="email" value="<?=isset($_POST['email'])?htmlspecialchars($_POST['email']): '' ?>"
             required /><br>
         <label for="password1">Password:</label><br>
-        <input type="password" id="password1"
-            value="<?=isset($_Post['password1'])?htmlspecialchars($_Post['password1']): '' ?>" required /><br>
+        <input type="password" id="password1" name="password1"
+            value="<?=isset($_POST['password1'])?htmlspecialchars($_POST['password1']): '' ?>" required /><br>
         <label for="password2">Repeat password:</label><br>
-        <input type="password" id="password2"
-            value="<?=isset($_Post['password2'])?htmlspecialchars($_Post['password2']): '' ?>" required /><br>
+        <input type="password" id="password2" name="password2"
+            value="<?=isset($_POST['password2'])?htmlspecialchars($_POST['password2']): '' ?>" required /><br>
         <label for="fname">Phone number:</label><br>
-        <input type="tel" id="phone" name="phone" value="<?=isset($_Post['phone'])?htmlspecialchars($_Post['phone']): '' ?>" /><br>
+        <input type="tel" id="phone" name="phone" value="<?=isset($_POST['phone'])?htmlspecialchars($_POST['phone']): '' ?>" /><br>
         <label for="select">Date of birth:</label><br>
 
-        <select name="month" id="select">
-        <option value="month">Month</option>
+        <select name="Month" id="Month">
+        <option value="Month"><?=isset($_POST['Month'])?htmlspecialchars($_POST['Month']): 'Month' ?></option>
         <?php
         $array=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         foreach($array  as $value){
-            echo '<option value ='. strtolower($value).'>'.$value.'</option>';
+            echo '<option value ='.$value.'>'.$value.'</option>';
         }
         ?>
         </select>
 
-        <select name="day" id="select">
-        <option value="day">Day</option>
+        <select name="Day" id="Day">
+        <option value="Day"><?=isset($_POST['Day'])?htmlspecialchars($_POST['Day']): 'Day' ?></option>
         <?php
         
         for($i=1; $i<=31; $i++){
-            
-           echo '<option value= '. $i . '>' .$i. '</option>';
+
+            if($i<10){
+                echo '<option value= 0'. $i . '>' .$i. '</option>';
+            }
+            else{
+                echo '<option value= '. $i . '>' .$i. '</option>';
+            }
         }
         ?>
         </select>
-        <select name="year" id="select">
-            <option value="year">Year</option>
+        <select name="Year" id="Year">
+            <option value="Year"><?=isset($_POST['Year'])?htmlspecialchars($_POST['Year']): 'Year' ?></option>
            <?php
            for($i=2020;$i>=1919; $i--){
             echo '<option value= '. $i . '>' .$i. '</option>';
@@ -62,23 +67,23 @@
 
         <fieldset>
             <legend>Address</legend>
-            <label for="zipCode">Zip:</label><br>
-            <input type="text" id="zipCode" name= "zip" value="<?=isset($_POST['zipCode'])?htmlspecialchars($_POST['zipCode']): '' ?>" required /><br>
+            <label for="zip">Zip:</label><br>
+            <input type="text" id="zip" name= "zip" value="<?=isset($_POST['zip'])?htmlspecialchars($_POST['zip']): '' ?>" required /><br>
             <label for="city">City:</label><br>
             <input type="text" id="city" name="city" value="<?=isset($_POST['city'])?htmlspecialchars($_POST['city']): '' ?>"
                 required /><br>
             <label for="street">Street:</label><br>
-            <input type="text" id="street" name= "street" "value="<?=isset($_POST['street'])?htmlspecialchars($_POST['street']): '' ?>"
+            <input type="text" id="street" name= "street" value="<?=isset($_POST['street'])?htmlspecialchars($_POST['street']): '' ?>"
                 required /><br>
-            <label for="select">Country:<br>
-                <select name="country" name= "country" id="select">
-                <option value="country">Country</option>
+            <label for="country">Country:<br>
+                <select name= "country" id="countrd">
+                <option value="Country"><?=isset($_POST['country'])?htmlspecialchars($_POST['country']): 'Country' ?></option>
                     <?php
                     $array=['Germany', 'Austria', 'Belgium', 'Bulgaria', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
                             'France', 'Great Britain', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Luxembourg', 'Malta', 'Netherlands',
                             'Poland','Portugal', 'Romania', 'Slovakia','Slovenia', 'Spain', 'Sweden', 'Croatia'];
                             foreach($array as $value){
-                                echo '<option value ='. strtolower($value).'>'.$value.'</option>';
+                                echo '<option value ='.$value.'>'.$value.'</option>';
                             }
                      ?>
                    

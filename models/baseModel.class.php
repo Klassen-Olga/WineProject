@@ -142,7 +142,7 @@ abstract class BaseModel{
 
     }
     protected function validateValue($attribute, &$value, &$schemaOptions){
-        $errors=[];
+
         $type=$schemaOptions['type'];
         switch ($type){
             case self::TYPE_FLOAT:
@@ -151,22 +151,23 @@ abstract class BaseModel{
                 break;
             case self::TYPE_STRING:
                 if (isset($schemaOptions['min']) && mb_strlen($value)< $schemaOptions['min']){
-                    $errors[]= $attribute. ' : String needs min '.$schemaOptions['min']. ' characters';
+                    return $attribute. ' : String needs min '.$schemaOptions['min']. ' characters';
                 }
                 if (isset($schemaOptions['max']) && mb_strlen($value)>$schemaOptions['max']){
-                    $errors[]= $attribute. ' : String can have max '.$schemaOptions['max']. ' characters';
+                   return $attribute. ' : String can have max '.$schemaOptions['max']. ' characters';
                 }
                 break;
 
         }
-        return $errors>0 ? $errors : true;
+        return true;
     }
     public function validate(&$errors =null){
+
         foreach ($this->schema as $key=>$schemaOptions ){
             if (isset($this->data[$key]) && is_array($schemaOptions)){
                 $valueErrors= $this->validateValue($key, $this->data[$key], $schemaOptions);
                 if ($valueErrors!== true){
-                    array_push($errors, ...$valueErrors);
+                    array_push($errors, $valueErrors);
                 }
             }
         }

@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Customer(
 id			int			NOT NULL	AUTO_INCREMENT,
 firstName			varchar(50)	NOT NULL,
 lastName			varchar(50)	NOT NULL,
-dateOfBirth			varchar(50)		NOT NULL,
+dateOfBirth			date		NOT NULL,
 phoneNumber			varchar(20)		NULL,
 addressID			int			NOT NULL,
 createdAt 			TIMESTAMP 	NOT NULL,
