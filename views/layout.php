@@ -18,6 +18,9 @@
                 if(isset($_SESSION['logged']) && $_SESSION['logged']==true){
                 include __DIR__ . '/logout.php';
                 }
+                else if(isset($_COOKIE['logged']) && $_COOKIE['logged']==='isLogged'){
+                    include __DIR__ . '/logout.php';
+                }
                 if (isset($this->_params['error'])){
                     foreach ($this->_params['error'] as $value) {
                         echo nl2br($value . "\r\n");

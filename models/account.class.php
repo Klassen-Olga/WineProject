@@ -2,7 +2,7 @@
 namespace skwd\models;
 class Account extends BaseModel {
 
-    const TABLENAME = 'account';
+    const TABLENAME = 'Account';
     protected $schema=[
     'id'=>['type'=>BaseModel::TYPE_STRING],
     'email'=>['type'=>BaseModel::TYPE_STRING, 'min'=>5, 'max'=> 50],

@@ -14,28 +14,6 @@ values
 ('Spain', 'Fene', '15500', 'Quevedo 68');
 -- ---------------------------------------------------------
 
-
-insert into Customer(firstName, lastName, dateOfBirth, phoneNumber, addressID)
-values
-('Antonio', 'Buendia', '1980-03-04', null, 6),
-('Jennifer', 'Nord', '1955-04-05', null, 4),
-('Ralf', 'Vesco', '1995-12-12', '8382929745', 5),
-('Justine', 'Lanissia', '1971-08-09', null, 1),
-('Junga', 'Jungali', '2000-03-04', null, 6);
-
--- ---------------------------------------------------------
-
-insert into Account(email, password, customerID)
-values
-('bunda@gmail.com', '1234', 1),
-('jenn@gmail.com', '1234', 2),
-('ralf@gmail.com', '1234', 3),
-('jus@gmail.com', '1234', 4),
-('junga@gmail.com', '1234', 5);
--- ---------------------------------------------------------
-
-
-
 insert into Vendor(name, description, phoneNumber, email, addressID)
 values
 ('Florence Voo', null, '098372618','froe@gmail.com', 2),

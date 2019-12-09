@@ -1,19 +1,7 @@
 <?php
 
-function login()
-{
-    $test = false;
-    if (isset($_POST['submitLogin'])) {
-        $test = true;//unter bedingungen
-    }
-    return $test;
-}
 
 
-function isPasswordFromUser($password, $email){
-    
-    skwd\models\Account::find();
-}
 
 function dateOfBirthFilter($str)
 {
@@ -246,28 +234,61 @@ function register(&$errors)
     else{
         return false;
     }
-
-    //todo keine doppelte addresse in db erlaubt
-    //todo country month day year
-    //todo trigger for unique login name
-    //tofo
-
-    function isPasswordfromUser($password, $email){
-        $result1= skwd\models\Account::find('email =' . $email);
-        if(strlen($password)==0 || strlen($email)==0 ){
+}
+    function isPasswordfromUser($password, $email, &$errors){
+        /*if(strlen($password)==1 || strlen($email)==1 ){
             return false;
-        }
+        }*/
         
-            $result1= skwd\models\Account::find('email =' . $email);
-            if(password_verify($password, $result1[0]['password'])){
+        $dbQuery= skwd\models\Account::find('email= '.'\''. $email. '\'');
+        
+        if(!empty($dbQuery)){
+
+            
+            if(password_verify($password, $dbQuery[0]['password'])){
                 return true;
             }
             else{
-
+                array_push($errors, "wrong password or email");
                 return false;
             }
+        }
+        else{
+            array_push($errors, "wrong password or email");
+                return false;
+        }
         
     }
 
+    function login($password, $email,$rememberMe, &$errors)
+{
+    $isLoginSuccesful = false;
+    $isLoginSuccesful = isPasswordfromUser($password, $email, $errors);
+    if($isLoginSuccesful == true && $rememberMe == true){
+    $dbQuery = skwd\models\Account::find('email= '.'\''. $email. '\'');
+    $id = $dbQuery[0]['id'];
+    rememberMe($email, $id);
+    }
+  
+    return $isLoginSuccesful;
 }
+
+function logout(){
+    unset($_SESSION['logged']);
+    unset($_SESSION['loginName']);
+    session_destroy();
+    //setcookie('userId','',-1,'/');
+    setcookie('email','',-1,'/');
+    setcookie('logged','',-1,'/');
+    header('Location: index.php?c=pages&a=start');
+}
+
+function rememberMe($email, $id){
+    $duration = time() + 3600 * 24 * 30;
+    //setcookie('userId',$id,$duration,'/');
+    setcookie('email',$email,$duration,'/');
+    setcookie('logged','isLogged',$duration,'/');
+}
+
+
 

@@ -12,8 +12,21 @@ class PagesController extends \skwd\core\Controller
 
     public function actionLogin()
     {
+        
+        $errors = [];
+        $rememberMe = false;
+        if(isset($_POST['rememberMe'])){
+            $rememberMe = true;
+        }
 
-
+        if (isset($_POST['submitLogin']) && login($_POST['validationPassword'],$_POST['email'], $rememberMe, $errors)==true) {
+            
+            $_SESSION['logged'] = true;
+            $_SESSION['loginName'] = $_POST['email'];
+           
+            header('Location: index.php?c=pages&a=start');
+        }
+        $this->_params['error']=$errors;
     }
 
     public function actionMyOrders()
@@ -49,20 +62,10 @@ class PagesController extends \skwd\core\Controller
         public
         function actionStart()
         {
-            if(isset($_POST['submitLogin'])){
-                
-
-            $test = isPasswordfromUser($_POST['validationPassword'],$_POST['email']);
-            if ( $test== true) {
-                $_SESSION['logged'] = true;
-                $_SESSION['loginName'] = $_POST['email'];
-            }
+         
             if (isset($_POST['submitLogout'])) {
-                $_SESSION['logged'] = false;
+                logout();
             }
-        }
-
-
         }
 
         public

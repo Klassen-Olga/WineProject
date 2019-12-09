@@ -1,18 +1,15 @@
 <?php
 
-$db = $GLOBALS['db'];
+
+ $db = $GLOBALS['db'];
 $result = null;
   
 
 
 $sql = 'SELECT * FROM product';
 
-$result = $db->query($sql)->fetchall();
-/*
-foreach($result as $key =>$value){
+$result = $db->query($sql)->fetchall(); 
 
-    echo $result[$key]['name'];
-    echo "<br>";
-    
-}
-*/
+
+
+

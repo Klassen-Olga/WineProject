@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS Account;
 CREATE TABLE IF NOT EXISTS Account(
 id			int			NOT NULL	AUTO_INCREMENT,
 email				varchar(50)	NOT NULL,
-password			varchar(20)	NOT NULL,
+password			varchar(255)	NOT NULL,
 customerID			int			NOT NULL,
 createdAt 			TIMESTAMP 	NOT NULL,
 updatedAt 			TIMESTAMP 	NULL DEFAULT NULL,
