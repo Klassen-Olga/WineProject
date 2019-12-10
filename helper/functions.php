@@ -138,7 +138,7 @@ function validateCustomerTable(&$errors){
     $customer = ['firstName' => $_POST['fname'],
         'lastName' => $_POST['lname'],
         'gender'=>$_POST['genderRadio'],
-        'phoneNumber' => $_POST['phone']
+        'phoneNumber' => isset($_POST['phone'])? $_POST['phone']: NULL
     ];
     $customerInstance = new \skwd\models\Customer($customer);
     $customerInstance->validate($errors);
@@ -262,15 +262,15 @@ function register(&$errors)
 
     function login($password, $email,$rememberMe, &$errors)
 {
-    $isLoginSuccesful = false;
-    $isLoginSuccesful = isPasswordfromUser($password, $email, $errors);
-    if($isLoginSuccesful == true && $rememberMe == true){
+    $isLoginSuccessful = false;
+    $isLoginSuccessful = isPasswordfromUser($password, $email, $errors);
+    if($isLoginSuccessful == true && $rememberMe == true){
     $dbQuery = skwd\models\Account::find('email= '.'\''. $email. '\'');
     $id = $dbQuery[0]['id'];
     rememberMe($email, $id);
     }
   
-    return $isLoginSuccesful;
+    return $isLoginSuccessful;
 }
 
 function logout(){

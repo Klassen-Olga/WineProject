@@ -1,14 +1,12 @@
 products:
 <br> <br>
 
-<a href="?b=alle">alle Producte</a>
-<?php include __DIR__.'/../allProducts.php';?>
+<a href="?c=products&a=allProducts">all products</a>
+<a href="?c=products&a=redWine">Red wine</a>
+<a href="?c=products&a=whiteWine">White wine</a>
+<a href="?c=products&a=roseWine">Rose wine</a>
+<a href="?c=products&a=sect">Sect</a>
+<a href="?c=products&a=acct">Accessories</a>
 
-<?php foreach($result as $key =>$value):?>
 
-<form method = "get" action="./views/pages/theProduct.php">
-<?= $result[$key]['name'];?>
-<input type="submit" name="product" value="<?= $result[$key]['name'];?>">
-</form>
-    <br>
-<?php endforeach; ?>
+

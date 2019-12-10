@@ -84,16 +84,16 @@ CONSTRAINT Vendor_UQ unique (email)
 
 DROP TABLE IF EXISTS Product;
 CREATE TABLE IF NOT EXISTS Product(
-productID			int			NOT NULL	AUTO_INCREMENT,
-name				varchar(100)NOT NULL,
+id			int			NOT NULL	AUTO_INCREMENT,
+prodName				varchar(100)NOT NULL,
 description			varchar(200)	NULL,
-standartPrice		decimal(7,2)NOT NULL,
+standardPrice		decimal(7,2)NOT NULL,
 productType			enum('Drink','Accessory') NOT NULL,	
 vendorID			int			NOT NULL,
 createdAt 			TIMESTAMP 	NOT NULL,
 updatedAt 			TIMESTAMP 	NULL DEFAULT NULL,
 
-CONSTRAINT Product_PK PRIMARY KEY (productID),
+CONSTRAINT Product_PK PRIMARY KEY (id),
 CONSTRAINT Product_FK FOREIGN KEY (vendorID) REFERENCES Vendor (vendorID)
 );
 
@@ -103,14 +103,14 @@ CONSTRAINT Product_FK FOREIGN KEY (vendorID) REFERENCES Vendor (vendorID)
 
 DROP TABLE IF EXISTS Picture;
 CREATE TABLE IF NOT EXISTS Picture(
-pictureID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 path				varchar(200)NOT NULL,
 productID			int			NOT NULL,
 createdAt 			TIMESTAMP 	NOT NULL,
 updatedAt 			TIMESTAMP 	NULL DEFAULT NULL,
 
-CONSTRAINT Pictur_PK PRIMARY KEY (pictureID),
-CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (productID)
+CONSTRAINT Pictur_PK PRIMARY KEY (id),
+CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (id)
 );
 
 -- ---------------------------------------------------------
@@ -121,27 +121,27 @@ CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (productID)
 
 DROP TABLE IF EXISTS Property;
 CREATE TABLE IF NOT EXISTS Property(
-propertyID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 name				varchar(50)	not null,
 createdAt 			TIMESTAMP 	NOT NULL,
 updatedAt 			TIMESTAMP 	NULL DEFAULT NULL,
 
-CONSTRAINT Property_PK PRIMARY KEY (propertyID)
+CONSTRAINT Property_PK PRIMARY KEY (id)
 );
 -- ---------------------------------------------------------
 
  DROP TABLE IF EXISTS PropertyProProduct;
 CREATE TABLE IF NOT EXISTS PropertyProProduct(
-pppID			int			NOT NULL	AUTO_INCREMENT,
+id			int			NOT NULL	AUTO_INCREMENT,
 productID		int			not null,
 propertyID		int 		not null,
 value			varchar(60)	not null,
 createdAt 		TIMESTAMP 	NOT NULL,
 updatedAt 		TIMESTAMP 	NULL DEFAULT NULL,
 
-CONSTRAINT ppp_PK PRIMARY KEY (pppID),
-CONSTRAINT product_FKK FOREIGN KEY(productID) references Product(productID),
-CONSTRAINT property_FKK FOREIGN KEY(propertyID) references Property(propertyID)
+CONSTRAINT ppp_PK PRIMARY KEY (id),
+CONSTRAINT product_FKK FOREIGN KEY(productID) references Product(id),
+CONSTRAINT property_FKK FOREIGN KEY(propertyID) references Property(id)
 );
 
 -- ---------------------------------------------------------
@@ -175,15 +175,20 @@ CREATE TABLE IF NOT EXISTS Basket(
 basketID			int			NOT NULL	AUTO_INCREMENT,
 actualPrice			decimal(9,2)NOT NULL,
 qty					int(5)		NOT NULL,
-productID			int			NOT NULL,		
+productID			int			NOT NULL,
 orderID				int			NOT NULL,
 createdAt 			TIMESTAMP 	NOT NULL,
 updatedAt 			TIMESTAMP 	NULL DEFAULT NULL,
 
 CONSTRAINT Basket_PK PRIMARY KEY (basketID),
-CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (productID),
+CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (id),
 CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Orders (orderID)
 );
+
+CREATE OR REPLACE VIEW AllProducts as
+select  ppt.productID, prop.name, ppt.value
+from property prop
+join PropertyProProduct ppt on prop.id =ppt.propertyID
 
 
 

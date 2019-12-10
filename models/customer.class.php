@@ -11,7 +11,7 @@ class Customer extends BaseModel{
         'gender' =>['type'=> BaseModel::TYPE_ENUM_G],
         //format: YYYY-MM-DD
         'dateOfBirth'=>['type'=>BaseModel::TYPE_STRING, 'min'=>10, 'max'=>10],
-        'phoneNumber'=>['type'=>BaseModel::TYPE_STRING, 'min'=>2, 'max'=>20],
+        'phoneNumber'=>['type'=>BaseModel::TYPE_STRING],
         'addressID'=>['type'=>BaseModel::TYPE_INT]	,
     ];
 

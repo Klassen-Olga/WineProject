@@ -1,18 +1,11 @@
 <?php
 ini_set('session.cookie_lifetime', 0);
-
 session_start();
+require_once 'config/imports.php';
 
-
-require_once 'models/baseModel.class.php';
-require_once 'config/database.php';
-require_once 'models/address.class.php';
-require_once 'models/customer.class.php';
-require_once 'models/account.class.php';
-require_once 'core/controller.class.php';
-require_once 'helper/functions.php';
-
-
+//cookie speichern?
+//null beim nicht eingegebenen phone=> null speichern
+//timpestamp ubdated at
 //$str=dateOfBirthFilter('2000February03');
 /*$str=dateOfBirthFilter('2000February03');
 $_POST['submitR']="d";
@@ -31,7 +24,7 @@ $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'register';
+$actionName=$_GET['a'] ?? 'start';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
