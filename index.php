@@ -23,12 +23,12 @@ $_POST['country']="dhhh";
 $_POST['city']="dd";
 $_POST['zip']="dd";
 $_POST['street']="dd";
-$_POST['email']="ddjjjjjwj";
-$_POST['password1']="dd1hhhhh";
-$_POST['password2']="dd1hhhhh";*/
-
+$_POST['email']="ddejjhjjjwj";
+$_POST['password1']="ufn5j88globus";
+$_POST['password2']="ufn5j88globus";
+$_POST['genderRadio']="m";*/
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$actionName=$_GET['a'] ?? 'register';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
@@ -43,7 +43,6 @@ if (file_exists($controllerPath)){
             $controllerInstance->{$controllerMethod}();
             $controllerInstance->renderHTML();
         }
-
     else{
             header('Location: index.php?c=pages&a=error');
         }
@@ -51,7 +50,6 @@ if (file_exists($controllerPath)){
     else{
         header('Location: index.php?c=pages&a=error');
     }
-
 }
 else{
     header('Location: index.php?c=pages&a=error');
