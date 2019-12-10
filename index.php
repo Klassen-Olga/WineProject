@@ -8,8 +8,6 @@ require_once 'models/account.class.php';
 require_once 'core/controller.class.php';
 require_once 'helper/functions.php';
 
-
-
 //$str=dateOfBirthFilter('2000February03');
 /*$str=dateOfBirthFilter('2000February03');
 $_POST['submitR']="d";
