@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS Product;
 CREATE TABLE IF NOT EXISTS Product(
 id			int			NOT NULL	AUTO_INCREMENT,
 prodName				varchar(100)NOT NULL,
-description			varchar(200)	NULL,
+description			    text	NULL,
 standardPrice		decimal(7,2)NOT NULL,
 productType			enum('Drink','Accessory') NOT NULL,	
 vendorID			int			NOT NULL,

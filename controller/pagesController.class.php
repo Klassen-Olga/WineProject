@@ -44,11 +44,11 @@ class PagesController extends \skwd\core\Controller
     {
         if (isset($_POST['submitR'])) {
             $errors = [];
-/*            requiredCheck($errors);
+            requiredCheck($errors);
             if (count($errors)!==0){
                 $this->_params['error']=$errors;
                 return;
-            }*/
+            }
             $good = register($errors);
             if ($good === true) {
                 header('Location: index.php?c=pages&a=start');

@@ -3,17 +3,14 @@
 
 
 
-function dateOfBirthFilter($str)
+function dateOfBirthFilter()
 {
 
-    $month = substr($str, 4, strlen($str) - 6);
-    $year = substr($str, 0, 4);
-    $date = substr($str, -2, 2);
     $array = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
         'August', 'September', 'October', 'November', 'December'];
     $monthNumber = 0;
     for ($i = 0; $i < count($array); $i++) {
-        if ($array[$i] === $month) {
+        if ($array[$i] === $_POST['month']) {
             $monthNumber = $i + 1;
             break;
         }
@@ -22,12 +19,16 @@ function dateOfBirthFilter($str)
         $monthNumberWith0 = '0' . $monthNumber;
     }
     $resultMonth = isset($monthNumberWith0) ? $monthNumberWith0 : $monthNumber;
-
-    return $year . '-' . $resultMonth . '-' . $date;
+    $day=$_POST['day'];
+    if (strlen($day)===2){
+        $day='0'.$day;
+    }
+    return $_POST['year'] . '-' . $resultMonth . '-' .$day;
 
 }
 
 function requiredCheck(&$errors){
+    //country, year, month and day can not be unset
     if (!isset($_POST['fname'])){
         array_push($errors, "Please fill out first name field");
     }
@@ -43,12 +44,6 @@ function requiredCheck(&$errors){
     if (!isset($_POST['password2'])){
         array_push($errors, "Please fill out repeat password field");
     }
-    if (!isset($_POST['phone'])){
-        array_push($errors, "Please fill out phone number field");
-    }
-    if (!isset($_POST['Month']) || $_POST['Day'] || $_POST['Year']){
-        array_push($errors, "Please fill out all date of birth fields");
-    }
     if (!isset($_POST['genderRadio'])){
         array_push($errors, "Please set your gender");
     }
@@ -60,9 +55,6 @@ function requiredCheck(&$errors){
     }
     if (!isset($_POST['street'])){
         array_push($errors, "Please fill out street field");
-    }
-    if (!isset($_POST['country'])){
-        array_push($errors, "Please fill out country field");
     }
 }
 
@@ -107,13 +99,13 @@ function isUnique(&$errors, $email){
     return false;
 }
 function validateDateOfBirth(&$errors){
-    if ($_POST['Year']==='Year'){
+    if ($_POST['year']===''){
         array_push($errors, "Please enter valid year in your date of birth");
     }
-    if ( $_POST['Month']==='Month'){
+    if ( $_POST['month']===''){
         array_push($errors, "Please enter valid month in your date of birth");
     }
-    if ($_POST['Day']==='Day'){
+    if ($_POST['day']===''){
         array_push($errors, "Please enter valid day in your date of birth");
     }
 }
@@ -135,16 +127,21 @@ function findAddressInDb($address){
     return $id[0]['id'];
 }
 function validateCustomerTable(&$errors){
+
+    if (empty($_POST['phone'])){
+        $_POST['phone']=null;
+    }
     $customer = ['firstName' => $_POST['fname'],
         'lastName' => $_POST['lname'],
         'gender'=>$_POST['genderRadio'],
         'phoneNumber' => isset($_POST['phone'])? $_POST['phone']: NULL
     ];
+
     $customerInstance = new \skwd\models\Customer($customer);
     $customerInstance->validate($errors);
     validateDateOfBirth($errors);
     if (count($errors)===0){
-        $customerInstance->__set('dateOfBirth',dateOfBirthFilter($_POST['Year'] . $_POST['Month'] . $_POST['Day']));
+        $customerInstance->__set('dateOfBirth',dateOfBirthFilter());
         return $customerInstance;
     }
     else{

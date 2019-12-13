@@ -1,6 +1,3 @@
-
-
-
 <div>
     <h2>Sign-Up</h2>
 </div>
@@ -30,55 +27,36 @@
         <label for="phone">Phone number:</label><br>
         <input type="tel" id="phone" name="phone"
                value="<?= isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : '' ?>"/><br>
-        <label for="select">Date of birth:</label><br>
 
-        <select name="Month" id="Month">
-            <option value="Month"><?= isset($_POST['Month']) ? htmlspecialchars($_POST['Month']) : 'Month' ?></option>
+        <label for="month">Date of birth:</label><br>
+        <select name="month" id="month">
+            <option value="">Month</option>
             <?php
             $array = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            foreach ($array as $value) {
-                echo '<option value =' . $value . '>' . $value . '</option>';
-            }
-            ?>
+            foreach ($array as $value) :?>
+                <option value="<?= $value ?>" <?= isset($_POST['month']) ? ($_POST['month'] === $value ? "selected" : '') : '' ?>><?= $value ?></option>;
+            <?php endforeach; ?>
         </select>
-        <script type="text/javascript">
-            document.getElementById('Month').value = "<?php echo $_POST['Month'];?>";
-        </script>
-        <select name="Day" id="Day">
-            <option value="Day"><?= isset($_POST['Day']) ? htmlspecialchars($_POST['Day']) : 'Day' ?></option>
-            <?php
 
-            for ($i = 1; $i <= 31; $i++) {
-
-                if ($i < 10) {
-                    echo '<option value= 0' . $i . '>' . $i . '</option>';
-                } else {
-                    echo '<option value= ' . $i . '>' . $i . '</option>';
-                }
-            }
-            ?>
+        <select name="day">
+            <option value="">Day</option>
+            <?php for ($i = 1; $i <= 31; $i++) : ?>
+                <option value="<?= $i?>" <?= isset($_POST['day']) ? ($_POST['day'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
+            <?php endfor; ?>
         </select>
-        <script type="text/javascript">
-            document.getElementById('Day').value = "<?php echo $_POST['Day'];?>";
-        </script>
-        <select name="Year" id="Year">
-            <option value="Year"><?= isset($_POST['Year']) ? htmlspecialchars($_POST['Year']) : 'Year' ?></option>
+        <select name="year">
+            <option value="">Year</option>
             <?php
-            for ($i = 2020; $i >= 1919; $i--) {
-                echo '<option value= ' . $i . '>' . $i . '</option>';
-            }
-            ?>
+            for ($i = 2002; $i >= 1919; $i--) :?>
+                <option value="<?= $i ?>" <?= isset($_POST['year']) ? ($_POST['year'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
+            <?php endfor; ?>
         </select><br><br>
-        <script type="text/javascript">
-            document.getElementById('Year').value = "<?php echo $_POST['Year'];?>";
-        </script>
         <label for="gender">Gender:</label>
-        <input type="radio" name="genderRadio" value="m" id="m" required/>Male
-        <input type="radio" name="genderRadio" value="f" id="f" required/>Female
-        <input type="radio" name="genderRadio" value="d" id="d" required/>Diverse<br>
+        <input type="radio" name="genderRadio" value="m" required <?= isset($_POST['genderRadio']) ? ($_POST['genderRadio'] === 'm' ? "checked" : '') : ''?>/>Male
+        <input type="radio" name="genderRadio" value="f" required <?= isset($_POST['genderRadio']) ? ($_POST['genderRadio'] === 'f' ? "checked" : '') : ''?>/>Female
+        <input type="radio" name="genderRadio" value="d" required <?= isset($_POST['genderRadio']) ? ($_POST['genderRadio'] === 'd' ? "checked" : '') : ''?>/>Diverse<br>
 
     </fieldset>
-
     <fieldset>
         <legend>Address</legend>
         <label for="zip">Zip:</label><br>
@@ -96,17 +74,13 @@
             <select name="country" id="country">
                 <option value="Country"><?= isset($_POST['Country']) ? htmlspecialchars($_POST['Country']) : 'Country' ?></option>
                 <?php
-                $arrayCountry= ['Germany', 'Austria', 'Belgium', 'Bulgaria', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
+                $arrayCountry = ['Germany', 'Austria', 'Belgium', 'Bulgaria', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
                     'France', 'Great Britain', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Luxembourg', 'Malta', 'Netherlands',
                     'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Croatia'];
-                foreach ($arrayCountry as $value) {
-                    echo '<option  value = ' . $value . '>' . $value . '</option>';
-                }
-                ?>
+                foreach ($arrayCountry as $value) :?>
+                    <option value="<?= $value ?>" <?= isset($_POST['country']) ? ($_POST['country'] === $value ? "selected" : '') : '' ?>><?= $value ?></option>';
+                <?php endforeach; ?>
             </select>
-            <script type="text/javascript">
-                document.getElementById('country').value = "<?php echo $_POST['country'];?>";
-            </script>
     </fieldset>
     <br>
     <input type="submit" id="submitRegister" value="Sign-Up" name="submitR">
