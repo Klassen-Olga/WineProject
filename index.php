@@ -2,7 +2,7 @@
 ini_set('session.cookie_lifetime', 0);
 session_start();
 require_once 'config/imports.php';
-
+//codepen
 //cookie speichern?
 //null beim nicht eingegebenen phone=> null speichern
 //timpestamp ubdated at
@@ -14,17 +14,16 @@ $_POST['lname']="df";
 $_POST['year'] ='2001';
 $_POST['month'] ='February';
 $_POST['day']='19';
-$_POST['phone']="fahh";
 $_POST['country']="dhhh";
 $_POST['city']="dd";
 $_POST['zip']="dd";
 $_POST['street']="dd";
-$_POST['email']="ddejjhjjjwj";
+$_POST['email']="ddejejddjhjjjnwj";
 $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$actionName=$_GET['a'] ?? 'register';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
