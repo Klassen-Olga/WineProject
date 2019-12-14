@@ -275,7 +275,7 @@ function register(&$errors)
 
 function logout(){
     unset($_SESSION['logged']);
-    unset($_SESSION['loginName']);
+    unset($_SESSION['email']);
     session_destroy();
     //setcookie('userId','',-1,'/');
     setcookie('email','',-1,'/');
@@ -288,6 +288,16 @@ function rememberMe($email, $id){
     //setcookie('userId',$id,$duration,'/');
     setcookie('email',$email,$duration,'/');
     setcookie('logged','isLogged',$duration,'/');
+}
+
+function emailSessionOrCookie(){
+    if(isset($_SESSION['email'])){
+        return $_SESSION['email'];
+    }
+    else if(isset($_COOKIE['email'])){
+        return $_COOKIE['email'];
+    }
+    else return null;
 }
 
 

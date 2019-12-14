@@ -22,7 +22,7 @@ class PagesController extends \skwd\core\Controller
         if (isset($_POST['submitLogin']) && login($_POST['validationPassword'],$_POST['email'], $rememberMe, $errors)==true) {
             
             $_SESSION['logged'] = true;
-            $_SESSION['loginName'] = $_POST['email'];
+            $_SESSION['email'] = $_POST['email'];
            
             header('Location: index.php?c=pages&a=start');
         }
