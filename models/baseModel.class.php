@@ -43,8 +43,9 @@ abstract class BaseModel{
         
         $sql = 'SELECT * FROM ' . self::tableName();
         if(!empty($where)){
-            $sql .= ' WHERE '. $where . ';';
+            $sql .= ' WHERE '. $db->quote($where) . ';';
         }
+
         $result = $db->query($sql)->fetchall();
 
     }

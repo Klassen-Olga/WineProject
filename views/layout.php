@@ -4,18 +4,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href ="assets/styles/styles.css" type="text/css">
+        <link rel="stylesheet" href ="assets/styles/style.css" type="text/css">
     </head>
     <body>
         <header>
             <nav id="nav1">
-                <div class="links">
-                <a href="?a=start">Home</a>
-                <a href="?a=products">Products</a>
-                <a href="?a=wineInformation">Wine Information</a>
-                <a href="?a=basket">Basket</a>
-                <a href="?a=account">Account</a>
-                </div>
+                <ul>
+                    <li><a href="?a=start">Home</a></li>
+                    <li><a href="?a=products">Products</a></li>
+                    <li><a href="?a=wineInformation">Wine Information</a></li>
+                    <li><a href="?a=basket">Basket</a></li>
+                    <li><a href="?a=account">Account</a></li>
+                </ul>
             </nav>
         </header>
         <main>

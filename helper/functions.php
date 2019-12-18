@@ -63,7 +63,7 @@ function validatePasswordForm(&$errors, $password)
 {
 
     if (!preg_match('/[a-zA-Z]/', $password)) {
-        array_push($errors[] ,"Use at least one letter symbol for your password");
+        array_push($errors ,"Use at least one letter symbol for your password");
         return false;
     }
     if (!preg_match('/[0-9]/', $password)) {

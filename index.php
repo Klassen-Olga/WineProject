@@ -23,7 +23,7 @@ $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'register';
+$actionName=$_GET['a'] ?? 'start';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
