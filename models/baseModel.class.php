@@ -77,7 +77,7 @@ abstract class BaseModel{
         }
         else{
             $this->update($errors);
-        }
+       }
     }
     protected function insert(&$errors){
         $db=$GLOBALS['db'];
@@ -122,14 +122,14 @@ abstract class BaseModel{
                 }
             }
             $sql=trim($sql, ',');
-            $sql.=' where '. $this->data['id'];
+            $sql.=' where id= '. $this->data['id'];
             $statement=$db->prepare($sql);
             $statement->execute();
         }catch(\PDOException $e){
             $errors[]='Error updating '.' in'. get_called_class().': $e->getMessage()';
         }
-
     }
+
     public function delete(&$errors){
         try{
             $db = $GLOBALS['db'];

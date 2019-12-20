@@ -63,7 +63,7 @@ function validatePasswordForm(&$errors, $password)
 {
 
     if (!preg_match('/[a-zA-Z]/', $password)) {
-        array_push($errors[] ,"Use at least one letter symbol for your password");
+        array_push($errors ,"Use at least one letter symbol for your password");
         return false;
     }
     if (!preg_match('/[0-9]/', $password)) {
@@ -273,10 +273,11 @@ function register(&$errors)
 function logout(){
     unset($_SESSION['logged']);
     unset($_SESSION['email']);
+    unset($_SESSION['id']);
     session_destroy();
-    //setcookie('userId','',-1,'/');
     setcookie('email','',-1,'/');
     setcookie('logged','',-1,'/');
+    setcookie('id','',-1,'/');
     header('Location: index.php?c=pages&a=start');
 }
 
@@ -285,6 +286,7 @@ function rememberMe($email, $id){
     //setcookie('userId',$id,$duration,'/');
     setcookie('email',$email,$duration,'/');
     setcookie('logged','isLogged',$duration,'/');
+    setcookie('id',$id,$duration,'/');
 }
 
 function emailSessionOrCookie(){
@@ -297,5 +299,83 @@ function emailSessionOrCookie(){
     else return null;
 }
 
+function dateOfBirthInRightOrder($dateOfBirth){
 
+    $date=explode("-", $dateOfBirth);
+    $newDate=$date[2].'.'.$date[1].'.'.$date[0];
+    return $newDate;
+}
+
+function updatePersonalDataAccount($gender,$dateOfBirth,$addressID,$customerID,$email,$password,&$error){
+
+       
+        $customer = ['id'=>$customerID,
+        'firstName'=>$_POST['firstName'],
+        'lastName'=>$_POST['lastName'],
+        'gender'=>$gender,
+        'dateOfBirth'=>$dateOfBirth,
+        'phoneNumber'=>$_POST['phoneNumber'],
+        'addressID'=>$addressID];
+       
+       if(isset($_SESSION['id'])){
+       $account=['id'=>$_SESSION['id'],
+       'email'=>$_POST['email'],
+       'password'=>$password,
+       'customerID'=>$customer['id']];
+       }
+       else if(isset($_COOKIE['id'])){
+        $account=['id'=>$_COOKIE['id'],
+        'email'=>$_POST['email'],
+        'password'=>$password,
+        'customerID'=>$customer['id']];
+       }
+
+      
+        $account1 = new \skwd\models\Account($account);
+       // $account1->validate($error);
+        $account1->save($error);
+        $customer1 = new \skwd\models\Customer($customer);
+
+        //$customer1->validate($error);
+        $customer1->save($error);
+        
+    // }
+}
+function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,$customerID,$email,$password){
+    if(strlen($_POST['firstName'])<=2){
+        array_push($error,"Please fill out first name field");
+        return false;
+    }
+    else if(strlen($_POST['lastName'])<=2){
+        array_push($error,"Please fill out last name field");
+        return false;
+    }
+    else if(strlen($_POST['email'])<=2){
+        array_push($error,"Please fill out email field");
+        return false;
+    }
+    else if(strlen($_POST['phoneNumber'])<=2){
+        array_push($error,"Please fill out phone number field");
+        return false;
+    }
+    else{
+        $test = true;
+        if(strcmp($email, $_POST['email'])!==0){
+           $test = isUnique($error,$_POST['email']);
+           if($test === true){
+            updatePersonalDataAccount($gender,$dateOfBirth,$addressID,$customerID,$email,$password,$error);
+            return true;
+           }
+           else{
+               return false;
+          }
+        }
+        else{
+            updatePersonalDataAccount($gender,$dateOfBirth,$addressID,$customerID,$email,$password,$error);
+            return true;
+        } 
+
+    }
+
+}
 
