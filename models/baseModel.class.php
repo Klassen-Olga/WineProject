@@ -79,7 +79,7 @@ abstract class BaseModel{
         }
         else{
             $this->update($errors);
-        }
+       }
     }
     protected function insert(&$errors){
         $db=$GLOBALS['db'];
@@ -130,8 +130,8 @@ abstract class BaseModel{
         }catch(\PDOException $e){
             $errors[]='Error updating '.' in'. get_called_class().': $e->getMessage()';
         }
-
     }
+
     public function delete(&$errors){
         try{
             $db = $GLOBALS['db'];

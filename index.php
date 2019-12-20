@@ -22,6 +22,7 @@ $_POST['email']="ddejejddjhjjjnwj";
 $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
+
 /*$customer=[
     'id'=>1,
     'firstName'=>'Olga',
@@ -33,9 +34,9 @@ $_POST['genderRadio']="m";*/
 ];
 $instance=new \skwd\models\Customer($customer);
 $instance->save();*/
+
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
-
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
