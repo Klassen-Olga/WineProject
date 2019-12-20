@@ -25,6 +25,19 @@ $_POST['genderRadio']="m";*/
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
+$customer=[
+    'id'=>1,
+    'firstName'=>'Olga',
+    'lastName'=>'Klassen',
+    'gender'=>'m',
+    'dateOfBirth'=>'1996-05-04',
+    'phoneNumber'=>'8928213',
+    'addressID'=>1
+];
+$instance=new \skwd\models\Customer($customer);
+$instance->save();
+
+
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
 if (file_exists($controllerPath)){

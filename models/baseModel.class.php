@@ -123,7 +123,7 @@ abstract class BaseModel{
                 }
             }
             $sql=trim($sql, ',');
-            $sql.=' where '. $this->data['id'];
+            $sql.=' where id= '. $this->data['id'];
             $statement=$db->prepare($sql);
             $statement->execute();
         }catch(\PDOException $e){

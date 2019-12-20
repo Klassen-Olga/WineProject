@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 function dateOfBirthFilter()
 {
 
@@ -286,6 +283,7 @@ function rememberMe($email, $id){
     setcookie('email',$email,$duration,'/');
     setcookie('logged','isLogged',$duration,'/');
 }
+
 
 
 
