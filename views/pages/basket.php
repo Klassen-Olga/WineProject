@@ -1,1 +1,3 @@
-It is basket.php
+<?php
+$customerId=isset($_COOKIE['id'])?$_COOKIE['id']: $_SESSION['id'];
+

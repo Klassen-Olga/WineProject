@@ -1,9 +1,10 @@
 <?php
 $dbQuery = null;
 $dbQuery = \skwd\models\Product::find();
+$this->_params['error']=[];
 ?>
 <?php if ($dbQuery === null || count($dbQuery) === 0):
-    echo "There are no products yet";
+    array_push($this->_params['error'], "There are no products yet");
     ?>
 <?php else: ?>
     <?php foreach ($dbQuery as $key => $value): ?>
@@ -12,9 +13,8 @@ $dbQuery = \skwd\models\Product::find();
         ?>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img src="<?php echo $picture; ?>"></a><br>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>
-
-
         <?= $dbQuery[$key]['standardPrice'] ?>
+        <a href="?c=pages&a=basket">Add to basket</a>
     <?php endforeach; ?>
 <?php endif; ?>
 

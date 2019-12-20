@@ -3,6 +3,7 @@ $id=$_GET['i'];
 $query=\skwd\models\AllProducts::find("productID=".$id);
 $pictures=\skwd\models\Picture::find("productID=".$id);
 $product=\skwd\models\Product::find("id= ".$id);
+if (count($product)!==0):
 ?>
 <h2><?=$product[0]['prodName']?></h2><br>
 <article><?= $product[0]['description']?></article><br>
@@ -22,4 +23,6 @@ $product=\skwd\models\Product::find("id= ".$id);
         <img src="<?= $value['path']?>"
     <?php endforeach;?>
 <?php endif;?>
-
+<?php else:?>
+    <p>This product is missing</p>
+<?php endif;?>
