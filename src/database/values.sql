@@ -53,6 +53,7 @@ INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (
 -- Query: 
 -- Date: 2019-11-30 21:16
 */
+-- Types of categories: Red Wine,  White Wine, Rose Wine, Sparkling Wine, Accessory
 INSERT INTO `Property` (`id`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'category',NULL,NULL);
 INSERT INTO `Property` (`id`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'year',NULL,NULL);
 INSERT INTO `Property` (`id`,`name`,`createdAt`,`updatedAt`) VALUES (NULL,'alcoholPercentage',NULL,NULL);

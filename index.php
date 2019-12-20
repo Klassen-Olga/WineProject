@@ -26,7 +26,11 @@ $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
+/*
+$_GET['i']='1';
 
+$product=\skwd\models\Product::find("id= 1");
+*/
 if (file_exists($controllerPath)){
     include_once $controllerPath;
     $className='\\skwd\\controller\\'.ucfirst( $controllerName).'Controller';

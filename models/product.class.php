@@ -1,5 +1,4 @@
 <?php
-
 namespace skwd\models;
 class Product extends BaseModel
 {

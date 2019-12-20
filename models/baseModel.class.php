@@ -45,7 +45,9 @@ abstract class BaseModel{
         if(!empty($where)){
             $sql .= ' WHERE '. $where . ';';
         }
-        $result = $db->query($sql)->fetchall();
+        $statement=$db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchall();
 
     }
     catch(\PDOException $e){

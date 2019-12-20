@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 function dateOfBirthFilter()
 {
 
@@ -378,4 +375,5 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     }
 
 }
+
 

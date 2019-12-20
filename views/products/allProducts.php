@@ -1,5 +1,4 @@
 <?php
-
 $dbQuery = null;
 $dbQuery = \skwd\models\Product::find();
 ?>
