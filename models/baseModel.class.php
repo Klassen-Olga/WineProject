@@ -43,10 +43,11 @@ abstract class BaseModel{
         
         $sql = 'SELECT * FROM ' . self::tableName();
         if(!empty($where)){
-            $sql .= ' WHERE '. $db->quote($where) . ';';
+            $sql .= ' WHERE '. $where . ';';
         }
-
-        $result = $db->query($sql)->fetchall();
+        $statement=$db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchall();
 
     }
     catch(\PDOException $e){

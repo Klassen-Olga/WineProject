@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd603a9-9e59-4eb2-bc8a-af94c70968f3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/baseModel.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/baseModel.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/products/allProducts.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/allProducts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/products/theProduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/products/theProduct.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +133,7 @@
       <workItem from="1576393122453" duration="2070000" />
       <workItem from="1576400498067" duration="1019000" />
       <workItem from="1576662063457" duration="3336000" />
-      <workItem from="1576832486910" duration="2370000" />
+      <workItem from="1576832486910" duration="5519000" />
     </task>
     <task id="LOCAL-00001" summary="project structure is set">
       <created>1575032646316</created>
@@ -207,13 +211,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/index.php</url>
-          <line>48</line>
+          <line>51</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/index.php</url>
-          <line>33</line>
-          <option name="timeStamp" value="6" />
+          <line>42</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

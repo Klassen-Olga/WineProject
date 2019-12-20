@@ -33,11 +33,14 @@ $_POST['genderRadio']="m";*/
 ];
 $instance=new \skwd\models\Customer($customer);
 $instance->save();*/
-$controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$controllerName=$_GET['c'] ?? 'products';
+$actionName=$_GET['a'] ?? 'theProduct';
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
+$_GET['i']='1';
+
+$product=\skwd\models\Product::find("id= 1");
 if (file_exists($controllerPath)){
     include_once $controllerPath;
     $className='\\skwd\\controller\\'.ucfirst( $controllerName).'Controller';
