@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0fd603a9-9e59-4eb2-bc8a-af94c70968f3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="c4d1ac5c-a254-4132-9867-70ada1730219" name="localhost" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1U29vGWUbvfUQV8HI9k29i1FUkq" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WineProject\config" />
+      <recent name="C:\xampp\htdocs\WineProject\views\products" />
+      <recent name="C:\xampp\htdocs\WineProject\helper" />
+      <recent name="C:\xampp\htdocs\WineProject\src" />
+      <recent name="C:\xampp\htdocs\WineProject\views" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0fd603a9-9e59-4eb2-bc8a-af94c70968f3" name="Default Changelist" comment="" />
+      <created>1574544051220</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574544051220</updated>
+      <workItem from="1574544052324" duration="482000" />
+      <workItem from="1574602876619" duration="11184000" />
+      <workItem from="1574666675385" duration="2299000" />
+      <workItem from="1574669043063" duration="753000" />
+      <workItem from="1574671408781" duration="7334000" />
+      <workItem from="1574685436053" duration="1962000" />
+      <workItem from="1574713277263" duration="3491000" />
+      <workItem from="1574776526082" duration="913000" />
+      <workItem from="1574780613976" duration="163000" />
+      <workItem from="1574782700669" duration="3212000" />
+      <workItem from="1574832662107" duration="581000" />
+      <workItem from="1574926660448" duration="2465000" />
+      <workItem from="1574935111713" duration="970000" />
+      <workItem from="1574952138837" duration="792000" />
+      <workItem from="1575018096738" duration="7073000" />
+      <workItem from="1575033186082" duration="1097000" />
+      <workItem from="1575137497873" duration="630000" />
+      <workItem from="1575200659857" duration="6865000" />
+      <workItem from="1575208217685" duration="21792000" />
+      <workItem from="1575273891406" duration="394000" />
+      <workItem from="1575284456320" duration="3421000" />
+      <workItem from="1575294977659" duration="793000" />
+      <workItem from="1575374905181" duration="45000" />
+      <workItem from="1575461412493" duration="1248000" />
+      <workItem from="1575467090701" duration="3950000" />
+      <workItem from="1575549344507" duration="22446000" />
+      <workItem from="1575610315035" duration="9640000" />
+      <workItem from="1575722702371" duration="22164000" />
+      <workItem from="1575814864882" duration="6354000" />
+      <workItem from="1575916611936" duration="180000" />
+      <workItem from="1575916974033" duration="12000" />
+      <workItem from="1575966045744" duration="18506000" />
+      <workItem from="1575995092224" duration="2158000" />
+      <workItem from="1576042253996" duration="742000" />
+      <workItem from="1576043041610" duration="2060000" />
+      <workItem from="1576142622231" duration="3184000" />
+      <workItem from="1576160453497" duration="2349000" />
+      <workItem from="1576227556889" duration="3803000" />
+      <workItem from="1576234538651" duration="8311000" />
+      <workItem from="1576348168514" duration="213000" />
+      <workItem from="1576393122453" duration="2070000" />
+      <workItem from="1576400498067" duration="1019000" />
+      <workItem from="1576662063457" duration="3336000" />
+      <workItem from="1576832486910" duration="2370000" />
+    </task>
+    <task id="LOCAL-00001" summary="project structure is set">
+      <created>1575032646316</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575032646316</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new models added, actionStart changed">
+      <created>1575295081136</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575295081136</updated>
+    </task>
+    <task id="LOCAL-00003" summary="created functions validatePassword, dateOfBirth filter">
+      <created>1575471035478</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575471035478</updated>
+    </task>
+    <task id="LOCAL-00004" summary="actionRegister changed, functions register, comparePasswords created">
+      <created>1575587756034</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575587756034</updated>
+    </task>
+    <task id="LOCAL-00005" summary="register completed">
+      <created>1575757593008</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575757593008</updated>
+    </task>
+    <task id="LOCAL-00006" summary="products BEN&amp;OLGA">
+      <created>1575992499755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575992499755</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="structure is set" />
+    <MESSAGE value="project structure is set" />
+    <MESSAGE value="new models added, actionStart changed" />
+    <MESSAGE value="created functions validatePassword, dateOfBirth filter" />
+    <MESSAGE value="actionRegister changed, functions register, comparePasswords created" />
+    <MESSAGE value="register completed" />
+    <MESSAGE value="products BEN&amp;OLGA" />
+    <option name="LAST_COMMIT_MESSAGE" value="products BEN&amp;OLGA" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/index.php</url>
+          <line>48</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/index.php</url>
+          <line>33</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
