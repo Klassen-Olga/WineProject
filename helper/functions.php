@@ -376,4 +376,45 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
 
 }
 
+function editPassword(&$error, $email, $accountId, $customerId){
+    if(
+    isPasswordfromUser($_POST['oldPassword'],$email,$error) 
+  && validatePassword($error,$_POST['newPassword'],$_POST['newPasswordCheck'])
+  &&validatePasswordForm($error, $_POST['newPassword'])){
+
+      $account=['id'=>$accountId,
+      'email'=>$email,
+      'password'=>password_hash($_POST['newPassword'], PASSWORD_DEFAULT),
+      'customerID'=>$customerId];
+
+       $account1 = new \skwd\models\Account($account);
+       $account1->save($error);
+       return true;
+  }
+  else{
+      return false;
+  }
+}
+
+function editAddress(&$error, $addressId){
+    $address = [
+        'id' => $addressId,
+        'city' => $_POST['city'],
+        'zip' => $_POST['zip'],
+        'street' => $_POST['street']
+    ];
+    $addressInstance = new \skwd\models\Address($address);
+    $addressInstance->validate($error);
+    validateCountry($error);
+    if (count($error)===0){
+        $addressInstance->__set('country', $_POST['country']);
+        $addressInstance->save();
+        return true;
+    }
+    else{
+        return false;
+    }
+  
+}
+
 
