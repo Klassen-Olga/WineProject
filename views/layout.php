@@ -13,7 +13,7 @@
                     <li><a href="?a=start">Home</a></li>
                     <li><a href="?a=products">Products</a></li>
                     <li><a href="?a=wineInformation">Wine Information</a></li>
-                    <li><a href="?a=basket">Basket</a></li>
+                    <li><a href="?a=shoppingCartShow">Basket</a></li>
                     <li><a href="?a=account">Account</a></li>
                 </ul>
             </nav>

@@ -22,15 +22,27 @@ $_POST['email']="ddejejddjhjjjnwj";
 $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
+
+/*$customer=[
+    'id'=>1,
+    'firstName'=>'Olga',
+    'lastName'=>'Klassen',
+    'gender'=>'m',
+    'dateOfBirth'=>'1996-05-04',
+    'phoneNumber'=>'8928213',
+    'addressID'=>1
+];
+$instance=new \skwd\models\Customer($customer);
+$instance->save();*/
+
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$actionName=$_GET['a'] ?? 'basket';
 
+$_COOKIE['id']=12;
+$_GET['i']=1;
+$_SESSION['shoppingCart']=array('id'=>1, 'prodName'=>"sd",'picturePath'=>"sf",'standardPrice'=>12);
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
-/*
-$_GET['i']='1';
 
-$product=\skwd\models\Product::find("id= 1");
-*/
 if (file_exists($controllerPath)){
     include_once $controllerPath;
     $className='\\skwd\\controller\\'.ucfirst( $controllerName).'Controller';

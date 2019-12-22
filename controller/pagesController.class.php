@@ -12,23 +12,26 @@ class PagesController extends \skwd\core\Controller
 
     public function actionLogin()
     {
-        
         $errors = [];
         $rememberMe = false;
-        if(isset($_POST['rememberMe'])){
+        if (isset($_POST['rememberMe'])) {
             $rememberMe = true;
         }
 
-        if (isset($_POST['submitLogin']) && login($_POST['validationPassword'],$_POST['email'], $rememberMe, $errors)==true) {
-            $dbQuery = \skwd\models\Account::find('email= '.'\''. $_POST['email']. '\'');
+        if (isset($_POST['submitLogin']) && login($_POST['validationPassword'], $_POST['email'], $rememberMe, $errors) == true) {
+            $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $_POST['email'] . '\'');
             //$dbQuery[0]['id'];
             $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
-            $_SESSION['id']= $dbQuery[0]['id'];
-           
-            header('Location: index.php?c=pages&a=start');
+            $_SESSION['id'] = $dbQuery[0]['id'];
+
+            if (isset($_COOKIE['destination'])) {
+                header('Location: index.php?c=pages&'.'a='.$_COOKIE['destination']);
+            } else {
+                header('Location: index.php?c=pages&a=start');
+            }
         }
-        $this->_params['error']=$errors;
+        $this->_params['error'] = $errors;
     }
 
     public function actionMyOrders()
@@ -40,70 +43,72 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
+    public function actionShoppingCartShow(){
 
+    }
 
     public function actionRegister()
     {
         if (isset($_POST['submitR'])) {
             $errors = [];
             requiredCheck($errors);
-            if (count($errors)!==0){
-                $this->_params['error']=$errors;
+            if (count($errors) !== 0) {
+                $this->_params['error'] = $errors;
                 return;
             }
             $good = register($errors);
             if ($good === true) {
                 header('Location: index.php?c=pages&a=start');
             } else {
-                $this->_params['error']=$errors;
+                $this->_params['error'] = $errors;
             }
 
         }
     }
 
 
-        public
-        function actionStart()
-        {
-         
-            if (isset($_POST['submitLogout'])) {
-                logout();
-            }
-        }
+    public
+    function actionStart()
+    {
 
-        public
-        function actionProducts()
-        {
-
-        }
-
-        public
-        function actionBasket()
-        {
-
-        }
-
-        public
-        function actionWineInformation()
-        {
-
-        }
-
-        public
-        function actionPayOffice()
-        {
-
-        }
-
-        public
-        function actionImprint()
-        {
-
-        }
-
-        public
-        function actionAccount()
-        {
-
+        if (isset($_POST['submitLogout'])) {
+            logout();
         }
     }
+
+    public
+    function actionProducts()
+    {
+
+    }
+
+    public
+    function actionBasket()
+    {
+
+    }
+
+    public
+    function actionWineInformation()
+    {
+
+    }
+
+    public
+    function actionPayOffice()
+    {
+
+    }
+
+    public
+    function actionImprint()
+    {
+
+    }
+
+    public
+    function actionAccount()
+    {
+
+    }
+}
