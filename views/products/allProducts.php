@@ -14,7 +14,11 @@ $this->_params['error']=[];
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img src="<?php echo $picture; ?>"></a><br>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>
         <?= $dbQuery[$key]['standardPrice'] ?>
-        <a href="?c=pages&a=basket">Add to basket</a>
+        <iframe name="hiddenFrame" class="hide"></iframe>
+        <form action="?a=basket&i=<?= $dbQuery[$key]['id'] ?>" method="post" target="hiddenFrame">
+
+            <button type="submit">Add to basket</button>
+        </form>
     <?php endforeach; ?>
 <?php endif; ?>
 

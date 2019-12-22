@@ -15,7 +15,9 @@ nav {
     margin: 0 auto;
     padding: 60px 0;
 }
-
+.hide {
+    position:absolute; top:-1px; left:-1px; width:1px; height:1px;
+}
 nav ul {
     text-align: center;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);

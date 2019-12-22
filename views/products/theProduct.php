@@ -17,7 +17,11 @@ if (count($product)!==0):
 </table>
 <p>Price: <?= $product[0]['standardPrice']. ' €'?></p>
 <a href="?c=pages&a=checkout">Proceed to checkout</a>
+
 <a href="?c=pages&a=basket">Add to basket</a>
+    <form action="?a=basket&i=<?= $product[0]['id'] ?>" method="post">
+        <button type="submit">Add to basket</button>
+    </form>
 <?php if (count($pictures)!==0):?>
     <?php foreach($pictures as $key=>$value):?>
         <img src="<?= $value['path']?>"

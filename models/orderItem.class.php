@@ -1,7 +1,7 @@
 <?php
 namespace skwd\models;
-class Basket extends BaseModel{
-    const TABLENAME='Basket';
+class OrderItem extends BaseModel{
+    const TABLENAME='OrderItem';
     protected $schema=[
         'basketID'=>['type'=>BaseModel::TYPE_INT],
         'actualPrice'=>['type'=>BaseModel::TYPE_FLOAT],
