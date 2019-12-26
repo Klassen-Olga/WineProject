@@ -223,15 +223,25 @@ function register(&$errors)
         if (count($errors) === 0) {
             $accountInstance->__set('customerID', $customerInstance->__get('id'));
             $accountInstance->save($errors);
-            //only if all tree instances are inserted we can commit the transaction
-            if (count($errors) === 0) {
-                $db->commit();
-                return true;
-            } else {
+            //only if the account is inserted we can go forward
+            if (count($errors)===0){
+                $shoppingCart=[
+                    'accountId'=>$addressInstance->__get('id')
+                ];
+                $shoppingCartInstance=new skwd\models\ShoppingCart($shoppingCart);
+                $shoppingCartInstance->save($errors);
+                //only if all four instances are inserted we can commit the transaction
+                if (count($errors) === 0) {
+                    $db->commit();
+                    return true;
+                } else {
+                    $db->rollBack();
+                    return false;
+                }
+            }else {
                 $db->rollBack();
                 return false;
             }
-
         } else {
             $db->rollBack();
             return false;
@@ -305,6 +315,15 @@ function emailSessionOrCookie()
         return $_SESSION['email'];
     } else if (isset($_COOKIE['email'])) {
         return $_COOKIE['email'];
+    } else return null;
+}
+///////////////////////////////////////////////////BEN///////////////////Die funktionen sind gleich benutz meine, ich brauche sie
+function usersIdIfLoggedIn()
+{
+    if (isset($_SESSION['id'])) {
+        return $_SESSION['id'];
+    } else if (isset($_COOKIE['id'])) {
+        return $_COOKIE['id'];
     } else return null;
 }
 
@@ -384,5 +403,48 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     }
 
 }
+function productsPicture($productId){
+
+    $picture=\skwd\models\Picture::find('productID='.$productId);
+    return $picture;
+}
+function actionIfUserIsNotLoggedIn(){
+    if (isset($_COOKIE['destination'])) {
+        header('Location: index.php?c=pages&'.'a='.$_COOKIE['destination']);
+    } else {
+        header('Location: index.php?c=pages&a=start');
+    }
+}
+
+function insertNewProductToShoppingCart($productId, $shoppingCartId, &$errors){
+    $actualPrice = $_GET['p'];
+    $shoppingCartItem = array('qty' => 1, 'actualPrice' => $actualPrice, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
+    $databaseCheck = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId);
+
+    if (count($databaseCheck) !== 0) {
+        $shoppingCartItem = $databaseCheck[0];
+        if ($shoppingCartItem['qty'] > 10) {
+            array_push($errors, 'You can not add more than 10 items of the same product');
+            return;
+        }
+        $shoppingCartItem['qty'] += 1;
+    }
+    $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+    $shoppingCartItemInstance->save($errors);
+}
+
+function upDateOrDeleteProductInShoppingCart($productId, $shoppingCartId, &$errors){
+    $option = $_GET['cartOp'];
+    $shoppingCartItem = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId)[0];
+    if ($option === 'upDate') {
+        $shoppingCartItem['qty'] = $_POST['qty'];
+        $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+        $shoppingCartItemInstance->save($errors);
+    } elseif ($option === 'delete') {
+        $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+        $shoppingCartItemInstance->delete($errors);
+    }
+}
+
 
 
