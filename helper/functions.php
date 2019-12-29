@@ -223,15 +223,25 @@ function register(&$errors)
         if (count($errors) === 0) {
             $accountInstance->__set('customerID', $customerInstance->__get('id'));
             $accountInstance->save($errors);
-            //only if all tree instances are inserted we can commit the transaction
+            //only if the account is inserted we can go forward
             if (count($errors) === 0) {
-                $db->commit();
-                return true;
+                $shoppingCart = [
+                    'accountId' => $accountInstance->__get('id')
+                ];
+                $shoppingCartInstance = new skwd\models\ShoppingCart($shoppingCart);
+                $shoppingCartInstance->save($errors);
+                //only if all four instances are inserted we can commit the transaction
+                if (count($errors) === 0) {
+                    $db->commit();
+                    return true;
+                } else {
+                    $db->rollBack();
+                    return false;
+                }
             } else {
                 $db->rollBack();
                 return false;
             }
-
         } else {
             $db->rollBack();
             return false;
@@ -308,6 +318,16 @@ function emailSessionOrCookie()
     } else return null;
 }
 
+///////////////////////////////////////////////////BEN///////////////////Die funktionen sind gleich benutz meine, ich brauche sie
+function usersIdIfLoggedIn()
+{
+    if (isset($_SESSION['id'])) {
+        return $_SESSION['id'];
+    } else if (isset($_COOKIE['id'])) {
+        return $_COOKIE['id'];
+    } else return null;
+}
+
 function dateOfBirthInRightOrder($dateOfBirth)
 {
 
@@ -381,6 +401,87 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
             return true;
         }
 
+    }
+
+}
+
+
+function productsPicture($productId)
+{
+
+    $picture = \skwd\models\Picture::find('productID=' . $productId);
+    return $picture;
+}
+
+function actionIfUserIsNotLoggedIn()
+{
+    if (isset($_SESSION['destination'])) {
+        header('Location: index.php?c=pages&' . 'a=' . $_SESSION['destination']);
+    } else {
+        header('Location: index.php?c=pages&a=start');
+    }
+}
+
+
+function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId, &$errors)
+{
+    //case: change qty upDate=>upDate
+    //case: add product(existx in basket)=>update
+    //case: add product (doesn't exist in basket)=>insert
+    $databaseCheck = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId);
+    if (count($databaseCheck)===0){
+        $shoppingCartItem = array('qty' => 1, 'actualPrice' => $price, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
+    }
+    else{
+        $shoppingCartItem=$databaseCheck[0];
+        if (isset($_GET['cartOp'])&& $_GET['cartOp']==='upDate'){
+            $shoppingCartItem['qty'] = $_POST['qty'];
+        }
+        else{
+            if (($shoppingCartItem['qty']+1) > 10) {
+                array_push($errors, 'You can not add more than 10 items of the same product');
+            }
+            else{
+                $shoppingCartItem['qty'] += 1;
+            }
+        }
+    }
+    $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+    $shoppingCartItemInstance->save($errors);
+
+}
+
+function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
+{
+    $option = $_GET['cartOp'];
+    $shoppingCartItem = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId)[0];
+    if ($option === 'delete') {
+        $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+        $shoppingCartItemInstance->delete($errors);
+    }
+}
+
+function userIsLoggedIn($accountId, &$errors)
+{
+
+    $shoppingCartId = \skwd\models\ShoppingCart::find('accountId=' . $accountId)[0]['id'];
+    //case: after successfully registration/login the product will be saved to shoppingCart, that user wanted to save before he was logged in
+    if (isset($_SESSION['destination']) && ($_SESSION['destination'] === 'shoppingCartShow') && isset($_SESSION['productToBasket'])) {
+        upDateOrInsertProductInShoppingCart($_SESSION['productToBasket'],$_SESSION['price'], $shoppingCartId, $errors);
+        unset($_SESSION['destination']);
+        unset($_SESSION['price']);
+        unset($_SESSION['productToBasket']);
+    } //case user wanted to show his basket and he not logged in, now he is
+    elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
+        unset($_SESSION['destination']);
+    }//case user is logged in and wants to delete
+    elseif (isset($_GET['cartOp']) && $_GET['cartOp']==='delete') {
+        $productId = $_GET['i'];
+        //if user wants to delete  his purchase $_GET['cartOp'] must be set
+        deleteProductFromShoppingCart($productId,$shoppingCartId, $errors);
+    }//case user wants to insert new item or add quantity +1 to old item
+    if (/*isset($_GET['cartOp'])*//*&& ($_GET['cartOp']==='upDate')*/   isset($_GET['i']) && isset($_GET['p'])){
+        upDateOrInsertProductInShoppingCart($_GET['i'], $_GET['p'], $shoppingCartId, $errors);
     }
 
 }

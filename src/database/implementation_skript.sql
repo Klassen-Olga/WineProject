@@ -189,11 +189,12 @@ CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Orders (id)
 -- ----
 DROP TABLE IF EXISTS ShoppingCart;
 CREATE TABLE IF NOT EXISTS ShoppingCart(
-id					int			not null 	AUTO_INCREMENT,accountId			int			not null,
+id					int			not null 	AUTO_INCREMENT,
+accountId			int			not null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 constraint ShoppingCart_pk primary key(id),
-constraint ShoppingCart_fk_Acoount foreign key(accountId) references Account(id)
+constraint ShoppingCart_fk_Account foreign key(accountId) references Account(id)
 );
 -- ---------
 CREATE OR REPLACE TABLE ShoppingCartItem(
@@ -201,10 +202,12 @@ id					int			not null 	AUTO_INCREMENT,
 qty					int			not null,
 actualPrice			decimal(9,2)not null,
 productID			int			not null,
-shopingCartId		int			not null,
+shoppingCartId		int			not null,
+createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
+updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 constraint ShoppingCartItem_pk primary key(id),
 constraint ShoppingCartItem_fk_Product foreign key(productId) references Product(id),
-constraint ShoppingCartItem_fk_ShoppingCart foreign key(shopingCartId) references ShoppingCart(id));
+constraint ShoppingCartItem_fk_ShoppingCart foreign key(shoppingCartId) references ShoppingCart(id));
 
 
 CREATE OR REPLACE VIEW AllProducts as

@@ -8,15 +8,16 @@ $this->_params['error']=[];
     ?>
 <?php else: ?>
     <?php foreach ($dbQuery as $key => $value): ?>
-        <?php $dbPicture = \skwd\models\Picture::find('productID= ' . $dbQuery[$key]['id']);
+        <?php $dbPicture = productsPicture($dbQuery[$key]['id']);
         $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+        //TODO: Function to price manipulation
+        $price=$dbQuery[$key]['standardPrice'];
         ?>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img src="<?php echo $picture; ?>"></a><br>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>
-        <?= $dbQuery[$key]['standardPrice'] ?>
+        <?= $price ?>
         <iframe name="hiddenFrame" class="hide"></iframe>
-        <form action="?a=basket&i=<?= $dbQuery[$key]['id'] ?>" method="post" target="hiddenFrame">
-
+        <form action="?a=shoppingCartShow&i=<?= $dbQuery[$key]['id']; ?>&p=<?= $price ;?>" method="post" <?= usersIdIfLoggedIn()===null? "": "target=\"hiddenFrame\"" ?>>
             <button type="submit">Add to basket</button>
         </form>
     <?php endforeach; ?>

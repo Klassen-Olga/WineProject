@@ -5,6 +5,7 @@ namespace skwd\controller;
 class PagesController extends \skwd\core\Controller
 {
 
+
     public function actionTheProduct()
     {
 
@@ -45,19 +46,13 @@ class PagesController extends \skwd\core\Controller
         if (isset($_POST['rememberMe'])) {
             $rememberMe = true;
         }
-
         if (isset($_POST['submitLogin']) && login($_POST['validationPassword'], $_POST['email'], $rememberMe, $errors) == true) {
             $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $_POST['email'] . '\'');
             //$dbQuery[0]['id'];
             $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['id'] = $dbQuery[0]['id'];
-
-            if (isset($_COOKIE['destination'])) {
-                header('Location: index.php?c=pages&'.'a='.$_COOKIE['destination']);
-            } else {
-                header('Location: index.php?c=pages&a=start');
-            }
+            actionIfUserIsNotLoggedIn();
         }
         $this->_params['error'] = $errors;
     }
@@ -71,12 +66,37 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
-    public function actionShoppingCartShow(){
+
+    public function actionShoppingCartShow()
+    {
+        $errors = [];
+        //should know if user is logged in
+        $accountId = usersIdIfLoggedIn();
+        //case user wants to add a product to his basket and he is not logged in
+        //save all data to cookie, because we want, that user automatically get his basket after login/register and all elements from submit disappear from $_GET
+        if (is_null($accountId) && isset($_GET['i'])) {
+            $_SESSION['destination']="shoppingCartShow";
+            $_SESSION['productToBasket']=$_GET['i'];
+            $_SESSION['price']=$_GET['p'];
+            header('Location: index.php?c=pages&a=login');
+            return;
+        } //case user want to show his basket and is not logged in
+        elseif (is_null($accountId)) {
+            $_SESSION['destination']="shoppingCartShow";
+            header('Location: index.php?c=pages&a=login');
+            return;
+        }
+        //else the user is logged in
+        userIsLoggedIn($accountId, $errors);
+        if (count($errors) !== 0) {
+            $this->_params = $errors;
+        }
 
     }
 
     public function actionRegister()
     {
+
         if (isset($_POST['submitR'])) {
             $errors = [];
             requiredCheck($errors);
@@ -86,7 +106,7 @@ class PagesController extends \skwd\core\Controller
             }
             $good = register($errors);
             if ($good === true) {
-                header('Location: index.php?c=pages&a=start');
+                actionIfUserIsNotLoggedIn();
             } else {
                 $this->_params['error'] = $errors;
             }
@@ -110,11 +130,6 @@ class PagesController extends \skwd\core\Controller
 
     }
 
-    public
-    function actionBasket()
-    {
-
-    }
 
     public
     function actionWineInformation()
