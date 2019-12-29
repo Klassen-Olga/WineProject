@@ -147,9 +147,9 @@ CONSTRAINT property_FKK FOREIGN KEY(propertyID) references Property(id)
 
 --
 
-DROP TABLE IF EXISTS `Order`;
-CREATE TABLE IF NOT EXISTS `Order`(
-orderID				int			NOT NULL	AUTO_INCREMENT,
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE IF NOT EXISTS Orders(
+id				int			NOT NULL	AUTO_INCREMENT,
 orderDate			date		NOT NULL,
 shipDate			date			NULL,
 shipPrice           decimal(9,2)not null,
@@ -161,7 +161,7 @@ addressID			int			    NULL,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,	
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-CONSTRAINT Order_PK PRIMARY KEY (orderID),
+CONSTRAINT Order_PK PRIMARY KEY (id),
 CONSTRAINT Basket_FK_Customer FOREIGN KEY (customerID) REFERENCES Customer (id),
 CONSTRAINT Basket_FK_Address FOREIGN KEY (addressID) REFERENCES Address (id)
 );
@@ -182,7 +182,7 @@ updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 CONSTRAINT Basket_PK PRIMARY KEY (id),
 CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (id),
-CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES `Order` (orderID)
+CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Orders (id)
 );
 
 

@@ -16,14 +16,14 @@
 <br>
 <label for="zip">Zip:</label><br>
         <input type="text" id="zip" name="zip"
-               value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : '' ?>" required/><br>
+               value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" required/><br>
         <label for="city">City:</label><br>
         <input type="text" id="city" name="city"
-               value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '' ?>"
+               value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $this->_params['address'][0]['city'] ?>"
                required/><br>
         <label for="street">Street:</label><br>
         <input type="text" id="street" name="street"
-               value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : '' ?>"
+               value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : $this->_params['address'][0]['street'] ?>"
                required/><br>
 
  <input type="submit" value="submit edit" name="submitEditAddress">
