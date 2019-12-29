@@ -3,13 +3,13 @@ $accountId = isset($_SESSION['id']) ? $_SESSION['id'] : $_COOKIE['id'];
 $shoppingCart = \skwd\models\ShoppingCart::find('accountId=' . $accountId);
 $shoppingCart = $shoppingCart[0];
 $shoppingCartItems = \skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCart['id']);
-
 if (count($shoppingCartItems) === 0):?>
     <h3>Your shopping cart is empty</h3>
     <p>Continue shopping on your SKWD online shop <a href="?c=products&a=allProducts"> here</a></p>
 
 <?php else: ?>
     <?php
+
     $sum = 0;
     $itemNumb=0;
     foreach ($shoppingCartItems as $item) {
@@ -17,6 +17,7 @@ if (count($shoppingCartItems) === 0):?>
         $itemNumb+=$item['qty'];
     }
     ?>
+    <a href="?c=pages&a=checkout">Proceed to checkout</a>
     <h3>Your basket products</h3>
     <h4>Subtotal for <?= $itemNumb ?> items: <?= $sum ?></h4>
 
@@ -31,19 +32,19 @@ if (count($shoppingCartItems) === 0):?>
         <p>Price: <?=  $shoppingCartItem['actualPrice']?></p>
         <p>Quantity: <?= $shoppingCartItem['qty'] ?></p>
         <iframe name="hiddenFrame" class="hide"></iframe>
-        <form method="post" action="?c=pages&a=shoppingCart&i=<?= $shoppingCartItem['productID'] ?>&cartOp=upDate"
+        <form method="post" action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?=$shoppingCartItem['actualPrice']?>&cartOp=upDate"
               target="hiddenFrame">
             <select name="qty">
                 <option value="1" >1</option>
                 <?php for ($i = 2; $i < 11; ++$i): ?>
-                    <option value="<?= $i ?>" <?= /*todo problema 4itaet v shoppingcart nujen v shoppingcartshow*/ isset($_POST['qty']) ? ($_POST['qty'] == $i ? " selected " : '') : '' ?>><?= $i ?></option>;
+                    <option value="<?= $i ?>" <?= isset($shoppingCartItem['qty']) ? ($shoppingCartItem['qty'] == $i ?  " selected " : '') : '' ?>><?= $i ?></option>;
                 <?php endfor; ?>
             </select>
             <button type="submit">Change quantity</button>
         </form>
 
         <iframe name="hiddenFrame" class="hide"></iframe>
-        <form method="post" action="?c=pages&a=shoppingCart&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete"
+        <form method="post" action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete"
               target="hiddenFrame">
             <button type="submit">Delete</button>
         </form>

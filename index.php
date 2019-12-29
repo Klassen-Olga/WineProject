@@ -6,6 +6,7 @@ require_once 'config/imports.php';
 //cookie speichern?
 //null beim nicht eingegebenen phone=> null speichern
 //timpestamp ubdated at
+
 //$str=dateOfBirthFilter('2000February03');
 /*$str=dateOfBirthFilter('2000February03');
 $_POST['submitR']="d";
@@ -22,7 +23,6 @@ $_POST['email']="ddejejddjhjjjnwj";
 $_POST['password1']="ufn5j88globus";
 $_POST['password2']="ufn5j88globus";
 $_POST['genderRadio']="m";*/
-
 /*$customer=[
     'id'=>1,
     'firstName'=>'Olga',
@@ -38,9 +38,6 @@ $instance->save();*/
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
-/*$_COOKIE['id']=12;
-$_GET['i']=1;
-$_SESSION['shoppingCart']=array('id'=>1, 'prodName'=>"sd",'picturePath'=>"sf",'standardPrice'=>12);*/
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
 if (file_exists($controllerPath)){
@@ -53,6 +50,8 @@ if (file_exists($controllerPath)){
         if (method_exists($controllerInstance, $controllerMethod)){
             $controllerInstance->{$controllerMethod}();
             $controllerInstance->renderHTML();
+
+
         }
     else{
             header('Location: index.php?c=pages&a=error');

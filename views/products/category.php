@@ -6,8 +6,6 @@ $setWithProductIdAndPropertyId=\skwd\models\PropertyProProduct::find('value= \''
 <?php if (count($setWithProductIdAndPropertyId)===0):
     array_push($this->_params['error'],'There is no products with category '.$category.' yet');
 else :
-
-
     foreach($setWithProductIdAndPropertyId as $key=>$value):
         $productId=$value['productID'];
         $product=\skwd\models\Product::find('id='.$productId);
@@ -19,7 +17,7 @@ else :
         <a href="?c=products&a=theProduct&i=<?= $productId?>"> <?= $product[0]['prodName']; ?></a>
         <?= $price .' €'?>
         <iframe name="hiddenFrame" class="hide"></iframe>
-        <form action="?a=shoppingCart&i=<?= $productId ?>&p=<?=$price?>" method="post" <?= usersIdIfLoggedIn()===null? "": "target=\"hiddenFrame\"" ?>>
+        <form action="?a=shoppingCartShow&i=<?= $productId ?>&p=<?=$price?>" method="post" <?= usersIdIfLoggedIn()===null? "": "target=\"hiddenFrame\"" ?>>
             <button type="submit">Add to basket</button>
         </form>
         <?php endforeach;?>

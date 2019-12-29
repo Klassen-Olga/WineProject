@@ -18,7 +18,6 @@ class PagesController extends \skwd\core\Controller
         if (isset($_POST['rememberMe'])) {
             $rememberMe = true;
         }
-
         if (isset($_POST['submitLogin']) && login($_POST['validationPassword'], $_POST['email'], $rememberMe, $errors) == true) {
             $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $_POST['email'] . '\'');
             //$dbQuery[0]['id'];
@@ -40,50 +39,31 @@ class PagesController extends \skwd\core\Controller
 
     }
 
-    public function actionShoppingCart()
+    public function actionShoppingCartShow()
     {
+        $errors = [];
         //should know if user is logged in
         $accountId = usersIdIfLoggedIn();
-        //if user is not logged in and he wants to add a product to basket, we save source
+        //case user wants to add a product to his basket and he is not logged in
+        //save all data to cookie, because we want, that user automatically get his basket after login/register and all elements from submit disappear from $_GET
         if (is_null($accountId) && isset($_GET['i'])) {
-            setcookie('destination', 'shoppingCartShow', 600, '/');
-            setcookie('productToBasket', $_GET['i'], 600, '/');
+            $_SESSION['destination']="shoppingCartShow";
+            $_SESSION['productToBasket']=$_GET['i'];
+            $_SESSION['price']=$_GET['p'];
             header('Location: index.php?c=pages&a=login');
+            return;
+        } //case user want to show his basket and is not logged in
+        elseif (is_null($accountId)) {
+            $_SESSION['destination']="shoppingCartShow";
+            header('Location: index.php?c=pages&a=login');
+            return;
         }
-
-        $productId = $_GET['i'];
-        $shoppingCart = \skwd\models\ShoppingCart::find("accountId=" . $accountId);
-        $shoppingCartId = $shoppingCart[0]['id'];
-
-        //if user wants to delete or to change quantity of his purchase $_GET['cartOp'] must be set
-        if (isset($_GET['i']) && isset($_GET['cartOp'])) {
-            //todo delete items nach checkbox
-            upDateOrDeleteProductInShoppingCart($productId, $shoppingCartId, $errors);
-        } else if (isset($_GET['i'])) {
-            insertNewProductToShoppingCart($productId, $shoppingCartId, $errors);
-        }
+        //else the user is logged in
+        userIsLoggedIn($accountId, $errors);
         if (count($errors) !== 0) {
             $this->_params = $errors;
         }
 
-    }
-
-    public function actionShoppingCartShow()
-    {
-        //case user wants to add a product to hist basket and he is not logged in
-        if (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow') && isset($_COOKIE['productToBasket'])) {
-            //todo insert to shopping cart the product
-            //unset cookie
-        }
-        //case user want to show his basket and is not logged in
-        elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
-            unset($_COOKIE['destination']);
-        }
-
-        if (is_null(usersIdIfLoggedIn())) {
-            setcookie('destination', 'shoppingCartShow', time() + 600, '/');
-            header('Location: index.php?c=pages&a=login');
-        }
     }
 
     public function actionRegister()
