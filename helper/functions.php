@@ -405,7 +405,7 @@ function editPassword(&$error, $email, $accountId, $customerId){
   }
 }
 
-function editAddress(&$error, $addressId){
+function editAddress(&$error, $addressId=null){
     $address = [
         'id' => $addressId,
         'city' => $_POST['city'],
@@ -427,3 +427,86 @@ function editAddress(&$error, $addressId){
 }
 
 
+////////////////////////////////////////////////////////////////////
+
+function requiredCheckCheckout(&$errors)
+{
+    
+
+    if (!isset($_POST['zip'])) {
+        array_push($errors, "Please fill out zip field");
+    }
+    if (!isset($_POST['city'])) {
+        array_push($errors, "Please fill out city field");
+    }
+    if (!isset($_POST['street'])) {
+        array_push($errors, "Please fill out street field");
+    }
+
+    if (!isset($_POST['payMethod'])) {
+        array_push($errors, "Please choose a pay method");
+    }
+    validateCountry($errors);
+    if(count($errors)===0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function orderPrice($shopingcartItems){
+    $orderPrice = 0.0;
+    foreach($shopingcartItem as $key => $value){
+       $orderPrice += $shopingcartItem[$key]['actualPrice'];
+    }
+    return $orderPrice;
+}
+
+function shipPrice($orderPrice){
+
+    $shipPrice = 0.0;
+
+    if($orderPrice < 50.00){
+        $shipPrice = 3.49;
+    }
+
+    return $shipPrice;
+}
+
+
+
+
+function createOrder($shopingcartItems, &$errors, $customer){
+
+    $shipPrice = shipPrice(orderPrice($shopingcartItems));
+
+    $orderDate = date("Y-m-d");
+
+    $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
+
+    $address = validateAddressTable($errors);
+
+    $test=true;
+
+    if($address->__get('id')===null){
+        $test = editAddress($errors);
+        $address = validateAddressTable($errors);
+    }
+
+    if(requiredCheckCheckout() && $test === true){
+        $order=['id'=>null,
+      'orderDate'=>$orderDate,
+      'shipdate'=>$shipDate,
+      'payStatus'=>'unpaid',
+      'payMethod'=>$_POST['payMethod'],
+      'customerID'=>$customer[0]['id'],
+      'addressID'=>$address[0]['id']
+        ];
+
+       $order1 = new \skwd\models\Orders($order);
+       $order1->save($error);
+    }
+
+
+}
