@@ -15,9 +15,6 @@
                     <li><a href="?a=wineInformation">Wine Information</a></li>
                     <li><a href="?a=shoppingCartShow">Basket</a></li>
                     <li><a href="?a=account">Account</a></li>
-
-                    <li><a href="?a=checkout">checkout</a></li>
-
                 </ul>
             </nav>
         </header>

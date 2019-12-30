@@ -31,3 +31,6 @@
 <input type="submit" name="submitOrder" value="submit order">
 </form>
 </div>
+
+<?php var_dump($this->_params['shopingCartItem'][1]['productID']); ?>
+<?php var_dump($this->_params['shopingCartItem'][1]['productID']); ?>

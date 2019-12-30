@@ -14,5 +14,3 @@ require_once 'core/controller.class.php';
 require_once 'models/allProducts.class.php';
 require_once 'helper/functions.php';
 require_once 'models/orders.class.php';
-require_once 'models/shopingcartItem.class.php';
-require_once 'models/shopingcart.class.php';

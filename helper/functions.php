@@ -547,7 +547,12 @@ function requiredCheckCheckout(&$errors)
     if (!isset($_POST['payMethod'])) {
         array_push($errors, "Please choose a pay method");
     }
-    validateCountry($errors);
+
+    if ($_POST['country'] === 'Country') {
+        array_push($errors, "Please enter valid country");
+    }
+
+    
     if(count($errors)===0){
         return true;
     }
@@ -558,8 +563,8 @@ function requiredCheckCheckout(&$errors)
 
 function orderPrice($shopingcartItems){
     $orderPrice = 0.0;
-    foreach($shopingcartItem as $key => $value){
-       $orderPrice += $shopingcartItem[$key]['actualPrice'];
+    foreach($shopingcartItems as $key => $value){
+       $orderPrice += $shopingcartItems[$key]['actualPrice'];
     }
     return $orderPrice;
 }
@@ -577,8 +582,34 @@ function shipPrice($orderPrice){
 
 
 
+function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
+{
 
-function createOrder($shopingcartItems, &$errors, $customer){
+    $address = [
+        'country' => $country,
+        'city' => $city,
+        'zip' => $zip,
+        'street' => $street
+    ];
+    $addressInstance = new \skwd\models\Address($address);
+    $addressInstance->validate($errors);
+    if (count($errors) === 0) {     
+        $addressID = findAddressInDb($addressInstance);
+        if (!is_null($addressID)) {
+            $addressInstance->__set('id', $addressID);
+            return $addressInstance;
+        }
+        else{
+            $addressInstance->save($errors);
+            return $addressInstance;
+        }
+ 
+    }
+}
+
+
+
+function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod){
 
     $shipPrice = shipPrice(orderPrice($shopingcartItems));
 
@@ -586,27 +617,53 @@ function createOrder($shopingcartItems, &$errors, $customer){
 
     $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
 
-    $address = validateAddressTable($errors);
+    $address = validateAddressTableCheckout($errors,$city, $zip, $street, $country);
 
-    $test=true;
-
-    if($address->__get('id')===null){
-        $test = editAddress($errors);
-        $address = validateAddressTable($errors);
-    }
-
-    if(requiredCheckCheckout() && $test === true){
+    if(count($errors)===0){
         $order=['id'=>null,
       'orderDate'=>$orderDate,
-      'shipdate'=>$shipDate,
+      'shipDate'=>$shipDate,
+      'shipPrice' =>$shipPrice,
       'payStatus'=>'unpaid',
-      'payMethod'=>$_POST['payMethod'],
+      'payMethod'=>$payMethod,
+      'payDate'=>null,
       'customerID'=>$customer[0]['id'],
-      'addressID'=>$address[0]['id']
+      'addressID'=>$address->__get('id')
         ];
 
        $order1 = new \skwd\models\Orders($order);
-       $order1->save($error);
+       $order1->save($errors);
+
+            if(count($errors===0)){
+
+                foreach($shopingcartItems as $key => $value){
+    
+                $orderItem=['id'=>null,
+                'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
+                'qty'=>$shopingcartItems[$key]['qty'],
+                'productID'=>$shopingcartItems[$key]['productID'],
+                'orderID'=>$order1->__get('id')
+                ];
+                $orderItem1 = new \skwd\models\OrderItem($orderItem);
+                $orderItem1->save($errors);
+
+                    if(count($errors===0)){
+
+                        $shoppingCartItem=['id'=>$shopingcartItems[$key]['id'],
+                        'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
+                        'qty'=>$shopingcartItems[$key]['qty'],
+                        'productID'=>$shopingcartItems[$key]['productID'],
+                        'shoppingcartId'=>$shopingcartItems[$key]['shoppingcartId']
+                        ];
+                        $shoppingCartItem1 = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+                        $shoppingCartItem1->delete($errors);
+
+                    }
+
+                }
+                
+            }
+
     }
 
 
