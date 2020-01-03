@@ -339,7 +339,6 @@ function dateOfBirthInRightOrder($dateOfBirth)
 function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $email, $password, &$error)
 {
 
-
     $customer = ['id' => $customerID,
         'firstName' => $_POST['firstName'],
         'lastName' => $_POST['lastName'],
@@ -480,7 +479,7 @@ function userIsLoggedIn($accountId, &$errors)
         //if user wants to delete  his purchase $_GET['cartOp'] must be set
         deleteProductFromShoppingCart($productId,$shoppingCartId, $errors);
     }//case user wants to insert new item or add quantity +1 to old item
-    if (/*isset($_GET['cartOp'])*//*&& ($_GET['cartOp']==='upDate')*/   isset($_GET['i']) && isset($_GET['p'])){
+    if ( isset($_GET['i']) && isset($_GET['p']) && (isset($_GET['cartOp']) && ($_GET['cartOp']==='upDate')  || 1)){
         upDateOrInsertProductInShoppingCart($_GET['i'], $_GET['p'], $shoppingCartId, $errors);
     }
 

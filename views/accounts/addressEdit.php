@@ -1,7 +1,7 @@
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=personalData&c=accounts&j=test1'; ?>" method="POST">
 <fieldset>
 <legend>change address</legend>
-<label for="country">Country:<br>
+    <label for="country">Country</label>:<br>
             <select name="country" id="country">
                 <option value="Country"><?= isset($_POST['Country']) ? htmlspecialchars($_POST['Country']) : 'Country' ?></option>
                 <?php

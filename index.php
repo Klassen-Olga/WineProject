@@ -36,7 +36,7 @@ $instance=new \skwd\models\Customer($customer);
 $instance->save();*/
 
 $controllerName=$_GET['c'] ?? 'pages';
-$actionName=$_GET['a'] ?? 'start';
+$actionName=$_GET['a'] ?? 'register';
 
 /*
 $_COOKIE['id']=12;
