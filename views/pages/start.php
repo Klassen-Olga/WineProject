@@ -7,3 +7,9 @@ start.php
     }
     else{echo 'gast';}?></p>
 
+    <br><br>
+
+    <p><?php if(isset($_GET['k'])&& $_GET['k']==='orderFinished'){echo 'order finished!!!!!!!!!';} ?></p>
+
+
+

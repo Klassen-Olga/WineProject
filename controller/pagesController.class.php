@@ -11,6 +11,55 @@ class PagesController extends \skwd\core\Controller
 
     }
 
+    public function actionCheckout()
+    {
+        $this->_params['error']=[];
+
+        $this->_params['checkoutSite1']=true;
+
+        if(isset($_SESSION['id'])){
+
+            $this->_params['account']= \skwd\models\Account::find('id= '.'\''. $_SESSION['id']. '\'');
+        }
+        else if(isset($_COOKIE['id'])){
+            $this->_params['account']= \skwd\models\Account::find('id= '.'\''. $_COOKIE['id']. '\'');
+        }
+
+        $this->_params['shoppingCart']= \skwd\models\shoppingCart::find('accountId = '.'\''. $this->_params['account'][0]['id']. '\'');
+        $this->_params['shopingCartItem']= \skwd\models\shoppingCartItem::find('shoppingCartId= '.'\''. $this->_params['shoppingCart'][0]['id']. '\'');
+
+
+        $this->_params['customer']= \skwd\models\Customer::find('id= '.'\''. $this->_params['account'][0]['customerID']. '\'');
+        $date = $this->_params['customer'][0]['dateOfBirth'];
+        $this->_params['dateOfBirthInRightOrder']= dateOfBirthInRightOrder($date);
+        $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
+
+        if(isset($_POST['submitCheckout'])){
+ 
+            if(requiredCheckCheckout($this->_params['error'])){
+
+                $this->_params['checkoutSite1']=false;
+
+                        $_SESSION['country']=$_POST['country'];
+                        $_SESSION['city']=$_POST['city'];
+                        $_SESSION['zip']=$_POST['zip'];
+                        $_SESSION['street']=$_POST['street'];
+                        $_SESSION['payMethod']=$_POST['payMethod'];
+            }
+          
+        }
+
+        if(isset($_POST['submitOrder'])){
+            createOrder($this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer'], 
+            $_SESSION['country'], $_SESSION['city'], $_SESSION['zip'], $_SESSION['street'], $_SESSION['payMethod']);
+
+            if(count($this->_params['error'])===0){
+                header('Location: index.php?c=pages&a=start&k=orderFinished');
+            }
+        }
+    }
+
+
     public function actionLogin()
     {
         $errors = [];

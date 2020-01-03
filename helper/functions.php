@@ -505,7 +505,7 @@ function editPassword(&$error, $email, $accountId, $customerId){
   }
 }
 
-function editAddress(&$error, $addressId){
+function editAddress(&$error, $addressId=null){
     $address = [
         'id' => $addressId,
         'city' => $_POST['city'],
@@ -527,3 +527,143 @@ function editAddress(&$error, $addressId){
 }
 
 
+////////////////////////////////////////////////////////////////////
+
+function requiredCheckCheckout(&$errors)
+{
+    
+
+    if (!isset($_POST['zip'])) {
+        array_push($errors, "Please fill out zip field");
+    }
+    if (!isset($_POST['city'])) {
+        array_push($errors, "Please fill out city field");
+    }
+    if (!isset($_POST['street'])) {
+        array_push($errors, "Please fill out street field");
+    }
+
+    if (!isset($_POST['payMethod'])) {
+        array_push($errors, "Please choose a pay method");
+    }
+
+    if ($_POST['country'] === 'Country') {
+        array_push($errors, "Please enter valid country");
+    }
+
+    
+    if(count($errors)===0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function orderPrice($shopingcartItems){
+    $orderPrice = 0.0;
+    foreach($shopingcartItems as $key => $value){
+       $orderPrice += $shopingcartItems[$key]['actualPrice'];
+    }
+    return $orderPrice;
+}
+
+function shipPrice($orderPrice){
+
+    $shipPrice = 0.0;
+
+    if($orderPrice < 50.00){
+        $shipPrice = 3.49;
+    }
+
+    return $shipPrice;
+}
+
+
+
+function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
+{
+
+    $address = [
+        'country' => $country,
+        'city' => $city,
+        'zip' => $zip,
+        'street' => $street
+    ];
+    $addressInstance = new \skwd\models\Address($address);
+    $addressInstance->validate($errors);
+    if (count($errors) === 0) {     
+        $addressID = findAddressInDb($addressInstance);
+        if (!is_null($addressID)) {
+            $addressInstance->__set('id', $addressID);
+            return $addressInstance;
+        }
+        else{
+            $addressInstance->save($errors);
+            return $addressInstance;
+        }
+ 
+    }
+}
+
+
+
+function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod){
+
+    $shipPrice = shipPrice(orderPrice($shopingcartItems));
+
+    $orderDate = date("Y-m-d");
+
+    $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
+
+    $address = validateAddressTableCheckout($errors,$city, $zip, $street, $country);
+
+    if(count($errors)===0){
+        $order=['id'=>null,
+      'orderDate'=>$orderDate,
+      'shipDate'=>$shipDate,
+      'shipPrice' =>$shipPrice,
+      'payStatus'=>'unpaid',
+      'payMethod'=>$payMethod,
+      'payDate'=>null,
+      'customerID'=>$customer[0]['id'],
+      'addressID'=>$address->__get('id')
+        ];
+
+       $order1 = new \skwd\models\Orders($order);
+       $order1->save($errors);
+
+            if(count($errors===0)){
+
+                foreach($shopingcartItems as $key => $value){
+    
+                $orderItem=['id'=>null,
+                'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
+                'qty'=>$shopingcartItems[$key]['qty'],
+                'productID'=>$shopingcartItems[$key]['productID'],
+                'orderID'=>$order1->__get('id')
+                ];
+                $orderItem1 = new \skwd\models\OrderItem($orderItem);
+                $orderItem1->save($errors);
+
+                    if(count($errors===0)){
+
+                        $shoppingCartItem=['id'=>$shopingcartItems[$key]['id'],
+                        'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
+                        'qty'=>$shopingcartItems[$key]['qty'],
+                        'productID'=>$shopingcartItems[$key]['productID'],
+                        'shoppingcartId'=>$shopingcartItems[$key]['shoppingcartId']
+                        ];
+                        $shoppingCartItem1 = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+                        $shoppingCartItem1->delete($errors);
+
+                    }
+
+                }
+                
+            }
+
+    }
+
+
+}
