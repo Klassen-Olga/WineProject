@@ -9,6 +9,8 @@
 </head>
 <body>
 <header>
+    
+</header>
     <nav id="nav1">
         <ul>
             <li><a href="?a=start">Home</a></li>
@@ -28,7 +30,6 @@
             <li><a href="?a=account">Account</a></li>
         </ul>
     </nav>
-</header>
 <main>
     <?php
     if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
