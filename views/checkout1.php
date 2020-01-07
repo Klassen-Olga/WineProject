@@ -16,7 +16,7 @@
 <legend>delivery address</legend>
         <label for="country">Country:<br>
             <select name="country" id="country">
-                <option value="Country"><?= isset($_POST['Country']) ? htmlspecialchars($_POST['Country']) : 'Country' ?></option>
+                <option value=<?=$this->_params['address'][0]['country']?>><?= isset($_POST['Country']) ? htmlspecialchars($_POST['Country']) : $this->_params['address'][0]['country'] ?></option>
                 <?php
                 $arrayCountry = ['Germany', 'Austria', 'Belgium', 'Bulgaria', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
                     'France', 'Great Britain', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Luxembourg', 'Malta', 'Netherlands',
@@ -32,11 +32,11 @@
                value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" required/><br>
         <label for="city">City:</label><br>
         <input type="text" id="city" name="city"
-               value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $this->_params['address'][0]['city'] ?>"
+               value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $this->_params['address'][0]['city'] ;?>"
                required/><br>
         <label for="street">Street:</label><br>
         <input type="text" id="street" name="street"
-               value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : $this->_params['address'][0]['street'] ?>"
+               value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : $this->_params['address'][0]['street']; ?>"
                required/><br>
 </fieldset>
 

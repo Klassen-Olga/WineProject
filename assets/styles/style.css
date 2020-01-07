@@ -49,7 +49,7 @@ nav ul li {
 
 }
 
-nav ul li a {
+nav ul li a  {
     padding: 18px;
     font-family: "Open Sans";
     text-transform: uppercase;
@@ -59,13 +59,14 @@ nav ul li a {
     display: block;
 }
 
-nav ul li a:hover {
+
+nav ul li a:hover, .logout:hover, .products:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
     color: rgba(0, 35, 122, 0.7);
 }
 
-.products{
+.products, .logout {
     font-family: "Open Sans";
     text-transform: uppercase;
     background: rgba(255, 255, 255, 0);
@@ -74,6 +75,10 @@ nav ul li a:hover {
     font-size: 18px;
     border: none;
 }
+input.logout, button.products{
+    cursor: pointer;
+}
+
 .dropdown-products {
     position: relative;
     display: inline-block;
