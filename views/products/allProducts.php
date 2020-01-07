@@ -10,7 +10,6 @@ $this->_params['error']=[];
     <?php foreach ($dbQuery as $key => $value): ?>
         <?php $dbPicture = productsPicture($dbQuery[$key]['id']);
         $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
-        //TODO: Function to price manipulation
         $price=$dbQuery[$key]['standardPrice'];
         ?>
         <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img src="<?php echo $picture; ?>"></a><br>

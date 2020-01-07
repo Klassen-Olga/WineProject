@@ -547,9 +547,7 @@ function requiredCheckCheckout(&$errors)
         array_push($errors, "Please choose a pay method");
     }
 
-    if ($_POST['country'] === 'Country') {
-        array_push($errors, "Please enter valid country");
-    }
+    validateCountry($errors);
 
     
     if(count($errors)===0){

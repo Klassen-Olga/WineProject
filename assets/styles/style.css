@@ -1,20 +1,31 @@
 @import url(https://fonóts.googleapis.com/css?family=Open+Sans);
 
 * {
+
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 
 }
+body{
 
-html {
-    height: 100%;
+    background: mistyrose;
+
+}
+header{
+    padding: 1px;
+    background-image: url("background.jpg");
+    height: 200px;
 
 }
 
-nav {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 60px 0;
+nav{
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+
+
+
 }
 
 .hide {
@@ -26,6 +37,7 @@ nav {
 }
 
 nav ul {
+    margin-top: 0px;
     text-align: center;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
