@@ -9,27 +9,27 @@
 </head>
 <body>
 <header>
-    
+<img src="assets/styles/background.jpg">
 </header>
-    <nav id="nav1">
-        <ul>
-            <li><a href="?a=start">Home</a></li>
-            <li><div class="dropdown-products">
+<nav>
+    <ul>
+        <li><a href="?a=start">Home</a></li>
+        <li><div class="dropdown-products">
                 <button class="products">Products</button>
                 <div class="products-content">
-                    <a href="?c=products&a=allProducts">All products</a>
+                    <a href="?c=products&a=allProducts">All</a>
                     <a href="?c=products&a=category&s=Red%20Wine">Red wines</a>
                     <a href="?c=products&a=category&s=White%20Wine">White wines</a>
                     <a href="?c=products&a=category&s=Rose%20Wine">Rose wines</a>
                     <a href="?c=products&a=category&s=Sparkling%20Wine">Sparkling wines</a>
                     <a href="?c=products&a=category&s=Accessory">Accessories</a>
                 </div>
-                </div></li>
-            <li><a href="?a=wineInformation">Wine Information</a></li>
-            <li><a href="?a=shoppingCartShow">Basket</a></li>
-            <li><a href="?a=account">Account</a></li>
-        </ul>
-    </nav>
+            </div></li>
+        <li><a href="?a=wineInformation">Wine Information</a></li>
+        <li><a href="?a=shoppingCartShow">Basket</a></li>
+        <li><a href="?a=account">Account</a></li>
+    </ul>
+</nav>
 <main>
     <?php
     if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
@@ -48,6 +48,8 @@
         ?>
     </div>
     <?php echo $body; ?>
+
+    
 
 </main>
 <footer>

@@ -1,0 +1,169 @@
+@import url(https://fonóts.googleapis.com/css?family=Open+Sans);
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: rgb(253, 252, 251);
+    width: 100%;
+}
+
+header {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+nav {
+    height: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    height: 10%;
+    width: 100%;
+}
+
+main {
+    height: 60%;
+}
+
+.hide {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+nav ul {
+    margin-top: 0px;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+    background-color: #ce0000;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    padding: 18px;
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    color: #411111;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul li a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 35, 122, 0.7);
+}
+
+.products {
+    font-family: "Open Sans";
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0);
+    color: #411111;
+    padding: 18px;
+    font-size: 18px;
+    border: none;
+}
+
+.dropdown-products {
+    position: relative;
+    display: inline-block;
+}
+
+.products-content {
+    display: none;
+    position: absolute;
+    background-color: #f07070;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.products-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.products-content a:hover {
+    background-color: #ed9292
+}
+
+.dropdown-products:hover .products-content {
+    display: block;
+}
+
+.dropdown-products:hover .products {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.error form {
+    margin: 15px;
+    background-color: tomato;
+    color: antiquewhite;
+}
+
+.login {
+    border-radius: 25px;
+    border: 3px solid rgb(187, 9, 47);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background-color: rgb(250, 230, 239);
+    height: 700px;
+    padding-top: 50px;
+}
+
+.login input[type=text],
+input[type=password] {
+    width: 50%;
+    margin-left: 25%;
+    display: inline-block;
+    border: 1px solid rgb(187, 9, 47);
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-top: 30px;
+    height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.login input[type=submit] {
+    background-color: rgb(245, 216, 216);
+    color: rgb(238, 23, 155);
+    cursor: pointer;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+    height: 75px;
+    font-size: 2.2em;
+}
+
+.login label {
+    background-color: black;
+    margin-left: 25%;
+    margin-top: 50px;
+    font-size: 1.5em;
+}
+
+.login .check {
+    margin-left: 25%;
+    padding-top: 50px;
+    margin-top: 50px;
+}
+
+.error-text {
+    color: red;
+}
