@@ -309,16 +309,6 @@ function rememberMe($email, $id)
     setcookie('id', $id, $duration, '/');
 }
 
-function emailSessionOrCookie()
-{
-    if (isset($_SESSION['email'])) {
-        return $_SESSION['email'];
-    } else if (isset($_COOKIE['email'])) {
-        return $_COOKIE['email'];
-    } else return null;
-}
-
-///////////////////////////////////////////////////BEN///////////////////Die funktionen sind gleich benutz meine, ich brauche sie
 function usersIdIfLoggedIn()
 {
     if (isset($_SESSION['id'])) {
@@ -525,10 +515,6 @@ function editAddress(&$error, $addressId=null){
     }
   
 }
-
-
-////////////////////////////////////////////////////////////////////
-
 function requiredCheckCheckout(&$errors)
 {
     
@@ -576,9 +562,6 @@ function shipPrice($orderPrice){
 
     return $shipPrice;
 }
-
-
-
 function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 {
 

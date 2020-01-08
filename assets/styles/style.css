@@ -1,33 +1,25 @@
 @import url(https://fonóts.googleapis.com/css?family=Open+Sans);
 
 * {
-
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-
+    margin: 0;
+    padding:0;
 }
 body{
-
-    background: mistyrose;
-
+    background: white;
 }
 header{
     padding: 1px;
     background-image: url("background.jpg");
     height: 200px;
-
 }
-
 nav{
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
-
-
-
 }
-
 .hide {
     position: absolute;
     top: -1px;
@@ -46,44 +38,40 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-
 }
+.nav-logo{
 
-nav ul li a  {
-    padding: 18px;
-    font-family: "Open Sans";
-    text-transform: uppercase;
-    color: #411111;
-    font-size: 18px;
-    text-decoration: none;
-    display: block;
+    width: 60px;
+    height: 50px;
 }
-
-
-nav ul li a:hover, .logout:hover, .products:hover {
+nav ul li a:hover, .logout:hover, .dropdown-button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
     color: rgba(0, 35, 122, 0.7);
 }
-
-.products, .logout {
+nav ul li a, .dropdown-button, .logout{
     font-family: "Open Sans";
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0);
-    color: #411111;
-    padding: 18px;
     font-size: 18px;
+    padding: 18px;
+    text-transform: uppercase;
+    color: #411111;
+}
+nav ul li a  {
+    text-decoration: none;
+    display: block;
+}
+.dropdown-button, .logout {
+    background: rgba(255, 255, 255, 0);
     border: none;
 }
-input.logout, button.products{
+input.logout, button.dropdown-button{
     cursor: pointer;
 }
-
-.dropdown-products {
+.dropdown {
     position: relative;
     display: inline-block;
 }
-.products-content{
+.dropdown-content{
     display: none;
     position: absolute;
     background-color: #f07070;
@@ -91,18 +79,24 @@ input.logout, button.products{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
-.products-content a {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-.products-content a:hover {background-color: #ed9292}
+.dropdown-content a:hover {background-color: #ed9292}
 
-.dropdown-products:hover .products-content {display: block;}
+.dropdown:hover .dropdown-content {display: block;}
 
-.dropdown-products:hover .products {background-color: rgba(255, 255, 255, 0.1);}
+.dropdown:hover .dropdown-button {background-color: rgba(255, 255, 255, 0.1);}
 
+footer{
+    padding-bottom: 0;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 10px;
+}
 .login {
     font-size: 20px;
 }
@@ -116,4 +110,67 @@ input.logout, button.products{
 
 .error-text {
     color: red;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.container>div{
+    margin: 10px 0;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+}
+.container>div a{
+    text-decoration: none;
+    color: black;
+}
+.container-image{
+    height: 300px;
+    width: 100px;
+
+}
+.container-name{
+    width: 110px;
+    text-decoration: none;
+}
+.container-name a:hover{
+    color:#4b35ef;
+}
+.container-price{
+    font-weight: bold;
+}
+.basket-button button{
+    height: 50px;
+    padding: 9px 25px;
+    background-color: #ce0000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+.basket-button button:hover{
+    background-color: #670808;
+
+}
+.basket-button button {
+    cursor: pointer;
+}
+
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media screen and (max-width: 600px)  {  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    nav ul li a{
+        display: flex;
+    }
+}
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */
 }

@@ -11,12 +11,14 @@
 <header>
 
 </header>
+
 <nav>
     <ul>
-        <li><a href="?a=start">Home</a></li>
-        <li><div class="dropdown-products">
-                <button class="products" onclick="window.location.href='?c=products&a=allProducts';">Products</button>
-                <div class="products-content">
+        <li><a href="?a=start"><img class="nav-logo" src="assets/styles/logo.jpg"></a></li>
+        <li>
+            <div class="dropdown">
+                <button class="dropdown-button" onclick="window.location.href='?c=products&a=allProducts';">Products</button>
+                <div class="dropdown-content">
                     <a href="?c=products&a=allProducts">All</a>
                     <a href="?c=products&a=category&s=Red%20Wine">Red wines</a>
                     <a href="?c=products&a=category&s=White%20Wine">White wines</a>
@@ -24,23 +26,42 @@
                     <a href="?c=products&a=category&s=Sparkling%20Wine">Sparkling wines</a>
                     <a href="?c=products&a=category&s=Accessory">Accessories</a>
                 </div>
-            </div></li>
+            </div>
+        </li>
         <li><a href="?a=wineInformation">Wine Guide</a></li>
         <li><a href="?a=shoppingCartShow">Basket</a></li>
-        <li><a href="?a=account">Account</a></li>
         <li>
-        <?php
+            <div class="dropdown">
+                <button class="dropdown-button" onclick="window.location.href='?c=pages&a=account';">Account</button>
+                <div class="dropdown-content">
 
-        if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
-            include __DIR__ . '/logout.php';
-        } else if (isset($_COOKIE['logged']) && $_COOKIE['logged'] === 'isLogged') {
-            include __DIR__ . '/logout.php';
-        }
+                    <?php if (usersIdIfLoggedIn() !== null): ?>
 
-        ?>
+                        <a href="?c=accounts&a=personalData"> personal data</a>
+                        <a href="?c=accounts&a=myOrders"> my orders</a>
+
+                    <?php else: ?>
+                        <a href="?a=login">Login</a>
+                        <a href="?a=register">Sign-Up</a>
+                    <?php endif; ?>
+
+                </div>
+            </div>
         </li>
+
+
+        <li>    <?php
+
+            if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+                include __DIR__ . '/logout.php';
+            } else if (isset($_COOKIE['logged']) && $_COOKIE['logged'] === 'isLogged') {
+                include __DIR__ . '/logout.php';
+            }
+
+            ?></li>
     </ul>
 </nav>
+
 <main>
     <div class="error">
         <?php
