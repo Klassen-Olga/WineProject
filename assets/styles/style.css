@@ -10,15 +10,23 @@ body{
     background: white;
 }
 header{
+    background-image: url("background.jpg");
+    height: 200px;
+}
+header img{
     padding: 1px;
     background-image: url("background.jpg");
     height: 200px;
 }
+
+
 nav{
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
+    height: 10%;
+    width: 100%;
 }
 .hide {
     position: absolute;
@@ -173,4 +181,106 @@ footer{
 @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
 @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
 @media (min-width:1281px) { /* hi-res laptops and desktops */
+}
+
+<!--BEN LOGIN -->
+
+.login {
+    border-radius: 25px;
+    border: 3px solid rgb(187, 9, 47);
+    border-width: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background-color: rgb(253, 244, 247);
+    height: 850px;
+    padding-top: 50px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.login img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 26.5%;
+    margin-left: 36.75%;
+}
+
+.login input[type=text],
+.login input[type=password] {
+    width: 60%;
+    margin-left: 20%;
+    display: inline-block;
+    border: 1px solid rgb(187, 9, 47);
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-top: 10px;
+    height: 50px;
+    font-size: 1.5em;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.buttonLogin input {
+    background-color: rgb(247, 231, 231);
+    color: rgb(199, 30, 86);
+    cursor: pointer;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 60px;
+    height: 50px;
+    font-size: 2.2em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.buttonLogin :hover {
+    background-color: rgb(199, 30, 86);
+    /* Green */
+    color: white;
+}
+
+.login label {
+    color: rgb(199, 30, 86);
+    float: left;
+    box-sizing: border-box;
+    margin-left: 25%;
+    margin-bottom: 5px;
+    margin-top: 50px;
+    font-size: 1.5em;
+}
+
+.login .check {
+    float: left;
+    height: 150px;
+    margin-top: 10px;
+    width: 80%;
+    margin-right: 20%;
+}
+
+.login .check input[type=checkbox] {
+    display: none;
+}
+
+.login .check input[type=checkbox] + label::before {
+    width: 22px;
+    height: 18px;
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
+    display: block;
+    content: "";
+    float: left;
+}
+
+.login .check input[type=checkbox]:checked + label::before {
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
+}
+
+.login .check a {
+    float: left;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-left: 25%;
+    font-size: 1.5em;
+    color: rgb(199, 30, 86);
 }

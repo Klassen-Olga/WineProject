@@ -74,6 +74,8 @@
     </div>
     <?php echo $body; ?>
 
+    
+
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
