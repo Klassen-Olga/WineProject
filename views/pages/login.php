@@ -1,4 +1,6 @@
 <div class="login">
+
+        <img src="assets/styles/loginLogo.jpg" alt="login logo">
     
 
         <form action="<?=$_SERVER['PHP_SELF'] .'?a=login';?>" method="post">
@@ -7,12 +9,14 @@
             <input type="text" name="email" id="email" placeholder="your e-mail" required
             <?=isset($_POST['email']) ? 'value="'.htmlspecialchars($_POST['email']).'"' : ''?>> <br>
             
-            <label for="loginPassword">passwort: </label>
+            <label for="loginPassword">password: </label>
             <br>
             <input type="password" name="validationPassword" id="loginPassword" placeholder="your password"
             required> <br>
-            
-            <input type="submit" name="submitLogin" value="login">
+
+            <div class = buttonLogin>
+                <input type="submit" name="submitLogin" value="login">
+            </div>
 
             <br>
             

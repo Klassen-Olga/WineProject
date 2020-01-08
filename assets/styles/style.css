@@ -125,52 +125,111 @@ button.products {
 .login {
     border-radius: 25px;
     border: 3px solid rgb(187, 9, 47);
+    border-width: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 40%;
-    background-color: rgb(250, 230, 239);
-    height: 700px;
+    background-color: rgb(253, 244, 247);
+    height: 850px;
     padding-top: 50px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.login img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 26.5%;
+    margin-left: 36.75%;
 }
 
 .login input[type=text],
-input[type=password] {
-    width: 50%;
-    margin-left: 25%;
+.login input[type=password] {
+    width: 60%;
+    margin-left: 20%;
     display: inline-block;
     border: 1px solid rgb(187, 9, 47);
     box-sizing: border-box;
     padding-left: 10px;
-    margin-top: 30px;
-    height: 75px;
+    margin-top: 10px;
+    height: 50px;
     font-size: 1.5em;
     text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
-.login input[type=submit] {
-    background-color: rgb(245, 216, 216);
-    color: rgb(238, 23, 155);
+.buttonLogin input {
+    background-color: rgb(247, 231, 231);
+    color: rgb(199, 30, 86);
     cursor: pointer;
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 50px;
-    height: 75px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 60px;
+    height: 50px;
     font-size: 2.2em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.buttonLogin :hover {
+    background-color: rgb(199, 30, 86);
+    /* Green */
+    color: white;
 }
 
 .login label {
-    background-color: black;
+    color: rgb(199, 30, 86);
+    float: left;
+    box-sizing: border-box;
     margin-left: 25%;
+    margin-bottom: 5px;
     margin-top: 50px;
     font-size: 1.5em;
 }
 
 .login .check {
-    margin-left: 25%;
-    padding-top: 50px;
-    margin-top: 50px;
+    float: left;
+    height: 150px;
+    margin-top: 10px;
+    width: 80%;
+    margin-right: 20%;
 }
+
+.login .check input[type=checkbox] {
+    display: none;
+}
+
+.login .check input[type=checkbox]+label::before {
+    width: 22px;
+    height: 18px;
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
+    display: block;
+    content: "";
+    float: left;
+}
+
+.login .check input[type=checkbox]:checked+label::before {
+    background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
+}
+
+.login .check a {
+    float: left;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-left: 25%;
+    font-size: 1.5em;
+    color: rgb(199, 30, 86);
+}
+
+
+/*
+.login .check label {
+    background-color: black;
+    margin-bottom: 2px;
+    font-size: 1.2em;
+}
+*/
 
 .error-text {
     color: red;
