@@ -2,7 +2,7 @@
 
         <img src="assets/styles/loginLogo.jpg" alt="login logo">
     
-
+    
         <form action="<?=$_SERVER['PHP_SELF'] .'?a=login';?>" method="post">
             <label for="email">email: </label>
             <br>

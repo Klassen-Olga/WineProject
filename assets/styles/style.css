@@ -7,27 +7,27 @@
 }
 
 body {
-    background: rgb(253, 252, 251);
+    background: white;
 }
 
 header {
-    display: block;
-    height: auto;
-    width: 100%;
+    background-image: url("background.jpg");
+    height: 200px;
+}
+
+header img {
+    padding: 1px;
+    background-image: url("background.jpg");
+    height: 200px;
 }
 
 nav {
-    height: auto;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
     height: 10%;
     width: 100%;
-}
-
-main {
-    height: 60%;
 }
 
 .hide {
@@ -50,46 +50,51 @@ nav ul li {
     display: inline-block;
 }
 
-nav ul li a {
-    padding: 18px;
-    font-family: "Open Sans";
-    text-transform: uppercase;
-    color: #411111;
-    font-size: 18px;
-    text-decoration: none;
-    display: block;
+.nav-logo {
+    width: 60px;
+    height: 50px;
 }
 
 nav ul li a:hover,
 .logout:hover,
-.products:hover {
+.dropdown-button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
     color: rgba(0, 35, 122, 0.7);
 }
 
-.products,
+nav ul li a,
+.dropdown-button,
 .logout {
     font-family: "Open Sans";
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0);
-    color: #411111;
-    padding: 18px;
     font-size: 18px;
+    padding: 18px;
+    text-transform: uppercase;
+    color: #411111;
+}
+
+nav ul li a {
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-button,
+.logout {
+    background: rgba(255, 255, 255, 0);
     border: none;
 }
 
 input.logout,
-button.products {
+button.dropdown-button {
     cursor: pointer;
 }
 
-.dropdown-products {
+.dropdown {
     position: relative;
     display: inline-block;
 }
 
-.products-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f07070;
@@ -98,41 +103,206 @@ button.products {
     z-index: 1;
 }
 
-.products-content a {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.products-content a:hover {
+.dropdown-content a:hover {
     background-color: #ed9292
 }
 
-.dropdown-products:hover .products-content {
+.dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown-products:hover .products {
+.dropdown:hover .dropdown-button {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.error form {
+footer {
+    padding-bottom: 0;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 10px;
+}
+
+.login {
+    font-size: 20px;
+}
+
+.error {
     margin: 15px;
     background-color: tomato;
     color: antiquewhite;
 }
 
+.error-text {
+    color: red;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container>div {
+    margin: 10px 0;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+}
+
+.container>div a {
+    text-decoration: none;
+    color: black;
+}
+
+.container-image {
+    height: 300px;
+    width: 100px;
+}
+
+.container-name {
+    width: 110px;
+    text-decoration: none;
+}
+
+.container-name a:hover {
+    color: #4b35ef;
+}
+
+.container-price {
+    font-weight: bold;
+}
+
+.basket-button button {
+    height: 50px;
+    padding: 9px 25px;
+    background-color: #ce0000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.basket-button button:hover {
+    background-color: #670808;
+}
+
+.basket-button button {
+    cursor: pointer;
+}
+
+@media (min-width:320px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+}
+
+@media (min-width:481px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+}
+
+@media screen and (max-width: 600px) {
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    nav ul li a {
+        display: flex;
+    }
+}
+
+@media (min-width:961px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+}
+
+@media (min-width:1025px) {
+    /* big landscape tablets, laptops, and desktops */
+}
+
+@media (min-width:1281px) {
+    /* hi-res laptops and desktops */
+}
+
+.register {
+    background-color: rgb(253, 244, 247);
+    ;
+    margin: 0 auto;
+    width: 70%;
+    height: 700px;
+    border-radius: 4px;
+}
+
+.register input {
+    border-radius: 4px;
+}
+
+.nameEmail .text {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+}
+
+.nameEmail .dateOfBirth {
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
+.nameEmail .radio {
+    margin-top: 2%;
+    width: 100%;
+    margin-left: 5%;
+}
+
+.radio label {
+    margin-right: 1%;
+}
+
+.radio input {
+    margin-left: 1%;
+}
+
+.nameEmail .password {
+    margin-top: 50px;
+    margin-left: 50%;
+}
+
+.register .data {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.data .nameEmail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.register .address {
+    margin: 0 auto;
+    width: 50%;
+}
+
 .login {
+    margin-top: 3%;
+    box-sizing: border-box;
     border-radius: 25px;
-    border: 3px solid rgb(187, 9, 47);
+    border: 3px solid #ce0000;
     border-width: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+    margin-left: 33%;
+    width: 34%;
     background-color: rgb(253, 244, 247);
-    height: 850px;
+    height: 700px;
     padding-top: 50px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
@@ -140,58 +310,56 @@ button.products {
 .login img {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 150px;
-    width: 26.5%;
-    margin-left: 36.75%;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
 }
 
 .login input[type=text],
 .login input[type=password] {
+    border-radius: 4px;
     width: 60%;
     margin-left: 20%;
-    display: inline-block;
-    border: 1px solid rgb(187, 9, 47);
+    margin-right: auto;
+    border: 1px solid #ce0000;
     box-sizing: border-box;
-    padding-left: 10px;
     margin-top: 10px;
-    height: 50px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-align: center;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
 .buttonLogin input {
+    border-radius: 4px;
     background-color: rgb(247, 231, 231);
-    color: rgb(199, 30, 86);
+    color: #ce0000;
     cursor: pointer;
     width: 60%;
     margin-left: 20%;
     margin-top: 60px;
-    height: 50px;
-    font-size: 2.2em;
+    font-size: 1.3em;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
 .buttonLogin :hover {
-    background-color: rgb(199, 30, 86);
+    background-color: #ce0000;
     /* Green */
     color: white;
 }
 
 .login label {
-    color: rgb(199, 30, 86);
+    color: #ce0000;
     float: left;
-    box-sizing: border-box;
     margin-left: 25%;
     margin-bottom: 5px;
-    margin-top: 50px;
-    font-size: 1.5em;
+    margin-top: 25px;
+    font-size: 1.3em;
+    margin-right: 10%;
+    overflow: hidden;
 }
 
 .login .check {
     float: left;
-    height: 150px;
     margin-top: 10px;
     width: 80%;
     margin-right: 20%;
@@ -219,19 +387,6 @@ button.products {
     box-sizing: border-box;
     margin-top: 30px;
     margin-left: 25%;
-    font-size: 1.5em;
-    color: rgb(199, 30, 86);
-}
-
-
-/*
-.login .check label {
-    background-color: black;
-    margin-bottom: 2px;
-    font-size: 1.2em;
-}
-*/
-
-.error-text {
-    color: red;
+    font-size: 1.3em;
+    color: #ce0000;
 }
