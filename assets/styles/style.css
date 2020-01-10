@@ -20,14 +20,6 @@ header img{
 }
 
 
-nav{
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-    height: 10%;
-    width: 100%;
-}
 .hide {
     position: absolute;
     top: -1px;
@@ -35,38 +27,60 @@ nav{
     width: 1px;
     height: 1px;
 }
-
-nav ul {
-    margin-top: 0px;
-    text-align: center;
+.navi{
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background-color: #ce0000;
 }
+.dropdown-button{
 
-nav ul li {
-    display: inline-block;
+    background-color: inherit;
 }
-.nav-logo{
+.navi a, .dropdown-button, .logout{
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border: none;
+}
+.navi .icon{
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .navi a:not(:first-child) {display: none;}
+    .dropdown-button {display: none;}
+    .navi a.icon {
+        float: right;
+        display: block;
+    }
+}
 
-    width: 60px;
-    height: 50px;
+@media screen and (max-width: 600px) {
+    .topnav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 }
-nav ul li a:hover, .logout:hover, .dropdown-button:hover {
+.navi.responsive {
+    position: relative;
+
+}
+.logout-navi{
+    float: right;
+}
+
+ .dropdown-button:hover, .navi a:hover, .logout:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.1);
     color: rgba(0, 35, 122, 0.7);
 }
-nav ul li a, .dropdown-button, .logout{
-    font-family: "Open Sans";
-    font-size: 18px;
+ .home-icon{
+    font-size: 50px;
     padding: 18px;
-    text-transform: uppercase;
-    color: #411111;
-}
-nav ul li a  {
-    text-decoration: none;
-    display: block;
 }
 .dropdown-button, .logout {
     background: rgba(255, 255, 255, 0);
@@ -99,6 +113,7 @@ input.logout, button.dropdown-button{
 
 .dropdown:hover .dropdown-button {background-color: rgba(255, 255, 255, 0.1);}
 
+
 footer{
     padding-bottom: 0;
     text-align: center;
@@ -124,25 +139,30 @@ footer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
-.container>div{
+.container >div{
     margin: 10px 0;
-    padding: 70px;
+    padding: 40px 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #f7f7f7;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .container>div a{
     text-decoration: none;
     color: black;
 }
 .container-image{
+    margin-left: 30px;
     height: 300px;
     width: 100px;
 
 }
+
 .container-name{
+    margin: 0 auto;
     width: 110px;
     text-decoration: none;
 }
@@ -151,16 +171,15 @@ footer{
 }
 .container-price{
     font-weight: bold;
+    margin: 0 auto;
 }
 .basket-button button{
-    height: 50px;
-    padding: 9px 25px;
+
+    padding: 15px 25px;
     background-color: #ce0000;
     color: white;
     border: none;
     border-radius: 50px;
-    position: relative;
-    display: inline-block;
     text-transform: uppercase;
 }
 .basket-button button:hover{

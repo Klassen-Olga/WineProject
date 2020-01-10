@@ -38,10 +38,6 @@ $instance->save();*/
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
-/*
-$_COOKIE['id']=12;
-$_GET['i']=1;
-$_SESSION['shoppingCart']=array('id'=>1, 'prodName'=>"sd",'picturePath'=>"sf",'standardPrice'=>12);*/
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
