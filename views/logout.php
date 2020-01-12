@@ -1,3 +1,5 @@
-<form action="<?= $_SERVER['PHP_SELF'] . '?a=start'; ?>" method="post">
-    <input class="logout" type="submit" name="submitLogout" value="logout">
-</form>
+<li class="logout">
+    <form action="<?= $_SERVER['PHP_SELF'] . '?a=start'; ?>" method="post">
+        <input class="logout" type="submit" name="submitLogout" value="Logout">
+    </form>
+</li>

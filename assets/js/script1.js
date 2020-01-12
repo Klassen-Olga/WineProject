@@ -48,11 +48,17 @@ function countryValidation(input) {
 
 function responsiveNav() {
     var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
+    var className=x.className;
+    if (x.className === "menu") {
         x.className += " responsive";
     } else {
-        x.className = "topnav";
+        x.className = "menu";
     }
 
+}
+function tabChange(link){
+    if (window.screen.width<=600){
+        link.href="#";
+    }
 }
 

@@ -2,6 +2,7 @@
 ini_set('session.cookie_lifetime', 0);
 session_start();
 require_once 'config/imports.php';
+
 //codepen
 //cookie speichern?
 //null beim nicht eingegebenen phone=> null speichern
