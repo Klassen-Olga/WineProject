@@ -14,6 +14,7 @@ $this->_params['error'] = [];
                 $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
                 $price = $dbQuery[$key]['standardPrice'];
                 ?>
+
                 <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img class="container-image"
                                                                                       src="<?php echo $picture; ?>"></a><br>
                 <div class="container-name">
@@ -29,6 +30,7 @@ $this->_params['error'] = [];
                         <button type="submit">Add to basket</button>
                     </div>
                 </form>
+
             </div>
         <?php endforeach; ?>
     </div>
