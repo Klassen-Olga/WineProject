@@ -1,6 +1,9 @@
-<h1>your personal data</h1>
 
-<?php
+
+    
+    
+    
+    <?php
 
 if((isset($_GET['j'])&&$_GET['j']=='test')||isset($_POST['submitEdit'])){
     include_once __DIR__.'/personalDataEdit.php';
@@ -12,9 +15,10 @@ else if(isset($_GET['j'])&&$_GET['j']=='test2'){
     include_once __DIR__.'/passwordEdit.php';
 }
 else{
-
- include_once __DIR__.'/personalDataNoEdit.php';
+    
+    include_once __DIR__.'/personalDataNoEdit.php';
 }
+
 
 
 

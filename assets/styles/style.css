@@ -1,5 +1,4 @@
 @import url(https://fonóts.googleapis.com/css?family=Open+Sans);
-
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -33,7 +32,9 @@ header img {
     height: 1px;
 }
 
+
 /*Navi*/
+
 .menu,
 .menu ul,
 .menu li,
@@ -47,16 +48,16 @@ header img {
 .menu {
     height: 40px;
     width: 100%;
-
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background-color: #9a0002;
-
-
 }
 
+
 /*Basket, Wine Quide*/
-.menu li, .menu .logout {
+
+.menu li,
+.menu .logout {
     position: relative;
     list-style: none;
     float: left;
@@ -64,21 +65,18 @@ header img {
     height: 40px;
 }
 
-.menu li a, .menu .logout [type="submit"] {
+.menu li a,
+.menu .logout [type="submit"] {
     display: block;
     padding: 0 14px;
     margin: 6px 0 8px 0;
     line-height: 28px;
     text-decoration: none;
-
-
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 17px;
-
     color: #f3f3f3;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
-
     -webkit-transition: color .2s ease-in-out;
     -moz-transition: color .2s ease-in-out;
     -o-transition: color .2s ease-in-out;
@@ -87,14 +85,11 @@ header img {
 }
 
 .menu .logout [type="submit"] {
-
     padding: 6px 2px;
     margin: 0;
     cursor: pointer;
     background-color: inherit;
     border: none;
-
-
 }
 
 .menu li:first-child a {
@@ -109,25 +104,20 @@ header img {
     position: absolute;
     top: 40px;
     left: 0;
-
     opacity: 0;
     background: #df5659;
-
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
-
     -webkit-transition: opacity .25s ease .1s;
     -moz-transition: opacity .25s ease .1s;
     -o-transition: opacity .25s ease .1s;
     -ms-transition: opacity .25s ease .1s;
     transition: opacity .25s ease .1s;
-
 }
 
 .menu li:hover ul {
     opacity: 1;
-
 }
 
 .menu ul li {
@@ -139,18 +129,16 @@ header img {
     -o-transition: height .25s ease .1s;
     -ms-transition: height .25s ease .1s;
     transition: height .25s ease .1s;
-
-
 }
 
 .menu li:hover ul li {
     height: 36px;
     overflow: visible;
     padding: 0;
-
 }
 
-.menu li:hover, .logout [type="submit"]:hover {
+.menu li:hover,
+.logout [type="submit"]:hover {
     background-color: #ed9292
 }
 
@@ -158,7 +146,6 @@ header img {
     width: 200px;
     padding: 4px 0 4px 40px;
     margin: 0;
-
     border: none;
     border-bottom: 1px solid #353539;
 }
@@ -168,28 +155,30 @@ header img {
     padding-left: 1px;
 }
 
+
 /*Responsive navi*/
+
 .menu .responsive-class-icon {
     display: none;
 }
-
-
-
 
 @media screen and (max-width: 600px) {
 
     .menu li:not(:first-child) {
         display: none;
     }
-
     .menu .responsive-class-icon {
         float: right;
         display: block !important;
     }
+
+}
+
+@media screen and (max-width: 600px) {
+
     .menu.responsive {
         position: relative;
         height: auto;
-
     }
     .menu.responsive ul {
         float: left;
@@ -197,20 +186,18 @@ header img {
         width: 30%;
         height: auto;
         z-index: 1;
-
     }
-    .menu.responsive ul li a{
+    .menu.responsive ul li a {
         border: none;
     }
-    .menu.responsive .logout [type="submit"]{
+    .menu.responsive .logout [type="submit"] {
         margin-left: 13px;
-
     }
-    .menu.responsive li a{
+    .menu.responsive li a {
         margin-top: 0;
         padding-top: 7px;
     }
-    .menu.responsive li ul{
+    .menu.responsive li ul {
         position: absolute;
         width: 100%;
     }
@@ -219,6 +206,7 @@ header img {
         right: 0;
         top: 0;
     }
+
     header{
         background-repeat: round;
         background-size: cover;
@@ -231,7 +219,8 @@ header img {
 
 }
 
-.menu.responsive li, .menu.responsive .logout {
+.menu.responsive li,
+.menu.responsive .logout {
     float: none;
     display: block;
     text-align: left;
@@ -243,8 +232,9 @@ h1{
     text-align: center;
     margin: 3% 0;
 }
-footer {
 
+
+footer {
     padding-bottom: 0;
     text-align: center;
     margin-top: 150px;
@@ -264,17 +254,19 @@ footer {
 .error-text {
     color: red;
 }
+
+
 /*Products */
+
 .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
 }
 
 
-.container article {
 
+.container article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -291,16 +283,15 @@ footer {
     color: black;
 }
 
-
-
 .container-image {
     padding-top: 10%;
     height: 235px;
     width: 75px;
+
 }
 
-
 .container-name {
+
     margin: 2%;
     text-decoration: none;
     font-weight: bold;
@@ -313,7 +304,6 @@ footer {
 
 .container-price {
     font-weight: bold;
-
 }
 
 
@@ -389,88 +379,315 @@ footer {
 /*End slides*/
 .register {
     background-color: rgb(253, 244, 247);
-
-    margin: 0 auto;
-    width: 70%;
-    height: 700px;
-    border-radius: 4px;
+}
+.myOrder a:link,
+.account a:link,
+.order a:link,
+.myOrder a:visited,
+.order a:visited,
+.account a:visited {
+    border-radius: 10px;
+    background-color: #d41d20;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.register input {
-    border-radius: 4px;
+.account a:hover,
+.account a:active,
+.myOrder a:hover,
+.order a:hover,
+.myOrder a:active,
+.order a:active {
+    background-color: #9a0002;
 }
 
-.nameEmail .text {
+.personalDataEdit h3 {
     margin-top: 3%;
-    margin-left: 5%;
-    margin-bottom: 3%;
+    margin-left: 4%;
 }
 
-.nameEmail .dateOfBirth {
-    margin-left: 5%;
+.personalDataEdit .address-country {
+    padding-bottom: 0.2%;
+}
+
+.personalData {
     margin-top: 3%;
+    margin-left: 3%;
 }
 
-.nameEmail .radio {
+.personalData a:link,
+.personalData a:visited {
+    border-radius: 10px;
+    background-color: #e41b1e;
+    color: white;
+    padding: 2.8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+
+.personalData a:hover,
+.personalData a:active {
+    background-color: #9a0002;
+}
+
+.personalData .fieldset {
+    margin-top: 1%;
+}
+
+.personalData h4 {
+    margin-top: 6%;
+}
+
+.personalDataEdit .text {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.personalDataEdit h4 {
+    margin-left: 3%;
     margin-top: 2%;
-    width: 100%;
-    margin-left: 5%;
 }
 
-.radio label {
-    margin-right: 1%;
+.test1 .button {
+    padding-top: 9%;
+    padding-bottom: 2%;
 }
 
-.radio input {
+.myOrder {
+    margin-left: 3%;
+}
+
+.myOrder h1,
+.order h1 {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.fieldset {
+    padding: 1%;
+    background: rgb(253, 244, 247);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    max-width: 400px;
+}
+
+hr {
+    border: white;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.order {
     margin-left: 1%;
 }
 
-.nameEmail .password {
-    margin-top: 50px;
-    margin-left: 50%;
+.order .fieldset {
+    max-width: 600px;
+    border: white
 }
 
-.register .data {
-    display: flex;
-    flex-direction: row;
+.personalData fieldset {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.account div {
+    margin-top: 1%;
+}
+
+.account .links {
+    margin-top: 3%;
+}
+
+.register {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+    padding-top: 0.5%;
+    background-color: #9a0002;
     margin: 0 auto;
-    width: 70%;
-    margin-bottom: 100px;
-    flex-wrap: wrap;
-}
-
-.data .nameEmail {
+    border-radius: 20px;
+    max-width: 700px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    padding-bottom: 0.5%;
 }
 
-.register .address {
+.register .button {
+    margin-top: 10%;
     margin: 0 auto;
     width: 50%;
 }
 
+.register .button input {
+    width: 100%;
+    border-radius: 4px;
+    background-color: rgb(247, 231, 231);
+    color: #9a0002;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.register .button input:hover {
+    background-color: #9a0002;
+    /* Green */
+    color: white;
+}
+
+.address {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    margin-top: 3%;
+    margin: 0 auto;
+    padding-top: 1.1%;
+    border-radius: 20px;
+    max-width: 682px;
+    background-color: rgb(253, 244, 247);
+    padding-bottom: 3%;
+}
+
+.address select {
+    float: left;
+    margin-left: 3%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.password-box {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    margin: 0 auto;
+    padding-top: 0.5%;
+    border-radius: 20px;
+    max-width: 682px;
+    background-color: rgb(253, 244, 247);
+    margin-bottom: 9px;
+    padding-bottom: 5%;
+}
+
+.data {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    padding-top: 1.4%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: rgb(253, 244, 247);
+    max-width: 682px;
+    margin-bottom: 9px;
+    padding-bottom: 3%;
+}
+
+.data h2 {
+    margin-left: 10%;
+}
+
+.register label {
+    font-size: 1.1em;
+    clear: both;
+    float: left;
+    width: 120px;
+    margin-left: 5%;
+}
+
+.register option {
+    font-size: 1.1em;
+}
+
+.register input[type=text],
+.register input[type=email],
+.register input[type=tel],
+.register input[type=password] {
+    border-color: #9a0002;
+    padding: 0.2%;
+    float: left;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-left: 3%;
+    width: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.text {
+    margin-top: 7%;
+}
+
+.address-text {
+    margin-top: 5%;
+}
+
+.address-country {
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.register label {
+    margin-left: 10%;
+}
+
+.data .dateOfBirth {
+    margin-top: 6%;
+}
+
+.dateOfBirthCenter select {
+    margin-left: 3.2%;
+    width: 14.66%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.data .dateOfBirthCenter {
+    margin-left: 8%;
+}
+
+.data .gender .radio {
+    margin-left: 8%;
+}
+
+.gender input {
+    width: 5%;
+    margin-left: 3%;
+}
+
+.password-box input {
+    padding: 0.2%;
+    float: left;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-left: 3%;
+    width: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.password-box label {
+    float: left;
+}
+
 .login {
+    padding-bottom: 7%;
     margin-top: 3%;
     box-sizing: border-box;
     border-radius: 25px;
-    border: 3px solid #ce0000;
+    border: 3px solid #9a0002;
     border-width: 10px;
     display: block;
-    margin-left: 33%;
-    width: 34%;
+    margin: 0 auto;
+    max-width: 550px;
     background-color: rgb(253, 244, 247);
-    height: 700px;
-    padding-top: 50px;
+    padding-top: 1%;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
 .login img {
     display: flex;
     justify-content: center;
-    height: 100px;
-    width: 100px;
+    height: 15%;
+    width: 15%;
     margin: 0 auto;
 }
 
@@ -480,10 +697,10 @@ footer {
     width: 60%;
     margin-left: 20%;
     margin-right: auto;
-    border: 1px solid #ce0000;
+    border: 1px solid #9a0002;
     box-sizing: border-box;
-    margin-top: 10px;
-    font-size: 1.3em;
+    margin-top: 1%;
+    font-size: 1em;
     text-align: center;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
@@ -491,44 +708,43 @@ footer {
 .buttonLogin input {
     border-radius: 4px;
     background-color: rgb(247, 231, 231);
-    color: #ce0000;
+    color: #9a0002;
     cursor: pointer;
     width: 60%;
     margin-left: 20%;
-    margin-top: 60px;
-    font-size: 1.3em;
+    margin-top: 8%;
+    font-size: 1em;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
 .buttonLogin :hover {
-    background-color: #ce0000;
+    background-color: #9a0002;
     /* Green */
     color: white;
 }
 
 .login label {
-    color: #ce0000;
+    color: #9a0002;
     float: left;
-    margin-left: 25%;
-    margin-bottom: 5px;
+    margin-left: 20%;
     margin-top: 25px;
-    font-size: 1.3em;
+    font-size: 1em;
     margin-right: 10%;
     overflow: hidden;
 }
 
-.login .check {
+.check {
     float: left;
-    margin-top: 10px;
     width: 80%;
     margin-right: 20%;
+    margin-left: 5%;
 }
 
-.login .check input[type=checkbox] {
+.check input[type=checkbox] {
     display: none;
 }
 
-.login .check input[type=checkbox]+label::before {
+.check input[type=checkbox]+label::before {
     width: 22px;
     height: 18px;
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
@@ -537,19 +753,15 @@ footer {
     float: left;
 }
 
-.login .check input[type=checkbox]:checked+label::before {
+.check input[type=checkbox]:checked+label::before {
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
 }
 
-.login .check a {
+.check a {
     float: left;
     box-sizing: border-box;
-    margin-top: 30px;
-    margin-left: 25%;
-    font-size: 1.3em;
-    color: #ce0000;
+    margin-top: 5%;
+    margin-left: 20%;
+    font-size: 1em;
+    color: #9a0002;
 }
-
-
-
-
