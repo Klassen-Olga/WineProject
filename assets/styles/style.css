@@ -228,90 +228,318 @@ footer {
     /* hi-res laptops and desktops */
 }
 
-.register {
-    background-color: rgb(253, 244, 247);
-    ;
-    margin: 0 auto;
-    width: 70%;
-    height: 700px;
-    border-radius: 4px;
+.account {
+    margin-left: 10%;
 }
 
-.register input {
-    border-radius: 4px;
+.myOrder a:link,
+.account a:link,
+.order a:link,
+.myOrder a:visited,
+.order a:visited,
+.account a:visited {
+    border-radius: 10px;
+    background-color: #ce0000;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.nameEmail .text {
+.account a:hover,
+.account a:active,
+.myOrder a:hover,
+.order a:hover,
+.myOrder a:active,
+.order a:active {
+    background-color: red;
+}
+
+.personalDataEdit h3 {
     margin-top: 3%;
-    margin-left: 5%;
-    margin-bottom: 3%;
+    margin-left: 4%;
 }
 
-.nameEmail .dateOfBirth {
-    margin-left: 5%;
+.personalDataEdit .address-country {
+    padding-bottom: 0.2%;
+}
+
+.personalData {
     margin-top: 3%;
+    margin-left: 3%;
 }
 
-.nameEmail .radio {
+.personalData a:link,
+.personalData a:visited {
+    border-radius: 10px;
+    background-color: #ce0000;
+    color: white;
+    padding: 2.8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+
+.personalData a:hover,
+.personalData a:active {
+    background-color: red;
+}
+
+.personalData .fieldset {
+    margin-top: 1%;
+}
+
+.personalData h4 {
+    margin-top: 6%;
+}
+
+.personalDataEdit .text {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.personalDataEdit h4 {
+    margin-left: 3%;
     margin-top: 2%;
-    width: 100%;
-    margin-left: 5%;
 }
 
-.radio label {
-    margin-right: 1%;
+.test1 .button {
+    padding-top: 9%;
+    padding-bottom: 2%;
 }
 
-.radio input {
+.myOrder {
+    margin-left: 3%;
+}
+
+.myOrder h1,
+.order h1 {
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.fieldset {
+    padding: 1%;
+    background: rgb(253, 244, 247);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    max-width: 400px;
+}
+
+hr {
+    border: white;
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.order {
     margin-left: 1%;
 }
 
-.nameEmail .password {
-    margin-top: 50px;
-    margin-left: 50%;
+.order .fieldset {
+    max-width: 600px;
+    border: white
 }
 
-.register .data {
-    display: flex;
-    flex-direction: row;
+.personalData fieldset {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.account div {
+    margin-top: 1%;
+}
+
+.account .links {
+    margin-top: 3%;
+}
+
+.register {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+    padding-top: 0.5%;
+    background-color: #ce0000;
     margin: 0 auto;
-    width: 70%;
-    margin-bottom: 100px;
-    flex-wrap: wrap;
-}
-
-.data .nameEmail {
+    border-radius: 20px;
+    max-width: 700px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    padding-bottom: 0.5%;
 }
 
-.register .address {
+.register .button {
+    margin-top: 10%;
     margin: 0 auto;
     width: 50%;
 }
 
+.register .button input {
+    width: 100%;
+    border-radius: 4px;
+    background-color: rgb(247, 231, 231);
+    color: #ce0000;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.register .button input:hover {
+    background-color: #ce0000;
+    /* Green */
+    color: white;
+}
+
+.address {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    margin-top: 3%;
+    margin: 0 auto;
+    padding-top: 1.1%;
+    border-radius: 20px;
+    max-width: 682px;
+    background-color: rgb(253, 244, 247);
+    padding-bottom: 3%;
+}
+
+.address select {
+    float: left;
+    margin-left: 3%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.password-box {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    margin: 0 auto;
+    padding-top: 0.5%;
+    border-radius: 20px;
+    max-width: 682px;
+    background-color: rgb(253, 244, 247);
+    margin-bottom: 9px;
+    padding-bottom: 5%;
+}
+
+.data {
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    padding-top: 1.4%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: rgb(253, 244, 247);
+    max-width: 682px;
+    margin-bottom: 9px;
+    padding-bottom: 3%;
+}
+
+.data h2 {
+    margin-left: 10%;
+}
+
+.register label {
+    font-size: 1.1em;
+    clear: both;
+    float: left;
+    width: 120px;
+    margin-left: 5%;
+}
+
+.register option {
+    font-size: 1.1em;
+}
+
+.register input[type=text],
+.register input[type=email],
+.register input[type=tel],
+.register input[type=password] {
+    border-color: #ce0000;
+    padding: 0.2%;
+    float: left;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-left: 3%;
+    width: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.text {
+    margin-top: 7%;
+}
+
+.address-text {
+    margin-top: 5%;
+}
+
+.address-country {
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.register label {
+    margin-left: 10%;
+}
+
+.data .dateOfBirth {
+    margin-top: 6%;
+}
+
+.dateOfBirthCenter select {
+    margin-left: 3.2%;
+    width: 14.66%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.data .dateOfBirthCenter {
+    margin-left: 8%;
+}
+
+.data .gender .radio {
+    margin-left: 8%;
+}
+
+.gender input {
+    width: 5%;
+    margin-left: 3%;
+}
+
+.password-box input {
+    padding: 0.2%;
+    float: left;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-left: 3%;
+    width: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
+}
+
+.password-box label {
+    float: left;
+}
+
 .login {
+    padding-bottom: 7%;
     margin-top: 3%;
     box-sizing: border-box;
     border-radius: 25px;
     border: 3px solid #ce0000;
     border-width: 10px;
     display: block;
-    margin-left: 33%;
-    width: 34%;
+    margin: 0 auto;
+    max-width: 550px;
     background-color: rgb(253, 244, 247);
-    height: 700px;
-    padding-top: 50px;
+    padding-top: 1%;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
 .login img {
     display: flex;
     justify-content: center;
-    height: 100px;
-    width: 100px;
+    height: 15%;
+    width: 15%;
     margin: 0 auto;
 }
 
@@ -323,8 +551,8 @@ footer {
     margin-right: auto;
     border: 1px solid #ce0000;
     box-sizing: border-box;
-    margin-top: 10px;
-    font-size: 1.3em;
+    margin-top: 1%;
+    font-size: 1em;
     text-align: center;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
@@ -336,8 +564,8 @@ footer {
     cursor: pointer;
     width: 60%;
     margin-left: 20%;
-    margin-top: 60px;
-    font-size: 1.3em;
+    margin-top: 8%;
+    font-size: 1em;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
@@ -350,26 +578,25 @@ footer {
 .login label {
     color: #ce0000;
     float: left;
-    margin-left: 25%;
-    margin-bottom: 5px;
+    margin-left: 20%;
     margin-top: 25px;
-    font-size: 1.3em;
+    font-size: 1em;
     margin-right: 10%;
     overflow: hidden;
 }
 
-.login .check {
+.check {
     float: left;
-    margin-top: 10px;
     width: 80%;
     margin-right: 20%;
+    margin-left: 5%;
 }
 
-.login .check input[type=checkbox] {
+.check input[type=checkbox] {
     display: none;
 }
 
-.login .check input[type=checkbox]+label::before {
+.check input[type=checkbox]+label::before {
     width: 22px;
     height: 18px;
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
@@ -378,15 +605,15 @@ footer {
     float: left;
 }
 
-.login .check input[type=checkbox]:checked+label::before {
+.check input[type=checkbox]:checked+label::before {
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
 }
 
-.login .check a {
+.check a {
     float: left;
     box-sizing: border-box;
-    margin-top: 30px;
-    margin-left: 25%;
-    font-size: 1.3em;
+    margin-top: 5%;
+    margin-left: 20%;
+    font-size: 1em;
     color: #ce0000;
 }
