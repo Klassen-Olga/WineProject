@@ -1,3 +1,10 @@
+function myFunction(imgs) {
+    var expandImg = document.getElementById("expandedImg");
+    var imgText = document.getElementById("imgtext");
+    expandImg.src = imgs.src;
+    imgText.innerHTML = imgs.alt;
+    expandImg.parentElement.style.display = "block";
+}
 function removeError(input) {
     let nextElement = input.parentNode.nextSibling;
     if (nextElement.tagName === "P" && nextElement.className === "error-text") {

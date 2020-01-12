@@ -15,7 +15,7 @@
 <ul class="menu" id="myTopnav">
     <li><a class="home-icon" href="?a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
-    <li><a href="?a=shoppingCartShow">Basket</a></li>
+    <li><a href="?c=pages&a=shoppingCartShow">Basket</a></li>
     <li><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
         <ul>
             <li><a href="?c=products&a=allProducts">All</a></li>
@@ -67,7 +67,7 @@
 </div>
 <?php echo $body; ?>
 
-<!--Account -->
+
 
 
 </main>
