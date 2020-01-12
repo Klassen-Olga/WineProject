@@ -41,7 +41,8 @@
             <div class="button">
         <input type="submit" value="submit edit" name="submitEditAddress">
             </div>
-    </fieldset>
+            </div>
+            
 </form>
 </div>
 </div>
