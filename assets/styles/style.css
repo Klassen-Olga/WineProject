@@ -12,13 +12,16 @@ body {
 
 header {
     background-image: url("background.jpg");
-    height: 200px;
+    height: 250px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header img {
     padding: 1px;
     background-image: url("background.jpg");
-    height: 200px;
+    height: 250px;
 }
 
 .hide {
@@ -160,6 +163,7 @@ header img {
 }
 
 @media screen and (max-width: 600px) {
+
     .menu li:not(:first-child) {
         display: none;
     }
@@ -167,9 +171,11 @@ header img {
         float: right;
         display: block !important;
     }
+
 }
 
 @media screen and (max-width: 600px) {
+
     .menu.responsive {
         position: relative;
         height: auto;
@@ -200,6 +206,17 @@ header img {
         right: 0;
         top: 0;
     }
+
+    header{
+        background-repeat: round;
+        background-size: cover;
+    }
+    .container article{
+        flex: 0 1 40% !important;
+        margin: 5% !important;
+
+    }
+
 }
 
 .menu.responsive li,
@@ -211,6 +228,11 @@ header img {
 
 
 /*End Navi*/
+h1{
+    text-align: center;
+    margin: 3% 0;
+}
+
 
 footer {
     padding-bottom: 0;
@@ -242,29 +264,38 @@ footer {
     justify-content: space-between;
 }
 
-.container>div {
-    margin: 10px 0;
-    padding: 40px 70px;
+
+
+.container article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     background-color: #f7f7f7;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    flex: 0 1 24%;
+    margin: 2.5% 1px;
+
 }
 
-.container>div a {
+.container article a {
     text-decoration: none;
     color: black;
 }
 
 .container-image {
-    height: 300px;
-    width: 100px;
+    padding-top: 10%;
+    height: 235px;
+    width: 75px;
+
 }
 
 .container-name {
-    width: 110px;
+
+    margin: 2%;
     text-decoration: none;
+    font-weight: bold;
+    font-size: smaller;
 }
 
 .container-name a:hover {
@@ -273,16 +304,13 @@ footer {
 
 .container-price {
     font-weight: bold;
-    margin: 0 auto;
 }
 
-.basket-button button {
-    padding: 15px 25px;
-}
+
 
 .basket-button button {
-    height: 50px;
-    padding: 9px 25px;
+    padding: 15px 10px;
+    margin: 5%;
     background-color: #9a0002;
     color: white;
     border: none;
@@ -291,44 +319,67 @@ footer {
 }
 
 .basket-button button:hover {
-    background-color: #670808;
+    background-color: rosybrown;
 }
 
 .basket-button button {
     cursor: pointer;
 }
+/*End Products*/
 
-@media (min-width:320px) {
-    /* smartphones, iPhone, portrait 480x320 phones */
+/*Start slides*/
+/* The grid: Four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 16%;
+    padding: 10px;
 }
 
-@media (min-width:481px) {
-    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+/* Style the images inside the grid */
+.column img {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-    nav ul li a {
-        display: flex;
-    }
+.column img:hover {
+    opacity: 1;
 }
 
-@media (min-width:961px) {
-    /* tablet, landscape iPad, lo-res laptops ands desktops */
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-@media (min-width:1025px) {
-    /* big landscape tablets, laptops, and desktops */
+/* The expanding image container */
+.container-slide {
+    position: relative;
+    display: none;
 }
 
-@media (min-width:1281px) {
-    /* hi-res laptops and desktops */
+/* Expanding image text */
+#imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
 }
 
-.account {
-    margin-left: 10%;
+/* Closable button inside the expanded image */
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
 }
-
+/*End slides*/
+.register {
+    background-color: rgb(253, 244, 247);
+}
 .myOrder a:link,
 .account a:link,
 .order a:link,
