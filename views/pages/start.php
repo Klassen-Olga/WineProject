@@ -3,23 +3,24 @@
 
 <div class="row">
     <div class="column">
-        <img src="assets/images/slideGallery/1.jpg" alt="Enjoy a glass of wine together with us." style="width:100%" onclick="myFunction(this);"
+        <img src="assets/images/slideGallery/1.jpg" alt="Enjoy a glass of wine together with us." style="width:100%"
+             onclick="myFunction(this);"
              onload="myFunction(this);">
     </div>
     <div class="column">
-        <img src="assets/images/slideGallery/2.jpg" alt="Snow" style="width:100%" onclick="myFunction(this);">
+        <img src="assets/images/slideGallery/2.jpg" alt="From all over the world: The large assortment for wine lovers!" style="width:100%" onclick="myFunction(this);">
     </div>
     <div class="column">
-        <img src="assets/images/slideGallery/3.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
+        <img src="assets/images/slideGallery/3.jpg" alt="A genuine Palatinate with an exotic soul" style="width:100%" onclick="myFunction(this);">
     </div>
     <div class="column">
-        <img src="assets/images/slideGallery/4.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+        <img src="assets/images/slideGallery/4.jpg" alt="Collections from best cellars" style="width:100%" onclick="myFunction(this);">
+    </div >
+    <div class="column">
+        <img src="assets/images/slideGallery/5.jpg" alt="Premium wineries from all over the world" style="width:100%" onclick="myFunction(this);">
     </div>
     <div class="column">
-        <img src="assets/images/slideGallery/5.jpg" alt="Mountains" style="width:100%" onclick="myFunction(this);">
-    </div>
-    <div class="column">
-        <img src="assets/images/slideGallery/6.jpg" alt="Lights" style="width:100%" onclick="myFunction(this);">
+        <img src="assets/images/slideGallery/6.jpg" style="width:100%" onclick="myFunction(this);">
     </div>
 </div>
 
@@ -33,13 +34,13 @@
 /*key=productId, value sale in %*/
 $saleProducts = [
     1 => 10,
-    2 => 11,
-    3 => 12,
-    4 => 13,
-    5 => 14,
-    6 => 15,
-    7=>50,
-    8=>75
+    2 => 15,
+    3 => 20,
+    4 => 30,
+    5 => 50,
+    6 => 75,
+    7 => 50,
+    8 => 90
 
 ];
 ?>
@@ -52,18 +53,18 @@ $saleProducts = [
             $dbPicture = productsPicture($key);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
             $price = $dbQuery[0]['standardPrice'];
-            $oldPrice=0;
+            $oldPrice = number_format($dbQuery[0]['standardPrice']*100/(100-$value), 2, '.', '');
             ?>
             <article>
-                <div class="sale-section"><?= $value.' %'?></div>
+                <div class="sale-section"><?= $value . ' %' ?></div>
                 <a href="?c=products&a=theProduct&i=<?= $key ?>"><img class="container-image"
                                                                       src="<?php echo $picture; ?>"></a><br>
                 <div class="container-name">
                     <a href="?c=products&a=theProduct&i=<?= $key ?>"> <?= $dbQuery[0]['prodName']; ?></a>
                 </div>
-                <div class="old-price"><?= $oldPrice. ' €'?></div>
+                <div class="old-price"><?= $oldPrice . ' €' ?></div>
                 <div class="container-price new-price">
-                    <?='New price:' . $price . ' €' ?>
+                    <?= 'New price:' . $price . ' €' ?>
                 </div>
                 <iframe name="hiddenFrame" class="hide"></iframe>
                 <form action="?a=shoppingCartShow&i=<?= $key; ?>&p=<?= $price; ?>"

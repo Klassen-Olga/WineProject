@@ -1,4 +1,5 @@
 @import url(https://fonóts.googleapis.com/css?family=Open+Sans);
+
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -168,6 +169,7 @@ header img {
     .menu li:not(:first-child) {
         display: none;
     }
+
     .menu .responsive-class-icon {
         float: right;
         display: block !important;
@@ -182,6 +184,7 @@ header img {
         position: relative;
         height: auto;
     }
+
     .menu.responsive ul {
         float: left;
         background-color: #670808;
@@ -189,31 +192,37 @@ header img {
         height: auto;
         z-index: 1;
     }
+
     .menu.responsive ul li a {
         border: none;
     }
+
     .menu.responsive .logout [type="submit"] {
         margin-left: 13px;
     }
+
     .menu.responsive li a {
         margin-top: 0;
         padding-top: 7px;
     }
+
     .menu.responsive li ul {
         position: absolute;
         width: 100%;
     }
+
     .menu.responsive .responsive-class-icon {
         position: absolute;
         right: 0;
         top: 0;
     }
 
-    header{
+    header {
         background-repeat: round;
         background-size: cover;
     }
-    .container article{
+
+    .container article {
         flex: 0 1 40% !important;
         margin: 5% !important;
 
@@ -230,7 +239,7 @@ header img {
 
 
 /*End Navi*/
-h1, h2{
+h1, h2 {
     text-align: center;
     margin: 3% 0;
 }
@@ -267,14 +276,13 @@ footer {
 }
 
 
-
 .container article {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: #f7f7f7;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     flex: 0 1 24%;
     margin: 2.5% 1px;
 
@@ -309,8 +317,7 @@ footer {
 }
 
 
-
-.basket-button button {
+.basket-button button, .subtotal .proceedToCheckout a {
     padding: 15px 10px;
     margin: 5%;
     background-color: #9a0002;
@@ -320,13 +327,20 @@ footer {
     text-transform: uppercase;
 }
 
-.basket-button button:hover {
+.basket-noProducts {
+    text-align: center;
+    margin: 3% 0;
+
+}
+
+.basket-button button:hover, .subtotal .proceedToCheckout a:hover, .product-basket-content button:hover {
     background-color: rosybrown;
 }
 
 .basket-button button {
     cursor: pointer;
 }
+
 /*End Products*/
 
 /*Start slides*/
@@ -363,11 +377,13 @@ footer {
 /* Expanding image text */
 #imgtext {
     position: absolute;
-    bottom: 15px;
+    top: 15px;
     left: 15px;
     color: white;
     font-size: 20px;
     background-color: black;
+    padding: 0 7px;
+    border-radius: 10px;
     opacity: 0.8;
 }
 
@@ -380,10 +396,12 @@ footer {
     font-size: 35px;
     cursor: pointer;
 }
+
 /*End slides*/
 .register {
     background-color: rgb(253, 244, 247);
 }
+
 .myOrder a:link,
 .account a:link,
 .order a:link,
@@ -588,9 +606,6 @@ hr {
     padding-bottom: 3%;
 }
 
-.data h2 {
-    margin-left: 10%;
-}
 
 .register label {
     font-size: 1.1em;
@@ -684,6 +699,7 @@ hr {
     max-width: 550px;
     background-color: rgb(253, 244, 247);
     padding-top: 1%;
+    min-height: 480px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
 }
 
@@ -748,7 +764,7 @@ hr {
     display: none;
 }
 
-.check input[type=checkbox]+label::before {
+.check input[type=checkbox] + label::before {
     width: 22px;
     height: 18px;
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
@@ -757,7 +773,7 @@ hr {
     float: left;
 }
 
-.check input[type=checkbox]:checked+label::before {
+.check input[type=checkbox]:checked + label::before {
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
 }
 
@@ -769,7 +785,8 @@ hr {
     font-size: 1em;
     color: #9a0002;
 }
-.sale-section{
+
+.sale-section {
     background-color: green;
     font-size: medium;
     font-weight: bold;
@@ -779,11 +796,112 @@ hr {
     position: relative;
     left: 30%;
 }
-.new-price{
+
+.new-price {
     color: #e41b1e;
-    font-size: larger;
+    font-size: medium;
 }
-.old-price{
+
+.old-price {
 
     text-decoration: line-through;
 }
+
+/* Start the Product*/
+.image-theProduct {
+    width: 200px;
+    height: 600px;
+
+    margin-left: 50px;
+}
+
+/*End the product*/
+/*Start the basket*/
+basket-product-inner {
+    grid-area: product;
+    width: 70%;
+
+}
+
+.subtotal {
+    grid-area: subtotalColumn;
+    margin-right: 5%;
+    height: 500px;
+    position: sticky
+
+}
+
+
+.basket-container {
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-areas: 'product subtotalColumn';
+}
+
+
+.basket-image {
+    width: 50px;
+    height: 150px;
+    grid-area: basketImage;
+}
+
+.basket-image img {
+    width: 50px;
+    height: 150px;
+    margin: 10px 15px;
+}
+
+.basket-product a {
+    grid-area: a;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    margin: 5px;
+}
+
+.product-basket-content {
+    grid-area: productBasketContent;
+    text-align: center;
+}
+.product-basket-content button{
+    padding: 10px 20px;
+    background-color: #9a0002;
+    border: none;
+    color: #f3f3f3;
+    border-radius: 50px;
+    margin: 2px 0;
+}
+.product-basket-content p{
+    color: darkgreen;
+    font-weight: bolder;
+    text-align: right;
+    margin-right: 5px;
+}
+.product-basket-content form select{
+
+}
+.product-basket-content form{
+    text-align: left;
+}
+.basket-product {
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 3%;
+    margin-bottom: 5%;
+    display: grid;
+    grid-template-areas: 'a a' 'basketImage productBasketContent';
+}
+
+
+.subtotal .proceedToCheckout a {
+    padding-left: 50px !important;
+    padding-right: 50px !important;
+    text-decoration: none;
+
+}
+.subtotal .proceedToCheckout{
+    text-align: center;
+    margin: 50px 15px;
+}
+
+/*end the basket*/
