@@ -2,7 +2,7 @@
 <div class="register">
     <form action="<?= $_SERVER['PHP_SELF'] . '?a=personalData&c=accounts&j=test'; ?>" method="POST">
         <div class="address">
-        <h4>personal data</h4>
+        <h3>change personal data</h3>
         <div class="text">
         <label for="fname">First name:</label>
             <input type="text" name="firstName"

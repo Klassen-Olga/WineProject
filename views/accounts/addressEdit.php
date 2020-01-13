@@ -4,7 +4,7 @@
 
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=personalData&c=accounts&j=test1'; ?>" method="POST">
     <div class="address">
-        <h3>Address</h3>
+        <h3>change address</h3>
         <br>
         <div class = address-country>
             <label for="country">Country: </label>

@@ -3,7 +3,7 @@
 <div class="fieldset">
 <h1>Checkout</h1>
 
-<legend>consignee </legend>
+<h3>consignee </h3>
 <br>
 <table>
 <tr><td>firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
@@ -18,7 +18,7 @@
 
 <br>
 
-<legend>delivery address </legend>
+<h3>delivery address </h3>
 <br>
 <table>
 <tr><td>zip: </td><td><?php echo $_POST['zip'];?></td></tr>
@@ -31,7 +31,7 @@
 <br>
 
 
-<legend>pay method:  </legend>
+<h3>pay method:  </h3>
 <br>
 <table>
 <tr><td><?php echo $_POST['payMethod'];?></td></tr>
