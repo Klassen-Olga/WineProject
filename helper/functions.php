@@ -633,7 +633,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $z
                         'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
                         'qty'=>$shopingcartItems[$key]['qty'],
                         'productID'=>$shopingcartItems[$key]['productID'],
-                        'shoppingCartId'=>$shopingcartItems[$key]['shoppingcartId']
+                        'shoppingCartId'=>$shopingcartItems[$key]['shoppingCartId']
                         ];
                         $shoppingCartItem1 = new \skwd\models\ShoppingCartItem($shoppingCartItem);
                         $shoppingCartItem1->delete($errors);

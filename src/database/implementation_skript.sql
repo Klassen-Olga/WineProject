@@ -204,7 +204,7 @@ actualPrice			decimal(9,2)not null,
 productID			int			not null,
 shoppingCartId		int			not null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
-updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,/
 constraint ShoppingCartItem_pk primary key(id),
 constraint ShoppingCartItem_fk_Product foreign key(productId) references Product(id),
 constraint ShoppingCartItem_fk_ShoppingCart foreign key(shoppingCartId) references ShoppingCart(id));
