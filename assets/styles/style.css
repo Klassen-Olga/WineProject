@@ -264,8 +264,11 @@ footer {
 
 .error-text {
     color: red;
+    text-indent: 60px;
 }
+.error-text p{
 
+}
 
 /*Products */
 

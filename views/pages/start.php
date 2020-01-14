@@ -20,7 +20,7 @@
         <img src="assets/images/slideGallery/5.jpg" alt="Premium wineries from all over the world" style="width:100%" onclick="myFunction(this);">
     </div>
     <div class="column">
-        <img src="assets/images/slideGallery/6.jpg" style="width:100%" onclick="myFunction(this);">
+        <img src="assets/images/slideGallery/6.jpg" alt="Famous manufacturers" style="width:100%" onclick="myFunction(this);">
     </div>
 </div>
 
