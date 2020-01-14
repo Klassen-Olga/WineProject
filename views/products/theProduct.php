@@ -8,15 +8,14 @@ if (count($product) !== 0):
     ?>
     <section class="max-section">
         <?php if (count($pictures) !== 0): ?>
-            <div>
-                <h2><?= $product[0]['prodName'] ?></h2><br>
+            <div class="image-theProduct">
                 <?php foreach ($pictures as $key => $value): ?>
-                    <img class="image-theProduct" src="<?= $value['path'] ?>"
+                    <img class="image-theProduct" src="<?= $value['path'] ?>">
                 <?php endforeach; ?>
-                <?= $product[0]['description'] ?>
             </div>
         <?php endif; ?>
-        <div>
+        <h2><?= $product[0]['prodName'] ?></h2><br>
+        <div class="table-theProduct">
             <table>
                 <?php foreach ($query as $key => $value): ?>
                     <tr>
@@ -26,7 +25,8 @@ if (count($product) !== 0):
                 <?php endforeach; ?>
             </table>
         </div>
-        <div>
+        <div class="price-add-to-basket-theProduct">
+            <div>
             <p>Price: <?= $product[0]['standardPrice'] . ' €' ?></p>
 
             <iframe name="hiddenFrame" class="hide"></iframe>
@@ -34,7 +34,9 @@ if (count($product) !== 0):
                   method="post" <?= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" ?> >
                 <button type="submit">Add to basket</button>
             </form>
-            <div>
+            </div>
+        </div>
+                <?= $product[0]['description'] ?>
     </section>
 <?php else: ?>
     <p>This product is missing</p>

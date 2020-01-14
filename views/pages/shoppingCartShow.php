@@ -4,6 +4,7 @@ $shoppingCart = \skwd\models\ShoppingCart::find('accountId=' . $accountId);
 $shoppingCart = $shoppingCart[0];
 $shoppingCartItems = \skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCart['id']);
 if (count($shoppingCartItems) === 0):?>
+
     <article class="basket-noProducts">
         <h3>Your shopping cart is empty</h3>
         <p>Continue shopping on your SKWD online shop <a href="?c=products&a=allProducts"> here</a></p>
@@ -19,22 +20,21 @@ if (count($shoppingCartItems) === 0):?>
     }
     ?>
     <h1>Your basket products</h1>
-    <div class="basket-container">
-        <article class="subtotal">
+    <section class="basket-container">
+        <div class="subtotal">
             <h2>Subtotal for <?= $itemNumb ?> items: <?= $sum . ' €' ?></h2>
             <div class="proceedToCheckout">
-                <a href="?c=pages&a=checkout">Proceed to checkout</a>
+                <a href="?c=pages&a=checkout">Proceed to order</a>
             </div>
-        </article>
+        </div>
 
-        <div class="basket-product-inner">
+        <div class="row-basket">
             <?php foreach ($shoppingCartItems as $shoppingCartItem):
                 $pictures = productsPicture($shoppingCartItem['productID']);
                 $picturePath = count($pictures) > 0 ? $pictures[0]['path'] : 'assets/images/noPicture.jpg';
                 $productName = \skwd\models\Product::find('id=' . $shoppingCartItem['productID'])[0]['prodName'];
                 ?>
-                <section class="basket-product">
-
+                <div class="column-basket">
                     <a href="?c=products&a=theProduct&i=<? $shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
                     <div class="basket-image">
                         <a href="?c=products&a=theProduct&i=<?= $shoppingCartItem['productID'] ?>"><img
@@ -62,12 +62,11 @@ if (count($shoppingCartItems) === 0):?>
                             </select>
                             <button type="submit">Change quantity</button>
                         </form>
-
                     </div>
-                </section>
-            <?php endforeach; ?><br><br>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-    </div>
+    </section>
 <?php endif; ?>
 
