@@ -2,11 +2,10 @@
 
 <div class="order">
 
-<h1>Order</h1>
 
     <div class="fieldset">
        
-        <h3>your order from: <?php echo $this->_params['orders'][0]['orderDate'];?> </h3>
+        <h2>your order from: <?php echo $this->_params['orders'][0]['orderDate'];?> </h2>
         <br>
         <table>
             <tr><td>OrderId: </td><td><?php echo $this->_params['orders'][0]['id'];;?></td></tr>
