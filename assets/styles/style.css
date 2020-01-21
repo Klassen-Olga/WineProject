@@ -226,6 +226,9 @@ header img {
 .wineGuideBox {
     max-width: 600px;
     display: inline;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 2%;
 }
 
 .wineGuideWrapper {
@@ -418,6 +421,15 @@ footer {
     float: left;
 }
 
+.checkout1 table {
+    margin-left: 9%;
+}
+
+.checkout1 .button {
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
 .checkout2 {
     margin-top: 5%;
 }
@@ -471,6 +483,29 @@ footer {
     margin-left: 3%;
 }
 
+.personalData table,
+.order table,
+.myOrder table,
+.checkout2 table,
+.checkout1 table {
+    table-layout: fixed;
+    text-align: left;
+    width: 100%;
+}
+
+.checkout1 .tdWidth {
+    width: 20.5%;
+}
+
+.tdWidth {
+    width: 40%;
+}
+
+.personalData hr {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
 .personalData a:link,
 .personalData a:visited {
     border-radius: 10px;
@@ -491,14 +526,14 @@ footer {
 .personalData .fieldset,
 .order .fieldset {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 900px;
     padding-left: 3%;
     padding-bottom: 3%;
 }
 
 .myOrder .fieldset {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 900px;
     padding-top: 4%;
     padding-left: 4%;
     padding-bottom: 4%;

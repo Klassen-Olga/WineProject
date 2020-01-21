@@ -6,11 +6,11 @@
 <h3>consignee </h3>
 <br>
 <table>
-<tr><td>firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
-<tr><td>lastname:</td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
-<tr><td>email: </td><td><?php echo $this->_params['account'][0]['email'];?></td></tr>
-<tr><td>phone number: </td><td><?php echo $this->_params['customer'][0]['phoneNumber']; ?></td></tr>
-<tr><td>date of birth: </td><td><?php echo dateOfBirthInRightOrder($this->_params['customer'][0]['dateOfBirth']);?></td></tr>
+<tr><td class="tdWidth">firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
+<tr><td class="tdWidth">lastname:</td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
+<tr><td class="tdWidth">email: </td><td><?php echo $this->_params['account'][0]['email'];?></td></tr>
+<tr><td class="tdWidth">phone number: </td><td><?php echo $this->_params['customer'][0]['phoneNumber']; ?></td></tr>
+<tr><td class="tdWidth">date of birth: </td><td><?php echo dateOfBirthInRightOrder($this->_params['customer'][0]['dateOfBirth']);?></td></tr>
 </table>
 
 <br>
@@ -21,10 +21,10 @@
 <h3>delivery address </h3>
 <br>
 <table>
-<tr><td>zip: </td><td><?php echo $_POST['zip'];?></td></tr>
-<tr><td>city</td><td><?php echo $_POST['city'];?></td></tr>
-<tr><td>street</td><td><?php echo $_POST['street'];?></td></tr>
-<tr><td>country</td><td><?php echo $_POST['country'];?></td></tr>
+<tr><td class="tdWidth">zip: </td><td><?php echo $_POST['zip'];?></td></tr>
+<tr><td class="tdWidth">city</td><td><?php echo $_POST['city'];?></td></tr>
+<tr><td class="tdWidth">street</td><td><?php echo $_POST['street'];?></td></tr>
+<tr><td class="tdWidth">country</td><td><?php echo $_POST['country'];?></td></tr>
 </table>
 <br>
 <hr>
