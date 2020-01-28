@@ -6,10 +6,27 @@ require_once 'config/imports.php';
 //codepen
 
 
+class User{
+    private $id=null;
+    public function __construct($id){
+        $this->id=$id;
+
+        $str= get_class($this);
+        }
+};
+class SubUser extends User{};
+
+$userA=new \User(1);
+$userB=new \SubUser(2);
+
+
+
+
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
-
+$src=__FILE__;
+$src1=__DIR__;
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
 if (file_exists($controllerPath)){
