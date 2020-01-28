@@ -80,7 +80,12 @@
                         <label for="password1">Password:</label>
                         <input type="password" id="password1" name="password1"
                         value="<?= isset($_POST['password1']) ? htmlspecialchars($_POST['password1']) : '' ?>"
-                        onchange="validateLength(this)" required/><br>
+                        onchange="validateLength(this)" required
+                        onkeyup="char_count();" />
+                        <br>
+                        
+                        <label id="feedback"></label>
+                    
                     </div>
                     <div class=text> 
                         <label for="password2">Repeat password:</label>
