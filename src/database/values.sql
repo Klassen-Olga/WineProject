@@ -155,7 +155,18 @@ INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`created
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,11,1,'Accessory',NULL,NULL);
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,12,1,'Accessory',NULL,NULL);
 
+-- Benutzer
+insert into Customer(firstName, lastName,gender, dateOfBirth, phoneNumber, addressID)
+values
+('Abraham', 'Lincoln','m', '1809-02-12', null, 1);
 
+insert into Account(email, password, customerID)
+values
+('lincoln@abraham.com', '$2y$10$eYEFo2/axTPuQvMEbYvtT.DQCPglYd6Q1IfvS7fKMGKu2qfqWG5ES', 1);-- 11111111a
+
+insert into ShoppingCart(accountId)
+values
+(1);
 
 
 
