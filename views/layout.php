@@ -2,6 +2,7 @@
 <html lang="de">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style.css" type="text/css">
@@ -39,11 +40,11 @@
 
 
     <!--Account -->
-    <li><a href="?c=pages&a=account" onclick="tabChange(this)">Account</a>
+    <li><a href="#" onclick="tabChange(this)">Account</a>
         <ul>
             <?php if (usersIdIfLoggedIn() !== null): ?>
-                <li><a href="?c=accounts&a=personalData"> personal data</a></li>
-                <li><a href="?c=accounts&a=myOrders"> my orders</a></li>
+                <li><a href="?c=accounts&a=personalData"> Personal data</a></li>
+                <li><a href="?c=accounts&a=myOrders"> My orders</a></li>
 
             <?php else: ?>
                 <li><a href="?a=login">Login</a></li>

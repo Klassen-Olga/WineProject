@@ -96,8 +96,7 @@ INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`created
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,6,'Rose Wine',NULL,NULL);
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,7,'12.5%',NULL,NULL);
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,8,'Italy',NULL,NULL);
-INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,7,'12.0%',NULL,NULL);
-INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,2,8,'France',NULL,NULL);
+
 
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,5,1,'Sparkling Wine',NULL,NULL);
 INSERT INTO `PropertyProProduct` (`id`,`productID`,`propertyID`,`value`,`createdAt`,`updatedAt`) VALUES (NULL,5,2,'2013',NULL,NULL);

@@ -1,8 +1,4 @@
 
-
-    
-    
-    
     <?php
 
 if((isset($_GET['j'])&&$_GET['j']=='test')||isset($_POST['submitEdit'])){

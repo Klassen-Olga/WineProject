@@ -56,7 +56,7 @@ abstract class BaseModel
         } catch (\PDOException $e) {
             die('select statement failed: ' . $e . getMessage());
         }
-
+        $db=null;
         return $result;
 
     }
@@ -108,9 +108,11 @@ abstract class BaseModel
             $valueString .= '); ';
             $sql .= $valueString;
             $statement = $db->prepare($sql);
+
             if ($statement->execute()) {
                 $this->data['id'] = $db->lastInsertId();
             }
+            $db=null;
             return true;
         } catch (\PDOException $e) {
             $errors[] = 'Error inserting ' . ' in' . get_called_class() . ':' . $e->getMessage();
@@ -137,6 +139,7 @@ abstract class BaseModel
         } catch (\PDOException $e) {
             $errors[] = 'Error updating ' . ' in' . get_called_class() . ': $e->getMessage()';
         }
+        $db=null;
     }
 
     public function delete(&$errors)
@@ -151,7 +154,7 @@ abstract class BaseModel
         } catch (\PDOException $e) {
             $errors[] = 'Error deleting ' . ' in' . get_called_class() . ': $e->getMessage()';
         }
-
+        $db=null;
     }
 
     protected function validateValue($attribute, &$value, &$schemaOptions)
