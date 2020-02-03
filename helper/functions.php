@@ -253,9 +253,6 @@ function register(&$errors)
 
 function isPasswordfromUser($password, $email, &$errors)
 {
-    /*if(strlen($password)==1 || strlen($email)==1 ){
-        return false;
-    }*/
 
     $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
 
@@ -281,7 +278,7 @@ function login($password, $email, $rememberMe, &$errors)
     $isLoginSuccessful = isPasswordfromUser($password, $email, $errors);
     if ($isLoginSuccessful == true && $rememberMe == true) {
         $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
-        $id = $dbQuery[0]['i    d'];
+        $id = $dbQuery[0]['id'];
         rememberMe($email, $id);
     }
 

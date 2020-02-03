@@ -197,7 +197,8 @@ constraint ShoppingCart_pk primary key(id),
 constraint ShoppingCart_fk_Account foreign key(accountId) references Account(id)
 );
 -- ---------
-CREATE OR REPLACE TABLE ShoppingCartItem(
+DROP TABLE IF EXISTS ShoppingCartItem;
+CREATE TABLE IF NOT EXISTS ShoppingCartItem(
 id					int			not null 	AUTO_INCREMENT,
 qty					int			not null,
 actualPrice			decimal(9,2)not null,
