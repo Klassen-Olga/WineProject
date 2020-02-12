@@ -79,8 +79,7 @@
                     <div class=text> 
                         <label for="password1">Password:</label>
                         <input type="password" id="password1" name="password1"
-                        value="<?= isset($_POST['password1']) ? htmlspecialchars($_POST['password1']) : '' ?>"
-                        onchange="validateLength(this)" required
+                        value="<?= isset($_POST['password1']) ? htmlspecialchars($_POST['password1']) : '' ?>" required
                         onkeyup="char_count();" />
                         <br>
                         
@@ -91,15 +90,10 @@
                         <label for="password2">Repeat password:</label>
                         <input type="password" id="password2" name="password2"
                         value="<?= isset($_POST['password2']) ? htmlspecialchars($_POST['password2']) : '' ?>"
-                        onchange="validateLength(this)" required/><br>
+                        required/><br>
                     </div>
-                
                 </div>
-                
-       
-        
-
-    <div class="address">
+        <div class="address">
 
         <div class="center">
 

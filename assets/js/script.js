@@ -84,28 +84,28 @@ function char_count() {
     //Das Passwort ist entweder zu kurz, unsicher, sicher oder sehr sicher
 
     //Ist das Passwort wenigstens 6 Zeichen lang?
-    if (val.length > 5) {
+    if (val.length > 7) {
 
         //Wenn das Passwort neben Buchstaben zusätzlich wenigstens eine Zahl 
         //und ein Sonderzeichen enthält, ist es "sehr sicher".    
         if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) && val.match(/\W/)) {
             call.style.color = "#428c0d";
-            call.innerHTML = "<strong>sehr sicher!</strong>";
+            call.innerHTML = "<strong>Very strong</strong>";
         }
 
         //Wenn das Passwort nur eine Zahl oder ein Sonderzeichen enthält, ist es "sicher"?           
         else if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) || val.match(/\W/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/)) {
             call.style.color = "#56a40c";
-            call.innerHTML = "<strong>sicher!</strong>";
+            call.innerHTML = "<strong>Your password ist strong</strong>";
         } else //Hier enthält das Passwort weder Ziffern noch Sonderzeichen und ist somit "unsicher".
         {
 
             call.style.color = "#ff9410";
-            call.innerHTML = "<strong>unsicher!</strong>";
+            call.innerHTML = "<strong>Please make your password stronger</strong>";
         }
     } else //Hier enthält das Passwort nicht mal die erforderlichen 6 Zeichen und ist daher "zu kurz"
     {
         call.style.color = "#ff352c";
-        call.innerHTML = "<strong>zu kurz!</strong>";
+        call.innerHTML = "<strong>At least 8 characters, a number of symbol</strong>";
     }
 }
