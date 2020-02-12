@@ -331,7 +331,7 @@ function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerI
         'lastName' => $_POST['lastName'],
         'gender' => $gender,
         'dateOfBirth' => $dateOfBirth,
-        'phoneNumber' => $_POST['phoneNumber'],
+        'phoneNumber' => empty( $_POST['phoneNumber']) ? null : $_POST['phoneNumber'],
         'addressID' => $addressID];
 
     if (isset($_SESSION['id'])) {
@@ -369,10 +369,8 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     } else if (strlen($_POST['email']) <= 2) {
         array_push($error, "Please fill out email field");
         return false;
-    } else if (strlen($_POST['phoneNumber']) <= 2) {
-        array_push($error, "Please fill out phone number field");
-        return false;
-    } else {
+    }
+     else {
         $test = true;
         if (strcmp($email, $_POST['email']) !== 0) {
             $test = isUnique($error, $_POST['email']);

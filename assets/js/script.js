@@ -84,7 +84,7 @@ function char_count() {
     //Das Passwort ist entweder zu kurz, unsicher, sicher oder sehr sicher
 
     //Ist das Passwort wenigstens 6 Zeichen lang?
-    if (val.length > 5) {
+    if (val.length > 7) {
 
         //Wenn das Passwort neben Buchstaben zusätzlich wenigstens eine Zahl 
         //und ein Sonderzeichen enthält, ist es "sehr sicher".    
