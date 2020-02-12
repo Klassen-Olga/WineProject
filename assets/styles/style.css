@@ -529,7 +529,6 @@ footer {
     table-layout: fixed;
     text-align: left;
     width: 100%;
-
 }
 
 .checkout1 .tdWidth {
@@ -1191,7 +1190,6 @@ hr {
 
 /* start error page */
 
-<<<<<<< HEAD
 select {
     display: block;
     font-size: 15px;
@@ -1235,5 +1233,3 @@ select:focus {
 select option {
     font-weight: normal;
 }
-=======
->>>>>>> 319269c1a50eaed0a95d1deb0cacc7d4fff38139
