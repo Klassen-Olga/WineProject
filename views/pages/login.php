@@ -12,7 +12,8 @@
             <label for="loginPassword">password: </label>
             <br>
             <input type="password" name="validationPassword" id="loginPassword" placeholder="your password"
-            required> <br>
+             required> <br>
+          
 
             <div class = buttonLogin>
                 <input type="submit" name="submitLogin" value="login">

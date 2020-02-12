@@ -1,5 +1,4 @@
 @import url(https://fonóts.googleapis.com/css?family=Open+Sans);
-
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -52,6 +51,7 @@ header img {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
     background-color: #9a0002;
 }
+
 
 /*Basket, Wine Quide*/
 
@@ -166,7 +166,6 @@ header img {
     .menu li:not(:first-child) {
         display: none;
     }
-
     .menu .responsive-class-icon {
         float: right;
         display: block !important;
@@ -178,7 +177,6 @@ header img {
         position: relative;
         height: auto;
     }
-
     .menu.responsive ul {
         float: left;
         background-color: #670808;
@@ -186,74 +184,65 @@ header img {
         height: auto;
         z-index: 1;
     }
-
     .menu.responsive ul li a {
         border: none;
     }
-
     .menu.responsive .logout [type="submit"] {
         margin-left: 13px;
     }
-
     .menu.responsive li a {
         margin-top: 0;
         padding-top: 7px;
     }
-
     .menu.responsive li ul {
         position: absolute;
         width: 100%;
     }
-
     .menu.responsive .responsive-class-icon {
         position: absolute;
         right: 0;
         top: 0;
     }
-
     header {
         background-repeat: round;
         background-size: cover;
     }
-
     .container article {
         flex: 0 1 40% !important;
         margin: 5% !important;
     }
-
-    .column-basket, .subtotal {
+    .column-basket,
+    .subtotal {
         width: 100% !important;
         position: relative !important;
         margin: 2% 0 !important;
         padding: 0 !important;
     }
-
     .product-basket-content form select {
         float: none !important;
     }
-    .max-section{
+    .max-section {
         display: grid;
         grid-template-areas: 'img' 'tableTheProduct' 'priceAddToBasket' 'descrip' !important;
     }
-    .image-theProduct img{
+    .image-theProduct img {
         width: 150px !important;
         height: 340px !important;
     }
-    .table-theProduct table{
+    .table-theProduct table {
         margin-left: 7%;
     }
-    .table-theProduct image{
-        width:100% !important;
+    .table-theProduct image {
+        width: 100% !important;
         margin: 0 auto !important;
     }
-
-    .max-section>div{
+    .max-section>div {
         max-height: none !important;
         margin-left: 5% !important;
     }
-    .image-theProduct{
+    .image-theProduct {
         position: relative;
-        left:17%;
+        left: 17%;
     }
 }
 
@@ -270,6 +259,9 @@ header img {
 .wineGuideBox {
     max-width: 600px;
     display: inline;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 2%;
 }
 
 .wineGuideWrapper {
@@ -285,7 +277,8 @@ header img {
 }
 
 h1,
-.register h3, h2 {
+.register h3,
+h2 {
     text-align: center;
     margin: 3% 0;
 }
@@ -313,7 +306,6 @@ footer {
 }
 
 
-
 /*Products */
 
 .container {
@@ -322,7 +314,9 @@ footer {
     justify-content: space-between;
 }
 
-.container article, .subtotal, .price-add-to-basket-theProduct {
+.container article,
+.subtotal,
+.price-add-to-basket-theProduct {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -464,6 +458,15 @@ footer {
     float: left;
 }
 
+.checkout1 table {
+    margin-left: 9%;
+}
+
+.checkout1 .button {
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
 .checkout2 {
     margin-top: 5%;
 }
@@ -517,6 +520,30 @@ footer {
     margin-left: 3%;
 }
 
+.personalData table,
+.order table,
+.myOrder table,
+.checkout2 table,
+.checkout1 table {
+    table-layout: fixed;
+    text-align: left;
+    width: 100%;
+
+}
+
+.checkout1 .tdWidth {
+    width: 20.5%;
+}
+
+.tdWidth {
+    width: 40%;
+}
+
+.personalData hr {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
 .personalData a:link,
 .personalData a:visited {
     border-radius: 10px;
@@ -537,14 +564,14 @@ footer {
 .personalData .fieldset,
 .order .fieldset {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 900px;
     padding-left: 3%;
     padding-bottom: 3%;
 }
 
 .myOrder .fieldset {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 900px;
     padding-top: 4%;
     padding-left: 4%;
     padding-bottom: 4%;
@@ -854,7 +881,6 @@ hr {
 
 .buttonLogin :hover {
     background-color: #9a0002;
-
     color: white;
 }
 
@@ -879,7 +905,7 @@ hr {
     display: none;
 }
 
-.check input[type=checkbox] + label::before {
+.check input[type=checkbox]+label::before {
     width: 22px;
     height: 18px;
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/unchecked.png");
@@ -888,7 +914,7 @@ hr {
     float: left;
 }
 
-.check input[type=checkbox]:checked + label::before {
+.check input[type=checkbox]:checked+label::before {
     background-image: url("https://boolie.org/wp-content/uploads/2017/11/checked.png");
 }
 
@@ -951,23 +977,19 @@ hr {
     grid-column-gap: 20px;
     grid-row-gap: 10px;
     grid-template-areas: 'img tableTheProduct' 'img priceAddToBasket' 'descrip descrip';
-
 }
 
-.max-section > div {
+.max-section>div {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px 0;
     font-size: 20px;
     max-height: 550px;
     margin-right: 8%;
-
 }
 
 .table-theProduct table {
     margin: 0 auto;
     width: 100%;
-
-
 }
 
 .table-theProduct tr {
@@ -985,14 +1007,13 @@ hr {
     background-color: #f5f5f5;
 }
 
-tr:nth-child(even) {
+.table-theProduct tr:nth-child(even) {
     background-color: #e0e0e0;
 }
 
 .image-theProduct {
     width: 30%;
     float: left;
-
 }
 
 .price-add-to-basket-theProduct {
@@ -1008,7 +1029,6 @@ tr:nth-child(even) {
     font-size: large;
 }
 
-
 .price-add-to-basket-theProduct form button {
     padding: 15px 50px;
     background-color: #0e8128;
@@ -1023,6 +1043,7 @@ tr:nth-child(even) {
     border: #34a448 solid 1px;
 }
 
+
 /*End the product*/
 
 
@@ -1035,7 +1056,6 @@ tr:nth-child(even) {
     position: sticky;
     float: right;
     margin: 1% 3%;
-
 }
 
 .basket-image {
@@ -1048,7 +1068,6 @@ tr:nth-child(even) {
 .basket-image img {
     width: 60px;
     height: 165px;
-
 }
 
 .column-basket a {
@@ -1059,24 +1078,23 @@ tr:nth-child(even) {
     margin: 25px 5px;
 }
 
-
 .product-basket-content {
     grid-area: productBasketContent;
     text-align: center;
-
 }
 
-.product-basket-content button, .subtotal .proceedToCheckout a {
+.product-basket-content button,
+.subtotal .proceedToCheckout a {
     padding: 10px 20px;
     background-color: #9a0002;
     border: none;
     color: #f3f3f3;
     border-radius: 50px;
     margin: 2px 0;
-
 }
 
-.product-basket-content button, .price-add-to-basket-theProduct form button {
+.product-basket-content button,
+.price-add-to-basket-theProduct form button {
     cursor: pointer;
 }
 
@@ -1116,7 +1134,9 @@ tr:nth-child(even) {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-linear-gradient(to bottom, #ffffff 0 %, #e5e5e5 100 %);
+    linear-gradient(to bottom,
+    #ffffff 0 %,
+    #e5e5e5 100 %);
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
@@ -1124,7 +1144,6 @@ linear-gradient(to bottom, #ffffff 0 %, #e5e5e5 100 %);
 
 .product-basket-content form {
     text-align: left;
-
 }
 
 .column-basket {
@@ -1135,9 +1154,7 @@ linear-gradient(to bottom, #ffffff 0 %, #e5e5e5 100 %);
     width: 60%;
     display: grid;
     grid-template-areas: 'a a' 'basketImage productBasketContent';
-
 }
-
 
 .subtotal .proceedToCheckout {
     text-align: center;
@@ -1147,20 +1164,18 @@ linear-gradient(to bottom, #ffffff 0 %, #e5e5e5 100 %);
 
 /*end the basket*/
 
+
 /* start error page */
+
 .error-image {
     width: 100%;
-
 }
 
 .go-back-home-div {
     position: absolute;
-    bottom:40%;
+    bottom: 40%;
     margin-left: 5%;
     margin-top: 5%;
-
-
-
 }
 
 .go-back-home-div button {
@@ -1177,4 +1192,6 @@ linear-gradient(to bottom, #ffffff 0 %, #e5e5e5 100 %);
     text-transform: uppercase;
 }
 
+
 /* start error page */
+
