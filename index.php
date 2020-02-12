@@ -3,12 +3,10 @@ ini_set('session.cookie_lifetime', 0);
 session_start();
 require_once 'config/imports.php';
 
-
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 
-$src=__FILE__;
-$src1=__DIR__;
+
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
 if (file_exists($controllerPath)){

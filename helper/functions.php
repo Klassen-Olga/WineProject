@@ -277,7 +277,7 @@ function login($password, $email, $rememberMe, &$errors)
     $isLoginSuccessful = false;
     $isLoginSuccessful = isPasswordfromUser($password, $email, $errors);
     if ($isLoginSuccessful == true && $rememberMe == true) {
-        $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
+        $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $email . '\'');
         $id = $dbQuery[0]['id'];
         rememberMe($email, $id);
     }

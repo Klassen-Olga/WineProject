@@ -162,7 +162,7 @@ values
 
 insert into Account(email, password, customerID)
 values
-('lincoln@abraham.com', '$2y$10$eYEFo2/axTPuQvMEbYvtT.DQCPglYd6Q1IfvS7fKMGKu2qfqWG5ES', 1);-- 11111111a
+('lincoln@abraham.com', '$2y$10$eYEFo2/axTPuQvMEbYvtT.DQCPglYd6Q1IfvS7fKMGKu2qfqWG5ES', 1);-- Password:11111111a
 
 insert into ShoppingCart(accountId)
 values

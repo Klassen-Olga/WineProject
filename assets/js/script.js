@@ -14,8 +14,8 @@ function removeError(input) {
 
 function insertError(input, message) {
     let nextElement = input.parentNode.nextSibling;
-    if (!(nextElement.tagName === "P" && nextElement.className === "error-text")) {
-        input.parentNode.insertAdjacentHTML("afterend", `<br><p class="error-text">` + message + `</p>`);
+    if (!(nextElement.tagName === "p" && nextElement.className === "error-text")) {
+        input.parentNode.insertAdjacentHTML("afterend", `<p class="error-text">` + message + `</p>`);
     }
 }
 
