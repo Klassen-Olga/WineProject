@@ -3,7 +3,6 @@ ini_set('session.cookie_lifetime', 0);
 session_start();
 require_once 'config/imports.php';
 
-
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
 

@@ -305,8 +305,6 @@ footer {
     text-indent: 60px;
 }
 
-.error-text p {}
-
 
 /*Products */
 
@@ -531,6 +529,7 @@ footer {
     table-layout: fixed;
     text-align: left;
     width: 100%;
+
 }
 
 .checkout1 .tdWidth {
@@ -1004,7 +1003,7 @@ hr {
     background-color: #f5f5f5;
 }
 
-tr:nth-child(even) {
+.table-theProduct tr:nth-child(even) {
     background-color: #e0e0e0;
 }
 
@@ -1192,6 +1191,7 @@ tr:nth-child(even) {
 
 /* start error page */
 
+<<<<<<< HEAD
 select {
     display: block;
     font-size: 15px;
@@ -1235,3 +1235,5 @@ select:focus {
 select option {
     font-weight: normal;
 }
+=======
+>>>>>>> 319269c1a50eaed0a95d1deb0cacc7d4fff38139
