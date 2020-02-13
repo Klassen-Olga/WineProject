@@ -37,14 +37,17 @@
             <div class="dateOfBirth">
                 <label for="month">Date of birth:</label>
                 <div class="dateOfBirthCenter">
-                <select name="month" id="month" onchange="dobValidation(this, 'month')">
-                    <option value="">Month</option>
-                    <?php
+                    <div class=month>
+
+                        <select name="month" id="month" onchange="dobValidation(this, 'month')">
+                            <option value="">Month</option>
+                            <?php
                     $array = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                     foreach ($array as $value) :?>
                         <option value="<?= $value ?>" <?= isset($_POST['month']) ? ($_POST['month'] === $value ? "selected" : '') : '' ?>><?= $value ?></option>;
                         <?php endforeach; ?>
                     </select>
+                </div>
                     <select name="day" id="day" onchange="dobValidation(this, 'day')">
                         <option value="">Day</option>
                         <?php for ($i = 1; $i <= 31; $i++) : ?>
@@ -82,15 +85,18 @@
                         value="<?= isset($_POST['password1']) ? htmlspecialchars($_POST['password1']) : '' ?>" required
                         onkeyup="char_count();" />
                         <br>
-                        
+                        <div class="passwordMessage">
                         <label id="feedback"></label>
-                    
+                        </div>
                     </div>
                     <div class=text> 
-                        <label for="password2">Repeat password:</label>
-                        <input type="password" id="password2" name="password2"
-                        value="<?= isset($_POST['password2']) ? htmlspecialchars($_POST['password2']) : '' ?>"
-                        required/><br>
+                        <div class=password2>
+
+                            <label for="password2">Repeat password:</label>
+                            <input type="password" id="password2" name="password2"
+                            value="<?= isset($_POST['password2']) ? htmlspecialchars($_POST['password2']) : '' ?>"
+                            required/><br>
+                        </div>
                     </div>
                 </div>
         <div class="address">
@@ -98,6 +104,12 @@
         <div class="center">
 
             
+            <div class = address-text>
+                <label for="street">Street:</label>
+                <input type="text" id="street" name="street"
+                value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : '' ?>"
+                onchange="validateLength(this)" required/><br>
+            </div>
             <div class = address-text>
                 <label for="zip">Zip:</label>
                 <input type="text" id="zip" name="zip"
@@ -108,12 +120,6 @@
                 <label for="city">City:</label>
                 <input type="text" id="city" name="city"
                 value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '' ?>"
-                onchange="validateLength(this)" required/><br>
-            </div>
-            <div class = address-text>
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street"
-                value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : '' ?>"
                 onchange="validateLength(this)" required/><br>
             </div>
             <div class = address-country>
