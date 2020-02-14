@@ -12,7 +12,7 @@ $this->_params['error'] = [];
 
             <?php $dbPicture = productsPicture($dbQuery[$key]['id']);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
-            $price = $dbQuery[$key]['standardPrice'];
+            $price =  $dbQuery[$key]['standardPrice']-($dbQuery[$key]['standardPrice']*$dbQuery[$key]['discount']/100);
             ?>
                 <article>
                     <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>

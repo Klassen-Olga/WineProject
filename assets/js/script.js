@@ -5,6 +5,10 @@ function myFunction(imgs) {
     imgText.innerHTML = imgs.alt;
     expandImg.parentElement.style.display = "block";
 }
+var slideFirst=document.getElementById('slideFirst');
+if (slideFirst!==null){
+    slideFirst.addEventListener('load',myFunction(slideFirst));
+}
 
 function removeError(input) {
     let nextElement = input.parentNode.nextSibling;
@@ -96,7 +100,7 @@ function char_count() {
         //Wenn das Passwort nur eine Zahl oder ein Sonderzeichen enthält, ist es "sicher"?           
         else if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) || val.match(/\W/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/)) {
             call.style.color = "#56a40c";
-            call.innerHTML = "<strong>Your password ist strong</strong>";
+            call.innerHTML = "<strong>Your password is strong</strong>";
         } else //Hier enthält das Passwort weder Ziffern noch Sonderzeichen und ist somit "unsicher".
         {
 

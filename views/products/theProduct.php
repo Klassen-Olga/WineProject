@@ -3,7 +3,7 @@ $id = $_GET['i'];
 $query = \skwd\models\AllProducts::find("productID=" . $id);
 $pictures = \skwd\models\Picture::find("productID=" . $id);
 $product = \skwd\models\Product::find("id= " . $id);
-$priceOfProduct = \skwd\models\Product::find("id= " . $id)[0]['standardPrice'];
+$priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
 if (count($product) !== 0):
     ?>
     <h2><?= $product[0]['prodName'] ?></h2><br>

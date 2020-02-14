@@ -89,6 +89,7 @@ description			    text	NULL,
 standardPrice		decimal(7,2)NOT NULL,
 productType			enum('Drink','Accessory') NOT NULL,	
 vendorID			int			NOT NULL,
+discount			int  NULL default null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
@@ -201,7 +202,7 @@ DROP TABLE IF EXISTS ShoppingCartItem;
 CREATE TABLE IF NOT EXISTS ShoppingCartItem(
 id					int			not null 	AUTO_INCREMENT,
 qty					int			not null,
-actualPrice			decimal(9,2)not null,
+-- actualPrice			decimal(9,2)not null,
 productID			int			not null,
 shoppingCartId		int			not null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,

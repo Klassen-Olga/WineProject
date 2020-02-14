@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="assets/js/script.js"></script>
+
     <title></title>
 </head>
 <body>
@@ -67,14 +67,12 @@
     }
     ?>
 </div>
+
 <?php echo $body; ?>
-
-
-
-
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
+    <script src="assets/js/script.js"></script>
 </footer>
 </body>
 </html>

@@ -1,10 +1,9 @@
-<div class=wineGuide>
 
+<div class=wineGuide>
 
 <h1>wine-guide</h1>
 
 <br>
-
     <div class=wineGuideWrapper>
         <div class=wineGuideBox>
         <h3>wine history</h3>

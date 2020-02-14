@@ -1,6 +1,6 @@
 <?php
 $dbName='skwd';
-$dns='mysql:dbname='.$dbName.';host=localhost;';
+$dns='mysql:dbname='.$dbName.';host=localhost;port=3307';
 
 $userName='root';
 $password='';

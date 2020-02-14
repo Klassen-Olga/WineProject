@@ -414,7 +414,7 @@ function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId
     //case: add product (doesn't exist in basket)=>insert
     $databaseCheck = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId);
     if (count($databaseCheck)===0){
-        $shoppingCartItem = array('qty' => 1, 'actualPrice' => $price, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
+        $shoppingCartItem = array('qty' => 1, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
     }
     else{
         $shoppingCartItem=$databaseCheck[0];

@@ -12,7 +12,7 @@ else :?>
             $product = \skwd\models\Product::find('id=' . $productId);
             $dbPicture = productsPicture($productId);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
-            $price = $product[0]['standardPrice'];
+            $price = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
             ?>
             <article>
                 <a href="?c=products&a=theProduct&i=<?= $productId ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>

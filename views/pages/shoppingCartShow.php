@@ -14,9 +14,20 @@ if (count($shoppingCartItems) === 0):?>
 
     $sum = 0;
     $itemNumb = 0;
+
     foreach ($shoppingCartItems as $item) {
-        $sum += $item['actualPrice'] * $item['qty'];
-        $itemNumb += $item['qty'];
+        $product=\skwd\models\Product::find('id='.$item['productID']);
+        if ($product!==null && count($product)>0){
+            $product=$product[0];
+            if ($product['discount']===null){
+                $price=$product['standardPrice'];
+            }
+            else{
+                $price=  number_format($product['standardPrice']-($product['standardPrice']*$product['discount']/100), 2, '.', '');
+            }
+            $sum += $price * $item['qty'];
+            $itemNumb += $item['qty'];
+        }
     }
     ?>
     <h1>Your basket products</h1>
@@ -30,43 +41,48 @@ if (count($shoppingCartItems) === 0):?>
 
         <div class="row-basket">
             <?php foreach ($shoppingCartItems as $shoppingCartItem):
-                $pictures = productsPicture($shoppingCartItem['productID']);
-                $picturePath = count($pictures) > 0 ? $pictures[0]['path'] : 'assets/images/noPicture.jpg';
-                $productName = \skwd\models\Product::find('id=' . $shoppingCartItem['productID'])[0]['prodName'];
-                ?>
-                <div class="column-basket">
-                    <a href="?c=products&a=theProduct&i=<? $shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
-                    <div class="basket-image">
-                        <a href="?c=products&a=theProduct&i=<?= $shoppingCartItem['productID'] ?>"><img
-                                    src="<?= $picturePath ?>"></a>
+
+                $product=\skwd\models\Product::find('id= '.$shoppingCartItem['productID']);
+                if($product!==null && count($product)>0 ):
+                    $product=$product[0];
+                    $pictures = productsPicture($shoppingCartItem['productID']);
+                    $picturePath = count($pictures) > 0 ? $pictures[0]['path'] : 'assets/images/noPicture.jpg';
+                    $productName = $product['prodName'];
+                    $price=is_null($product['discount']) ? $product['standardPrice']: number_format($product['standardPrice']-($product['standardPrice']*$product['discount']/100), 2, '.', '')
+                    ?>
+                    <div class="column-basket">
+                        <a href="?c=products&a=theProduct&i=<? $shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
+                        <div class="basket-image">
+                            <a href="?c=products&a=theProduct&i=<?= $shoppingCartItem['productID'] ?>"><img
+                                        src="<?= $picturePath ?>"></a>
+                        </div>
+                        <br>
+                        <div class="product-basket-content">
+                            <p>Price: <?= $price ?></p>
+                            <p>Quantity: <?= $shoppingCartItem['qty'] ?></p>
+                            <iframe name="hiddenFrame" class="hide"></iframe>
+                            <form method="post"
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete"
+                                  target="hiddenFrame">
+                                <button type="submit">Delete</button>
+                            </form>
+                            <iframe name="hiddenFrame" class="hide"></iframe>
+                            <form method="post"
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?= $price ?>&cartOp=upDate"
+                                  target="hiddenFrame">
+                                <select name="qty">
+                                    <option value="1">1</option>
+                                    <?php for ($i = 2; $i < 11; ++$i): ?>
+                                        <option value="<?= $i ?>" <?= isset($shoppingCartItem['qty']) ? ($shoppingCartItem['qty'] == $i ? " selected " : '') : '' ?>><?= $i ?></option>;
+                                    <?php endfor; ?>
+                                </select>
+                                <button type="submit">Change quantity</button>
+                            </form>
+                        </div>
                     </div>
-                    <br>
-                    <div class="product-basket-content">
-                        <p>Price: <?= $shoppingCartItem['actualPrice'] ?></p>
-                        <p>Quantity: <?= $shoppingCartItem['qty'] ?></p>
-                        <iframe name="hiddenFrame" class="hide"></iframe>
-                        <form method="post"
-                              action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete"
-                              target="hiddenFrame">
-                            <button type="submit">Delete</button>
-                        </form>
-                        <iframe name="hiddenFrame" class="hide"></iframe>
-                        <form method="post"
-                              action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?= $shoppingCartItem['actualPrice'] ?>&cartOp=upDate"
-                              target="hiddenFrame">
-                            <select name="qty">
-                                <option value="1">1</option>
-                                <?php for ($i = 2; $i < 11; ++$i): ?>
-                                    <option value="<?= $i ?>" <?= isset($shoppingCartItem['qty']) ? ($shoppingCartItem['qty'] == $i ? " selected " : '') : '' ?>><?= $i ?></option>;
-                                <?php endfor; ?>
-                            </select>
-                            <button type="submit">Change quantity</button>
-                        </form>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+            <?php endif;?>
+                <?php endforeach; ?>
         </div>
 
     </section>
 <?php endif; ?>
-
