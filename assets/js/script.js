@@ -78,11 +78,16 @@ function tabChange(link) {
 function char_count() {
     //Über die DOM-Methode document.getElementById wird der Wert aus dem Eingabefeld geholt
     //und der Variablen val zugewiesen.
-    var val = document.getElementById('password1').value;
-
+    if (document.getElementById('password1')) {
+        var val = document.getElementById('password1').value;
+        var call = document.getElementById('feedback');
+    }
+    if (document.getElementById('newPassword')) {
+        var val = document.getElementById('newPassword').value;
+        var call = document.getElementById('feedback2');
+    }
     //Anschließend wird über die selbe DOM-Methode ein Referenzpunkt für das Feedback erzeugt 
     //und in der Variablen call gespeichert.
-    var call = document.getElementById('feedback');
 
     //Ab hier beginnt die Prüfung.
     //Das Passwort ist entweder zu kurz, unsicher, sicher oder sehr sicher

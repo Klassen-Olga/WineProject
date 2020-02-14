@@ -18,9 +18,13 @@
 <label for="newPassword">new password: </label>
 <input type="password" name="newPassword" id="newPassword" 
 value="<?= isset($_POST['newPassword']) 
- ? 'your password' : 'your password'?>"/>
- </div>
+ ? 'your password' : 'your password'?>" required
+ onkeyup="char_count();" />
  <br>
+    <div class="passwordMessage">
+    <label id="feedback2"></label>
+    </div>
+ </div>
  <div class="text">
  <label for="newPassword">new password check: </label>
 <input type="password" name="newPasswordCheck" id="newPasswordCheck"
