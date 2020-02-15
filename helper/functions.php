@@ -317,10 +317,15 @@ function usersIdIfLoggedIn()
 
 function dateOfBirthInRightOrder($dateOfBirth)
 {
+    if(!empty($dateOfBirth)){
 
-    $date = explode("-", $dateOfBirth);
-    $newDate = $date[2] . '.' . $date[1] . '.' . $date[0];
-    return $newDate;
+        $date = explode("-", $dateOfBirth);
+        $newDate = $date[2] . '.' . $date[1] . '.' . $date[0];
+        return $newDate;
+    }
+    else{
+        return '';
+    }
 }
 
 function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $email, $password, &$error)

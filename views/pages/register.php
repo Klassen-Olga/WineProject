@@ -48,12 +48,14 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <div class=day1>
                     <select name="day" id="day" onchange="dobValidation(this, 'day')">
                         <option value="">Day</option>
                         <?php for ($i = 1; $i <= 31; $i++) : ?>
                             <option value="<?= $i ?>" <?= isset($_POST['day']) ? ($_POST['day'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
                             <?php endfor; ?>
                         </select>
+                    </div>
                         <select name="year" id="year" onchange="dobValidation(this, 'year')">
                             <option value="">Year</option>
                             <?php
