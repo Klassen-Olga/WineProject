@@ -1,3 +1,4 @@
+
 function myFunction(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -10,18 +11,26 @@ if (slideFirst!==null){
     slideFirst.addEventListener('load',myFunction(slideFirst));
 }
 
+
 function removeError(input) {
-    let nextElement = input.parentNode.nextSibling;
-    if (nextElement.tagName === "P" && nextElement.className === "error-text") {
-        nextElement.remove();
+    let nextElement = input.parentNode.nextSibling.nextSibling;
+    if (nextElement!==null){
+        if (nextElement.tagName === "P" && nextElement.className === "error-text") {
+            nextElement.remove();
+            input.parentNode.nextSibling.remove();
+        }
     }
 }
 
+
 function insertError(input, message) {
     let nextElement = input.parentNode.nextSibling;
-    if (!(nextElement.tagName === "p" && nextElement.className === "error-text")) {
-        input.parentNode.insertAdjacentHTML("afterend", `<p class="error-text">` + message + `</p>`);
+    if (nextElement.tagName!=='BR'){
+        if (!(nextElement.tagName === "P" && nextElement.className === "error-text")) {
+            input.parentNode.insertAdjacentHTML("afterend", `<br><p class="error-text">` + message + `</p>`);
+        }
     }
+
 }
 
 function validateLength(input, minLength = 2) {
@@ -33,16 +42,18 @@ function validateLength(input, minLength = 2) {
 }
 
 function dobValidation(input, id) {
+    let existsError=(input.parentNode.lastChild.tagName === 'P') && (input.parentNode.lastChild.className === 'error-text');
     if (document.getElementById(id).selectedIndex === 0) {
-        if (!(input.parentNode.firstChild.tagName === 'P' && input.parentNode.firstChild.className === 'error-text')) {
-            input.parentNode.insertAdjacentHTML('afterbegin', '<p class="error-text">Enter valid date of birth</p>')
+        if (!existsError) {
+            input.parentNode.insertAdjacentHTML('beforeend', '<p class="error-text">Enter valid date of birth</p>');
         }
     } else {
+        var i=input.parentNode.lastChild.tagName;
         if ((document.getElementById('year').selectedIndex !== 0) &&
             (document.getElementById('day').selectedIndex !== 0) &&
             (document.getElementById('month').selectedIndex !== 0)) {
-            if (input.parentNode.firstChild.tagName === 'P' && input.parentNode.firstChild.className === 'error-text') {
-                input.parentNode.firstChild.remove();
+            if (existsError) {
+                input.parentNode.lastChild.remove();
             }
         }
 
@@ -68,13 +79,33 @@ function responsiveNav() {
     }
 
 }
+function validateEmail(input){
+    var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if( input.value.match(re)===null){
+        insertError(input, "Enter a valid email");
+    }
+    else{
+        removeError(input);
+    }
+}
 
 function tabChange(link) {
     if (window.screen.width <= 600) {
         link.href = "#";
     }
 }
+function validateGender(input){
+    var first=document.getElementById('radio1');
+    var second=document.getElementById('radio2');
+    var third =document.getElementById('radio3');
 
+    if (first.checked===false && second.checked===false && third.checked===false){
+        insertError(input, "Enter your gender");
+    }
+    else{
+        removeError(input);
+    }
+}
 function char_count() {
     //Über die DOM-Methode document.getElementById wird der Wert aus dem Eingabefeld geholt
     //und der Variablen val zugewiesen.
@@ -99,22 +130,87 @@ function char_count() {
         //und ein Sonderzeichen enthält, ist es "sehr sicher".    
         if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) && val.match(/\W/)) {
             call.style.color = "#428c0d";
-            call.innerHTML = "<strong>Very strong</strong>";
+            call.innerHTML = "<p>Very strong</p>";
         }
 
         //Wenn das Passwort nur eine Zahl oder ein Sonderzeichen enthält, ist es "sicher"?           
         else if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) || val.match(/\W/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/)) {
             call.style.color = "#56a40c";
-            call.innerHTML = "<strong>Your password is strong</strong>";
+            call.innerHTML = "<p>Your password is strong</p>";
         } else //Hier enthält das Passwort weder Ziffern noch Sonderzeichen und ist somit "unsicher".
         {
 
             call.style.color = "#ff9410";
-            call.innerHTML = "<strong>Please make your password stronger</strong>";
+            call.innerHTML = "<p class='error-text error-text-pass'>Please make your password stronger</p>";
         }
     } else //Hier enthält das Passwort nicht mal die erforderlichen 6 Zeichen und ist daher "zu kurz"
     {
         call.style.color = "#ff352c";
-        call.innerHTML = "<strong>At least 8 characters, a number of symbol</strong>";
+        call.innerHTML = "<p class='error-text'>At least 8 characters, a number of symbol</p>";
     }
+}
+
+
+
+function sendAjax(method, url, data, callback){
+
+    if (data===null){
+        return false;
+    }
+
+    var request=null;
+    if (window.XMLHttpRequest){
+        request=new XMLHttpRequest();
+    }
+    else{
+        try{
+            request=new ActiveXObject("Msxml2.XMLHTTP.6.0");
+        }
+        catch (e) {
+            try {
+
+                request=new ActiveXObject("Msxml2.XMLHTTP.3.0");
+            }
+            catch(e){
+                alert("Msxml2.XMLHTTP.3.0 is not supported");
+            }
+        }
+    }
+
+    if(request!==null){
+        url+='&ajax=1';
+    }
+
+    request.onreadystatechange=function(){
+        if (this.readyState===4){
+            var resJson=null;
+            var error=null;
+            if (this.status>0){
+
+                try{
+                    resJson = JSON.parse(this.response);
+
+
+                }catch (e) {
+                    error='Invalid JSON response: '+ e;
+                }
+                if (this.status>=300){
+                    if (resJson.message){
+                        error=resJson.message;
+                    }
+                    else{
+                        error='There is an error';
+                    }
+                }
+            }
+            else{
+                error='Cancelled';
+            }
+
+            callback(error, resJson, this.status);
+        }
+    };
+    request.open(method, url, true);
+    request.setRequestHeader("Accept","application/json");
+    request.send(data);
 }

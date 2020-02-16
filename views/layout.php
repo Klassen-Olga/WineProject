@@ -72,7 +72,10 @@
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
-    <script src="assets/js/script.js"></script>
+
+    <script src="assets/js/main1.js"></script>
+    <!--<script src="assets/js/register.js"></script>-->
+
 </footer>
 </body>
 </html>

@@ -118,21 +118,43 @@ class PagesController extends \skwd\core\Controller
     public function actionRegister()
     {
 
-        if (isset($_POST['submitR'])) {
+        if (isset($_POST['submitR']) || isset($_GET['ajax'])) {
             $errors = [];
             requiredCheck($errors);
             if (count($errors) !== 0) {
-                $this->_params['error'] = $errors;
-                return;
+                if (isset($_GET['ajax'])){
+                    echo  json_encode([0=>"Fill all fields!"]);
+                    exit(0);
+                }
+                else{
+                    $this->_params['error'] = $errors;
+                    return;
+                }
+
             }
             $good = register($errors);
-            if ($good === true) {
-                actionIfUserIsNotLoggedIn();
-            } else {
-                $this->_params['error'] = $errors;
+            if (isset($_GET['ajax'])){
+                if ($good===true){
+                    echo json_encode([
+                        'ok'=> 'Welcome to us!']);
+                    exit(0);
+                }
+                else{
+                    echo json_encode($errors);
+                    exit(0);
+                }
+            }
+            else{
+                if ($good === true) {
+                    actionIfUserIsNotLoggedIn();
+                } else {
+                    $this->_params['error'] = $errors;
+                }
+
             }
 
         }
+
     }
 
 

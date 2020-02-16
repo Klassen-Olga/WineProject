@@ -27,7 +27,7 @@ function dateOfBirthFilter()
 function requiredCheck(&$errors)
 {
     //country, year, month and day can not be unset
-    if (!isset($_POST['fname'])) {
+    if (isset($_POST['fname'])===false) {
         array_push($errors, "Please fill out first name field");
     }
     if (!isset($_POST['lname'])) {
@@ -80,7 +80,7 @@ function validatePassword(&$errors, $password1, $password2)
 {
     //the passwords1 and password 2 should be equal
     if ($password1 !== $password2) {
-        array_push($errors, "The both passwords should be equal");
+        array_push($errors, "Both passwords should be equal");
         return false;
     }
     //the password should be valid
@@ -96,7 +96,7 @@ function isUnique(&$errors, $email)
     if (count($result) === 0) {
         return true;
     }
-    array_push($errors, "The user with this email already exists");
+    array_push($errors, "User with this email already exists");
     return false;
 }
 
@@ -603,8 +603,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $z
       'payMethod'=>$payMethod,
       'payDate'=>null,
       'customerID'=>$customer[0]['id'],
-      'addressID'=>$address->__get('id')
-        ];
+      'addressID'=>$address->__get('id')];
 
        $order1 = new \skwd\models\Orders($order);
        $order1->save($errors);
@@ -643,3 +642,5 @@ function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $z
 
 
 }
+
+
