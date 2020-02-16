@@ -13,9 +13,11 @@
                 <br>
                 <img src="assets/styles/history1.jfif" alt="picture(grape)">
                 <br><br>
+                <input type="checkbox" class="read-more-state" id="post-1" />
 
-            <p>Wine has been produced for thousands of years. The earliest evidence of wine in Georgia from 6000 BC, Iran from 5000 BC, and Sicily from 4000 BC.
+            <p class="read-more-wrap">Wine has been produced for thousands of years. The earliest evidence of wine in Georgia from 6000 BC, Iran from 5000 BC, and Sicily from 4000 BC.
                 <br><br>
+                <span class="read-more-target">
                 The earliest archaeological evidence of wine produced from grapes has been found at sites in China (c. 7000 BC), Georgia (c. 6000 BC), Lebanon 
                 (c. 5000 BC), Iran (c. 5000 BC), Greece (c. 4500 BC), and Sicily (c. 4000 BC). The oldest extant evidence of wine production has been found in Armenia (c. 4100 BC).
                 <br><br>
@@ -27,15 +29,23 @@
                 
                 Wine production and consumption increased, burgeoning from the 15th century onwards as part of European expansion. Despite the devastating 1887 phylloxera louse infestation, 
                 modern science and technology adapted and industrial wine production and wine consumption now occur throughout the world.
+                </span>
             </p>
+
+            <label for="post-1" class="read-more-trigger"></label>
+
         </div>
             
         </div>
          <div class=wineGuideBox>
              <br>
+             <a href="assets/styles/wineGuide1.jpg">
              <img src="assets/styles/wineGuide1.jpg" alt="picture(antiqueee)">
+             </a>
              <div class=wineGuidePicture>
+             <a href="assets/styles/history.jpg">
                 <img src="assets/styles/history.jpg" alt="picture(grape)">
+                </a>
                 </div>
          </div>
     </div>
@@ -49,10 +59,11 @@
                 <img src="assets/styles/white_wine.jpg" alt="picture(grape)">
                 <br><br>
 
-
-            <p>Chardonnay: <br>
+                <input type="checkbox" class="read-more-state" id="post-2" />
+            <p class="read-more-wrap">Chardonnay: <br>
 
             Chardonnay is a medium to full-bodied white wine that is grown globally but holds its own as the most popular wine varietal in America. The best types of Chardonnay are oaked-aged and have a buttery mouthfeel. Crisp fruit flavors like apple and pear are combined with citrus aromas and hints of spice and vanilla. Drink Chardonnay with creamy sauces or chicken dishes for a perfect pairing. 
+            <span class="read-more-target">
             <br><br><br>
             Riesling:
             <br> 
@@ -67,14 +78,18 @@
 
             Sauvignon Blanc is a light, dry and crisp white wine that has citrus notes and grassy aromas. When aged in oak, the wine has spice and vanilla flavors, as well. Although it tastes great with grilled chicken or vegetables, Sauvignon Blanc is a perfect pair for scallops or other shellfish.
             <br>
+            </span>
             </p>
+            <label for="post-2" class="read-more-trigger"></label>
         </div>
             
         </div>
         
          <div class=wineGuideBox>
          <div class=wineGuidePicture>
+         <a href="assets/styles/trauben1.jpg">
          <img src="assets/styles/trauben1.jpg" alt="picture(grape)">
+         </a>
          </div>
          </div>
     </div>
@@ -86,8 +101,11 @@
                 <br>
                 <img src="assets/styles/red_wine.jpg" alt="picture(grape)">
                 <br><br>
+                <input type="checkbox" class="read-more-state" id="post-3" />
+                <p class="read-more-wrap">
                 Cabernet Sauvignon: <br>
                 Cabernet Sauvignon is the gem of Napa Valley. A full-bodied red wine, “Cabs” can typically be described as rich and robust. Most commonly aged in French oak, dark fruit flavors are combined with spices and other earthy aromas. The perfect pair for a glass of Cabernet Sauvignon is a juicy steak or other form of red meat.
+                <span class="read-more-target">
                 <br><br><br>
                 Pinot Noir: <br>
 
@@ -110,14 +128,18 @@
                 Merlot is a popular wine of America’s western growing regions, while remaining one of the more prominent grapes in Bordeaux. Merlot is much like Cabernet Sauvignon only more fruit-forward. Red fruit flavors and aromas are made complex by smooth tannins, as well as spice and vanilla notes, which are evidence of oak-aging. Merlot tastes fabulous when paired with a hamburger or, more exotically, with lamb or duck.
                 <br>
                 <br>
+                </span>
             </p>
+            <label for="post-3" class="read-more-trigger"></label>
         </div>
             
         </div>
         
          <div class=wineGuideBox>
          <div class=wineGuidePicture>
+         <a href="assets/styles/traubenRot.jpg">
          <img src="assets/styles/traubenRot.jpg" alt="picture(grape)">
+         </a>
          </div>
          </div>
     </div>
@@ -130,12 +152,16 @@
                 <br>
                 <img src="assets/styles/welt.jpg" alt="picture(grape)">
                 <br><br>
+
+                <input type="checkbox" class="read-more-state" id="post-4" />
+<p class="read-more-wrap">
                 
 1 France <br>
 
 While France and Italy compete for the top wine production region of the world they are also reducing wine production every year. France has lowered production by 11% since 2007.
 <br>
 Major Grapes: Merlot, Grenache, Trebbiano Toscano, Syrah, Cabernet Sauvignon, Carignan, Chardonnay, Cabernet Franc, Pinot Noir, Gamay, Sauvignon Blanc
+<span class="read-more-target">
 <br><br><br>
 
 2 Italy <br>
@@ -194,14 +220,18 @@ Portugal is known for Port wine, a high alcohol dessert wine from northern Portu
 Major Grapes: Tinta Roriz (Tempranillo), Touriga Franca, Castelão, Touriga Nacional, Alicante Bouschet, Alvarinho, Arinto 
                 <br>
                 <br>
+                </span>
             </p>
+            <label for="post-4" class="read-more-trigger"></label>
         </div>
             
         </div>
         
          <div class=wineGuideBox>
          <div class=wineGuidePicture>
+         <a  href="assets/styles/wineRegions.jpg">
          <img src="assets/styles/wineRegions.jpg" alt="picture(grape)">
+         </a>
          </div>
          </div>
     </div>
