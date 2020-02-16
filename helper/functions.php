@@ -547,7 +547,7 @@ function requiredCheckCheckout(&$errors)
 function orderPrice($shopingcartItems){
     $orderPrice = 0.0;
     foreach($shopingcartItems as $key => $value){
-       $orderPrice += $shopingcartItems[$key]['actualPrice'];
+       $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
     }
     return $orderPrice;
 }

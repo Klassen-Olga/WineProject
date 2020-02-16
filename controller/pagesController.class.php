@@ -34,6 +34,11 @@ class PagesController extends \skwd\core\Controller
         $this->_params['dateOfBirthInRightOrder']= dateOfBirthInRightOrder($date);
         $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
 
+        $this->_params['orderPrice']=orderPrice($this->_params['shopingCartItem']);
+        $this->_params['shipPrice']=shipPrice($this->_params['orderPrice']);
+       $this->_params['orderPriceTotal'] = $this->_params['orderPrice'] + $this->_params['shipPrice'];
+
+
         if(isset($_POST['submitCheckout'])){
  
             if(requiredCheckCheckout($this->_params['error'])){
@@ -142,6 +147,13 @@ class PagesController extends \skwd\core\Controller
 
         if (isset($_POST['submitLogout'])) {
             logout();
+        }
+
+        if(isset($_GET['k'])&&'orderFinished'){
+            $this->_params['orderFinished']='vielen dank!!!';
+        }
+        else{
+            $this->_params['orderFinished']='';
         }
     }
 
