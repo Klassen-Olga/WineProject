@@ -317,10 +317,15 @@ function usersIdIfLoggedIn()
 
 function dateOfBirthInRightOrder($dateOfBirth)
 {
+    if(!empty($dateOfBirth)){
 
-    $date = explode("-", $dateOfBirth);
-    $newDate = $date[2] . '.' . $date[1] . '.' . $date[0];
-    return $newDate;
+        $date = explode("-", $dateOfBirth);
+        $newDate = $date[2] . '.' . $date[1] . '.' . $date[0];
+        return $newDate;
+    }
+    else{
+        return '';
+    }
 }
 
 function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $email, $password, &$error)
@@ -542,7 +547,7 @@ function requiredCheckCheckout(&$errors)
 function orderPrice($shopingcartItems){
     $orderPrice = 0.0;
     foreach($shopingcartItems as $key => $value){
-       $orderPrice += $shopingcartItems[$key]['actualPrice'];
+       $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
     }
     return $orderPrice;
 }

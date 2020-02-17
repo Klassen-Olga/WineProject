@@ -16,8 +16,9 @@ class AccountsController extends \skwd\core\Controller{
         $this->_params['customer']= \skwd\models\Customer::find('id= '.'\''. $this->_params['account'][0]['customerID']. '\'');
 
 
-        $this->_params['orders']= 
-        \skwd\models\Orders::find('customerID= '.'\''. $this->_params['account'][0]['customerID']. '\'');
+        $this->_params['orders']= array_reverse(
+        \skwd\models\Orders::find('customerID= '.'\''. $this->_params['account'][0]['customerID']. '\'')
+        );
 
         $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
 
@@ -31,6 +32,7 @@ class AccountsController extends \skwd\core\Controller{
             $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['orders'][0]['addressID']. '\'');
             $this->_params['product']= [];
             $this->_params['allProducts']=[];
+            $this->_params['picture']=[];
          
     }
 

@@ -1,5 +1,7 @@
 <h1>SKWD ~ Infinity of Wine</h1>
 
+<h2><?php echo $this->_params['orderFinished']?></h2>
+
 
 <div class="row">
     <div class="column">
