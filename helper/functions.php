@@ -437,6 +437,7 @@ function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId
     }
     $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
     $shoppingCartItemInstance->save($errors);
+    header('Location: index.php?a=shoppingCartShow');
 
 }
 
@@ -447,6 +448,8 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
     if ($option === 'delete') {
         $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
         $shoppingCartItemInstance->delete($errors);
+        header('Location: index.php?a=shoppingCartShow');
+
     }
 }
 
@@ -460,7 +463,7 @@ function userIsLoggedIn($accountId, &$errors)
         unset($_SESSION['destination']);
         unset($_SESSION['price']);
         unset($_SESSION['productToBasket']);
-    } //case user wanted to show his basket and he not logged in, now he is
+    } //case user wanted to show his basket and he was not logged in, now he is
     elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
         unset($_SESSION['destination']);
     }//case user is logged in and wants to delete

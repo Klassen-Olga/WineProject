@@ -55,7 +55,7 @@ if ($products !== null && count($products) !== 0) :
                 </div>
                 <iframe name="hiddenFrame" class="hide"></iframe>
                 <form action="?a=shoppingCartShow&i=<?= $product['id']; ?>&p=<?= $price; ?>"
-                      method="post" <?= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" ?>>
+                      method="post"> <?/*= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" */?>
                     <div class="basket-button">
                         <button type="submit">Add to basket</button>
                     </div>

@@ -214,8 +214,6 @@ function sendAjax(method, url, data, callback){
     request.setRequestHeader("Accept","application/json");
     request.send(data);
 }
-//////////////////////////////////////////////////////
-
 
 function createCustomAlert(mainText, subText, link=null) {
     var ALERT_TITLE = mainText;

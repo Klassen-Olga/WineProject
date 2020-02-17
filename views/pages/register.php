@@ -1,6 +1,5 @@
 <div class="register">
 
-
     <form method="POST" action="<?= $_SERVER['PHP_SELF'] . '?a=register'; ?>" id="registerForm">
         <div class="data">
 
@@ -46,7 +45,6 @@
                             <option value="<?= $value ?>" <?= isset($_POST['month']) ? ($_POST['month'] === $value ? "selected" : '') : '' ?>><?= $value ?></option>;
                         <?php endforeach; ?>
                     </select>
-<<<<<<< HEAD
                     <select name="day" id="day" onblur="dobValidation(this, 'day')">
                         <option value="">Day</option>
                         <?php for ($i = 1; $i <= 31; $i++) : ?>
@@ -60,22 +58,6 @@
                         <?php
                         for ($i = 2002; $i >= 1919; $i--) :?>
                             <option value="<?= $i ?>" <?= isset($_POST['year']) ? ($_POST['year'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
-=======
-                </div>
-                <div class=day1>
-                    <select name="day" id="day" onchange="dobValidation(this, 'day')">
-                        <option value="">Day</option>
-                        <?php for ($i = 1; $i <= 31; $i++) : ?>
-                            <option value="<?= $i ?>" <?= isset($_POST['day']) ? ($_POST['day'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-                        <select name="year" id="year" onchange="dobValidation(this, 'year')">
-                            <option value="">Year</option>
-                            <?php
-                    for ($i = 2002; $i >= 1919; $i--) :?>
-                        <option value="<?= $i ?>" <?= isset($_POST['year']) ? ($_POST['year'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
->>>>>>> 79210046883faef080f4430470cc3f5b86958a7b
                         <?php endfor; ?>
                     </select><br><br>
 
@@ -161,7 +143,6 @@
                 </div>
 
                 <br>
-
                 <div class="button">
                     <input type="submit" id="submitRegister" value="Sign-Up" name="submitR"/>
                 </div>

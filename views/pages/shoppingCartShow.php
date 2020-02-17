@@ -62,14 +62,13 @@ if (count($shoppingCartItems) === 0):?>
                             <p>Quantity: <?= $shoppingCartItem['qty'] ?></p>
                             <iframe name="hiddenFrame" class="hide"></iframe>
                             <form method="post"
-                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete"
-                                  target="hiddenFrame">
-                                <button type="submit">Delete</button>
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete">
+                                <button type="submit"><i class="fa fa-trash"></i></button>
                             </form>
                             <iframe name="hiddenFrame" class="hide"></iframe>
                             <form method="post"
-                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?= $price ?>&cartOp=upDate"
-                                  target="hiddenFrame">
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?= $price ?>&cartOp=upDate">
+                                <span>QTY: </span>
                                 <select name="qty">
                                     <option value="1">1</option>
                                     <?php for ($i = 2; $i < 11; ++$i): ?>
