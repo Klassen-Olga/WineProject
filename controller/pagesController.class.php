@@ -103,7 +103,11 @@ class PagesController extends \skwd\core\Controller
         if (is_null($accountId) && isset($_GET['i'])) {
             $_SESSION['destination']="shoppingCartShow";
             $_SESSION['productToBasket']=$_GET['i'];
-            $_SESSION['price']=$_GET['p'];
+            if (isset($_GET['ajax'])){
+                echo json_encode(['notLoggedIn'=>true]);
+                exit(0);
+
+            }
             header('Location: index.php?c=pages&a=login');
             return;
         } //case user want to show his basket and is not logged in
@@ -114,10 +118,23 @@ class PagesController extends \skwd\core\Controller
         }
         //else the user is logged in
         userIsLoggedIn($accountId, $errors);
-        if (count($errors) !== 0) {
-            $this->_params = $errors;
+        //output of errors from server(also possible for ajax)
+        if (isset($_GET['ajax'])===true){
+            if (count($errors) !== 0){
+                echo json_encode($errors);
+                exit(0);
+            }
+            else{
+                echo json_encode(['ok'=>"Success"]);
+                exit(0);
+            }
         }
+        else{
+            if(count($errors) !== 0){
+                $this->_params = $errors;
+            }
 
+        }
     }
 
     public function actionRegister()

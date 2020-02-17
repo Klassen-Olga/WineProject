@@ -412,7 +412,7 @@ function actionIfUserIsNotLoggedIn()
 }
 
 
-function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId, &$errors)
+function upDateOrInsertProductInShoppingCart($productId, $shoppingCartId, &$errors)
 {
     //case: change qty upDate=>upDate
     //case: add product(existx in basket)=>update
@@ -424,7 +424,7 @@ function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId
     else{
         $shoppingCartItem=$databaseCheck[0];
         if (isset($_GET['cartOp'])&& $_GET['cartOp']==='upDate'){
-            $shoppingCartItem['qty'] = $_POST['qty'];
+            $shoppingCartItem['qty'] = $_GET['qty'];
         }
         else{
             if (($shoppingCartItem['qty']+1) > 10) {
@@ -437,7 +437,10 @@ function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId
     }
     $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
     $shoppingCartItemInstance->save($errors);
-    header('Location: index.php?a=shoppingCartShow');
+    if (isset($_GET['ajax'])===false){
+        header('Location: index.php?a=shoppingCartShow');
+    }
+
 
 }
 
@@ -448,6 +451,7 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
     if ($option === 'delete') {
         $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
         $shoppingCartItemInstance->delete($errors);
+        unset($_GET['i']);
         header('Location: index.php?a=shoppingCartShow');
 
     }
@@ -459,9 +463,8 @@ function userIsLoggedIn($accountId, &$errors)
     $shoppingCartId = \skwd\models\ShoppingCart::find('accountId=' . $accountId)[0]['id'];
     //case: after successfully registration/login the product will be saved to shoppingCart, that user wanted to save before he was logged in
     if (isset($_SESSION['destination']) && ($_SESSION['destination'] === 'shoppingCartShow') && isset($_SESSION['productToBasket'])) {
-        upDateOrInsertProductInShoppingCart($_SESSION['productToBasket'],$_SESSION['price'], $shoppingCartId, $errors);
+        upDateOrInsertProductInShoppingCart($_SESSION['productToBasket'], $shoppingCartId, $errors);
         unset($_SESSION['destination']);
-        unset($_SESSION['price']);
         unset($_SESSION['productToBasket']);
     } //case user wanted to show his basket and he was not logged in, now he is
     elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
@@ -472,8 +475,8 @@ function userIsLoggedIn($accountId, &$errors)
         //if user wants to delete  his purchase $_GET['cartOp'] must be set
         deleteProductFromShoppingCart($productId,$shoppingCartId, $errors);
     }//case user wants to insert new item or add quantity +1 to old item
-    if ( isset($_GET['i']) && isset($_GET['p']) && (isset($_GET['cartOp']) && ($_GET['cartOp']==='upDate')  || 1)){
-        upDateOrInsertProductInShoppingCart($_GET['i'], $_GET['p'], $shoppingCartId, $errors);
+    if ( isset($_GET['i'])){
+        upDateOrInsertProductInShoppingCart($_GET['i'],  $shoppingCartId, $errors);
     }
 
 }

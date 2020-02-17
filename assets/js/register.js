@@ -6,7 +6,6 @@ if (form!==null){
         event.stopPropagation();
         var event = document.createEvent("HTMLEvents");
         var event1 = document.createEvent("HTMLEvents");
-
         event.initEvent("change", false, true);
         event1.initEvent("keyup", false, true);
         document.getElementById('fname').dispatchEvent(event);
@@ -32,7 +31,7 @@ if (form!==null){
         sendAjax('post', window.location.href, new FormData(form), function (error, resJson, status) {
 
             if (error === null){
-                if (typeof  resJson.ok !== 'undefined'){
+                if (typeof  resJson.ok !== 'undefined' && status<400){
                     createCustomAlert('Welcome to SKWD!', 'Sign now in', "../../WineProject?c=pages&a=login");
 
                 }
@@ -45,14 +44,10 @@ if (form!==null){
                             form.children[0].children[i].remove();
                         }
                     }
-
-
-
                     for(var i=0; i<resJson.length; i++){
 
                         form.children[0].insertAdjacentHTML("afterbegin", `<p class="ajaxErr">` +'*' +resJson[i] + `</p>`);
                     }
-
 
                     if (submit.parentNode.firstChild.tagName!=="P"){
                         submit.parentNode.insertAdjacentHTML("afterbegin", `<p class="ajaxErr">` + "*Check all fields" + `</p>`);

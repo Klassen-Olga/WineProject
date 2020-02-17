@@ -60,28 +60,27 @@ if (count($shoppingCartItems) === 0):?>
                         <div class="product-basket-content">
                             <p>Price: <?= $price ?></p>
                             <p>Quantity: <?= $shoppingCartItem['qty'] ?></p>
-                            <iframe name="hiddenFrame" class="hide"></iframe>
-                            <form method="post"
-                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete">
-                                <button type="submit"><i class="fa fa-trash"></i></button>
-                            </form>
-                            <iframe name="hiddenFrame" class="hide"></iframe>
-                            <form method="post"
-                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&p=<?= $price ?>&cartOp=upDate">
-                                <span>QTY: </span>
-                                <select name="qty">
-                                    <option value="1">1</option>
+
+                            <form method="get"
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=upDate">
+                                <select name="qty" class="qtySelector" onchange="changeQTY(<?=$shoppingCartItem['productID']?>, <?= $shoppingCartItem['qty'] ?>)">
+                                    <option onchange="changeQTY(<?=$shoppingCartItem['productID']?>, <?= $shoppingCartItem['qty'] ?>)" value="1">1</option>
                                     <?php for ($i = 2; $i < 11; ++$i): ?>
                                         <option value="<?= $i ?>" <?= isset($shoppingCartItem['qty']) ? ($shoppingCartItem['qty'] == $i ? " selected " : '') : '' ?>><?= $i ?></option>;
                                     <?php endfor; ?>
                                 </select>
+                                <noscript>
                                 <button type="submit">Change quantity</button>
+                                </noscript>
+                            </form>
+                            <form method="post"
+                                  action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=delete">
+                                <input type="submit" value="Delete"/>
                             </form>
                         </div>
                     </div>
             <?php endif;?>
                 <?php endforeach; ?>
         </div>
-
     </section>
 <?php endif; ?>

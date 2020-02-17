@@ -75,10 +75,7 @@
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
-
     <script src="assets/js/main.js"></script>
-    <!--<script src="assets/js/register.js"></script>-->
-
 </footer>
 </body>
 </html>

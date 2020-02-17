@@ -150,33 +150,30 @@ function char_count() {
     }
 }
 
-
-
-function sendAjax(method, url, data, callback){
-
-    if (data===null){
-        return false;
-    }
-
+function getXMLHttpRequest(){
     var request=null;
     if (window.XMLHttpRequest){
-        request=new XMLHttpRequest();
+        return new XMLHttpRequest();
     }
     else{
         try{
-            request=new ActiveXObject("Msxml2.XMLHTTP.6.0");
+            return new ActiveXObject("Msxml2.XMLHTTP.6.0");
         }
         catch (e) {
             try {
 
-                request=new ActiveXObject("Msxml2.XMLHTTP.3.0");
+                return new ActiveXObject("Msxml2.XMLHTTP.3.0");
             }
             catch(e){
-                alert("Msxml2.XMLHTTP.3.0 is not supported");
+               return null;
             }
         }
     }
+}
 
+function sendAjax(method, url, data=null, callback){
+
+    var request=getXMLHttpRequest();
     if(request!==null){
         url+='&ajax=1';
     }
@@ -186,11 +183,8 @@ function sendAjax(method, url, data, callback){
             var resJson=null;
             var error=null;
             if (this.status>0){
-
                 try{
                     resJson = JSON.parse(this.response);
-
-
                 }catch (e) {
                     error='Invalid JSON response: '+ e;
                 }
@@ -212,7 +206,13 @@ function sendAjax(method, url, data, callback){
     };
     request.open(method, url, true);
     request.setRequestHeader("Accept","application/json");
-    request.send(data);
+    if (method.toLocaleString()==='get'){
+        request.send();
+    }
+    else{
+        request.send(data);
+    }
+
 }
 
 function createCustomAlert(mainText, subText, link=null) {
