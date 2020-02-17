@@ -23,6 +23,9 @@ if (form!==null){
         document.getElementById('country').dispatchEvent(event);
         document.getElementById('radio1').dispatchEvent(event);
         if (document.getElementsByClassName('error-text').length>0){
+            if (submit.parentNode.firstChild.tagName!=="P"){
+                submit.parentNode.insertAdjacentHTML("afterbegin", `<p class="ajaxErr">` + "*Check all fields" + `</p>`);
+            }
             return;
         }
 
@@ -30,17 +33,9 @@ if (form!==null){
 
             if (error === null){
                 if (typeof  resJson.ok !== 'undefined'){
-                    console.log("Welcome");
-                }
-/*
-                submit.parentNode.nextSibling.insertAdjacentHTML('afterend',`<div id="popup1" class="overlay">`+
-                    ` <div class="popup">`+ `<h2>Here i am</h2>`+ `<a class="close" href="../../WineProject?c=pages&a=login">&times;</a>`+ `<div class="content">`+
-                                                        `Thank to pop me out of that button, but now i'm done so you can close this window.`+
-                    `</div>`+
-                    `</div>`+
-                    `</div>`);
+                    createCustomAlert('Welcome to SKWD!', 'Sign now in', "../../WineProject?c=pages&a=login");
 
-                }*/
+                }
                 else{
                     for (var i=0; i< form.children[0].children.length; i++){
                         if ( form.children[0].children[i].tagName!=='P'){

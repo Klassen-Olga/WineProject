@@ -146,7 +146,7 @@ function char_count() {
     } else //Hier enthält das Passwort nicht mal die erforderlichen 6 Zeichen und ist daher "zu kurz"
     {
         call.style.color = "#ff352c";
-        call.innerHTML = "<p class='error-text'>At least 8 characters, a number of symbol</p>";
+        call.innerHTML = "<p class='error-text error-text-pass'>At least 8 characters, a number of symbol</p>";
     }
 }
 
@@ -214,3 +214,49 @@ function sendAjax(method, url, data, callback){
     request.setRequestHeader("Accept","application/json");
     request.send(data);
 }
+//////////////////////////////////////////////////////
+
+
+function createCustomAlert(mainText, subText, link=null) {
+    var ALERT_TITLE = mainText;
+    var ALERT_BUTTON_TEXT = "Ok"
+    d = document;
+
+    if(d.getElementById("modalContainer")) return;
+
+    mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
+    mObj.id = "modalContainer";
+    mObj.style.height = d.documentElement.scrollHeight + "px";
+
+    alertObj = mObj.appendChild(d.createElement("div"));
+    alertObj.id = "alertBox";
+    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
+    alertObj.style.visiblity="visible";
+
+    h1 = alertObj.appendChild(d.createElement("h1"));
+    h1.appendChild(d.createTextNode(ALERT_TITLE));
+
+    msg = alertObj.appendChild(d.createElement("p"));
+    //msg.appendChild(d.createTextNode(txt));
+    msg.innerHTML = subText;
+
+    btn = alertObj.appendChild(d.createElement("a"));
+    btn.id = "closeBtn";
+    btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+    btn.focus();
+    btn.onclick = function() { removeCustomAlert(link);return false; }
+
+    alertObj.style.display = "block";
+
+}
+
+function removeCustomAlert(link) {
+    document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
+    if (link!==null){
+        window.location.href=link;
+    }
+
+}
+
+

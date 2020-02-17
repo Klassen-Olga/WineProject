@@ -144,25 +144,12 @@
                 </div>
 
                 <br>
-                <div class="box-popup">
-                    <a class="button-popup" href="#popup1">Let me Pop up</a>
+
+                <div class="button">
+                    <input type="submit" id="submitRegister" value="Sign-Up" name="submitR"/>
                 </div>
-                <div class="box-popup">
-                    <input class="button-popup" type="submit" id="submitRegister" value="Sign-Up" name="submitR">
-                </div>
+
             </div>
         </div>
     </form>
-</div>
-
-
-
-<div id="popup1" class="overlay">
-    <div class="popup">
-        <h2>Here i am</h2>
-        <a class="close" href="../../WineProject?c=pages&a=login">&times;</a>
-        <div class="content">
-            Thank to pop me out of that button, but now i'm done so you can close this window.
-        </div>
-    </div>
 </div>

@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/styles/style1.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title></title>
@@ -73,7 +73,7 @@
 <footer>
     <a href="?a=imprint">Imprint</a>
 
-    <script src="assets/js/main1.js"></script>
+    <script src="assets/js/main.js"></script>
     <!--<script src="assets/js/register.js"></script>-->
 
 </footer>
