@@ -40,7 +40,7 @@
 
 
 
-<tr><td class="tdWidth">ship price: </td><td><?php echo number_format( $this->_params['shipPrice'], 2, ",", "." ) . ' Euro';?></td></tr>
+<tr><td class="tdWidth">ship price: </td><td><?php echo number_format( $this->_params['shipPrice'], 2, ".", "" ) . ' Euro';?></td></tr>
 <tr><td class="tdWidth"><strong> total price </strong></td><td><strong><?php echo number_format( $this->_params['orderPriceTotal'], 2, ",", "." ) . ' Euro';?></strong></td></tr>
 
 </table>

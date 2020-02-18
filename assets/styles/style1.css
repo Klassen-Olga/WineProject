@@ -307,6 +307,7 @@ header img {
 }
 
 .textBox {
+    margin-bottom: 20%;
     padding: 2%;
     border-radius: 5px;
     background-color: #f3f3f3;
@@ -315,6 +316,7 @@ header img {
 
 .textBox img {
     max-height: 100px;
+    max-width: 200px;
 }
 
 .wineGuideWrapper {
@@ -325,15 +327,20 @@ header img {
 }
 
 .wineGuidePicture img {
-    margin-top: 10%;
     margin-left: 10%;
-    max-width: 700px;
-    max-height: 400px;
+    max-width: 500px;
+    max-height: 300px;
 }
 
 .wineGuide p,
 .wineGuide img {
     display: inline;
+}
+
+.pictureBig {
+    float: left;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 .wineGuide img {
@@ -370,8 +377,8 @@ footer {
     text-align: center;
 }
 
-.error-text-pass{
-    text-align: left ;
+.error-text-pass {
+    text-align: left;
     text-indent: 20px;
 }
 
