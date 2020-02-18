@@ -590,9 +590,10 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 }
 
 
-function createOrder($shipDate, $shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod)
+function createOrder($shopingcartItems, &$errors, $customer)
 {
 
+   
 
     $orderDate = date("Y-m-d");
 

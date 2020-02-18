@@ -17,7 +17,7 @@ class PagesController extends \skwd\core\Controller
 
         $this->_params['checkoutSite1']=true;
 
-        $this->_params['account']= \skwd\models\Account::find('id= '.'\''. getAccountId(). '\'');
+        $this->_params['account']= \skwd\models\Account::find('id= '. getAccountId());
 
 
         $this->_params['shoppingCart']= \skwd\models\shoppingCart::find('accountId = '.'\''. $this->_params['account'][0]['id']. '\'');
