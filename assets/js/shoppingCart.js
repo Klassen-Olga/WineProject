@@ -6,7 +6,6 @@ function preventDefaultAndUseAjax(event, id){
     }
     event.preventDefault();
     event.stopPropagation();
-    var addToBasketForm=document.getElementById('addToBasketForm');
     sendAjax('get', '../../WineProject/index.php?a=shoppingCartShow&i='+id,null,function (error, resJson, status){
         if(error===null && status<400){
             if (typeof resJson.ok !=='undefined'){
@@ -27,18 +26,31 @@ function preventDefaultAndUseAjax(event, id){
 }
 
         //hide all change qty buttons if js is included
-function changeQTY(id, qty) {
-/*    var qtySelectors= document.getElementsByClassName('qtySelectors');
-    for (var i=0; i<qtySelectors.length; i++){
-        qtySelectors[i].addEventListener('change', function (event) {
+function changeQTY(select, productId) {
+    var qty=select.options[select.selectedIndex].value;
+    var url=window.location.href+'&qty='+qty+'&i='+productId+'&cartOp=upDate';
+    sendAjax('get',url , null,function (error, resJson, status) {
 
-        })
-    }*/
-    sendAjax('get', window.location.href+'&i='+id+'&qty='+qty, null,function (error, resJson, status) {
+        if (error===null && status<400){
+            var h2=document.getElementById('shoppingCartTotal');
+            h2.innerHTML= 'Subtotal for '+ resJson.qty +' items: '+ resJson.subtotal+ ' €';
+        }
 
 
     });
 }
+/*function deleteItem(event, input, productId){
+    if (getXMLHttpRequest()===null){
+        return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    sendAjax('get',window.location.href+'&i='+productId+'&cartOp=delete', null,function (error, resJson, status) {
+
+
+    });
+
+}*/
 
 
 

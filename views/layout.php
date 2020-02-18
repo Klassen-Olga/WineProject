@@ -46,7 +46,7 @@
     <!--Account -->
     <li><a href="#" onclick="tabChange(this)">Account</a>
         <ul>
-            <?php if (usersIdIfLoggedIn() !== null): ?>
+            <?php if (getAccountId() !== null): ?>
                 <li><a href="?c=accounts&a=personalData"> Personal data</a></li>
                 <li><a href="?c=accounts&a=myOrders"> My orders</a></li>
 
