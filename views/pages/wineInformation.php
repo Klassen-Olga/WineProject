@@ -41,11 +41,11 @@
              <a href="assets/styles/wineGuide1.jpg">
              <img src="assets/styles/wineGuide1.jpg" alt="picture(antiqueee)">
              </a>
-             <div class=wineGuidePicture>
+            
              <a href="assets/styles/history.jpg">
-                <img src="assets/styles/history.jpg" alt="picture(grape)">
+                <img class="pictureBig" src="assets/styles/history.jpg" alt="picture(grape)">
                 </a>
-                </div>
+                
          </div>
     </div>
 

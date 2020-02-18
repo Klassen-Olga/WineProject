@@ -33,7 +33,7 @@ if (count($product) !== 0):
 
             <iframe name="hiddenFrame" class="hide"></iframe>
             <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['id'] ?>&p=<?= $priceOfProduct ?>"
-                  method="post" <?= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" ?> >
+                  method="post" ><?/*= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" */?>
                 <button type="submit">Add to basket</button>
             </form>
 

@@ -1,4 +1,3 @@
-
 function myFunction(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -6,15 +5,15 @@ function myFunction(imgs) {
     imgText.innerHTML = imgs.alt;
     expandImg.parentElement.style.display = "block";
 }
-var slideFirst=document.getElementById('slideFirst');
-if (slideFirst!==null){
-    slideFirst.addEventListener('load',myFunction(slideFirst));
+var slideFirst = document.getElementById('slideFirst');
+if (slideFirst !== null) {
+    slideFirst.addEventListener('load', myFunction(slideFirst));
 }
 
 
 function removeError(input) {
     let nextElement = input.parentNode.nextSibling.nextSibling;
-    if (nextElement!==null){
+    if (nextElement !== null) {
         if (nextElement.tagName === "P" && nextElement.className === "error-text") {
             nextElement.remove();
             input.parentNode.nextSibling.remove();
@@ -25,7 +24,7 @@ function removeError(input) {
 
 function insertError(input, message) {
     let nextElement = input.parentNode.nextSibling;
-    if (nextElement.tagName!=='BR'){
+    if (nextElement.tagName !== 'BR') {
         if (!(nextElement.tagName === "P" && nextElement.className === "error-text")) {
             input.parentNode.insertAdjacentHTML("afterend", `<br><p class="error-text">` + message + `</p>`);
         }
@@ -42,13 +41,13 @@ function validateLength(input, minLength = 2) {
 }
 
 function dobValidation(input, id) {
-    let existsError=(input.parentNode.lastChild.tagName === 'P') && (input.parentNode.lastChild.className === 'error-text');
+    let existsError = (input.parentNode.lastChild.tagName === 'P') && (input.parentNode.lastChild.className === 'error-text');
     if (document.getElementById(id).selectedIndex === 0) {
         if (!existsError) {
             input.parentNode.insertAdjacentHTML('beforeend', '<p class="error-text">Enter valid date of birth</p>');
         }
     } else {
-        var i=input.parentNode.lastChild.tagName;
+        var i = input.parentNode.lastChild.tagName;
         if ((document.getElementById('year').selectedIndex !== 0) &&
             (document.getElementById('day').selectedIndex !== 0) &&
             (document.getElementById('month').selectedIndex !== 0)) {
@@ -79,12 +78,12 @@ function responsiveNav() {
     }
 
 }
-function validateEmail(input){
-    var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if( input.value.match(re)===null){
+
+function validateEmail(input) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (input.value.match(re) === null) {
         insertError(input, "Enter a valid email");
-    }
-    else{
+    } else {
         removeError(input);
     }
 }
@@ -94,18 +93,19 @@ function tabChange(link) {
         link.href = "#";
     }
 }
-function validateGender(input){
-    var first=document.getElementById('radio1');
-    var second=document.getElementById('radio2');
-    var third =document.getElementById('radio3');
 
-    if (first.checked===false && second.checked===false && third.checked===false){
+function validateGender(input) {
+    var first = document.getElementById('radio1');
+    var second = document.getElementById('radio2');
+    var third = document.getElementById('radio3');
+
+    if (first.checked === false && second.checked === false && third.checked === false) {
         insertError(input, "Enter your gender");
-    }
-    else{
+    } else {
         removeError(input);
     }
 }
+
 function char_count() {
     //Über die DOM-Methode document.getElementById wird der Wert aus dem Eingabefeld geholt
     //und der Variablen val zugewiesen.
@@ -152,77 +152,70 @@ function char_count() {
 
 
 
-function sendAjax(method, url, data, callback){
+function sendAjax(method, url, data, callback) {
 
-    if (data===null){
+    if (data === null) {
         return false;
     }
 
-    var request=null;
-    if (window.XMLHttpRequest){
-        request=new XMLHttpRequest();
-    }
-    else{
-        try{
-            request=new ActiveXObject("Msxml2.XMLHTTP.6.0");
-        }
-        catch (e) {
+    var request = null;
+    if (window.XMLHttpRequest) {
+        request = new XMLHttpRequest();
+    } else {
+        try {
+            request = new ActiveXObject("Msxml2.XMLHTTP.6.0");
+        } catch (e) {
             try {
 
-                request=new ActiveXObject("Msxml2.XMLHTTP.3.0");
-            }
-            catch(e){
+                request = new ActiveXObject("Msxml2.XMLHTTP.3.0");
+            } catch (e) {
                 alert("Msxml2.XMLHTTP.3.0 is not supported");
             }
         }
     }
 
-    if(request!==null){
-        url+='&ajax=1';
+    if (request !== null) {
+        url += '&ajax=1';
     }
 
-    request.onreadystatechange=function(){
-        if (this.readyState===4){
-            var resJson=null;
-            var error=null;
-            if (this.status>0){
+    request.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            var resJson = null;
+            var error = null;
+            if (this.status > 0) {
 
-                try{
+                try {
                     resJson = JSON.parse(this.response);
 
 
-                }catch (e) {
-                    error='Invalid JSON response: '+ e;
+                } catch (e) {
+                    error = 'Invalid JSON response: ' + e;
                 }
-                if (this.status>=300){
-                    if (resJson.message){
-                        error=resJson.message;
-                    }
-                    else{
-                        error='There is an error';
+                if (this.status >= 300) {
+                    if (resJson.message) {
+                        error = resJson.message;
+                    } else {
+                        error = 'There is an error';
                     }
                 }
-            }
-            else{
-                error='Cancelled';
+            } else {
+                error = 'Cancelled';
             }
 
             callback(error, resJson, this.status);
         }
     };
     request.open(method, url, true);
-    request.setRequestHeader("Accept","application/json");
+    request.setRequestHeader("Accept", "application/json");
     request.send(data);
 }
-//////////////////////////////////////////////////////
 
-
-function createCustomAlert(mainText, subText, link=null) {
+function createCustomAlert(mainText, subText, link = null) {
     var ALERT_TITLE = mainText;
     var ALERT_BUTTON_TEXT = "Ok"
     d = document;
 
-    if(d.getElementById("modalContainer")) return;
+    if (d.getElementById("modalContainer")) return;
 
     mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
     mObj.id = "modalContainer";
@@ -230,9 +223,9 @@ function createCustomAlert(mainText, subText, link=null) {
 
     alertObj = mObj.appendChild(d.createElement("div"));
     alertObj.id = "alertBox";
-    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
-    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
-    alertObj.style.visiblity="visible";
+    if (d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth) / 2 + "px";
+    alertObj.style.visiblity = "visible";
 
     h1 = alertObj.appendChild(d.createElement("h1"));
     h1.appendChild(d.createTextNode(ALERT_TITLE));
@@ -245,7 +238,7 @@ function createCustomAlert(mainText, subText, link=null) {
     btn.id = "closeBtn";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
     btn.focus();
-    btn.onclick = function() { removeCustomAlert(link);return false; }
+    btn.onclick = function() { removeCustomAlert(link); return false; }
 
     alertObj.style.display = "block";
 
@@ -253,10 +246,28 @@ function createCustomAlert(mainText, subText, link=null) {
 
 function removeCustomAlert(link) {
     document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
-    if (link!==null){
-        window.location.href=link;
+    if (link !== null) {
+        window.location.href = link;
     }
 
 }
 
 
+function myFunction(ar) {
+
+    var request = new XMLHttpRequest();
+
+    request.open('GET', 'test.php', true);
+    request.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+
+
+                document.getElementById("test12345").innerHTML = this.responseText;
+            } else {
+                alert(this.statusText);
+            }
+        }
+    }
+    request.send();
+}

@@ -24,7 +24,7 @@ else :?>
                 </div>
                 <iframe name="hiddenFrame" class="hide"></iframe>
                 <form action="?a=shoppingCartShow&i=<?= $productId ?>&p=<?= $price ?>"
-                      method="post" <?= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" ?>>
+                      method="post" ><!-- --><?/*= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" */?>
                     <div class="basket-button">
                         <button type="submit">Add to basket</button>
                     </div>
