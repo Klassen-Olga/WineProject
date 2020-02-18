@@ -569,10 +569,10 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 {
 
     $address = [
-        'country' => $country,
-        'city' => $city,
-        'zip' => $zip,
-        'street' => $street
+        'country' => $_SESSION['country'],
+        'city' => $_SESSION['city'],
+        'zip' => $_SESSION['zip'],
+        'street' => $_SESSION['street']
     ];
     $addressInstance = new \skwd\models\Address($address);
     $addressInstance->validate($errors);
@@ -592,9 +592,7 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 
 
 
-function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod){
-
-    $shipPrice = shipPrice(orderPrice($shopingcartItems));
+function createOrder($shipPrice,$shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod){
 
     $orderDate = date("Y-m-d");
 
@@ -608,7 +606,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $z
       'shipDate'=>$shipDate,
       'shipPrice' =>$shipPrice,
       'payStatus'=>'unpaid',
-      'payMethod'=>$payMethod,
+      'payMethod'=>$_SESSION['payMethod'],
       'payDate'=>null,
       'customerID'=>$customer[0]['id'],
       'addressID'=>$address->__get('id')];

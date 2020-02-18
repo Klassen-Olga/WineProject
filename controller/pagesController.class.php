@@ -17,13 +17,8 @@ class PagesController extends \skwd\core\Controller
 
         $this->_params['checkoutSite1']=true;
 
-        if(isset($_SESSION['id'])){
-
-            $this->_params['account']= \skwd\models\Account::find('id= '.'\''. $_SESSION['id']. '\'');
-        }
-        else if(isset($_COOKIE['id'])){
-            $this->_params['account']= \skwd\models\Account::find('id= '.'\''. $_COOKIE['id']. '\'');
-        }
+            $this->_params['account']= \skwd\models\Account::find('id= '.'\''. getAccountId(). '\'');
+       
 
         $this->_params['shoppingCart']= \skwd\models\shoppingCart::find('accountId = '.'\''. $this->_params['account'][0]['id']. '\'');
         $this->_params['shopingCartItem']= \skwd\models\shoppingCartItem::find('shoppingCartId= '.'\''. $this->_params['shoppingCart'][0]['id']. '\'');
@@ -34,7 +29,7 @@ class PagesController extends \skwd\core\Controller
         $this->_params['dateOfBirthInRightOrder']= dateOfBirthInRightOrder($date);
         $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
 
-        $this->_params['orderPrice']=orderPrice($this->_params['shopingCartItem']);
+        $this->_params['orderPrice']=getBasketSubtotal(getAccountId());
         $this->_params['shipPrice']=shipPrice($this->_params['orderPrice']);
        $this->_params['orderPriceTotal'] = $this->_params['orderPrice'] + $this->_params['shipPrice'];
 
@@ -55,8 +50,8 @@ class PagesController extends \skwd\core\Controller
         }
 
         if(isset($_POST['submitOrder'])){
-            createOrder($this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer'], 
-            $_SESSION['country'], $_SESSION['city'], $_SESSION['zip'], $_SESSION['street'], $_SESSION['payMethod']);
+            createOrder($this->_params['shipPrice'],$this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer']
+            );
 
             if(count($this->_params['error'])===0){
                 header('Location: index.php?c=pages&a=start&k=orderFinished');

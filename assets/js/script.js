@@ -252,8 +252,8 @@ function removeCustomAlert(link) {
 
 }
 
-
-function myFunction(ar) {
+/*
+function myFunction1(ar) {
 
     var request = new XMLHttpRequest();
 
@@ -261,7 +261,6 @@ function myFunction(ar) {
     request.onreadystatechange = function() {
         if (this.readyState == 4) {
             if (this.status == 200) {
-
 
                 document.getElementById("test12345").innerHTML = this.responseText;
             } else {
@@ -271,3 +270,4 @@ function myFunction(ar) {
     }
     request.send();
 }
+*/
