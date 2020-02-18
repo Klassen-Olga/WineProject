@@ -544,15 +544,6 @@ function requiredCheckCheckout(&$errors)
     }
 }
 
-function orderPrice($shopingcartItems)
-{
-    $orderPrice = 0.0;
-    foreach ($shopingcartItems as $key => $value) {
-        $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
-    }
-    return $orderPrice;
-}
-
 function shipPrice($orderPrice)
 {
 
@@ -590,16 +581,17 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 }
 
 
-function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod)
+function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 {
 
-    $shipPrice = shipPrice(orderPrice($shopingcartItems));
+
 
     $orderDate = date("Y-m-d");
 
     $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")));
 
-    $address = validateAddressTableCheckout($errors, $city, $zip, $street, $country);
+    $address = validateAddressTableCheckout($errors,  $_SESSION['city'],$_SESSION['zip'], $_SESSION['street'],$_SESSION['country']);
+
 
     if (count($errors) === 0) {
         $order = ['id' => null,
@@ -607,7 +599,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $country, $city, $z
             'shipDate' => $shipDate,
             'shipPrice' => $shipPrice,
             'payStatus' => 'unpaid',
-            'payMethod' => $payMethod,
+            'payMethod' => $_SESSION['payMethod'],
             'payDate' => null,
             'customerID' => $customer[0]['id'],
             'addressID' => $address->__get('id')];

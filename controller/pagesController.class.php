@@ -50,8 +50,7 @@ class PagesController extends \skwd\core\Controller
         }
 
         if(isset($_POST['submitOrder'])){
-            createOrder($this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer'], 
-            $_SESSION['country'], $_SESSION['city'], $_SESSION['zip'], $_SESSION['street'], $_SESSION['payMethod']);
+            createOrder($this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer'], $this->_params['shipPrice']);
 
             if(count($this->_params['error'])===0){
                 header('Location: index.php?c=pages&a=start&k=orderFinished');

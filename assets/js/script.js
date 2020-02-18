@@ -237,8 +237,9 @@ function createCustomAlert(mainText, subText, link = null) {
     btn.id = "closeBtn";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
     btn.focus();
-    btn.onclick = function() { removeCustomAlert(link); return false; }
-
+    btn.onclick = function() { removeCustomAlert(link); return false; };
+    /*window.location.hash = '#closeBtn';*/
+    btn.tabindex= "10";
     alertObj.style.display = "block";
 
 }
