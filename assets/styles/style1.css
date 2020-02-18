@@ -431,7 +431,7 @@ footer {
     font-weight: bold;
 }
 
-.basket-button button {
+.basket-button input[type="submit"]{
     padding: 15px 10px;
     margin: 5%;
     background-color: #9a0002;
@@ -439,6 +439,7 @@ footer {
     border: none;
     border-radius: 50px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .basket-noProducts {
@@ -446,15 +447,13 @@ footer {
     margin: 3% 0;
 }
 
-.basket-button button:hover,
-.subtotal .proceedToCheckout a:hover,
-.product-basket-content button:hover {
+.basket-button input:hover,
+.product-basket-content button:hover,
+.subtotal .proceedToCheckout a:hover {
     background-color: rosybrown;
 }
 
-.basket-button button {
-    cursor: pointer;
-}
+
 
 
 /*End Products*/
@@ -1426,7 +1425,7 @@ select:focus {
     height: 100%;
     left: 0px;
     z-index: 10000;
-    background-image: url(tp.png);
+
     /* required by MSIE to prevent actions on lower z-index elements */
 }
 

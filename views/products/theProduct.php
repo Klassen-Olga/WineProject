@@ -30,11 +30,9 @@ if (count($product) !== 0):
         <?php endif; ?>
         <div class="price-add-to-basket-theProduct">
             <p>Price: <?= $product[0]['standardPrice'] . ' €' ?></p>
-
-            <iframe name="hiddenFrame" class="hide"></iframe>
-            <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['id'] ?>&p=<?= $priceOfProduct ?>"
-                  method="post" ><?/*= usersIdIfLoggedIn() === null ? "" : "target=\"hiddenFrame\"" */?>
-                <button type="submit">Add to basket</button>
+            <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['id'] ?>"
+                  method="get" id="addToBasketForm">
+                <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?=$product[0]['id']?>)"/>
             </form>
 
         </div>

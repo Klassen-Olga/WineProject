@@ -141,7 +141,6 @@
                     </select>
 
                 </div>
-
                 <br>
                 <div class="button">
                     <input type="submit" id="submitRegister" value="Sign-Up" name="submitR"/>

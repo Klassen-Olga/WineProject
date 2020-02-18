@@ -202,7 +202,6 @@ DROP TABLE IF EXISTS ShoppingCartItem;
 CREATE TABLE IF NOT EXISTS ShoppingCartItem(
 id					int			not null 	AUTO_INCREMENT,
 qty					int			not null,
--- actualPrice			decimal(9,2)not null,
 productID			int			not null,
 shoppingCartId		int			not null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,

@@ -27,7 +27,7 @@ function dateOfBirthFilter()
 function requiredCheck(&$errors)
 {
     //country, year, month and day can not be unset
-    if (isset($_POST['fname'])===false) {
+    if (isset($_POST['fname']) === false) {
         array_push($errors, "Please fill out first name field");
     }
     if (!isset($_POST['lname'])) {
@@ -306,7 +306,7 @@ function rememberMe($email, $id)
     setcookie('id', $id, $duration, '/');
 }
 
-function usersIdIfLoggedIn()
+function getAccountId()
 {
     if (isset($_SESSION['id'])) {
         return $_SESSION['id'];
@@ -317,13 +317,12 @@ function usersIdIfLoggedIn()
 
 function dateOfBirthInRightOrder($dateOfBirth)
 {
-    if(!empty($dateOfBirth)){
+    if (!empty($dateOfBirth)) {
 
         $date = explode("-", $dateOfBirth);
         $newDate = $date[2] . '.' . $date[1] . '.' . $date[0];
         return $newDate;
-    }
-    else{
+    } else {
         return '';
     }
 }
@@ -336,7 +335,7 @@ function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerI
         'lastName' => $_POST['lastName'],
         'gender' => $gender,
         'dateOfBirth' => $dateOfBirth,
-        'phoneNumber' => empty( $_POST['phoneNumber']) ? null : $_POST['phoneNumber'],
+        'phoneNumber' => empty($_POST['phoneNumber']) ? null : $_POST['phoneNumber'],
         'addressID' => $addressID];
 
     if (isset($_SESSION['id'])) {
@@ -374,8 +373,7 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     } else if (strlen($_POST['email']) <= 2) {
         array_push($error, "Please fill out email field");
         return false;
-    }
-     else {
+    } else {
         $test = true;
         if (strcmp($email, $_POST['email']) !== 0) {
             $test = isUnique($error, $_POST['email']);
@@ -412,33 +410,32 @@ function actionIfUserIsNotLoggedIn()
 }
 
 
-function upDateOrInsertProductInShoppingCart($productId, $price, $shoppingCartId, &$errors)
+function upDateOrInsertProductInShoppingCart($productId, $shoppingCartId, &$errors)
 {
     //case: change qty upDate=>upDate
     //case: add product(existx in basket)=>update
     //case: add product (doesn't exist in basket)=>insert
     $databaseCheck = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId);
-    if (count($databaseCheck)===0){
+    if (count($databaseCheck) === 0) {
         $shoppingCartItem = array('qty' => 1, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
-    }
-    else{
-        $shoppingCartItem=$databaseCheck[0];
-        if (isset($_GET['cartOp'])&& $_GET['cartOp']==='upDate'){
-            $shoppingCartItem['qty'] = $_POST['qty'];
-        }
-        else{
-            if (($shoppingCartItem['qty']+1) > 10) {
+    } else {
+        $shoppingCartItem = $databaseCheck[0];
+        if (isset($_GET['cartOp']) && $_GET['cartOp'] === 'upDate') {
+            $shoppingCartItem['qty'] = $_GET['qty'];
+        } else {
+            if (($shoppingCartItem['qty'] + 1) > 10) {
                 array_push($errors, 'You can not add more than 10 items of the same product');
-            }
-            else{
+            } else {
                 $shoppingCartItem['qty'] += 1;
             }
         }
     }
     $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
     $shoppingCartItemInstance->save($errors);
-    header('Location: index.php?a=shoppingCartShow');
 
+    if (isset($_GET['ajax']) === false) {
+        header('Location: index.php?a=shoppingCartShow');
+    }
 }
 
 function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
@@ -448,6 +445,7 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
     if ($option === 'delete') {
         $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
         $shoppingCartItemInstance->delete($errors);
+        unset($_GET['i']);
         header('Location: index.php?a=shoppingCartShow');
 
     }
@@ -459,46 +457,46 @@ function userIsLoggedIn($accountId, &$errors)
     $shoppingCartId = \skwd\models\ShoppingCart::find('accountId=' . $accountId)[0]['id'];
     //case: after successfully registration/login the product will be saved to shoppingCart, that user wanted to save before he was logged in
     if (isset($_SESSION['destination']) && ($_SESSION['destination'] === 'shoppingCartShow') && isset($_SESSION['productToBasket'])) {
-        upDateOrInsertProductInShoppingCart($_SESSION['productToBasket'],$_SESSION['price'], $shoppingCartId, $errors);
+        upDateOrInsertProductInShoppingCart($_SESSION['productToBasket'], $shoppingCartId, $errors);
         unset($_SESSION['destination']);
-        unset($_SESSION['price']);
         unset($_SESSION['productToBasket']);
     } //case user wanted to show his basket and he was not logged in, now he is
     elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
         unset($_SESSION['destination']);
     }//case user is logged in and wants to delete
-    elseif (isset($_GET['cartOp']) && $_GET['cartOp']==='delete') {
+    elseif (isset($_GET['cartOp']) && $_GET['cartOp'] === 'delete') {
         $productId = $_GET['i'];
         //if user wants to delete  his purchase $_GET['cartOp'] must be set
-        deleteProductFromShoppingCart($productId,$shoppingCartId, $errors);
+        deleteProductFromShoppingCart($productId, $shoppingCartId, $errors);
     }//case user wants to insert new item or add quantity +1 to old item
-    if ( isset($_GET['i']) && isset($_GET['p']) && (isset($_GET['cartOp']) && ($_GET['cartOp']==='upDate')  || 1)){
-        upDateOrInsertProductInShoppingCart($_GET['i'], $_GET['p'], $shoppingCartId, $errors);
+    if (isset($_GET['i'])) {
+        upDateOrInsertProductInShoppingCart($_GET['i'], $shoppingCartId, $errors);
     }
 
 }
 
-function editPassword(&$error, $email, $accountId, $customerId){
-    if(
-    isPasswordfromUser($_POST['oldPassword'],$email,$error) 
-  && validatePassword($error,$_POST['newPassword'],$_POST['newPasswordCheck'])
-  &&validatePasswordForm($error, $_POST['newPassword'])){
+function editPassword(&$error, $email, $accountId, $customerId)
+{
+    if (
+        isPasswordfromUser($_POST['oldPassword'], $email, $error)
+        && validatePassword($error, $_POST['newPassword'], $_POST['newPasswordCheck'])
+        && validatePasswordForm($error, $_POST['newPassword'])) {
 
-      $account=['id'=>$accountId,
-      'email'=>$email,
-      'password'=>password_hash($_POST['newPassword'], PASSWORD_DEFAULT),
-      'customerID'=>$customerId];
+        $account = ['id' => $accountId,
+            'email' => $email,
+            'password' => password_hash($_POST['newPassword'], PASSWORD_DEFAULT),
+            'customerID' => $customerId];
 
-       $account1 = new \skwd\models\Account($account);
-       $account1->save($error);
-       return true;
-  }
-  else{
-      return false;
-  }
+        $account1 = new \skwd\models\Account($account);
+        $account1->save($error);
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function editAddress(&$error, $addressId=null){
+function editAddress(&$error, $addressId = null)
+{
     $address = [
         'id' => $addressId,
         'city' => $_POST['city'],
@@ -508,19 +506,19 @@ function editAddress(&$error, $addressId=null){
     $addressInstance = new \skwd\models\Address($address);
     $addressInstance->validate($error);
     validateCountry($error);
-    if (count($error)===0){
+    if (count($error) === 0) {
         $addressInstance->__set('country', $_POST['country']);
         $addressInstance->save();
         return true;
-    }
-    else{
+    } else {
         return false;
     }
-  
+
 }
+
 function requiredCheckCheckout(&$errors)
 {
-    
+
 
     if (!isset($_POST['zip'])) {
         array_push($errors, "Please fill out zip field");
@@ -538,33 +536,35 @@ function requiredCheckCheckout(&$errors)
 
     validateCountry($errors);
 
-    
-    if(count($errors)===0){
+
+    if (count($errors) === 0) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
-function orderPrice($shopingcartItems){
+function orderPrice($shopingcartItems)
+{
     $orderPrice = 0.0;
-    foreach($shopingcartItems as $key => $value){
-       $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
+    foreach ($shopingcartItems as $key => $value) {
+        $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
     }
     return $orderPrice;
 }
 
-function shipPrice($orderPrice){
+function shipPrice($orderPrice)
+{
 
     $shipPrice = 0.0;
 
-    if($orderPrice < 50.00){
+    if ($orderPrice < 50.00) {
         $shipPrice = 3.49;
     }
 
     return $shipPrice;
 }
+
 function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 {
 
@@ -576,77 +576,122 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
     ];
     $addressInstance = new \skwd\models\Address($address);
     $addressInstance->validate($errors);
-    if (count($errors) === 0) {     
+    if (count($errors) === 0) {
         $addressID = findAddressInDb($addressInstance);
         if (!is_null($addressID)) {
             $addressInstance->__set('id', $addressID);
             return $addressInstance;
-        }
-        else{
+        } else {
             $addressInstance->save($errors);
             return $addressInstance;
         }
- 
+
     }
 }
 
 
+function createOrder($shipDate, $shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod)
+{
 
-function createOrder($shipPrice,$shopingcartItems, &$errors, $customer, $country, $city, $zip, $street, $payMethod){
 
     $orderDate = date("Y-m-d");
 
-    $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")+1, date("Y")));
+    $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")));
 
-    $address = validateAddressTableCheckout($errors,$city, $zip, $street, $country);
+    $address = validateAddressTableCheckout($errors, $city, $zip, $street, $country);
 
-    if(count($errors)===0){
-        $order=['id'=>null,
-      'orderDate'=>$orderDate,
-      'shipDate'=>$shipDate,
-      'shipPrice' =>$shipPrice,
-      'payStatus'=>'unpaid',
-      'payMethod'=>$_SESSION['payMethod'],
-      'payDate'=>null,
-      'customerID'=>$customer[0]['id'],
-      'addressID'=>$address->__get('id')];
+    if (count($errors) === 0) {
+        $order = ['id' => null,
+            'orderDate' => $orderDate,
+            'shipDate' => $shipDate,
+            'shipPrice' => $shipPrice,
+            'payStatus' => 'unpaid',
+            'payMethod' => $payMethod,
+            'payDate' => null,
+            'customerID' => $customer[0]['id'],
+            'addressID' => $address->__get('id')];
 
-       $order1 = new \skwd\models\Orders($order);
-       $order1->save($errors);
+        $order1 = new \skwd\models\Orders($order);
+        $order1->save($errors);
 
-            if(count($errors===0)){
+        if (count($errors === 0)) {
 
-                foreach($shopingcartItems as $key => $value){
-    
-                $orderItem=['id'=>null,
-                'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
-                'qty'=>$shopingcartItems[$key]['qty'],
-                'productID'=>$shopingcartItems[$key]['productID'],
-                'orderID'=>$order1->__get('id')
-                ];
-                $orderItem1 = new \skwd\models\OrderItem($orderItem);
-                $orderItem1->save($errors);
+            foreach ($shopingcartItems as $key => $value) {
+                $products = \skwd\models\Product::find('id=' . $shopingcartItems[$key]['productID']);
+                if ($products!==null && count($products)!==null){
+                    $product=$products[0];
+                    $standardPrice=$product['standardPrice'];
+                    $discount=$product['discount'];
+                    $productPrice= $discount!==null ?  number_format($standardPrice-($standardPrice*$discount/100), 2, '.', ''): $standardPrice;
+                    $orderItem = ['id' => null,
+                        'actualPrice' => $productPrice,
+                        'qty' => $shopingcartItems[$key]['qty'],
+                        'productID' => $shopingcartItems[$key]['productID'],
+                        'orderID' => $order1->__get('id')
+                    ];
+                    $orderItem1 = new \skwd\models\OrderItem($orderItem);
+                    $orderItem1->save($errors);
+                }
+                if (count($errors === 0)) {
 
-                    if(count($errors===0)){
-
-                        $shoppingCartItem=['id'=>$shopingcartItems[$key]['id'],
-                        'actualPrice'=>$shopingcartItems[$key]['actualPrice'],
-                        'qty'=>$shopingcartItems[$key]['qty'],
-                        'productID'=>$shopingcartItems[$key]['productID'],
-                        'shoppingCartId'=>$shopingcartItems[$key]['shoppingCartId']
-                        ];
-                        $shoppingCartItem1 = new \skwd\models\ShoppingCartItem($shoppingCartItem);
-                        $shoppingCartItem1->delete($errors);
-
-                    }
+                    $shoppingCartItem = ['id' => $shopingcartItems[$key]['id'],
+                        'qty' => $shopingcartItems[$key]['qty'],
+                        'productID' => $shopingcartItems[$key]['productID'],
+                        'shoppingCartId' => $shopingcartItems[$key]['shoppingCartId']
+                    ];
+                    $shoppingCartItem1 = new \skwd\models\ShoppingCartItem($shoppingCartItem);
+                    $shoppingCartItem1->delete($errors);
 
                 }
-                
+
             }
+
+        }
 
     }
 
 
+}
+
+function getShoppingCartItems($accountId)
+{
+
+    $shoppingCart = \skwd\models\ShoppingCart::find('accountId=' . $accountId);
+    $shoppingCart = $shoppingCart[0];
+    $shoppingCartItems = \skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCart['id']);
+    return $shoppingCartItems;
+}
+
+function getBasketSubtotal($accountId)
+{
+    $sum = 0;
+    $shoppingCartItems = getShoppingCartItems($accountId);
+    foreach ($shoppingCartItems as $item) {
+        $product = \skwd\models\Product::find('id=' . $item['productID']);
+        if ($product !== null && count($product) > 0) {
+            $product = $product[0];
+            if ($product['discount'] === null) {
+                $price = $product['standardPrice'];
+            } else {
+                $price = number_format($product['standardPrice'] - ($product['standardPrice'] * $product['discount'] / 100), 2, '.', '');
+            }
+            $sum += $price * $item['qty'];
+        }
+    }
+    return $sum;
+}
+
+function getBasketQTY($accountId)
+{
+    $qty = 0;
+    $shoppingCartItems = getShoppingCartItems($accountId);
+    foreach ($shoppingCartItems as $item) {
+        $product = \skwd\models\Product::find('id=' . $item['productID']);
+        if ($product !== null && count($product) > 0) {
+            $qty += $item['qty'];
+        }
+    }
+    return $qty;
 }
 
 
