@@ -1,6 +1,11 @@
 <h1>SKWD ~ Infinity of Wine</h1>
-
-<h2><?php echo $this->_params['orderFinished']?></h2>
+<?php if($this->_params['orderFinished']==true){
+    echo '<div class="checkoutMessage">';
+    echo 'thank you for your shopping';
+    echo '</div>';
+    $this->_params['orderFinished']=NULL;
+}
+?>
 
 
 <div class="row">

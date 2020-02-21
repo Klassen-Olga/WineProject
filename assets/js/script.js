@@ -1,5 +1,5 @@
 //Sticky navigation by scrolling
-window.onscroll = function() {changeNav()};
+window.onscroll = function() { changeNav() };
 
 var navbar = document.getElementById("myTopnav");
 var sticky = navbar.offsetTop;
@@ -11,6 +11,7 @@ function changeNav() {
         navbar.classList.remove("sticky");
     }
 }
+
 function myFunction(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -252,7 +253,7 @@ function createCustomAlert(mainText, subText, link = null) {
     btn.focus();
     btn.onclick = function() { removeCustomAlert(link); return false; };
     /*window.location.hash = '#closeBtn';*/
-    btn.tabindex= "10";
+    btn.tabindex = "10";
     alertObj.style.display = "block";
 
 }
@@ -265,12 +266,23 @@ function removeCustomAlert(link) {
 
 }
 
+document.getElementById("myBtn1").style = '';
+
+document.getElementById("myBtn1").onclick = function() { printMe() };
+
+
+function printMe() {
+    window.print();
+}
+
+
+
 function dropDownToggle(input) {
-    var nexDiv=input.nextSibling.nextSibling;
+    var nexDiv = input.nextSibling.nextSibling;
     if (nexDiv.style.display === "none") {
-        var dropdownContents=document.getElementsByClassName('dropdown-content');
-        for (var i=0; i<dropdownContents.length; i++){
-            dropdownContents[i].style.display='none';
+        var dropdownContents = document.getElementsByClassName('dropdown-content');
+        for (var i = 0; i < dropdownContents.length; i++) {
+            dropdownContents[i].style.display = 'none';
 
         }
         nexDiv.style.display = "block";
@@ -278,8 +290,6 @@ function dropDownToggle(input) {
         nexDiv.style.display = "none";
     }
 }
-
-
 
 function filterFunction() {
     var input, filter, ul, li, a, i;
@@ -289,7 +299,7 @@ function filterFunction() {
     a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        if (txtValue.toUpperCase().indexOf(filter) == 0) {
             a[i].style.display = "";
         } else {
             a[i].style.display = "none";

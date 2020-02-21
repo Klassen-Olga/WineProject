@@ -9,6 +9,9 @@
 </head>
 <body>
 <header>
+    <a class="logo1" href="?a=start">
+    <img  src="assets/styles/weinhandel.jpg" alt="">
+    </a>
 
 </header>
 
@@ -70,7 +73,7 @@
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main2.js"></script>
 </footer>
 </body>
 </html>

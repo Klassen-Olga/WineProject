@@ -251,7 +251,7 @@ function register(&$errors)
     }
 }
 
-function isPasswordfromUser($password, $email, &$errors)
+function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
 {
 
     $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
@@ -262,12 +262,24 @@ function isPasswordfromUser($password, $email, &$errors)
         if (password_verify($password, $dbQuery[0]['password'])) {
             return true;
         } else {
-            array_push($errors, "wrong password or email");
-            return false;
+            if($isEmail==true){
+                array_push($errors, "Wrong password or email");
+                return false;
+            }
+            else{
+                array_push($errors, "Wrong old password");
+                return false;
+            }
         }
     } else {
-        array_push($errors, "wrong password or email");
-        return false;
+        if($isEmail==true){
+            array_push($errors, "Wrong password or email");
+            return false;
+        }
+        else{
+            array_push($errors, "Wrong old password");
+            return false;
+        }
     }
 
 }
@@ -487,8 +499,9 @@ function userIsLoggedIn($accountId, &$errors)
 
 function editPassword(&$error, $email, $accountId, $customerId)
 {
+    $isEmail = false;
     if (
-        isPasswordfromUser($_POST['oldPassword'], $email, $error)
+        isPasswordfromUser($_POST['oldPassword'], $email, $error,$isEmail)
         && validatePassword($error, $_POST['newPassword'], $_POST['newPasswordCheck'])
         && validatePasswordForm($error, $_POST['newPassword'])) {
 
@@ -570,10 +583,10 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 {
 
     $address = [
-        'country' => $country,
-        'city' => $city,
-        'zip' => $zip,
-        'street' => $street
+        'country' => $_SESSION['country'],
+        'city' => $_SESSION['city'],
+        'zip' => $_SESSION['zip'],
+        'street' => $_SESSION['street']
     ];
     $addressInstance = new \skwd\models\Address($address);
     $addressInstance->validate($errors);

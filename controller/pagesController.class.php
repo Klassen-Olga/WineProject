@@ -17,7 +17,7 @@ class PagesController extends \skwd\core\Controller
 
         $this->_params['checkoutSite1']=true;
 
-        $this->_params['account']= \skwd\models\Account::find('id= '.'\''. getAccountId(). '\'');
+        $this->_params['account']= \skwd\models\Account::find('id= '. getAccountId());
 
 
         $this->_params['shoppingCart']= \skwd\models\shoppingCart::find('accountId = '.'\''. $this->_params['account'][0]['id']. '\'');
@@ -54,6 +54,9 @@ class PagesController extends \skwd\core\Controller
 
             if(count($this->_params['error'])===0){
                 header('Location: index.php?c=pages&a=start&k=orderFinished');
+                if($_SESSION['payMethod']=='paypal'){
+                    ///////TODO//////////
+                }
             }
         }
     }
@@ -190,10 +193,10 @@ class PagesController extends \skwd\core\Controller
         }
 
         if(isset($_GET['k'])&&'orderFinished'){
-            $this->_params['orderFinished']='vielen dank!!!';
+            $this->_params['orderFinished']=true;
         }
         else{
-            $this->_params['orderFinished']='';
+            $this->_params['orderFinished']=false;
         }
     }
 
