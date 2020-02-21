@@ -1,32 +1,33 @@
 <?php
 $dbQuery = null;
-$dbQuery = \skwd\models\Product::find();
-$this->_params['error'] = [];
-?>
-<?php if ($dbQuery === null || count($dbQuery) === 0):
-    array_push($this->_params['error'], "There are no products yet");
-    ?>
-<?php else: ?>
+$dbQuery = $this->_params['products']; ?>
+<?php if ($dbQuery === null || count($dbQuery) === 0): ?>
+<h3 class="noProd">There are no products in such a category.<h5>
+<?php include 'dropdownFilter.php';?>
+<?php else:
+    include 'dropdownFilter.php'; ?>
+<section>
+</section>
     <section class="container">
         <?php foreach ($dbQuery as $key => $value): ?>
 
-            <?php $dbPicture = productsPicture($dbQuery[$key]['id']);
+            <?php $dbPicture = productsPicture($dbQuery[$key]['prodId']);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
             $price =  $dbQuery[$key]['standardPrice']-($dbQuery[$key]['standardPrice']*$dbQuery[$key]['discount']/100);
             ?>
                 <article>
-                    <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>
+                    <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['prodId'] ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>
                     <div class="container-name">
-                        <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['id'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>
+                        <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['prodId'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>
                     </div>
                     <div class="container-price">
                         <?= $price . ' €' ?>
                     </div>
 
-                    <form action="?a=shoppingCartShow&i=<?= $dbQuery[$key]['id']; ?>" id="addToBasketForm"
-                          method="get">
+                    <form action="?c=pages&a=shoppingCartShow&i=<?= $dbQuery[$key]['prodId']; ?>"
+                          method="post">
                         <div class="basket-button">
-                            <input type="submit" onclick="preventDefaultAndUseAjax(event, <?= $dbQuery[$key]['id']; ?>)" value="Add to basket"/>
+                            <input type="submit" onclick="preventDefaultAndUseAjax(event, <?= $dbQuery[$key]['prodId']; ?>)" value="Add to basket"/>
                         </div>
                     </form>
 
@@ -35,12 +36,6 @@ $this->_params['error'] = [];
         <?php endforeach; ?>
     </section>
 <?php endif; ?>
-
-
-
-
-
-
 
 
 

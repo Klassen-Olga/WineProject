@@ -38,7 +38,7 @@ abstract class BaseModel
         return null;
     }
 
-    public static function find($where = '')
+    public static function find($where = '',$join='')
     {
         $db = $GLOBALS['db'];
         $result = null;
@@ -46,9 +46,31 @@ abstract class BaseModel
         try {
 
             $sql = 'SELECT * FROM ' . self::tableName();
+            if (!empty($join)) {
+                $sql .= $join .' ';
+            }
             if (!empty($where)) {
                 $sql .= ' WHERE ' . $where . ';';
             }
+            $statement = $db->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchall();
+
+        } catch (\PDOException $e) {
+            die('select statement failed: ' . $e . getMessage());
+        }
+        $db=null;
+        return $result;
+
+    }
+    public static function findWithLimit($limit, $offset=0)
+    {
+        $db = $GLOBALS['db'];
+        $result = null;
+
+        try {
+            $sql = 'SELECT * FROM ' . self::tableName();
+            $sql .= ' LIMIT ' . $limit .' OFFSET '. $offset.';';
             $statement = $db->prepare($sql);
             $statement->execute();
             $result = $statement->fetchall();

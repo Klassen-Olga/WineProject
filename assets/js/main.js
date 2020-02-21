@@ -5,7 +5,7 @@ function include(file) {
     script.type = 'text/javascript';
     script.defer = true;
 
-    document.getElementsByTagName('head').item(0).appendChild(script);
+    document.getElementsByTagName('footer').item(0).appendChild(script);
 
 }
 

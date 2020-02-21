@@ -114,7 +114,7 @@ class PagesController extends \skwd\core\Controller
         userIsLoggedIn($accountId, $errors);
         //output of errors from server(also possible for ajax)
         if (isset($_GET['ajax'])===true){
-            if (isset($_GET['cartOp']) && $_GET['cartOp']=='upDate'){
+            if (isset($_GET['cartOp'])){
                 echo json_encode([
                     'qty'=>getBasketQTY(getAccountId()),
                     'subtotal'=>getBasketSubtotal(getAccountId())

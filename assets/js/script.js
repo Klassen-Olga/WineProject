@@ -1,3 +1,16 @@
+//Sticky navigation by scrolling
+window.onscroll = function() {changeNav()};
+
+var navbar = document.getElementById("myTopnav");
+var sticky = navbar.offsetTop;
+
+function changeNav() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
 function myFunction(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -252,23 +265,34 @@ function removeCustomAlert(link) {
 
 }
 
-/*
+function dropDownToggle(input) {
+    var nexDiv=input.nextSibling.nextSibling;
+    if (nexDiv.style.display === "none") {
+        var dropdownContents=document.getElementsByClassName('dropdown-content');
+        for (var i=0; i<dropdownContents.length; i++){
+            dropdownContents[i].style.display='none';
 
-function myFunction(ar) {
-
-    var request = new XMLHttpRequest();
-
-    request.open('GET', 'test.php', true);
-    request.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
+        }
+        nexDiv.style.display = "block";
+    } else {
+        nexDiv.style.display = "none";
+    }
+}
 
 
-                document.getElementById("test12345").innerHTML = this.responseText;
-            } else {
-                alert(this.statusText);
-            }
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("regionDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
         }
     }
-    request.send();
-}*/
+}

@@ -5,9 +5,6 @@ require_once 'config/imports.php';
 
 $controllerName=$_GET['c'] ?? 'pages';
 $actionName=$_GET['a'] ?? 'start';
-/*$_GET['i']=1;
-$_SESSION['id']=1;
-$_GET['ajax']=1;*/
 
 $controllerPath=__DIR__ . '/controller/' . $controllerName. "Controller" . '.class.php';
 
