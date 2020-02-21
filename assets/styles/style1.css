@@ -212,7 +212,7 @@ header img {
         font-size: 0.8em !important;
     }
     .register .button {
-        margin: 0 auto !important;
+        margin-left: 30% !important;
     }
     .login {
         font-size: 0.8em;
@@ -300,18 +300,47 @@ header img {
 
 /*End Navi*/
 
-.wineGuideBox {
-    max-width: 800px;
+@media screen and (max-width: 600px) {
+    .wineGuide p {
+        font-size: 0.8em;
+        width: 90%;
+    }
+    .wineGuidePictures img {
+        max-width: 200px !important;
+        max-height: 200px !important;
+    }
+    .textBox {
+        width: 90% !important;
+    }
+}
+
+.wineGuidePictures {
     display: inline;
-    padding: 2%;
+    margin-right: 1.4%;
+    margin-bottom: 5%;
+}
+
+.wineGuidePictures img {
+    margin-left: 5%;
+    margin-top: 2%;
+    max-width: 450px;
+    max-height: 300px;
+    margin-right: 1.4%;
+}
+
+.wineGuideBox {
+    margin-bottom: 5%;
+    width: 100%;
+    display: inline;
+    background-color: #f3f3f3;
+    box-shadow: 0 4px 8px 0 rgba(154, 0, 2, 0.2);
 }
 
 .textBox {
-    margin-bottom: 20%;
+    float: left;
+    max-width: 60%;
     padding: 2%;
     border-radius: 5px;
-    background-color: #f3f3f3;
-    box-shadow: 0 4px 8px 0 rgba(154, 0, 2, 0.2);
 }
 
 .textBox img {
@@ -320,21 +349,22 @@ header img {
 }
 
 .wineGuideWrapper {
-    margin-left: 2%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.wineGuidePicture img {
-    margin-left: 10%;
-    max-width: 500px;
-    max-height: 300px;
+.wineGuide p {
+    font-size: 1.2em;
+    display: inline;
 }
 
-.wineGuide p,
-.wineGuide img {
-    display: inline;
+.wineGuide h3 {
+    font-size: 1.8em;
+}
+
+.wineGuide p {
+    width: 50%;
 }
 
 .pictureBig {
@@ -431,7 +461,7 @@ footer {
     font-weight: bold;
 }
 
-.basket-button input[type="submit"]{
+.basket-button input[type="submit"] {
     padding: 15px 10px;
     margin: 5%;
     background-color: #9a0002;
@@ -452,8 +482,6 @@ footer {
 .subtotal .proceedToCheckout a:hover {
     background-color: rosybrown;
 }
-
-
 
 
 /*End Products*/
@@ -548,9 +576,12 @@ footer {
     margin-left: 9%;
 }
 
-.checkout1 .button {
-    padding-bottom: 3%;
-    padding-top: 3%;
+.checkout1 .button,
+.checkout2 .button {
+    margin-top: 10%;
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 3%;
 }
 
 .checkout2 {
@@ -652,6 +683,7 @@ footer {
 .myOrder td,
 .personalData td,
 .checkout2 td {
+    word-wrap: break-word;
     padding-left: 10px;
     height: 30px;
     background-color: #e0e0e0;
@@ -662,6 +694,7 @@ footer {
 }
 
 .tdWidth {
+    word-wrap: break-word;
     padding-left: 10px;
     height: 30px;
     background-color: #e0e0e0;
@@ -678,12 +711,15 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-    .order table {
+    .order table,
+    .personalData table {
+        font-size: 1em;
         table-layout: fixed;
         width: 100%;
     }
     .tdWidth {
-        width: 50%;
+        word-wrap: break-word;
+        width: 40%;
     }
 }
 
@@ -840,6 +876,18 @@ hr {
     margin-bottom: 3%;
 }
 
+.checkout2 .button input {
+    border-radius: 50px;
+    background-color: #9a0002;
+    color: #f3f3f3;
+    cursor: pointer;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 8%;
+    font-size: 1em;
+    padding: 5px;
+}
+
 .register .button input {
     border-radius: 50px;
     background-color: #9a0002;
@@ -852,7 +900,8 @@ hr {
     padding: 5px;
 }
 
-.register .button input:hover {
+.register .button input:hover,
+.checkout2 .button input:hover {
     background-color: #e0292c;
     color: white;
 }
@@ -1425,7 +1474,6 @@ select:focus {
     height: 100%;
     left: 0px;
     z-index: 10000;
-
     /* required by MSIE to prevent actions on lower z-index elements */
 }
 
@@ -1578,4 +1626,147 @@ code {
     line-height: 2;
     border: 1px solid #ddd;
     border-radius: .25em;
+}
+
+.checkoutMessage {
+    border-color: #9a0002 !important;
+    border: 6px;
+    margin-left: 2%;
+    border-radius: 6px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    max-width: 40%;
+    box-sizing: content-box;
+    padding-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.8em;
+    border-style: solid;
+}
+
+.logo1 img {
+    margin-top: 20px;
+    margin-left: 20px;
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+}
+
+@media screen and (max-width: 600px) {
+    .logo1 img {
+        margin-top: 10px;
+        margin-left: 10px;
+        border-radius: 100px;
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.icon-printer {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.icon-printer .printer-body {
+    width: 80%;
+    height: 42%;
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    margin-left: -40%;
+    background-color: #000;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+    border-bottom-left-radius: 75%;
+    border-bottom-right-radius: 75%;
+}
+
+.icon-printer .printer-top {
+    width: 60%;
+    height: 15%;
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    margin-left: -30%;
+    background-color: #151517;
+    border-radius: 20%;
+}
+
+.icon-printer .printer-bottom {
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    left: 50%;
+    bottom: -38%;
+    margin-left: -30%;
+    background-color: #f7f7f7;
+    border-radius: 15%;
+}
+
+.icon-printer .printer-file-bottom {
+    width: 50%;
+    height: 16%;
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    margin-left: -25%;
+    background-color: #f7f7f7;
+    border-radius: 20%;
+}
+
+.icon-printer .printer-file-top {
+    width: 50%;
+    height: 34%;
+    position: absolute;
+    left: 50%;
+    margin-left: -25%;
+    top: 23%;
+    background-color: #f7f7f7;
+    border-radius: 10%;
+}
+
+.icon-printer .printer-dot {
+    width: 6%;
+    height: 6%;
+    position: absolute;
+    top: 65%;
+    background-color: #151517;
+    border-radius: 100%;
+}
+
+.icon-printer .printer-line {
+    width: 24%;
+    height: 4%;
+    position: absolute;
+    background-color: #151517;
+    border-radius: 15%;
+}
+
+#postList {
+    margin-bottom: 20px;
+}
+
+.list-item {
+    background-color: #F1F1F1;
+    margin: 5px 15px 2px;
+    padding: 2px;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 120px;
+}
+
+.list-item h4 {
+    color: #0074a2;
+    margin-left: 10px;
+}
+
+.load-more {
+    margin: 15px 25px;
+    cursor: pointer;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
 }

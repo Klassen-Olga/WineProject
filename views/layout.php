@@ -3,6 +3,7 @@
 
 <head>
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style1.css" type="text/css">
@@ -12,6 +13,9 @@
 </head>
 <body>
 <header>
+    <a class="logo1" href="?a=start">
+    <img  src="assets/styles/weinhandel.jpg" alt="">
+    </a>
 
 </header>
 
@@ -75,7 +79,7 @@
 </main>
 <footer>
     <a href="?a=imprint">Imprint</a>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main2.js"></script>
 </footer>
 </body>
 </html>

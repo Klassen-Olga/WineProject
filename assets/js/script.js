@@ -237,8 +237,9 @@ function createCustomAlert(mainText, subText, link = null) {
     btn.id = "closeBtn";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
     btn.focus();
-    btn.onclick = function() { removeCustomAlert(link); return false; }
-
+    btn.onclick = function() { removeCustomAlert(link); return false; };
+    /*window.location.hash = '#closeBtn';*/
+    btn.tabindex = "10";
     alertObj.style.display = "block";
 
 }
@@ -251,9 +252,49 @@ function removeCustomAlert(link) {
 
 }
 
+document.getElementById("myBtn1").style = '';
+
+document.getElementById("myBtn1").onclick = function() { druck() };
+
+document.getElementById("postList").onclick = function() { test123func() }
+
+function druck() {
+    window.print();
+}
+
+
+function test123func() {
+
+    var request = new XMLHttpRequest();
+
+    request.open('POST', 'ajax_more.php', true);
+    request.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+
+
+                var element = document.getElementById('show_more_main' + 1);
+                element.parentNode.removeChild(element);
+
+                var p = document.getElementById('postList');
+                var newElement = document.createElement('div');
+                newElement.setAttribute('id', 'postList');
+                p.appendChild(newElement);
+                var bla = document.createElement('article');
+                alert(this.responseText);
+
+
+            } else {
+                alert(this.statusText);
+            }
+        }
+    }
+    request.send();
+}
+
 /*
 
-function myFunction(ar) {
+function myFunction1() {
 
     var request = new XMLHttpRequest();
 
@@ -270,3 +311,24 @@ function myFunction(ar) {
     }
     request.send();
 }*/
+
+
+
+
+
+$(document).ready(function() {
+    $(document).on('click', '.show_more', function() {
+        var ID = $(this).attr('id');
+        $('.show_more').hide();
+        $('.loding').show();
+        $.ajax({
+            type: 'POST',
+            url: 'allProducts.php',
+            data: 'id=' + ID,
+            success: function(html) {
+                $('#show_more_main' + ID).remove();
+                $('.postList').append(html);
+            }
+        });
+    });
+});

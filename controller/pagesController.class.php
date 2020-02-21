@@ -50,11 +50,13 @@ class PagesController extends \skwd\core\Controller
         }
 
         if(isset($_POST['submitOrder'])){
-            createOrder($this->_params['shipPrice'],$this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer']
-            );
+            createOrder($this->_params['shopingCartItem'], $this->_params['error'], $this->_params['customer'], $this->_params['shipPrice']);
 
             if(count($this->_params['error'])===0){
                 header('Location: index.php?c=pages&a=start&k=orderFinished');
+                if($_SESSION['payMethod']=='paypal'){
+                    ///////TODO//////////
+                }
             }
         }
     }
@@ -191,10 +193,10 @@ class PagesController extends \skwd\core\Controller
         }
 
         if(isset($_GET['k'])&&'orderFinished'){
-            $this->_params['orderFinished']='vielen dank!!!';
+            $this->_params['orderFinished']=true;
         }
         else{
-            $this->_params['orderFinished']='';
+            $this->_params['orderFinished']=false;
         }
     }
 

@@ -30,23 +30,24 @@
                 modern science and technology adapted and industrial wine production and wine consumption now occur throughout the world.
                 </span>
             </p>
-
+            
             <label for="post-1" class="read-more-trigger"></label>
+        </div>
 
-        </div>
+
             
-        </div>
-         <div class=wineGuideBox>
-             <br>
-             <a href="assets/styles/wineGuide1.jpg">
-             <img src="assets/styles/wineGuide1.jpg" alt="picture(antiqueee)">
-             </a>
+            <div class=wineGuidePictures>
+                <br>
+                <a href="assets/styles/wineGuide1.jpg">
+                <img src="assets/styles/wineGuide1.jpg" alt="picture(antiqueee)">
+            </a>
             
-             <a href="assets/styles/history.jpg">
-                <img class="pictureBig" src="assets/styles/history.jpg" alt="picture(grape)">
-                </a>
+            
+      
+        </div>
+    </div>
                 
-         </div>
+         
     </div>
 
     <div class=wineGuideWrapper>
@@ -82,15 +83,15 @@
             <label for="post-2" class="read-more-trigger"></label>
         </div>
             
+        <div class=wineGuidePictures>
+        <a href="assets/styles/trauben1.jpg">
+        <img src="assets/styles/trauben1.jpg" alt="picture(grape)">
+        </a>
+       
+        </div>
         </div>
         
-         <div class=wineGuideBox>
-         <div class=wineGuidePicture>
-         <a href="assets/styles/trauben1.jpg">
-         <img src="assets/styles/trauben1.jpg" alt="picture(grape)">
-         </a>
-         </div>
-         </div>
+         
     </div>
     <div class=wineGuideWrapper>
         <div class=wineGuideBox>
@@ -132,15 +133,15 @@
             <label for="post-3" class="read-more-trigger"></label>
         </div>
             
+        <div class=wineGuidePictures>
+        <a href="assets/styles/traubenRot.jpg">
+        <img src="assets/styles/traubenRot.jpg" alt="picture(grape)">
+        </a>
         </div>
         
-         <div class=wineGuideBox>
-         <div class=wineGuidePicture>
-         <a href="assets/styles/traubenRot.jpg">
-         <img src="assets/styles/traubenRot.jpg" alt="picture(grape)">
-         </a>
-         </div>
-         </div>
+        </div>
+        
+         
     </div>
 
     <div class=wineGuideWrapper>
@@ -224,14 +225,15 @@ Major Grapes: Tinta Roriz (Tempranillo), Touriga Franca, Castelão, Touriga Naci
             <label for="post-4" class="read-more-trigger"></label>
         </div>
             
+        <div class=wineGuidePictures>
+        <a  href="assets/styles/wineRegions.jpg">
+        <img src="assets/styles/wineRegions.jpg" alt="picture(grape)">
+        </a>
         </div>
         
-         <div class=wineGuideBox>
-         <div class=wineGuidePicture>
-         <a  href="assets/styles/wineRegions.jpg">
-         <img src="assets/styles/wineRegions.jpg" alt="picture(grape)">
-         </a>
-         </div>
-         </div>
+        </div>
+        
+       
+         
     </div>
 </div>

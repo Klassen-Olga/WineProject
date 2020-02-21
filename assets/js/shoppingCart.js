@@ -39,7 +39,7 @@ function changeQTY(select, productId) {
 
     });
 }
-/*function deleteItem(event, input, productId){
+function deleteItem(event, input, productId){
     if (getXMLHttpRequest()===null){
         return;
     }
@@ -47,10 +47,11 @@ function changeQTY(select, productId) {
     event.stopPropagation();
     sendAjax('get',window.location.href+'&i='+productId+'&cartOp=delete', null,function (error, resJson, status) {
 
+        input.parentNode.parentNode.parentNode.style.display='none';
 
     });
 
-}*/
+}
 
 
 

@@ -57,7 +57,7 @@
             <div class="gender">
                 <label for="payment">payment:</label>
                 <div class="radio">
-                    <input type="radio" name="payMethod" value="transfer" required <?= isset($_POST['payMethod']) ? ($_POST['payMethod'] === 'tranfer' ? "checked" : '') : ''?>/>transfer
+                    
                     <input type="radio" name="payMethod" value="cash on delivery" required <?= isset($_POST['payMethod']) ? ($_POST['payMethod'] === 'cash on delivery' ? "checked" : '') : ''?>/>cash on delivery
                     <input type="radio" name="payMethod" value="paypal" required <?= isset($_POST['payMethod']) ? ($_POST['payMethod'] === 'paypal' ? "checked" : '') : ''?>/>paypal<br>
                 </div>

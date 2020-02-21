@@ -46,7 +46,7 @@
 </table>
 
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=checkout';?>" method = "POST">
-<div class="buttonLogin">
+<div class="button">
     <input type="submit" name="submitOrder" value="submit order">
 </div>
 </form>

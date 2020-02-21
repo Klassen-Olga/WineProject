@@ -251,7 +251,7 @@ function register(&$errors)
     }
 }
 
-function isPasswordfromUser($password, $email, &$errors)
+function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
 {
 
     $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
@@ -262,12 +262,24 @@ function isPasswordfromUser($password, $email, &$errors)
         if (password_verify($password, $dbQuery[0]['password'])) {
             return true;
         } else {
-            array_push($errors, "wrong password or email");
-            return false;
+            if($isEmail==true){
+                array_push($errors, "Wrong password or email");
+                return false;
+            }
+            else{
+                array_push($errors, "Wrong old password");
+                return false;
+            }
         }
     } else {
-        array_push($errors, "wrong password or email");
-        return false;
+        if($isEmail==true){
+            array_push($errors, "Wrong password or email");
+            return false;
+        }
+        else{
+            array_push($errors, "Wrong old password");
+            return false;
+        }
     }
 
 }
@@ -477,8 +489,9 @@ function userIsLoggedIn($accountId, &$errors)
 
 function editPassword(&$error, $email, $accountId, $customerId)
 {
+    $isEmail = false;
     if (
-        isPasswordfromUser($_POST['oldPassword'], $email, $error)
+        isPasswordfromUser($_POST['oldPassword'], $email, $error,$isEmail)
         && validatePassword($error, $_POST['newPassword'], $_POST['newPasswordCheck'])
         && validatePasswordForm($error, $_POST['newPassword'])) {
 
@@ -544,15 +557,6 @@ function requiredCheckCheckout(&$errors)
     }
 }
 
-function orderPrice($shopingcartItems)
-{
-    $orderPrice = 0.0;
-    foreach ($shopingcartItems as $key => $value) {
-        $orderPrice += ($shopingcartItems[$key]['actualPrice'] * $shopingcartItems[$key]['qty']);
-    }
-    return $orderPrice;
-}
-
 function shipPrice($orderPrice)
 {
 
@@ -590,16 +594,17 @@ function validateAddressTableCheckout(&$errors, $city, $zip, $street, $country)
 }
 
 
-function createOrder($shopingcartItems, &$errors, $customer)
+function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 {
 
-   
+
 
     $orderDate = date("Y-m-d");
 
     $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")));
 
-    $address = validateAddressTableCheckout($errors, $city, $zip, $street, $country);
+    $address = validateAddressTableCheckout($errors,  $_SESSION['city'],$_SESSION['zip'], $_SESSION['street'],$_SESSION['country']);
+
 
     if (count($errors) === 0) {
         $order = ['id' => null,
@@ -607,7 +612,7 @@ function createOrder($shopingcartItems, &$errors, $customer)
             'shipDate' => $shipDate,
             'shipPrice' => $shipPrice,
             'payStatus' => 'unpaid',
-            'payMethod' => $payMethod,
+            'payMethod' => $_SESSION['payMethod'],
             'payDate' => null,
             'customerID' => $customer[0]['id'],
             'addressID' => $address->__get('id')];

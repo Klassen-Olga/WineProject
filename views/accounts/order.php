@@ -22,6 +22,20 @@
 
         </table>
         <br>
+       
+        <div class="icon-printer" id="myBtn1" style="float: left; display: none;" >
+    <div class="printer-body" style="background-color: #9a0002"></div>
+    <div class="printer-top"></div>
+    <div class="printer-bottom"></div>
+    <div class="printer-file-top" style="background-color: #e0292c"></div>
+    <div class="printer-dot" style="left: 65%"></div>
+    <div class="printer-line" style="left: 50%; top: 32%; margin-left: -12%"></div>
+    <div class="printer-line" style="left: 50%; top: 42%; margin-left: -12%"></div>
+    <div class="printer-file-bottom" style="background-color: #e0292c"></div>
+  </div> 
+  <br>
+  
+
         <br>
         </div>
         <?php foreach($this->_params['orderitem'] as $key => $value):?>
