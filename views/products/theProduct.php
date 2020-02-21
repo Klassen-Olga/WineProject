@@ -2,7 +2,7 @@
 $id = $_GET['i'];
 $query = \skwd\models\AllProducts::find("productID=" . $id);
 $pictures = \skwd\models\Picture::find("productID=" . $id);
-$product = \skwd\models\Product::find("id= " . $id);
+$product = \skwd\models\Product::find("prodId= " . $id);
 $priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
 if (count($product) !== 0):
     ?>
@@ -25,14 +25,14 @@ if (count($product) !== 0):
                         </tr>
                     <?php endforeach; ?>
                 </table>
-                <img src="assets/images/backgroundTheProduct/fruits.jpg" style="width:100%; height: 100px"/>
+                <img src="assets/images/backgroundTheProduct/fruits.jpg" style="width:100%;"/>
             </div>
         <?php endif; ?>
         <div class="price-add-to-basket-theProduct">
             <p>Price: <?= $product[0]['standardPrice'] . ' €' ?></p>
-            <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['id'] ?>"
-                  method="get" id="addToBasketForm">
-                <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?=$product[0]['id']?>)"/>
+            <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['prodId'] ?>"
+                  method="post">
+                <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?=$product[0]['prodId']?>)"/>
             </form>
 
         </div>

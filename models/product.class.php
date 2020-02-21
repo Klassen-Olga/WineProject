@@ -4,7 +4,7 @@ class Product extends BaseModel
 {
     const TABLENAME = 'Product';
     protected $schema = [
-        'id' => ['type' => BaseModel::TYPE_INT],
+        'prodId' => ['type' => BaseModel::TYPE_INT],
         'prodName' => ['type' => BaseModel::TYPE_STRING],
         'description' => ['type' => BaseModel::TYPE_STRING],
         'standardPrice' => ['type' => BaseModel::TYPE_FLOAT],

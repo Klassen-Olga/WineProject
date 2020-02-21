@@ -83,17 +83,17 @@ CONSTRAINT Vendor_UQ unique (email)
 
 DROP TABLE IF EXISTS Product;
 CREATE TABLE IF NOT EXISTS Product(
-id			int			NOT NULL	AUTO_INCREMENT,
+prodId			int			NOT NULL	AUTO_INCREMENT,
 prodName				varchar(100)NOT NULL,
 description			    text	NULL,
 standardPrice		decimal(7,2)NOT NULL,
 productType			enum('Drink','Accessory') NOT NULL,	
 vendorID			int			NOT NULL,
-discount			int  NULL default null,
+discount			int  			null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-CONSTRAINT Product_PK PRIMARY KEY (id),
+CONSTRAINT Product_PK PRIMARY KEY (prodId),
 CONSTRAINT Product_FK FOREIGN KEY (vendorID) REFERENCES Vendor (vendorID)
 );
 
@@ -110,7 +110,7 @@ createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 CONSTRAINT Pictur_PK PRIMARY KEY (id),
-CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (id)
+CONSTRAINT Picture_FK FOREIGN KEY (productID) REFERENCES Product (prodId)
 );
 
 -- ---------------------------------------------------------
@@ -140,7 +140,7 @@ createdAt 		TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 		TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 CONSTRAINT ppp_PK PRIMARY KEY (id),
-CONSTRAINT product_FKK FOREIGN KEY(productID) references Product(id),
+CONSTRAINT product_FKK FOREIGN KEY(productID) references Product(prodId),
 CONSTRAINT property_FKK FOREIGN KEY(propertyID) references Property(id)
 );
 
@@ -182,7 +182,7 @@ createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
 CONSTRAINT Basket_PK PRIMARY KEY (id),
-CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (id),
+CONSTRAINT Basket_FK_Product FOREIGN KEY (productID) REFERENCES Product (prodId),
 CONSTRAINT Basket_FK_Order FOREIGN KEY (orderID) REFERENCES Orders (id)
 );
 
@@ -207,7 +207,7 @@ shoppingCartId		int			not null,
 createdAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 updatedAt 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 constraint ShoppingCartItem_pk primary key(id),
-constraint ShoppingCartItem_fk_Product foreign key(productID) references Product(id),
+constraint ShoppingCartItem_fk_Product foreign key(productID) references Product(prodId),
 constraint ShoppingCartItem_fk_ShoppingCart foreign key(shoppingCartId) references ShoppingCart(id));
 
 

@@ -36,3 +36,7 @@ $dbQuery = $this->_params['products']; ?>
         <?php endforeach; ?>
     </section>
 <?php endif; ?>
+
+
+
+

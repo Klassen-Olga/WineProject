@@ -24,7 +24,7 @@
         <input type="text" name="email"
                value="<?= isset($_POST['email'])
                    ? htmlspecialchars($_POST['email']) : $this->_params['account'][0]['email'] ?>"
-               onchange="validateLength(this, 6)"/>
+               onchange="validateEmail(this)"/>
 
                <br>
         </div>

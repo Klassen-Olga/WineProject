@@ -42,26 +42,26 @@ if ($products !== null && count($products) !== 0) :
 <section class="container">
     <?php
     foreach ($products as $product):
-            $dbPicture = productsPicture($product['id']);
+            $dbPicture = productsPicture($product['prodId']);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
             $oldPrice = $product['standardPrice'];
             $price = number_format($oldPrice-($oldPrice*$product['discount']/100), 2, '.', '');
             ?>
             <article>
                 <div class="sale-section"><?= $product['discount'] . ' %' ?></div>
-                <a href="?c=products&a=theProduct&i=<?= $product['id'] ?>"><img class="container-image"
+                <a href="?c=products&a=theProduct&i=<?= $product['prodId'] ?>"><img class="container-image"
                                                                       src="<?php echo $picture; ?>"></a><br>
                 <div class="container-name">
-                    <a href="?c=products&a=theProduct&i=<?= $product['id'] ?>"> <?= $product['prodName']; ?></a>
+                    <a href="?c=products&a=theProduct&i=<?= $product['prodId'] ?>"> <?= $product['prodName']; ?></a>
                 </div>
                 <div class="old-price"><?= $oldPrice . ' €' ?></div>
                 <div class="container-price new-price">
                     <?= 'New price:' . $price . ' €' ?>
                 </div>
-                <form action="?a=shoppingCartShow&i=<?= $product['id']; ?>" id="addToBasketForm"
+                <form action="?a=shoppingCartShow&i=<?= $product['prodId']; ?>"
                       method="post">
                     <div class="basket-button">
-                        <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?= $product['id']; ?>)"/>
+                        <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?= $product['prodId']; ?>)"/>
                     </div>
                 </form>
 

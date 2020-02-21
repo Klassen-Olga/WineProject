@@ -1,3 +1,17 @@
+//Sticky navigation by scrolling
+window.onscroll = function() { changeNav() };
+
+var navbar = document.getElementById("myTopnav");
+var sticky = navbar.offsetTop;
+
+function changeNav() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
+
 function myFunction(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -254,81 +268,41 @@ function removeCustomAlert(link) {
 
 document.getElementById("myBtn1").style = '';
 
-document.getElementById("myBtn1").onclick = function() { druck() };
+document.getElementById("myBtn1").onclick = function() { printMe() };
 
-document.getElementById("postList").onclick = function() { test123func() }
 
-function druck() {
+function printMe() {
     window.print();
 }
 
 
-function test123func() {
 
-    var request = new XMLHttpRequest();
+function dropDownToggle(input) {
+    var nexDiv = input.nextSibling.nextSibling;
+    if (nexDiv.style.display === "none") {
+        var dropdownContents = document.getElementsByClassName('dropdown-content');
+        for (var i = 0; i < dropdownContents.length; i++) {
+            dropdownContents[i].style.display = 'none';
 
-    request.open('POST', 'ajax_more.php', true);
-    request.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-
-
-                var element = document.getElementById('show_more_main' + 1);
-                element.parentNode.removeChild(element);
-
-                var p = document.getElementById('postList');
-                var newElement = document.createElement('div');
-                newElement.setAttribute('id', 'postList');
-                p.appendChild(newElement);
-                var bla = document.createElement('article');
-                alert(this.responseText);
-
-
-            } else {
-                alert(this.statusText);
-            }
         }
+        nexDiv.style.display = "block";
+    } else {
+        nexDiv.style.display = "none";
     }
-    request.send();
 }
 
-/*
-
-function myFunction1() {
-
-    var request = new XMLHttpRequest();
-
-    request.open('GET', 'test.php', true);
-    request.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-
-                document.getElementById("test12345").innerHTML = this.responseText;
-            } else {
-                alert(this.statusText);
-            }
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("regionDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) == 0) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
         }
     }
-    request.send();
-}*/
-
-
-
-
-
-$(document).ready(function() {
-    $(document).on('click', '.show_more', function() {
-        var ID = $(this).attr('id');
-        $('.show_more').hide();
-        $('.loding').show();
-        $.ajax({
-            type: 'POST',
-            url: 'allProducts.php',
-            data: 'id=' + ID,
-            success: function(html) {
-                $('#show_more_main' + ID).remove();
-                $('.postList').append(html);
-            }
-        });
-    });
-});
+}

@@ -433,7 +433,7 @@ function upDateOrInsertProductInShoppingCart($productId, $shoppingCartId, &$erro
     } else {
         $shoppingCartItem = $databaseCheck[0];
         if (isset($_GET['cartOp']) && $_GET['cartOp'] === 'upDate') {
-            $shoppingCartItem['qty'] = $_GET['qty'];
+            $shoppingCartItem['qty'] = isset($_GET['qty'])?$_GET['qty']:$_POST['qty'];//ajax or not
         } else {
             if (($shoppingCartItem['qty'] + 1) > 10) {
                 array_push($errors, 'You can not add more than 10 items of the same product');
@@ -458,7 +458,17 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
         $shoppingCartItemInstance = new \skwd\models\ShoppingCartItem($shoppingCartItem);
         $shoppingCartItemInstance->delete($errors);
         unset($_GET['i']);
-        header('Location: index.php?a=shoppingCartShow');
+        if (isset($_GET['ajax']) === false) {
+            header('Location: index.php?a=shoppingCartShow');
+        }
+        else{
+            if (count(\skwd\models\ShoppingCartItem::find('shoppingCartId='.$shoppingCartId))==0){
+                echo json_encode([
+                    'lastElement'=>'true'
+                ]);
+                exit(0);
+            }
+        }
 
     }
 }
@@ -623,7 +633,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
         if (count($errors === 0)) {
 
             foreach ($shopingcartItems as $key => $value) {
-                $products = \skwd\models\Product::find('id=' . $shopingcartItems[$key]['productID']);
+                $products = \skwd\models\Product::find('prodId=' . $shopingcartItems[$key]['productID']);
                 if ($products!==null && count($products)!==null){
                     $product=$products[0];
                     $standardPrice=$product['standardPrice'];
@@ -673,7 +683,7 @@ function getBasketSubtotal($accountId)
     $sum = 0;
     $shoppingCartItems = getShoppingCartItems($accountId);
     foreach ($shoppingCartItems as $item) {
-        $product = \skwd\models\Product::find('id=' . $item['productID']);
+        $product = \skwd\models\Product::find('prodId=' . $item['productID']);
         if ($product !== null && count($product) > 0) {
             $product = $product[0];
             if ($product['discount'] === null) {
@@ -692,12 +702,31 @@ function getBasketQTY($accountId)
     $qty = 0;
     $shoppingCartItems = getShoppingCartItems($accountId);
     foreach ($shoppingCartItems as $item) {
-        $product = \skwd\models\Product::find('id=' . $item['productID']);
+        $product = \skwd\models\Product::find('prodId=' . $item['productID']);
         if ($product !== null && count($product) > 0) {
             $qty += $item['qty'];
         }
     }
     return $qty;
 }
+function removeQuery($queriesArray){
+    $matchCounter=0;
+    $url= "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
+    list($urlPart, $queryPart) = array_pad(explode('?', $url), 2, '');
+    parse_str($queryPart, $queryVariables);
+    foreach($queriesArray as $queryName){
+        if (isset($queryVariables[$queryName])){
+            unset($queryVariables[$queryName]);
+            $matchCounter++;
+        }
+    }
+    if ($matchCounter!==0){
+        $newQuery = http_build_query($queryVariables);
+        return $urlPart . '?' . $newQuery;
+    }
+    else{
+        return "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
+    }
 
+}
 

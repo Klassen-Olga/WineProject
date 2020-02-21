@@ -9,7 +9,7 @@ else :?>
     <section class="container">
         <?php foreach ($setWithProductIdAndPropertyId as $key => $value):
             $productId = $value['productID'];
-            $product = \skwd\models\Product::find('id=' . $productId);
+            $product = \skwd\models\Product::find('prodId=' . $productId);
             $dbPicture = productsPicture($productId);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
             $price = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
@@ -23,7 +23,7 @@ else :?>
                     <?= $price . ' €' ?>
                 </div>
                 <iframe name="hiddenFrame" class="hide"></iframe>
-                <form action="?a=shoppingCartShow&i=<?= $productId ?>" method="get" id="addToBasketForm">
+                <form action="?c=pages&a=shoppingCartShow&i=<?= $productId ?>" method="post"
                     <div class="basket-button">
                         <input type="submit" onclick="preventDefaultAndUseAjax(event, <?=$productId ?>)" value="Add to basket"/>
                     </div>
