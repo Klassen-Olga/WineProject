@@ -228,4 +228,7 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
+    public function actionPrivacyPolicy(){
+
+    }
 }

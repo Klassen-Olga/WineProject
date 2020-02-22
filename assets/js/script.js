@@ -265,10 +265,12 @@ function removeCustomAlert(link) {
     }
 
 }
+if (document.getElementById("myBtn1") !== null) {
+    document.getElementById("myBtn1").style = 'none';
 
-document.getElementById("myBtn1").style = 'none';
+    document.getElementById("myBtn1").onclick = function() { printMe() };
 
-document.getElementById("myBtn1").onclick = function() { printMe() };
+}
 
 
 function printMe() {
@@ -306,3 +308,23 @@ function filterFunction() {
         }
     }
 }
+
+/*$(document).ready(function(){
+    $(window).scroll(function(){
+        var lastID = $('.load-more').attr('lastID');
+        if(($(window).scrollTop() == $(document).height() - $(window).height()) && (lastID != 0)){
+            $.ajax({
+                type:'POST',
+                url:'ajax_more.php',
+                data:'prodId='+lastID,
+                beforeSend:function(){
+                    $('.load-more').show();
+                },
+                success:function(html){
+                    $('.load-more').remove();
+                    $('#postList').append(html);
+                }
+            });
+        }
+    });
+});*/
