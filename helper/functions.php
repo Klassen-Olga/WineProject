@@ -251,6 +251,8 @@ function register(&$errors)
     }
 }
 
+
+// isEmail is for the distinction between the login and change password form
 function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
 {
 
@@ -258,7 +260,8 @@ function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
 
     if (!empty($dbQuery)) {
 
-
+        // "Wrong password or email" is for the login form
+        // "Wrong old password" is for personal data password change because there is no field for email
         if (password_verify($password, $dbQuery[0]['password'])) {
             return true;
         } else {
@@ -284,6 +287,8 @@ function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
 
 }
 
+
+//rememberMe shows if the checkbox in login form is set
 function login($password, $email, $rememberMe, &$errors)
 {
     $isLoginSuccessful = false;
@@ -299,12 +304,12 @@ function login($password, $email, $rememberMe, &$errors)
 
 function logout()
 {
-    unset($_SESSION['logged']);
-    unset($_SESSION['email']);
+    
+   
     unset($_SESSION['id']);
     session_destroy();
-    setcookie('email', '', -1, '/');
-    setcookie('logged', '', -1, '/');
+    
+  
     setcookie('id', '', -1, '/');
     header('Location: index.php?c=pages&a=start');
 }
@@ -313,8 +318,8 @@ function rememberMe($email, $id)
 {
     $duration = time() + 3600 * 24 * 30;
     //setcookie('userId',$id,$duration,'/');
-    setcookie('email', $email, $duration, '/');
-    setcookie('logged', 'isLogged', $duration, '/');
+   
+    
     setcookie('id', $id, $duration, '/');
 }
 

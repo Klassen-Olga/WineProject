@@ -1,5 +1,6 @@
 <?php
 require_once 'config/imports.php';
+
 if(!empty($_POST["id"])){
 
     $db = $GLOBALS['db'];
@@ -16,17 +17,17 @@ if(!empty($_POST["id"])){
     $showLimit = 2;
    */ 
   //Get all rows except already displayed
-$queryAll = $db->prepare("SELECT COUNT(*) as num_rows FROM product WHERE id < ".$lastID." ORDER BY id DESC");
+$queryAll = $db->prepare("SELECT COUNT(*) as num_rows FROM product WHERE prodId < ".$lastID." ORDER BY prodId DESC");
 $queryAll->execute();
 $rowAll = $queryAll->fetch();
 $allNumRows = $rowAll['num_rows'];
     // Get records from the database
 
-    $statement = $db->prepare("SELECT * FROM product WHERE id < ".$lastID." ORDER BY id DESC LIMIT ".$showLimit);
+    $statement = $db->prepare("SELECT * FROM product WHERE prodId < ".$lastID." ORDER BY prodId DESC LIMIT ".$showLimit);
     $statement->execute();
     if( $statement->rowCount() > 0){ 
         while($row = $statement->fetch()){
-            $postID = $row['id'];
+            $postID = $row['prodId'];
     ?>
         <div class="list-item"><h4><?php echo $row['prodName']; ?></h4></div>
 <?php } ?>

@@ -266,7 +266,7 @@ function removeCustomAlert(link) {
 
 }
 
-document.getElementById("myBtn1").style = '';
+document.getElementById("myBtn1").style = 'none';
 
 document.getElementById("myBtn1").onclick = function() { printMe() };
 

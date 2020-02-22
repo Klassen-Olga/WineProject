@@ -71,8 +71,6 @@ class PagesController extends \skwd\core\Controller
         }
         if (isset($_POST['submitLogin']) && login($_POST['validationPassword'], $_POST['email'], $rememberMe, $errors) == true) {
             $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $_POST['email'] . '\'');
-            //$dbQuery[0]['id'];
-            $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['id'] = $dbQuery[0]['id'];
             actionIfUserIsNotLoggedIn();

@@ -1,7 +1,7 @@
 <h1>SKWD ~ Infinity of Wine</h1>
 <?php if($this->_params['orderFinished']==true){
     echo '<div class="checkoutMessage">';
-    echo 'thank you for your shopping';
+    echo 'Thank you for your shopping <br> <br> <p class="smallText">You can view or print out your order under the my orders page.</p>';
     echo '</div>';
     $this->_params['orderFinished']=NULL;
 }

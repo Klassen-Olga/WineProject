@@ -651,6 +651,10 @@ footer {
     background-color: #9a0002;
 }
 
+.myOrder a {
+    margin-top: 2.3%;
+}
+
 .personalDataEdit h3 {
     margin-top: 3%;
     margin-left: 4%;
@@ -1659,7 +1663,7 @@ code {
 }
 
 .checkoutMessage {
-    border-color: #9a0002 !important;
+    border-color: black !important;
     border: 6px;
     margin-left: 2%;
     border-radius: 6px;
@@ -1674,12 +1678,17 @@ code {
     border-style: solid;
 }
 
+.smallText {
+    margin-top: -4%;
+    font-size: 0.5em !important;
+}
+
 .logo1 img {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
     border-radius: 100px;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 
 @media screen and (max-width: 600px) {

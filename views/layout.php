@@ -33,9 +33,9 @@
 
         <?php
 
-        if (isset($_SESSION['logged']) && $_SESSION['logged'] == true) {
+        if (isset($_SESSION['id'])) {
             include __DIR__ . '/logout.php';
-        } else if (isset($_COOKIE['logged']) && $_COOKIE['logged'] === 'isLogged') {
+        } else if (isset($_COOKIE['id'])) {
             include __DIR__ . '/logout.php';
         }
         ?>

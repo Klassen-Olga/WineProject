@@ -3,51 +3,43 @@
 
     <div class="fieldset">
 
-        <h2>your order from: <?php echo dateOfBirthInRightOrder($this->_params['orders'][0]['orderDate']); ?> </h2>
+        <h2>Your order from: <?php echo dateOfBirthInRightOrder($this->_params['orders'][0]['orderDate']); ?> </h2>
         <br>
         <table>
             <tr>
-                <td class="tdWidth">OrderId:</td>
-                <td><?php echo $this->_params['orders'][0]['id']; ?></td>
-            </tr>
-            <tr>
-                <td class="tdWidth">orderDate:</td>
-                <td><?php echo dateOfBirthInRightOrder($this->_params['orders'][0]['orderDate']); ?></td>
-            </tr>
-            <tr>
-                <td class="tdWidth">shipDate:</td>
+                <td class="tdWidth">Ship date:</td>
                 <td><?php echo dateOfBirthInRightOrder($this->_params['orders'][0]['shipDate']); ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">shipPrice:</td>
+                <td class="tdWidth">Ship price:</td>
                 <td><?php echo $this->_params['orders'][0]['shipPrice']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">payStatus:</td>
+                <td class="tdWidth">Pay status:</td>
                 <td><?php echo $this->_params['orders'][0]['payStatus']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">payMethod:</td>
+                <td class="tdWidth">Pay method:</td>
                 <td><?php echo $this->_params['orders'][0]['payMethod']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">payDate:</td>
+                <td class="tdWidth">Pay date:</td>
                 <td><?php echo dateOfBirthInRightOrder($this->_params['orders'][0]['payDate']); ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">country:</td>
+                <td class="tdWidth">Country:</td>
                 <td><?php echo $this->_params['address'][0]['country']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">city:</td>
+                <td class="tdWidth">City:</td>
                 <td><?php echo $this->_params['address'][0]['city']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">zip:</td>
+                <td class="tdWidth">Zip:</td>
                 <td><?php echo $this->_params['address'][0]['zip']; ?></td>
             </tr>
             <tr>
-                <td class="tdWidth">street:</td>
+                <td class="tdWidth">Street:</td>
                 <td><?php echo $this->_params['address'][0]['street'];; ?></td>
             </tr>
 
@@ -80,11 +72,11 @@
 
                 <table>
                     <tr>
-                        <td class="tdWidth">product name:</td>
+                        <td class="tdWidth">Product name:</td>
                         <td><?php echo $this->_params['product'][$key][0]['prodName']; ?></td>
                     </tr>
                     <tr>
-                        <td class="tdWidth">product typ:</td>
+                        <td class="tdWidth">Product typ:</td>
                         <td><?php echo $this->_params['product'][$key][0]['productType']; ?></td>
                     </tr>
 
@@ -96,11 +88,11 @@
                     <?php endforeach; ?>
 
                     <tr>
-                        <td class="tdWidth">unit cost:</td>
+                        <td class="tdWidth">Unit cost:</td>
                         <td><?php echo $this->_params['orderitem'][$key]['actualPrice']; ?></td>
                     </tr>
                     <tr>
-                        <td class="tdWidth">quantity:</td>
+                        <td class="tdWidth">Quantity:</td>
                         <td><?php echo $this->_params['orderitem'][$key]['qty']; ?></td>
                     </tr>
 
@@ -111,7 +103,7 @@
                     <img src="<?php echo $this->_params['picture'][$key][0]['path']; ?>" alt="product">
                     <br>
                     <a href="?c=products&a=theProduct&i=<?php echo $this->_params['product'][$key][0]['prodId']; ?>">go
-                        to product</a>
+                        To product</a>
                 </div>
             </div>
             <br><br>
