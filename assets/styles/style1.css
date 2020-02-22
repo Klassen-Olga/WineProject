@@ -403,10 +403,10 @@ h2 {
 }
 
 footer {
-    padding-bottom: 0;
-    text-align: center;
-    margin-top: 150px;
-    margin-bottom: 10px;
+    margin-top: 100px;
+width: 100%;
+    padding:10px;
+    background-color: #e2e2e2;
 }
 
 .login {
@@ -780,6 +780,28 @@ footer {
     background-color: #9a0002;
 }
 
+.footer1{
+    text-align: center;
+}
+
+footer a:link,
+footer a:visited {
+    text-decoration: none;
+
+    color: black;
+}
+
+footer a:hover,
+footer a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.privacyPolicy{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 .personalData .fieldset,
 .order .fieldset {
     margin: 0 auto;
@@ -828,10 +850,24 @@ footer {
     margin-top: 30px;
 }
 
+.imprint{
+    margin-top: 5%;
+    width: 100% !important;
+    padding-left: 3%;
+    padding-right: 5%;
+
+
+}
+
+
+.imprint p{
+    line-height: 1.5;
+    width: 700px; !important;
+}
+
 .fieldset {
     padding: 1%;
     background: #f7f7f7;
-    ;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -1092,7 +1128,7 @@ hr {
     margin: 0 auto;
     max-width: 550px;
     background-color: #f7f7f7;
-    ;
+
     padding-top: 1%;
     min-height: 480px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);

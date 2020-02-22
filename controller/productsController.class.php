@@ -6,15 +6,20 @@ class ProductsController extends \skwd\core\Controller
 
     public function actionAllProducts()
     {
+/*       $limit=5;
+        $orderByAndLimit=' ORDER BY prodId DESC LIMIT '.$limit;*/
+
+
+
 /*        Filter allow to search by drinks from an certain region
          and/or an certain year
          and/or price class
          or drink category(dropdown menu in navigation)*/
-        if (isset($_GET['region']) || isset($_GET['year']) || isset($_GET['minPrice'])){
+/*        if (isset($_GET['region']) || isset($_GET['year']) || isset($_GET['minPrice'])){
             $where='';
             $join = ' join PropertyProProduct ppp on product.prodId=ppp.ProductID ';
             $join.=' join Property on property.id=ppp.propertyID ';
-            $others='GROUP BY prodId HAVING COUNT(*) =';
+            $others=' GROUP BY prodId HAVING COUNT(*) =';
             $numberOfOptions=0;
             if (isset($_GET['region'])) {
                 $where = '(property.name=\'country\') and (ppp.value=' . '\''. $_GET['region'].'\')';
@@ -46,8 +51,10 @@ class ProductsController extends \skwd\core\Controller
         }
 
         else {
-            $this->_params['products'] = \skwd\models\Product::find();
+            $this->_params['products'] = \skwd\models\Product::findWithLimit($orderByAndLimit);
+            //$this->_params['products'] = \skwd\models\Product::find();
         }
+*/
     }
 
     public function actionTheProduct()

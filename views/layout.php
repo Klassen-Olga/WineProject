@@ -72,8 +72,16 @@
 <?php echo $body; ?>
 </main>
 <footer>
-    <a href="?a=imprint">Imprint</a>
+    <div class="footer1">
+    <?php if(isset($_GET['a'])&&$_GET['a']=='imprint'):?>
+    <a href="?a=privacyPolicy"> Privacy Policy</a>
+    <?php elseif(isset($_GET['a'])&&$_GET['a']=='privacyPolicy'):?>
+    <a href="?a=imprint">Imprint </a>
+    <?php else:?>
+   <a href="?a=imprint">Imprint </a> | <a href="?a=privacyPolicy"> Privacy Policy</a>
+    <?php endif; ?>
     <script src="assets/js/main2.js"></script>
+    </div>
 </footer>
 </body>
 </html>

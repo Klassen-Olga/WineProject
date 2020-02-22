@@ -63,14 +63,14 @@ abstract class BaseModel
         return $result;
 
     }
-    public static function findWithLimit($limit, $offset=0)
+    public static function findWithLimit($limit)
     {
         $db = $GLOBALS['db'];
         $result = null;
 
         try {
             $sql = 'SELECT * FROM ' . self::tableName();
-            $sql .= ' LIMIT ' . $limit .' OFFSET '. $offset.';';
+            $sql .= $limit;
             $statement = $db->prepare($sql);
             $statement->execute();
             $result = $statement->fetchall();
