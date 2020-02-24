@@ -38,7 +38,7 @@ abstract class BaseModel
         return null;
     }
 
-    public static function find($where = '',$join='')
+    public static function find($where = '')
     {
         $db = $GLOBALS['db'];
         $result = null;
@@ -46,9 +46,6 @@ abstract class BaseModel
         try {
 
             $sql = 'SELECT * FROM ' . self::tableName();
-            if (!empty($join)) {
-                $sql .= $join .' ';
-            }
             if (!empty($where)) {
                 $sql .= ' WHERE ' . $where . ';';
             }
@@ -63,14 +60,29 @@ abstract class BaseModel
         return $result;
 
     }
-    public static function findWithLimit($limit)
+    public static function findComplex($join, $where, $orderBy, $groupByAndHaving, $limitAndOffset=null)
     {
         $db = $GLOBALS['db'];
         $result = null;
 
         try {
-            $sql = 'SELECT * FROM ' . self::tableName();
-            $sql .= $limit;
+
+            $sql = 'SELECT * FROM ' . self::tableName(). '  ';
+            if (!empty($join)) {
+                $sql .= $join .' ';
+            }
+            if (!empty($where)) {
+                $sql .= $where . ' ';
+            }
+            if (!empty($orderBy)) {
+                $sql .=$orderBy . ' ';
+            }
+            if (!empty($groupByAndHaving)) {
+                $sql .= $groupByAndHaving . ' ';
+            }
+            if (!empty($limitAndOffset)) {
+                $sql .=$limitAndOffset . ' ';
+            }
             $statement = $db->prepare($sql);
             $statement->execute();
             $result = $statement->fetchall();

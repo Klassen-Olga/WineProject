@@ -1,7 +1,7 @@
 
 <div class=wineGuide>
 
-<h1>wine-guide</h1>
+<h1>Wine guide</h1>
 
 <br>
     <div class=wineGuideWrapper>

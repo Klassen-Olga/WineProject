@@ -11,4 +11,5 @@ function include(file) {
 
 include('assets/js/script.js');
 include('assets/js/register.js');
+include('assets/js/ajaxLoadMore.js');
 include('assets/js/shoppingCart.js');

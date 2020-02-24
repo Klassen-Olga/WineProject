@@ -251,7 +251,7 @@ function register(&$errors)
     }
 }
 
-function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
+function isPasswordfromUser($password, $email, &$errors, $isEmail = true)
 {
 
     $dbQuery = skwd\models\Account::find('email= ' . '\'' . $email . '\'');
@@ -262,21 +262,19 @@ function isPasswordfromUser($password, $email, &$errors, $isEmail=true)
         if (password_verify($password, $dbQuery[0]['password'])) {
             return true;
         } else {
-            if($isEmail==true){
+            if ($isEmail == true) {
                 array_push($errors, "Wrong password or email");
                 return false;
-            }
-            else{
+            } else {
                 array_push($errors, "Wrong old password");
                 return false;
             }
         }
     } else {
-        if($isEmail==true){
+        if ($isEmail == true) {
             array_push($errors, "Wrong password or email");
             return false;
-        }
-        else{
+        } else {
             array_push($errors, "Wrong old password");
             return false;
         }
@@ -433,7 +431,7 @@ function upDateOrInsertProductInShoppingCart($productId, $shoppingCartId, &$erro
     } else {
         $shoppingCartItem = $databaseCheck[0];
         if (isset($_GET['cartOp']) && $_GET['cartOp'] === 'upDate') {
-            $shoppingCartItem['qty'] = isset($_GET['qty'])?$_GET['qty']:$_POST['qty'];//ajax or not
+            $shoppingCartItem['qty'] = isset($_GET['qty']) ? $_GET['qty'] : $_POST['qty'];//ajax or not
         } else {
             if (($shoppingCartItem['qty'] + 1) > 10) {
                 array_push($errors, 'You can not add more than 10 items of the same product');
@@ -460,11 +458,10 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
         unset($_GET['i']);
         if (isset($_GET['ajax']) === false) {
             header('Location: index.php?a=shoppingCartShow');
-        }
-        else{
-            if (count(\skwd\models\ShoppingCartItem::find('shoppingCartId='.$shoppingCartId))==0){
+        } else {
+            if (count(\skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCartId)) == 0) {
                 echo json_encode([
-                    'lastElement'=>'true'
+                    'lastElement' => 'true'
                 ]);
                 exit(0);
             }
@@ -501,7 +498,7 @@ function editPassword(&$error, $email, $accountId, $customerId)
 {
     $isEmail = false;
     if (
-        isPasswordfromUser($_POST['oldPassword'], $email, $error,$isEmail)
+        isPasswordfromUser($_POST['oldPassword'], $email, $error, $isEmail)
         && validatePassword($error, $_POST['newPassword'], $_POST['newPasswordCheck'])
         && validatePasswordForm($error, $_POST['newPassword'])) {
 
@@ -608,12 +605,11 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 {
 
 
-
     $orderDate = date("Y-m-d");
 
     $shipDate = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 1, date("Y")));
 
-    $address = validateAddressTableCheckout($errors,  $_SESSION['city'],$_SESSION['zip'], $_SESSION['street'],$_SESSION['country']);
+    $address = validateAddressTableCheckout($errors, $_SESSION['city'], $_SESSION['zip'], $_SESSION['street'], $_SESSION['country']);
 
 
     if (count($errors) === 0) {
@@ -634,11 +630,11 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 
             foreach ($shopingcartItems as $key => $value) {
                 $products = \skwd\models\Product::find('prodId=' . $shopingcartItems[$key]['productID']);
-                if ($products!==null && count($products)!==null){
-                    $product=$products[0];
-                    $standardPrice=$product['standardPrice'];
-                    $discount=$product['discount'];
-                    $productPrice= $discount!==null ?  number_format($standardPrice-($standardPrice*$discount/100), 2, '.', ''): $standardPrice;
+                if ($products !== null && count($products) !== null) {
+                    $product = $products[0];
+                    $standardPrice = $product['standardPrice'];
+                    $discount = $product['discount'];
+                    $productPrice = $discount !== null ? number_format($standardPrice - ($standardPrice * $discount / 100), 2, '.', '') : $standardPrice;
                     $orderItem = ['id' => null,
                         'actualPrice' => $productPrice,
                         'qty' => $shopingcartItems[$key]['qty'],
@@ -709,24 +705,73 @@ function getBasketQTY($accountId)
     }
     return $qty;
 }
-function removeQuery($queriesArray){
-    $matchCounter=0;
-    $url= "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
+
+function removeQuery($queriesArray)
+{
+    $matchCounter = 0;
+    $url = "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
     list($urlPart, $queryPart) = array_pad(explode('?', $url), 2, '');
     parse_str($queryPart, $queryVariables);
-    foreach($queriesArray as $queryName){
-        if (isset($queryVariables[$queryName])){
+    foreach ($queriesArray as $queryName) {
+        if (isset($queryVariables[$queryName])) {
             unset($queryVariables[$queryName]);
             $matchCounter++;
         }
     }
-    if ($matchCounter!==0){
+    if ($matchCounter !== 0) {
         $newQuery = http_build_query($queryVariables);
         return $urlPart . '?' . $newQuery;
-    }
-    else{
+    } else {
         return "$_SERVER[PHP_SELF]?$_SERVER[QUERY_STRING]";
     }
 
 }
 
+//for sorted descend products
+function getQueryWithLimitAndOffsetDesc($page)
+{
+    $offset = NUMBER_LIMIT * ($page - 1);
+    $sqlWithLimitAndOffset = ' limit ' . NUMBER_LIMIT . ' offset ' . $offset;
+    return $sqlWithLimitAndOffset;
+}
+
+function getQueryWithLimitAndOffsetAsc($page)
+{
+    $offset = $page * NUMBER_LIMIT - NUMBER_LIMIT;
+    $sqlWithLimitAndOffset = ' limit ' . NUMBER_LIMIT . ' offset ' . $offset;
+    return $sqlWithLimitAndOffset;
+}
+
+function getProductsAccordingToThePage($join = null, $where = null, $orderBy = null, $groupByAndHaving = null)
+{
+
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    if (isset($orderBy)) {
+        $sqlWithLimitAndOffset = getQueryWithLimitAndOffsetDesc($page);
+    } else {
+        $sqlWithLimitAndOffset = getQueryWithLimitAndOffsetAsc($page);
+    }
+    return \skwd\models\Product::findComplex($join, $where, $orderBy, $groupByAndHaving, $sqlWithLimitAndOffset);
+}
+
+function getNumberOfPages($join = null, $where = null, $orderBy = null, $groupByAndHaving = null)
+{
+    // In case of millions of products this value could be stored in database as redundancy
+
+    $prodNumber = count(\skwd\models\Product::findComplex($join, $where, $orderBy, $groupByAndHaving));
+    if ($prodNumber >= NUMBER_LIMIT) {
+        return ceil($prodNumber / NUMBER_LIMIT);
+    } else {
+        return 1;
+    }
+}
+
+function validateUserUrl($available, $queryParameter)
+{
+    foreach ($available as $value) {
+        if ($value === $queryParameter) {
+            return true;
+        }
+    }
+    return false;
+}
