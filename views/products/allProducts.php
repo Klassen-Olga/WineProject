@@ -13,7 +13,7 @@ include 'dropdownFilter.php'; ?>
     <section class="container">
         <?php foreach ($dbQuery as $key => $value): ?>
             <?php $dbPicture = productsPicture($dbQuery[$key]['prodId']);
-            $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+            $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
             if ($dbQuery[$key]['discount'] !== null) {
                 $priceOfProduct = $dbQuery[$key]['standardPrice'] - ($dbQuery[0]['standardPrice'] * $dbQuery[$key]['discount'] / 100);
             }

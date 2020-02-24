@@ -61,7 +61,7 @@ $products = $this->_params['products'];
             <?php
             foreach ($products as $product):
                 $dbPicture = productsPicture($product['prodId']);
-                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
                 $oldPrice = $product['standardPrice'];
                 $price = number_format($oldPrice - ($oldPrice * $product['discount'] / 100), 2, '.', '');
                 ?>

@@ -31,7 +31,7 @@ html {
 }
 
 header {
-    background-image: url("background.jpg");
+    background-image: url("../images/background.jpg");
     height: 250px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +39,7 @@ header {
 
 header img {
     padding: 1px;
-    background-image: url("background.jpg");
+    background-image: url("../images/background.jpg");
     height: 250px;
 }
 

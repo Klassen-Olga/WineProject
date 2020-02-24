@@ -3,6 +3,7 @@ Erstellung einer Internetpräsenz für einen europäischen Weinhändler- S&K wine de
 
 # Features:
 -Registrierung
+
 -login/logout
 -Warenkorbverwaltung
 -Produktbestellung

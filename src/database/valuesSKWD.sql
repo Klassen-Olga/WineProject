@@ -45,17 +45,17 @@ values
 
 -- Picture
 
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_1_.jpg',1,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_2_.jpg',2,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_3_.jpg',3,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_4_.jpg',4,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_5_.jpg',5,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_6_.jpg',6,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_7_.jpg',7,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_8_.jpg',8,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_9_.jpg',9,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_10_.jpg',10,NULL,NULL);
-INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/product_11_.jpg',11,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_1_.jpg',1,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_2_.jpg',2,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_3_.jpg',3,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_4_.jpg',4,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_5_.jpg',5,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_6_.jpg',6,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_7_.jpg',7,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_8_.jpg',8,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_9_.jpg',9,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_10_.jpg',10,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_11_.jpg',11,NULL,NULL);
 
 -- ---------------------------------------------------------
 
