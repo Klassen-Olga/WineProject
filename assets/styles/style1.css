@@ -5,8 +5,24 @@
     padding: 0;
 }
 
-body {
+body,
+html {
     background: white;
+    height: 100%;
+}
+
+.body {
+    margin-bottom: 100px;
+}
+
+.above {
+    padding-bottom: 2em;
+}
+
+.site {
+    position: relative;
+    min-height: 100%;
+    margin: 0 auto;
 }
 
 header {
@@ -53,7 +69,7 @@ header img {
 }
 
 .menu li,
-.menu .logout {
+.menu .logoutLogin {
     position: relative;
     list-style: none;
     float: left;
@@ -62,7 +78,7 @@ header img {
 }
 
 .menu li a,
-.menu .logout [type="submit"] {
+.menu .logoutLogin [type="submit"] {
     display: block;
     padding: 0 14px;
     margin: 6px 0 8px 0;
@@ -75,7 +91,7 @@ header img {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
-.menu .logout [type="submit"] {
+.menu .logoutLogin [type="submit"] {
     padding: 6px 2px;
     margin: 0;
     cursor: pointer;
@@ -137,7 +153,7 @@ header img {
 }
 
 .menu li:hover,
-.logout [type="submit"]:hover {
+.logoutLogin [type="submit"]:hover {
     background-color: #ed9292
 }
 
@@ -149,7 +165,7 @@ header img {
     border-bottom: 1px solid #353539;
 }
 
-.menu .logout {
+.menu .logoutLogin {
     float: right;
     padding-left: 1px;
 }
@@ -239,7 +255,7 @@ header img {
     .menu.responsive ul li a {
         border: none;
     }
-    .menu.responsive .logout [type="submit"] {
+    .menu.responsive .logoutLogin [type="submit"] {
         margin-left: 13px;
     }
     .menu.responsive li a {
@@ -310,7 +326,7 @@ header img {
 }
 
 .menu.responsive li,
-.menu.responsive .logout {
+.menu.responsive .logoutLogin {
     float: none;
     display: block;
     text-align: left;
@@ -403,10 +419,13 @@ h2 {
 }
 
 footer {
-    margin-top: 100px;
     width: 100%;
-    padding: 10px;
     background-color: #e2e2e2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2em;
+    padding: 10px;
 }
 
 .login {
@@ -750,6 +769,16 @@ footer {
     }
 }
 
+.checkout2 .orderPictureBox {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.checkout2 img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .orderPictureBox {
     margin-left: 8%;
 }
@@ -854,7 +883,6 @@ footer a:active {
 }
 
 .imprint {
-    margin-top: 5%;
     width: 100% !important;
     padding-left: 3%;
     padding-right: 5%;
@@ -1694,7 +1722,7 @@ code {
 }
 
 .checkoutMessage {
-    border-color: black !important;
+    border-color: rgb(121, 6, 40) !important;
     border: 6px;
     margin-left: 2%;
     border-radius: 6px;
@@ -1733,6 +1761,7 @@ code {
 }
 
 .icon-printer {
+    cursor: pointer;
     width: 48px;
     height: 48px;
     position: relative;

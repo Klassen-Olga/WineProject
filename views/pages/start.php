@@ -1,7 +1,12 @@
 <h1>SKWD ~ Infinity of Wine</h1>
 <?php if($this->_params['orderFinished']==true){
+
     echo '<div class="checkoutMessage">';
     echo 'Thank you for your shopping <br> <br> <p class="smallText">You can view or print out your order under the my orders page.</p>';
+    if($_SESSION['payMethod']=='paypal'){
+        echo '<br><br><script> window.onload = function () {window.open("https://www.paypal.com/sg/signin");} </script>';
+        echo '<p class="smallText"> You can pay under <a href="https://www.paypal.com/sg/signin" rel="noopener" target="_blank">https://www.paypal.com/sg/signin"</a></p>';  
+    }
     echo '</div>';
     $this->_params['orderFinished']=NULL;
 }

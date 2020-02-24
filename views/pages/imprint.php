@@ -7,19 +7,19 @@
         Information obligation according to § 5 TMG. <br><br>
 
 S&K Weinedepot<br>
-Musterstrasse 1,<br>
-12345 Erfurt,<br>
+Musterstrasse 1<br>
+12345 Erfurt<br>
 Germany<br><br>
 
 
 
   <strong>
       UID-number: DE12345678  <br>
-      Economic-ID: DE123456789><br>
+      Economic-ID: DE123456789<br>
       Phone: 01234/56789<br>
       Fax: 01234/56789-0<br>
       E-Mail: office@musterfirma.de<br>
-  </strong
+  </strong>
 
 
     <br>

@@ -8,13 +8,14 @@
     <title></title>
 </head>
 <body>
+    <div class="site">
 <header>
     <a class="logo1" href="?a=start">
     <img  src="assets/styles/weinhandel.jpg" alt="">
     </a>
 
 </header>
-
+<div class="above">
 <ul class="menu" id="myTopnav">
     <li><a class="home-icon" href="?a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
@@ -42,15 +43,19 @@
 
 
     <!--Account -->
-    <li><a href="#" onclick="tabChange(this)">Account</a>
+    <?php if (getAccountId() == null): ?>
+    <li class="logoutLogin"><a href="?a=login">Login</a>
+    <?php else: ?>
+        <li><a href="#" onclick="tabChange(this)">Account</a>
+    <?php endif; ?>
+
         <ul>
             <?php if (getAccountId() !== null): ?>
                 <li><a href="?c=accounts&a=personalData"> Personal data</a></li>
                 <li><a href="?c=accounts&a=myOrders"> My orders</a></li>
 
             <?php else: ?>
-                <li><a href="?a=login">Login</a></li>
-                <li><a href="?a=register">Sign-Up</a></li>
+            
             <?php endif; ?>
         </ul>
     </li>
@@ -68,20 +73,25 @@
     }
     ?>
 </div>
-
+<div class="body">
 <?php echo $body; ?>
+</div>
 </main>
+</div>
 <footer>
     <div class="footer1">
     <?php if(isset($_GET['a'])&&$_GET['a']=='imprint'):?>
-    <a href="?a=privacyPolicy"> Privacy Policy</a>
+    <a href="?a=privacyPolicy"> Privacy Policy</a> | <a href="?a=termsOfService"> Terms of service</a>
     <?php elseif(isset($_GET['a'])&&$_GET['a']=='privacyPolicy'):?>
-    <a href="?a=imprint">Imprint </a>
+    <a href="?a=imprint">Imprint </a> | <a href="?a=termsOfService"> Terms of service</a>
+    <?php elseif(isset($_GET['a'])&&$_GET['a']=='termsOfService'):?>
+    <a href="?a=imprint">Imprint </a> | <a href="?a=privacyPolicy"> Privacy Policy</a>
     <?php else:?>
-   <a href="?a=imprint">Imprint </a> | <a href="?a=privacyPolicy"> Privacy Policy</a>
+   <a href="?a=imprint">Imprint </a> | <a href="?a=privacyPolicy"> Privacy Policy</a> | <a href="?a=termsOfService"> Terms of service</a>
     <?php endif; ?>
     <script src="assets/js/main2.js"></script>
     </div>
 </footer>
+</div>
 </body>
 </html>

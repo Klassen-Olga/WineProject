@@ -309,6 +309,10 @@ function filterFunction() {
     }
 }
 
+function newWindow() {
+    window.open("https://www.paypal.com/sg/signin");
+}
+
 /*$(document).ready(function(){
     $(window).scroll(function(){
         var lastID = $('.load-more').attr('lastID');

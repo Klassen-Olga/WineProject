@@ -735,3 +735,12 @@ function removeQuery($queriesArray){
 
 }
 
+function orderPriceProducts($orderId){
+    $orderprice =0.00;
+    $orderitems = \skwd\models\OrderItem::find('orderID ='.'\'' . $orderId.'\''.' order by productID');
+    foreach($orderitems as $key => $value){
+       $orderprice += $orderitems[$key]['actualPrice'];
+    }
+    return $orderprice; 
+
+}
