@@ -1,3 +1,11 @@
+/************************************/
+
+
+/*          General             */
+
+
+/************************************/
+
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -9,10 +17,6 @@ body,
 html {
     background: white;
     height: 100%;
-}
-
-.body {
-    margin-bottom: 100px;
 }
 
 .above {
@@ -47,7 +51,13 @@ header img {
 }
 
 
-/*Navi*/
+/************************************/
+
+
+/*          Content Navigation       */
+
+
+/************************************/
 
 .menu,
 .menu ul,
@@ -171,7 +181,13 @@ header img {
 }
 
 
-/*Responsive navi*/
+/************************************/
+
+
+/*          Responsive navigation   */
+
+
+/************************************/
 
 .menu .responsive-class-icon {
     display: none;
@@ -184,6 +200,35 @@ header img {
     .menu .responsive-class-icon {
         float: right;
         display: block !important;
+    }
+    .menu.responsive {
+        position: relative;
+        height: auto;
+    }
+    .menu.responsive ul {
+        float: left;
+        background-color: #670808;
+        width: 30%;
+        height: auto;
+    }
+    .menu.responsive ul li a {
+        border: none;
+    }
+    .menu.responsive .logout [type="submit"] {
+        margin-left: 13px;
+    }
+    .menu.responsive li a {
+        margin-top: 0;
+        padding-top: 7px;
+    }
+    .menu.responsive li ul {
+        position: absolute;
+        width: 100%;
+    }
+    .menu.responsive .responsive-class-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
 
@@ -332,9 +377,6 @@ header img {
     text-align: left;
 }
 
-
-/*End Navi*/
-
 @media screen and (max-width: 600px) {
     .wineGuide p {
         font-size: 0.8em;
@@ -368,7 +410,6 @@ header img {
     width: 100%;
     display: inline;
     background-color: #f3f3f3;
-    box-shadow: 0 4px 8px 0 rgba(154, 0, 2, 0.2);
 }
 
 .textBox {
@@ -678,10 +719,6 @@ footer {
     margin-left: 4%;
 }
 
-.personalDataEdit .address-country {
-    padding-bottom: 0.2%;
-}
-
 .register .address-country {
     margin-top: 6%;
 }
@@ -822,10 +859,13 @@ footer a:visited {
     color: black;
 }
 
-footer a:hover,
 footer a:active {
     text-decoration: none;
     color: black;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 .privacyPolicy {
@@ -1106,7 +1146,7 @@ hr {
     width: 14.66%;
 }
 
-.month select {
+select#month {
     width: 20%;
 }
 
@@ -1259,103 +1299,6 @@ hr {
 .old-price {
     text-decoration: line-through;
 }
-
-
-/* Start the Product*/
-
-.table-theProduct img {
-    width: 100% !important;
-    height: auto;
-}
-
-.image-theProduct img {
-    width: 200px;
-    height: 600px;
-    grid-area: img;
-    padding-left: 20px;
-}
-
-.theProduct-description {
-    grid-area: descrip;
-    text-align: left;
-    margin-left: 5%;
-}
-
-.price-add-to-basket-theProduct {
-    grid-area: priceAddToBasket;
-    z-index: 10;
-}
-
-.table-theProduct {
-    grid-area: tableTheProduct;
-    position: relative;
-    top: 100px;
-}
-
-.max-section {
-    display: grid;
-    justify-items: stretch;
-    grid-column-gap: 20px;
-    grid-row-gap: 10px;
-    grid-template-areas: 'img tableTheProduct' 'img tableTheProduct' 'img priceAddToBasket' 'descrip descrip';
-}
-
-.max-section>div {
-    background-color: rgba(255, 255, 255, 0.8);
-    font-size: 20px;
-    max-height: 550px;
-    margin-right: 8%;
-}
-
-.table-theProduct table {
-    margin: 0 auto;
-    width: 100%;
-}
-
-.table-theProduct tr {
-    border: 1px solid black;
-    background-color: #e0e0e0;
-}
-
-.table-theProduct td {
-    padding: 8px;
-    text-align: left;
-    /*border-bottom: 1px solid #ddd;*/
-}
-
-.table-theProduct tr:hover {
-    background-color: #f5f5f5;
-}
-
-.table-theProduct tr:nth-child(even) {
-    background-color: #e0e0e0;
-}
-
-.image-theProduct {
-    width: 30%;
-    float: left;
-}
-
-.price-add-to-basket-theProduct {
-    padding: 30px 30px;
-    margin-top: 0;
-}
-
-.price-add-to-basket-theProduct p {
-    text-align: center;
-    padding-bottom: 15px;
-    color: black;
-    font-weight: bold;
-    font-size: large;
-}
-
-.price-add-to-basket-theProduct form button:hover {
-    background-color: #3abc51;
-    border: #34a448 solid 1px;
-}
-
-
-/*End the product*/
 
 
 /*Start the basket*/
@@ -1709,7 +1652,10 @@ code {
     content: 'Show less';
 }
 
-.read-more-trigger {
+.read-more-trigger,
+#loadMore,
+#nextPrevious a,
+#nextPreviousNoAjax a {
     cursor: pointer;
     display: inline-block;
     padding: 0 .5em;
@@ -1718,6 +1664,14 @@ code {
     line-height: 2;
     border: 1px solid #ddd;
     border-radius: .25em;
+}
+
+.read-more-trigger:hover,
+#loadMore:hover,
+#nextPrevious a:hover,
+#nextPreviousNoAjax a:hover {
+    background-color: #666;
+    color: white;
 }
 
 .checkoutMessage {
@@ -1877,15 +1831,21 @@ code {
     text-align: center;
 }
 
+.dropdown-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 .dropbtn {
-    background-color: #d1c9c9;
+    background-color: #e2e2e2;
     color: black;
     padding: 16px;
     font-size: larger;
-    border: none;
     cursor: pointer;
-    width: 32.3vw;
-    border: #d1c9c9 solid 2px;
+    width: 25vw;
+    border: #e2e2e2 solid 2px;
+    margin: 0 5px;
 }
 
 .dropbtn:hover {
@@ -1924,7 +1884,7 @@ code {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    min-width: 230px;
+    min-width: 120px;
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
@@ -1956,5 +1916,129 @@ code {
     display: none;
 }
 
+@media (max-width: 600px) {
+    .dropdown-content a {
+        font-size: 1.3em;
+    }
+}
+
+
+/* Start the Product*/
+
+.table-theProduct img {
+    width: 100% !important;
+    height: auto;
+}
+
+.image-theProduct img {
+    width: 200px;
+    height: 600px;
+    grid-area: img;
+    padding-left: 20px;
+}
+
+.theProduct-description {
+    grid-area: descrip;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.price-add-to-basket-theProduct {
+    grid-area: priceAddToBasket;
+    z-index: 10;
+}
+
+.table-theProduct {
+    grid-area: tableTheProduct;
+    position: relative;
+    top: 100px;
+}
+
+.max-section {
+    display: grid;
+    justify-items: stretch;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-template-areas: 'img tableTheProduct' 'img tableTheProduct' 'img priceAddToBasket' 'descrip descrip';
+}
+
+.max-section>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    max-height: 550px;
+    margin-right: 8%;
+}
+
+.table-theProduct table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.table-theProduct tr {
+    border: 1px solid black;
+    background-color: #e0e0e0;
+}
+
+.table-theProduct td {
+    padding: 8px;
+    text-align: left;
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.table-theProduct tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-theProduct tr:nth-child(even) {
+    background-color: #e0e0e0;
+}
+
+.image-theProduct {
+    width: 30%;
+    float: left;
+}
+
+.price-add-to-basket-theProduct {
+    padding: 30px 30px;
+    margin-top: 0;
+}
+
+.price-add-to-basket-theProduct p {
+    text-align: center;
+    padding-bottom: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+.price-add-to-basket-theProduct form button:hover {
+    background-color: #3abc51;
+    border: #34a448 solid 1px;
+}
+
+
+/*End the product*/
+
 
 /*End dropdown filter*/
+
+#loadMore {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 15px;
+    display: none;
+}
+
+#nextPrevious,
+#nextPreviousNoAjax {
+    display: block;
+    text-align: center;
+}
+
+#nextPrevious a,
+#nextPreviousNoAjax a {
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 10px 15px;
+    background-color: #ddd;
+}

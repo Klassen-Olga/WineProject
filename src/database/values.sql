@@ -37,7 +37,7 @@ values
 ('Messias Vinho Verde', 'Pale citrus colour. Intense and fresh aroma. Medium sweet and a fresh acidity in mouth.', 5.25, 'Drink',3 , 90),
 ('Château Pesquié Terrasses Blanc', 'This word comes from the Latin terras, meaning "lump of earth".', 1000, 'Drink',6, 55),
 ('Marisco The Kings Desire Pinot Rosé', 'A delicate, pale pink hue. Crunchy red summer berries.', 18.95, 'Drink',4, 50),
-('Heumann Rosé', 'Fresh raspberries and cherries on the palate with a hint of vanilla.', 1199, 'Drink',2, null ),
+('Heumann Rosé', 'Fresh raspberries and cherries on the palate with a hint of vanilla.', 1000, 'Drink',2, null ),
 ('Stilo Set 2 pieces', 'Stilo Set', 43.99, 'Accessory',5, null),
 ('Bottle Packaging Pro', null, 3.20, 'Accessory',5, null);
 

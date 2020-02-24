@@ -34,7 +34,7 @@ class PagesController extends \skwd\core\Controller
        $this->_params['orderPriceTotal'] = $this->_params['orderPrice'] + $this->_params['shipPrice'];
 
         if(isset($_POST['submitCheckout'])){
- 
+
             if(requiredCheckCheckout($this->_params['error'])){
 
                 $this->_params['checkoutSite1']=false;
@@ -45,7 +45,7 @@ class PagesController extends \skwd\core\Controller
                         $_SESSION['street']=$_POST['street'];
                         $_SESSION['payMethod']=$_POST['payMethod'];
             }
-          
+
         }
 
         if(isset($_POST['submitOrder'])){
@@ -195,6 +195,13 @@ class PagesController extends \skwd\core\Controller
         else{
             $this->_params['orderFinished']=false;
         }
+        $where=' where discount is not null';
+        $orderBy='ORDER BY prodId DESC';
+        if (empty($_GET['page'])){
+            $_GET['page']=1;
+        }
+        $this->_params['pagesNumber']=getNumberOfPages(null, $where , $orderBy);
+        $this->_params['products']=getProductsAccordingToThePage(null, $where, $orderBy);
     }
 
     public

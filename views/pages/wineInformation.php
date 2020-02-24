@@ -1,7 +1,7 @@
 
 <div class=wineGuide>
 
-<h1>wine-guide</h1>
+<h1>Wine guide</h1>
 
 
 <br>
@@ -9,7 +9,7 @@
         <div class=wineGuideBox>
             
             <div class=textBox>
-                <h3>wine history</h3>
+                <h3>Wine history</h3>
                 <br>
                 <img src="assets/styles/history1.jfif" alt="picture(grape)">
                 <br><br>

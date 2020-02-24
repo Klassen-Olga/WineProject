@@ -12,7 +12,10 @@ else :?>
             $product = \skwd\models\Product::find('prodId=' . $productId);
             $dbPicture = productsPicture($productId);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
-            $price = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
+            $priceOfProduct=$product[0]['standardPrice'];
+            if ($product[0]['discount']!==null){
+                $priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
+            }
             ?>
             <article>
                 <a href="?c=products&a=theProduct&i=<?= $productId ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>
@@ -20,10 +23,9 @@ else :?>
                     <a href="?c=products&a=theProduct&i=<?= $productId ?>"> <?= $product[0]['prodName']; ?></a>
                 </div>
                 <div class="container-price">
-                    <?= $price . ' €' ?>
+                    <?= $priceOfProduct . ' €' ?>
                 </div>
-                <iframe name="hiddenFrame" class="hide"></iframe>
-                <form action="?c=pages&a=shoppingCartShow&i=<?= $productId ?>" method="post"
+                <form action="?c=pages&a=shoppingCartShow&i=<?= $productId ?>" method="post">
                     <div class="basket-button">
                         <input type="submit" onclick="preventDefaultAndUseAjax(event, <?=$productId ?>)" value="Add to basket"/>
                     </div>

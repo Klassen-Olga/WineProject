@@ -1,10 +1,12 @@
 <?php
-$id = $_GET['i'];
-$query = \skwd\models\AllProducts::find("productID=" . $id);
-$pictures = \skwd\models\Picture::find("productID=" . $id);
-$product = \skwd\models\Product::find("prodId= " . $id);
-$priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
-if (count($product) !== 0):
+$product = $this->_params['products'];
+if ($product !== false):
+    $query = $this->_params['query'];
+    $pictures =  $this->_params['pictures'];
+    $priceOfProduct=$product[0]['standardPrice'];
+    if ($product[0]['discount']!==null){
+        $priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
+    }
     ?>
     <h2><?= $product[0]['prodName'] ?></h2><br>
     <section class="max-section">
@@ -29,7 +31,7 @@ if (count($product) !== 0):
             </div>
         <?php endif; ?>
         <div class="price-add-to-basket-theProduct">
-            <p>Price: <?= $product[0]['standardPrice'] . ' €' ?></p>
+            <p>Price: <?= $priceOfProduct . ' €' ?></p>
             <form action="?c=pages&a=shoppingCartShow&i=<?= $product[0]['prodId'] ?>"
                   method="post">
                 <input type="submit" value="Add to basket" onclick="preventDefaultAndUseAjax(event, <?=$product[0]['prodId']?>)"/>
@@ -42,5 +44,5 @@ if (count($product) !== 0):
         </div>
     </section>
 <?php else: ?>
-    <p>This product is missing</p>
+    <h3 class="noProd">This product is missing</h3>
 <?php endif; ?>

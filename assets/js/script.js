@@ -4,6 +4,15 @@ window.onscroll = function() { changeNav() };
 var navbar = document.getElementById("myTopnav");
 var sticky = navbar.offsetTop;
 
+var prevNext = document.getElementById('nextPrevious');
+if (prevNext !== null) {
+    prevNext.style.display = "none";
+}
+var loadMoreAjax = document.getElementById('loadMore');
+if (loadMoreAjax !== null) {
+    loadMoreAjax.style.display = 'block';
+}
+
 function changeNav() {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky")
@@ -165,7 +174,6 @@ function char_count() {
 }
 
 function getXMLHttpRequest() {
-    var request = null;
     if (window.XMLHttpRequest) {
         return new XMLHttpRequest();
     } else {
@@ -215,7 +223,7 @@ function sendAjax(method, url, data = null, callback) {
     };
     request.open(method, url, true);
     request.setRequestHeader("Accept", "application/json");
-    if (method.toLocaleString() === 'get') {
+    if (data === null) {
         request.send();
     } else {
         request.send(data);

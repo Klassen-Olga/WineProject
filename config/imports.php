@@ -1,7 +1,7 @@
 <?php
 require_once 'models/baseModel.class.php';
 require_once 'config/database.php';
-require_once 'ajax_more.php';
+require_once 'config/init.php';
 require_once 'models/address.class.php';
 require_once 'models/customer.class.php';
 require_once 'models/account.class.php';
