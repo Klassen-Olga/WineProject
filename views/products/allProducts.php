@@ -37,9 +37,7 @@ include 'dropdownFilter.php'; ?>
                                value="Add to basket"/>
                     </div>
                 </form>
-
             </article>
-
         <?php endforeach; ?>
     </section>
     <?php endif; ?>

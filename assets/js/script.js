@@ -2,7 +2,7 @@
 window.onscroll = function() { changeNav() };
 
 var navbar = document.getElementById("myTopnav");
-var sticky = navbar.offsetTop+50;
+var sticky = navbar.offsetTop;
 
 var prevNext=document.getElementById('nextPrevious');
 if (prevNext!==null){
@@ -273,7 +273,7 @@ function removeCustomAlert(link) {
     }
 
 }
-if (document.getElementById("myBtn1")!==null){
+if (document.getElementById("myBtn1") !== null) {
     document.getElementById("myBtn1").style = 'none';
 
     document.getElementById("myBtn1").onclick = function() { printMe() };
@@ -317,8 +317,7 @@ function filterFunction() {
     }
 }
 
-
-
-
-
+function newWindow() {
+    window.open("https://www.paypal.com/sg/signin");
+}
 

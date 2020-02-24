@@ -38,7 +38,7 @@
                 <label for="month">Date of birth:</label>
                 <div class="dateOfBirthCenter">
                     <select name="month" id="month" onchange="dobValidation(this, 'month')">
-                        <option value="">Month</option>
+                        <option value="">Month </option>
                         <?php
                         $array = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                         foreach ($array as $value) :?>
@@ -46,7 +46,7 @@
                         <?php endforeach; ?>
                     </select>
                     <select name="day" id="day" onblur="dobValidation(this, 'day')">
-                        <option value="">Day</option>
+                        <option value="">Day </option>
                         <?php for ($i = 1; $i <= 31; $i++) : ?>
                             <option value="<?= $i ?>" <?= isset($_POST['day']) ? ($_POST['day'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;
                         <?php endfor; ?>
@@ -54,7 +54,7 @@
 
 
                     <select name="year" id="year" onblur="dobValidation(this, 'year')">
-                        <option value="">Year</option>
+                        <option value="">Year </option>
                         <?php
                         for ($i = 2002; $i >= 1919; $i--) :?>
                             <option value="<?= $i ?>" <?= isset($_POST['year']) ? ($_POST['year'] == $i ? "selected" : '') : '' ?>><?= $i ?></option>;

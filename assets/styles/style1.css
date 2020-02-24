@@ -8,8 +8,26 @@
     margin: 0;
     padding: 0;
 }
-body {
+
+body,
+html {
+
     background: white;
+    height: 100%;
+}
+
+.body {
+    margin-bottom: 100px;
+}
+
+.above {
+    padding-bottom: 2em;
+}
+
+.site {
+    position: relative;
+    min-height: 100%;
+    margin: 0 auto;
 }
 
 header {
@@ -57,7 +75,7 @@ header img {
 }
 
 .menu li,
-.menu .logout {
+.menu .logoutLogin {
     position: relative;
     list-style: none;
     float: left;
@@ -66,7 +84,7 @@ header img {
 }
 
 .menu li a,
-.menu .logout [type="submit"] {
+.menu .logoutLogin [type="submit"] {
     display: block;
     padding: 0 14px;
     margin: 6px 0 8px 0;
@@ -79,7 +97,7 @@ header img {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .6);
 }
 
-.menu .logout [type="submit"] {
+.menu .logoutLogin [type="submit"] {
     padding: 6px 2px;
     margin: 0;
     cursor: pointer;
@@ -141,7 +159,7 @@ header img {
 }
 
 .menu li:hover,
-.logout [type="submit"]:hover {
+.logoutLogin [type="submit"]:hover {
     background-color: #ed9292
 }
 
@@ -153,7 +171,7 @@ header img {
     border-bottom: 1px solid #353539;
 }
 
-.menu .logout {
+.menu .logoutLogin {
     float: right;
     padding-left: 1px;
 }
@@ -264,6 +282,37 @@ header img {
         font-size: 0.8em;
     }
 
+    .menu.responsive {
+        position: relative;
+        height: auto;
+    }
+    .menu.responsive ul {
+        float: left;
+        background-color: #670808;
+        width: 30%;
+        height: auto;
+        z-index: 1;
+    }
+    .menu.responsive ul li a {
+        border: none;
+    }
+    .menu.responsive .logoutLogin [type="submit"] {
+        margin-left: 13px;
+    }
+    .menu.responsive li a {
+        margin-top: 0;
+        padding-top: 7px;
+    }
+    .menu.responsive li ul {
+        position: absolute;
+        width: 100%;
+    }
+    .menu.responsive .responsive-class-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
     header {
         background-repeat: round;
         background-size: cover;
@@ -319,7 +368,7 @@ header img {
 }
 
 .menu.responsive li,
-.menu.responsive .logout {
+.menu.responsive .logoutLogin {
     float: none;
     display: block;
     text-align: left;
@@ -410,10 +459,12 @@ h2 {
 }
 
 footer {
-   margin-top: 25px;
-    width: 100%;
-    padding:10px;
     background-color: #e2e2e2;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2em;
+    padding: 10px;
 }
 
 .login {
@@ -658,14 +709,16 @@ footer {
     background-color: #9a0002;
 }
 
+.myOrder a {
+    margin-top: 2.3%;
+}
+
 .personalDataEdit h3 {
     margin-top: 3%;
     margin-left: 4%;
 }
 
-.personalDataEdit .address-country {
-    padding-bottom: 0.2%;
-}
+
 
 .register .address-country {
     margin-top: 6%;
@@ -753,6 +806,16 @@ footer {
     }
 }
 
+.checkout2 .orderPictureBox {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.checkout2 img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
 .orderPictureBox {
     margin-left: 8%;
 }
@@ -787,14 +850,13 @@ footer {
     background-color: #9a0002;
 }
 
-.footer1{
+.footer1 {
     text-align: center;
 }
 
 footer a:link,
 footer a:visited {
     text-decoration: none;
-
     color: black;
 }
 
@@ -803,6 +865,7 @@ footer a:active {
     text-decoration: none;
     color: black;
 }
+
 footer a:hover{
     text-decoration: underline;
 }
@@ -859,19 +922,15 @@ footer a:hover{
     margin-top: 30px;
 }
 
-.imprint{
-    margin-top: 5%;
+.imprint {
     width: 100% !important;
     padding-left: 3%;
     padding-right: 5%;
-
-
 }
 
-
-.imprint p{
+.imprint p {
     line-height: 1.5;
-    width: 700px; !important;
+    width: 700px !important;
 }
 
 .fieldset {
@@ -1088,7 +1147,7 @@ hr {
     width: 14.66%;
 }
 
-.month select {
+select#month {
     width: 20%;
 }
 
@@ -1137,7 +1196,6 @@ hr {
     margin: 0 auto;
     max-width: 550px;
     background-color: #f7f7f7;
-
     padding-top: 1%;
     min-height: 480px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 2, 141, 0.19);
@@ -1613,7 +1671,7 @@ code {
     color: white;
 }
 .checkoutMessage {
-    border-color: #9a0002 !important;
+    border-color: rgb(121, 6, 40) !important;
     border: 6px;
     margin-left: 2%;
     border-radius: 6px;
@@ -1628,12 +1686,17 @@ code {
     border-style: solid;
 }
 
+.smallText {
+    margin-top: -4%;
+    font-size: 0.5em !important;
+}
+
 .logo1 img {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
     border-radius: 100px;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 
 @media screen and (max-width: 600px) {
@@ -1647,6 +1710,7 @@ code {
 }
 
 .icon-printer {
+    cursor: pointer;
     width: 48px;
     height: 48px;
     position: relative;
@@ -1765,6 +1829,7 @@ code {
 .dropdown-wrap{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 
 }
 .dropbtn {
@@ -1782,10 +1847,11 @@ code {
     border: black solid 2px;
 }
 
-.dropbtn:focus{
+.dropbtn:focus {
     border: black solid 2px;
 }
-.dropbtn:active{
+
+.dropbtn:active {
     border: black solid 2px;
 }
 

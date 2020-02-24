@@ -25,8 +25,7 @@ else :?>
                 <div class="container-price">
                     <?= $priceOfProduct . ' €' ?>
                 </div>
-                <iframe name="hiddenFrame" class="hide"></iframe>
-                <form action="?c=pages&a=shoppingCartShow&i=<?= $productId ?>" method="post"
+                <form action="?c=pages&a=shoppingCartShow&i=<?= $productId ?>" method="post">
                     <div class="basket-button">
                         <input type="submit" onclick="preventDefaultAndUseAjax(event, <?=$productId ?>)" value="Add to basket"/>
                     </div>

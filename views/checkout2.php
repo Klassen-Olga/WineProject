@@ -36,14 +36,14 @@
 
 <table>
 <tr><td class="tdWidth">pay method: </td><td><?php echo $_POST['payMethod'];?></td></tr>
-
-
-
-
+<tr><td class="tdWidth">price for products: </td><td><?php echo number_format( $this->_params['orderPrice'], 2, ",", "." ) . ' Euro';?></td></tr>
 <tr><td class="tdWidth">ship price: </td><td><?php echo number_format( $this->_params['shipPrice'], 2, ".", "" ) . ' Euro';?></td></tr>
-<tr><td class="tdWidth"><strong> total price </strong></td><td><strong><?php echo number_format( $this->_params['orderPriceTotal'], 2, ",", "." ) . ' Euro';?></strong></td></tr>
+<tr><td class="tdWidth"><strong> total price: </strong></td><td><strong><?php echo number_format( $this->_params['orderPriceTotal'], 2, ",", "." ) . ' Euro';?></strong></td></tr>
 
 </table>
+
+
+
 
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=checkout';?>" method = "POST">
 <div class="button">

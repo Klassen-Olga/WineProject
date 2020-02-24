@@ -18,10 +18,10 @@ class PagesController extends \skwd\core\Controller
         $this->_params['checkoutSite1']=true;
 
         $this->_params['account']= \skwd\models\Account::find('id= '. getAccountId());
+       
 
-
-        $this->_params['shoppingCart']= \skwd\models\shoppingCart::find('accountId = '.'\''. $this->_params['account'][0]['id']. '\'');
-        $this->_params['shopingCartItem']= \skwd\models\shoppingCartItem::find('shoppingCartId= '.'\''. $this->_params['shoppingCart'][0]['id']. '\'');
+        
+        $this->_params['shopingCartItem']= getShoppingCartItems(getAccountId());
 
 
         $this->_params['customer']= \skwd\models\Customer::find('id= '.'\''. $this->_params['account'][0]['customerID']. '\'');
@@ -32,7 +32,6 @@ class PagesController extends \skwd\core\Controller
         $this->_params['orderPrice']=getBasketSubtotal(getAccountId());
         $this->_params['shipPrice']=shipPrice($this->_params['orderPrice']);
        $this->_params['orderPriceTotal'] = $this->_params['orderPrice'] + $this->_params['shipPrice'];
-
 
         if(isset($_POST['submitCheckout'])){
 
@@ -71,8 +70,6 @@ class PagesController extends \skwd\core\Controller
         }
         if (isset($_POST['submitLogin']) && login($_POST['validationPassword'], $_POST['email'], $rememberMe, $errors) == true) {
             $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $_POST['email'] . '\'');
-            //$dbQuery[0]['id'];
-            $_SESSION['logged'] = true;
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['id'] = $dbQuery[0]['id'];
             actionIfUserIsNotLoggedIn();
@@ -238,6 +235,10 @@ class PagesController extends \skwd\core\Controller
 
     }
     public function actionPrivacyPolicy(){
+
+    }
+    public function actionTermsOfService()
+    {
 
     }
 }

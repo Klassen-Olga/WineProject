@@ -6,14 +6,14 @@
 
             <form action="<?= $_SERVER['PHP_SELF'] . '?a=personalData&c=accounts&j=test2'; ?>" method="POST">
                 <div class="address">
-                    <h3>change password</h3>
+                    <h3>Change password</h3>
                     <div class="text">
-                        <label for="oldPassword">old password: </label>
+                        <label for="oldPassword">Old password: </label>
                         <input type="password" name="oldPassword" id="oldPassword"/>
                     </div>
                     <br>
                     <div class="text">
-                        <label for="newPassword">new password: </label>
+                        <label for="newPassword">New password: </label>
                         <input type="password" name="newPassword" id="newPassword" required onkeyup="char_count();"/>
                         <br>
                         <div class="passwordMessage">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="text">
-                        <label for="newPassword">new password check: </label>
+                        <label for="newPassword">New password check: </label>
                         <input type="password" name="newPasswordCheck" id="newPasswordCheck" required   />
                     </div>
                     <br>
