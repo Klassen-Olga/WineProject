@@ -17,12 +17,12 @@
 </header>
 <div class="above">
 <ul class="menu" id="myTopnav">
-    <li><a class="home-icon" href="?c=pages&a=start&page=1"><i class="fa fa-home"></i></a></li>
+    <li><a class="home-icon" href="?c=pages&a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
     <li><a href="?c=pages&a=shoppingCartShow">Basket</a></li>
-    <li><a href="?c=products&a=allProducts&page=1" onclick="tabChange(this)">Products</a>
+    <li><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
         <ul>
-            <li><a href="?c=products&a=allProducts&page=1">All</a></li>
+            <li><a href="?c=products&a=allProducts">All</a></li>
             <li><a href="?c=products&a=category&s=Red%20Wine">Red wines</a></li>
             <li><a href="?c=products&a=category&s=White%20Wine">White wines</a></li>
             <li><a href="?c=products&a=category&s=Rose%20Wine">Rose wines</a></li>
