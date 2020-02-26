@@ -850,4 +850,13 @@ function getDbRegions(){
     }
     return 0;
 }
+function metaToProducts($name){
+    if ($name=='bottleSize'){
+        return ' liter';
+    }
+    elseif ($name=='alcoholPercentage'){
+        return ' %';
+    }
+    return '';
+}
 

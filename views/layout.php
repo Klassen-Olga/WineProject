@@ -20,7 +20,7 @@
     <li><a class="home-icon" href="?c=pages&a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
     <li><a href="?c=pages&a=shoppingCartShow">Basket</a></li>
-    <li><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
+    <li ><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
         <ul>
             <li><a href="?c=products&a=allProducts">All</a></li>
             <li><a href="?c=products&a=category&s=Red%20Wine">Red wines</a></li>

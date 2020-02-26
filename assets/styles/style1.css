@@ -63,7 +63,6 @@ header img {
     padding: 0;
     border: none;
     outline: none;
-    z-index: 10;
 }
 
 .menu {
@@ -135,6 +134,7 @@ header img {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .menu li:hover ul {
@@ -154,7 +154,7 @@ header img {
 
 .menu li:hover ul li {
     height: 36px;
-    overflow: visible;
+   overflow: visible;
     padding: 0;
 }
 
@@ -186,6 +186,9 @@ header img {
 }
 
 @media screen and (max-width: 600px) {
+    .menu{
+        position: relative;
+    }
     .menu li:not(:first-child) {
         display: none;
     }
@@ -2017,4 +2020,7 @@ text-decoration: none;
     margin: 0 5px;
     padding: 10px 15px;
     background-color: #ddd;
+}
+#olga{
+    z-index: 10 !important;
 }
