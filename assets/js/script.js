@@ -1,8 +1,7 @@
 //Sticky navigation by scrolling
 window.onscroll = function() { changeNav() };
 
-var navbar = document.getElementById("myTopnav");
-var sticky = navbar.offsetTop;
+
 
 var prevNext=document.getElementById('nextPrevious');
 if (prevNext!==null){
@@ -18,13 +17,7 @@ for (var i=0; i< slides.length; i++){
     slides[i].classList.remove("zoom");
     i--;
 }
-function changeNav() {
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
+
 
 function expandSlide(imgs) {
     var expandImg = document.getElementById("expandedImg");
