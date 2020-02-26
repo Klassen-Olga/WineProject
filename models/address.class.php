@@ -10,5 +10,6 @@ class Address extends BaseModel {
        'city'=>['type'=> BaseModel::TYPE_STRING, 'min'=>2,  'max'=>50],
        'zip'=>['type'=> BaseModel::TYPE_STRING, 'min'=>2,'max'=>9],
        'street'=>['type'=> BaseModel::TYPE_STRING, 'min'=> 2, 'max'=>50]
+
    ];
 }

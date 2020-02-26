@@ -200,6 +200,9 @@ class PagesController extends \skwd\core\Controller
         if (empty($_GET['page'])){
             $_GET['page']=1;
         }
+        elseif(ctype_digit($_GET['page'])==false){
+            header('Location: index.php?c=pages&a=error');
+        }
         $this->_params['pagesNumber']=getNumberOfPages(null, $where , $orderBy);
         $this->_params['products']=getProductsAccordingToThePage(null, $where, $orderBy);
     }

@@ -75,6 +75,15 @@ function validatePasswordForm(&$errors, $password)
     }
     return true;
 }
+function validatePhoneNumber(&$errors){
+    if (strlen($_POST['phone'])<10){
+        array_push($errors, 'A valid phone number should not be shorter as 10 digits');
+        return;
+    }
+    if (is_numeric($_POST['phone'])===false){
+        array_push($errors, 'Enter a valid phone number ');
+    }
+}
 
 function validatePassword(&$errors, $password1, $password2)
 {
@@ -140,15 +149,19 @@ function validateCustomerTable(&$errors)
     if (empty($_POST['phone'])) {
         $_POST['phone'] = null;
     }
+    else{
+        validatePhoneNumber($errors);
+    }
+
     $customer = ['firstName' => $_POST['fname'],
         'lastName' => $_POST['lname'],
         'gender' => $_POST['genderRadio'],
-        'phoneNumber' => isset($_POST['phone']) ? $_POST['phone'] : NULL
+        'phoneNumber' => $_POST['phone']
     ];
-
     $customerInstance = new \skwd\models\Customer($customer);
     $customerInstance->validate($errors);
     validateDateOfBirth($errors);
+
     if (count($errors) === 0) {
         $customerInstance->__set('dateOfBirth', dateOfBirthFilter());
         return $customerInstance;
@@ -350,7 +363,7 @@ function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerI
         'lastName' => $_POST['lastName'],
         'gender' => $gender,
         'dateOfBirth' => $dateOfBirth,
-        'phoneNumber' => empty($_POST['phoneNumber']) ? null : $_POST['phoneNumber'],
+        'phoneNumber' => empty($_POST['phone']) ? null : $_POST['phone'],
         'addressID' => $addressID];
 
     if (isset($_SESSION['id'])) {
@@ -379,6 +392,12 @@ function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerI
 
 function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth, $customerID, $email, $password)
 {
+    if (!empty($_POST['phone'])){
+        validatePhoneNumber($error);
+    }
+    if (count($error)>0){
+        return false;
+    }
     if (strlen($_POST['firstName']) <= 2) {
         array_push($error, "Please fill out first name field");
         return false;
@@ -388,7 +407,8 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     } else if (strlen($_POST['email']) <= 2) {
         array_push($error, "Please fill out email field");
         return false;
-    } else {
+    }
+    else {
         $test = true;
         if (strcmp($email, $_POST['email']) !== 0) {
             $test = isUnique($error, $_POST['email']);
@@ -790,5 +810,44 @@ function orderPriceProducts($orderId){
     }
     return $orderprice; 
 
+}
+function  priceIsValid($price){
+    if ( validateUserUrl($price,$_GET['minPrice'])==false){
+        return false;
+    }
+    if ( validateUserUrl($price,$_GET['maxPrice'])==false){
+        return false;
+    }
+    if ($_GET['minPrice']>$_GET['maxPrice']){
+        return false;
+    }
+     return true;
+}
+function getDbYears(){
+    $propYear=\skwd\models\AllProducts::find('name= \'year\'');
+    $years=[];
+    if ($propYear!==null && count($propYear)>0){
+        foreach ($propYear as $year){
+            if(!in_array($year['value'],$years, true)){
+                array_push($years, $year['value']);
+            }
+        }
+        arsort($years);
+        return $years;
+    }
+    return 0;
+}
+function getDbRegions(){
+    $propRegion=\skwd\models\AllProducts::find('name= \'country\'');
+    $regions=[];
+    if ($propRegion!==null && count($propRegion)>0){
+        foreach ($propRegion as $region){
+            if(!in_array($region['value'],$regions, true)){
+                array_push($regions, $region['value']);
+            }
+        }
+        return $regions;
+    }
+    return 0;
 }
 

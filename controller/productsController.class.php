@@ -9,8 +9,8 @@ class ProductsController extends \skwd\core\Controller
          or drink category(dropdown menu in navigation)*/
     public function actionAllProducts()
     {
-        $this->_params['year']=["2020","2019", "2017", "2015", "2013", "2000","1999"];
-        $this->_params['region']=['Germany', 'Italy','Norway', 'USA','Austria', 'Spain','Sweden', 'Finland' , 'Malta'];
+        $this->_params['year']=getDbYears();
+        $this->_params['region']=getDbRegions();
         $this->_params['price']=['0.1', '10', '50', '100', '500', '1000'];
         //user deleted part of url
         if (empty($_GET['page'])){
@@ -47,10 +47,7 @@ class ProductsController extends \skwd\core\Controller
                 $numberOfOptions++;
             }
             if (isset($_GET['minPrice']) && isset($_GET['maxPrice'])) {
-                if ( validateUserUrl($this->_params['price'],$_GET['minPrice'])==false){
-                    header('Location: index.php?c=pages&a=error');
-                }
-                if ( validateUserUrl($this->_params['price'],$_GET['maxPrice'])==false){
+                if (!priceIsValid($this->_params['price'])){
                     header('Location: index.php?c=pages&a=error');
                 }
                 $wherePrice = $_GET['minPrice'] . ' <= ( case when product.discount is null then product.standardPrice else product.standardPrice-(product.standardPrice*product.discount/100) end )';

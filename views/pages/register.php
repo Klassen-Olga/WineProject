@@ -10,7 +10,7 @@
                 <div class="input">
                     <label for="fname">First name:</label>
                     <input type="text" id="fname" name="fname"
-                           value="<?= isset($_POST['fname']) ? htmlspecialchars($_POST['fname']) : '' ?> "
+                           value="<?= isset($_POST['fname']) ? htmlspecialchars($_POST['fname']) : '' ?>"
                            onchange="validateLength(this)" required/><br>
                 </div>
 
@@ -19,8 +19,9 @@
                 <div class="input">
                     <label for="lname">Last name:</label>
                     <input type="text" id="lname" name="lname"
-                           value="<?= isset($_POST['lname']) ? htmlspecialchars($_POST['lname']) : '' ?> "
+                           value="<?= isset($_POST['lname']) ? htmlspecialchars($_POST['lname']) : '' ?>"
                            onchange="validateLength(this)" required/><br>
+
                 </div>
             </div>
             <div class=text>

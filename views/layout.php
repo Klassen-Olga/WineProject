@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style1.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title></title>
+    <title><?='SKWD'?></title>
 </head>
 <body>
     <div class="site">
 <header>
     <a class="logo1" href="?a=start">
-    <img  src="assets/styles/weinhandel.jpg" alt="">
+    <img alt="wine-logo" src="assets/images/weinhandel.jpg" alt="">
     </a>
 
 </header>
