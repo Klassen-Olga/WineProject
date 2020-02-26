@@ -786,9 +786,19 @@ function orderPriceProducts($orderId){
     $orderprice =0.00;
     $orderitems = \skwd\models\OrderItem::find('orderID ='.'\'' . $orderId.'\''.' order by productID');
     foreach($orderitems as $key => $value){
-       $orderprice += $orderitems[$key]['actualPrice'];
+       $orderprice += $orderitems[$key]['actualPrice']*$orderitems[$key]['qty'];
     }
     return $orderprice; 
 
+}
+
+function nav(){
+    if(isset($_GET['m']) && ($_GET['m']=='m')){
+        $_GET['m'] = null;
+        return ' responsive"';
+    }
+    else{
+        return'"';
+    }
 }
 

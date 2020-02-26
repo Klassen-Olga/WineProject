@@ -102,6 +102,15 @@ function responsiveNav() {
 
 }
 
+function responsiveNavSize() {
+    var width = window.innerWidth;
+
+    var x = document.getElementById("myTopnav");
+    if (width > 600) {
+        x.className = "menu";
+    }
+}
+
 function validateEmail(input) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (input.value.match(re) === null) {

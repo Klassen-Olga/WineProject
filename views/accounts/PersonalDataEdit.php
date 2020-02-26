@@ -1,3 +1,4 @@
+<div class="test1">
 <div class="personalDataEdit">
 <div class="register">
     <form action="<?= $_SERVER['PHP_SELF'] . '?a=personalData&c=accounts&j=test'; ?>" method="POST">
@@ -39,5 +40,6 @@
         </div>
     </div>
     </form>
+</div>
 </div>
 </div>

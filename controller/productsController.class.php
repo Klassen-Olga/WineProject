@@ -11,7 +11,7 @@ class ProductsController extends \skwd\core\Controller
     {
         $this->_params['year']=["2020","2019", "2017", "2015", "2013", "2000","1999"];
         $this->_params['region']=['Germany', 'Italy','Norway', 'USA','Austria', 'Spain','Sweden', 'Finland' , 'Malta'];
-        $this->_params['price']=['0.1', '10', '50', '100', '500', '5000', '1000'];
+        $this->_params['price']=['0.1', '10', '50', '100', '500', '1000'];
         //user deleted part of url
         if (empty($_GET['page'])){
             $_GET['page']=1;

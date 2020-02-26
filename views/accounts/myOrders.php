@@ -1,8 +1,11 @@
 
 
-<div class="myOrder">
 <h1>Orders</h1>
-
+<div class="myOrder">
+<?php if(empty($this->_params['orders'])):?>
+    <h2 class="noOrder">You have no orders yet</h2>
+    <br>  
+<?php else:?>
 
 <?php foreach($this->_params['orders'] as $key => $value):?>
        
@@ -27,8 +30,8 @@
 
 </div>
 <br>
-
 <?php endforeach;?>
+<?php endif;?>
 
 
 </div>

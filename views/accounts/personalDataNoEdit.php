@@ -1,8 +1,8 @@
-<div class="personalData">
 <h1>your personal data</h1>
+<div class="personalData">
 
 <div class="fieldset">
-<h4>personal data: <a href="?c=accounts&a=personalData&j=test">edit</a></h4>
+<h4 class="h4Top">personal data: <a href="?c=accounts&a=personalData&j=test">edit</a></h4>
 <table>
     <tr><td class="tdWidth">firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
     <tr><td class="tdWidth">lastname:</td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>

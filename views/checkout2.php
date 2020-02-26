@@ -1,9 +1,9 @@
 
+<h1>Checkout</h1>
 <div class="checkout2">
 <div class="fieldset">
-<h1>Checkout</h1>
 
-<h3>consignee </h3>
+<h3 class="h4Top">consignee </h3>
 <br>
 <table>
 <tr><td class="tdWidth">firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>

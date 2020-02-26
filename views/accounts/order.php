@@ -101,8 +101,11 @@
 
                 </table>
                 <div class=orderPictureBox>
-
+                <?php if(empty($this->_params['picture'][$key][0]['path'])): ?>
+                    <img src="assets/images/noPicture.jpg" alt="product has no picture">
+                <?php else: ?>
                     <img src="<?php echo $this->_params['picture'][$key][0]['path']; ?>" alt="product">
+                <?php endif; ?>
                     <br>
                     <a href="?c=products&a=theProduct&i=<?php echo $this->_params['product'][$key][0]['prodId']; ?>">go
                         To product</a>

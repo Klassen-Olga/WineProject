@@ -1,5 +1,5 @@
-<div class="checkout1">
     <h1>Checkout</h1>
+<div class="checkout1">
 <div class ="register">
 
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=checkout';?>" method="POST" >
