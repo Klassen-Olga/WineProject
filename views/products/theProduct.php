@@ -20,10 +20,13 @@ if ($product !== false):
         <?php if (count($query) !== 0): ?>
             <div class="table-theProduct">
                 <table>
-                    <?php foreach ($query as $key => $value): ?>
+                    <?php foreach ($query as $key => $value):
+                        $name=preg_replace('/(?<!^)([A-Z])/', ' \\1', $query[$key]['name']);
+                        $name=strtolower($name);
+                        ?>
                         <tr>
-                            <td><?php echo $query[$key]['name'] ?></td>
-                            <td><?= $query[$key]['value']; ?></td>
+                            <td><?php echo ucfirst($name); ?></td>
+                            <td><?= $query[$key]['value'].metaToProducts($query[$key]['name']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

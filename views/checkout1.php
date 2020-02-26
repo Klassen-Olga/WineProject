@@ -22,7 +22,7 @@
         <label for="street">Street:</label>
         <input type="text" id="street" name="street"
         value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : $this->_params['address'][0]['street']; ?>"
-       required/><br>
+        onchange="validateLength(this)" required/><br>
     </div>
     
     
@@ -31,14 +31,14 @@
         <div class="input">       
             <label for="zip">Zip: </label>
                     <input type="text" id="zip" name="zip"
-                    value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" required/>
+                    value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" onchange="validateLength(this)" required/>
                 </div> <br>
             </div>
             <div class=text> 
                 <label for="city">City:</label>
                 <input type="text" id="city" name="city"
                 value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $this->_params['address'][0]['city'] ;?>"
-                required/><br>
+                onchange="validateLength(this)" required/><br>
             </div>
             <div class="address-country">
                 <label for="country">Country: </label>
