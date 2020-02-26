@@ -27,7 +27,7 @@ if (!empty($_POST["id"])):
             <?php while ($row = $statement->fetch()):
                 $postID = $row['prodId'];
                 $dbPicture = productsPicture($row['prodId']);
-                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
                 $price = $row['standardPrice'] - ($row['standardPrice'] * $row['discount'] / 100);
                 ?>
                 <article>

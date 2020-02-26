@@ -1,6 +1,6 @@
 <div class="login">
 
-        <img src="assets/styles/loginLogo.jpg" alt="login logo">
+        <img src="assets/images/loginLogo.jpg" alt="login logo">
     
     
         <form action="<?=$_SERVER['PHP_SELF'] .'?a=login';?>" method="post">

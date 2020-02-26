@@ -35,7 +35,7 @@ class PagesController extends \skwd\core\Controller
 
         if(isset($_POST['submitCheckout'])){
 
-            if(requiredCheckCheckout($this->_params['error'])){
+            if(validateAddressTable($this->_params['error'])){
 
                 $this->_params['checkoutSite1']=false;
 
@@ -199,6 +199,9 @@ class PagesController extends \skwd\core\Controller
         $orderBy='ORDER BY prodId DESC';
         if (empty($_GET['page'])){
             $_GET['page']=1;
+        }
+        elseif(ctype_digit($_GET['page'])==false){
+            header('Location: index.php?c=pages&a=error');
         }
         $this->_params['pagesNumber']=getNumberOfPages(null, $where , $orderBy);
         $this->_params['products']=getProductsAccordingToThePage(null, $where, $orderBy);

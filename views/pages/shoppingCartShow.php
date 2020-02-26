@@ -30,7 +30,7 @@ $sum=getBasketSubtotal($accountId);
                 if($product!==null && count($product)>0 ):
                     $product=$product[0];
                     $pictures = productsPicture($shoppingCartItem['productID']);
-                    $picturePath = count($pictures) > 0 ? $pictures[0]['path'] : 'assets/images/noPicture.jpg';
+                    $picturePath = count($pictures) > 0 ? $pictures[0]['path'] : 'assets/images/products/noPicture.jpg';
                     $productName = $product['prodName'];
                     $price=is_null($product['discount']) ? $product['standardPrice']: number_format($product['standardPrice']-($product['standardPrice']*$product['discount']/100), 2, '.', '')
                     ?>
@@ -42,7 +42,7 @@ $sum=getBasketSubtotal($accountId);
 
                         </div>
                         <p>Price: <?= $price ?>€</p>
-                        <a href="?c=products&a=theProduct&i=<? $shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
+                        <a href="?c=products&a=theProduct&i=<?=$shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
                         <div class="product-basket-content">
                             <form method="post" action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=upDate">
 

@@ -7,17 +7,17 @@
 
     
 <div class="text">
-<h3>consignee </h3>
+<h3>Consignee </h3>
 <table>
-<tr><td class="tdWidth">firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
-<tr><td class="tdWidth">lastname: </td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
+<tr><td class="tdWidth">First name: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
+<tr><td class="tdWidth">Last name: </td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
 </table>
 </div>
 </div>
 
 
 <div class="address">
-    <h3>delivery address</h3>
+    <h3>Delivery address</h3>
     <div class=text>
         <label for="street">Street:</label>
         <input type="text" id="street" name="street"
@@ -55,7 +55,7 @@
                         </div>
             <br>
             <div class="gender">
-                <label for="payment">payment:</label>
+                <label for="payment">Payment:</label>
                 <div class="radio">
                     
                     <input type="radio" name="payMethod" value="cash on delivery" required <?= isset($_POST['payMethod']) ? ($_POST['payMethod'] === 'cash on delivery' ? "checked" : '') : ''?>/>cash on delivery

@@ -12,6 +12,12 @@ var loadMoreAjax = document.getElementById('loadMore');
 if (loadMoreAjax !== null) {
     loadMoreAjax.style.display = 'block';
 }
+var slides = document.getElementsByClassName("zoom");
+
+for (var i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("zoom");
+    i--;
+}
 
 function changeNav() {
     if (window.pageYOffset >= sticky) {
@@ -21,7 +27,7 @@ function changeNav() {
     }
 }
 
-function myFunction(imgs) {
+function expandSlide(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
     expandImg.src = imgs.src;
@@ -30,7 +36,7 @@ function myFunction(imgs) {
 }
 var slideFirst = document.getElementById('slideFirst');
 if (slideFirst !== null) {
-    slideFirst.addEventListener('load', myFunction(slideFirst));
+    slideFirst.addEventListener('load', expandSlide(slideFirst));
 }
 
 
@@ -96,6 +102,7 @@ function responsiveNav() {
     var className = x.className;
     if (x.className === "menu") {
         x.className += " responsive";
+        x.href = '';
     } else {
         x.className = "menu";
     }
@@ -294,21 +301,6 @@ function printMe() {
     window.print();
 }
 
-
-
-function dropDownToggle(input) {
-    var nexDiv = input.nextSibling.nextSibling;
-    if (nexDiv.style.display === "none") {
-        var dropdownContents = document.getElementsByClassName('dropdown-content');
-        for (var i = 0; i < dropdownContents.length; i++) {
-            dropdownContents[i].style.display = 'none';
-
-        }
-        nexDiv.style.display = "block";
-    } else {
-        nexDiv.style.display = "none";
-    }
-}
 
 function filterFunction() {
     var input, filter, ul, li, a, i;

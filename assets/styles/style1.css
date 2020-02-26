@@ -34,7 +34,7 @@ html {
 }
 
 header {
-    background-image: url("background.jpg");
+    background-image: url("../images/background.jpg");
     height: 250px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,7 +42,7 @@ header {
 
 header img {
     padding: 1px;
-    background-image: url("background.jpg");
+    background-image: url("../images/background.jpg");
     height: 250px;
 }
 
@@ -219,11 +219,12 @@ noscript {
         background-color: #670808;
         width: 30%;
         height: auto;
+        z-index: 1;
     }
     .menu.responsive ul li a {
         border: none;
     }
-    .menu.responsive .logout [type="submit"] {
+    .menu.responsive .logoutLogin [type="submit"] {
         margin-left: 13px;
     }
     .menu.responsive li a {
@@ -579,6 +580,16 @@ footer {
 
 
 /*Start slides*/
+
+.zoom:hover {
+    -ms-transform: scale(2);
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}
+
+.zoom {
+    opacity: 1 !important;
+}
 
 
 /* The grid: Four equal columns that floats next to each other */
@@ -1904,11 +1915,15 @@ code {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    min-width: 120px;
+    /* min-width: 120px;*/
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
     width: -webkit-fill-available;
+}
+
+.dropdown:hover>.dropdown-content {
+    display: block;
 }
 
 .dropdown-content a {
@@ -1938,7 +1953,10 @@ code {
 
 @media (max-width: 600px) {
     .dropdown-content a {
-        font-size: 1.3em;
+        font-size: small;
+    }
+    .dropdown {
+        font-size: small;
     }
 }
 
@@ -2042,7 +2060,6 @@ code {
 /*End dropdown filter*/
 
 #loadMore {
-    display: block;
     margin: 0 auto;
     padding: 10px 15px;
     display: none;

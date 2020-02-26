@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles/style1.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title></title>
+    <title><?='SKWD'?></title>
 </head>
 <body onresize="responsiveNavSize()">
     <div class="site">
 <header>
     <a class="logo1" href="?a=start">
-    <img  src="assets/styles/weinhandel.jpg" alt="">
+    <img alt="wine-logo" src="assets/images/weinhandel.jpg" alt="">
     </a>
 
 </header>
@@ -22,7 +22,7 @@
     <li><a class="home-icon" href="?c=pages&a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
     <li><a href="?c=pages&a=shoppingCartShow">Basket</a></li>
-    <li><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
+    <li class="productList"><a href="?c=products&a=allProducts" onclick="tabChange(this)">Products</a>
         <ul>
             <li><a href="?c=products&a=allProducts">All</a></li>
             <li><a href="?c=products&a=category&s=Red%20Wine">Red wines</a></li>
@@ -46,7 +46,7 @@
     <?php if (getAccountId() == null): ?>
     <li class="logoutLogin" id="logoutLogin"><a href="?a=login">Login</a>
     <?php else: ?>
-        <li><a href="#" onclick="tabChange(this)">Account</a>
+        <li class="accountList"><a href="#" onclick="tabChange(this)">Account</a>
     <?php endif; ?>
 
         <ul>
@@ -59,7 +59,7 @@
             <?php endif; ?>
         </ul>
     </li>
-    <li class="responsive-class-icon"><a href="?m=m"onclick="responsiveNav()" onresize="responsiveNavSize()">
+    <li class="responsive-class-icon"><a <?= !isset($_GET['m']) ? 'href="javascript:void(0);"' : 'href="?m=m"' ; ?>onclick="responsiveNav()">
             <i class="fa fa-bars"></i></a></li>
 
 </ul>
@@ -74,7 +74,8 @@
     ?>
 </div>
 <div class="body">
-    <noscript>Note: JavaScript and cookies are required for many functions of the website.</noscript>
+    <noscript>
+        Note: JavaScript and cookies are required for many functions of the website.</noscript>
 <?php echo $body; ?>
 </div>
 </div>

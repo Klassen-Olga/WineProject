@@ -31,8 +31,8 @@
         </div>
         <div class="text">
         <label for="phone">Phone number:</label>
-        <input type="text" name="phoneNumber"
-               value="<?= isset($_POST['phoneNumber']) ? htmlspecialchars($_POST['phoneNumber']) : $this->_params['customer'][0]['phoneNumber'] ?>"/>
+        <input type="text" name="phone"
+               value="<?= isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : $this->_params['customer'][0]['phoneNumber'] ?>"/>
                    <br>
         </div>
         <div class="button">

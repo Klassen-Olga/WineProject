@@ -20,30 +20,30 @@ $products = $this->_params['products'];
         $this->_params['orderFinished'] = NULL;
     } ?>
     <div class="row">
-        <div class="column">
-            <img src="assets/images/slideGallery/1.jpg" id="slideFirst" alt="Enjoy a glass of wine together with us."
-                 style="width:100%" onclick="myFunction(this);"/>
+        <div class="column" >
+            <img class="zoom"  src="assets/images/slideGallery/1.jpg" id="slideFirst" alt="Enjoy a glass of wine together with us."
+                 style="width:100%" onclick="expandSlide(this);"/>
         </div>
         <div class="column">
-            <img src="assets/images/slideGallery/2.jpg"
+            <img class="zoom"  src="assets/images/slideGallery/2.jpg"
                  alt="From all over the world: The large assortment for wine lovers!" style="width:100%"
-                 onclick="myFunction(this);"/>
+                 onclick="expandSlide(this);"/>
         </div>
         <div class="column">
-            <img src="assets/images/slideGallery/3.jpg" alt="A genuine Palatinate with an exotic soul"
-                 style="width:100%" onclick="myFunction(this);"/>
+            <img class="zoom" src="assets/images/slideGallery/3.jpg" alt="A genuine Palatinate with an exotic soul"
+                 style="width:100%" onclick="expandSlide(this);"/>
         </div>
         <div class="column">
-            <img src="assets/images/slideGallery/4.jpg" alt="Collections from best cellars" style="width:100%"
-                 onclick="myFunction(this);"/>
+            <img class="zoom" src="assets/images/slideGallery/4.jpg" alt="Collections from best cellars" style="width:100%"
+                 onclick="expandSlide(this);"/>
         </div>
+      <div class="column">
+            <img class="zoom" src="assets/images/slideGallery/5.jpg" alt="Premium wineries from all over the world"
+                 style="width:100%" onclick="expandSlide(this);"/>
+        </div> 
         <div class="column">
-            <img src="assets/images/slideGallery/5.jpg" alt="Premium wineries from all over the world"
-                 style="width:100%" onclick="myFunction(this);"/>
-        </div>
-        <div class="column">
-            <img src="assets/images/slideGallery/6.jpg" alt="Famous manufacturers" style="width:100%"
-                 onclick="myFunction(this);"/>
+            <img class="zoom" src="assets/images/slideGallery/6.jpg" alt="Famous manufacturers" style="width:100%"
+                 onclick="expandSlide(this);"/>
         </div>
     </div>
 
@@ -60,7 +60,7 @@ $products = $this->_params['products'];
             <?php
             foreach ($products as $product):
                 $dbPicture = productsPicture($product['prodId']);
-                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+                $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
                 $oldPrice = $product['standardPrice'];
                 $price = number_format($oldPrice - ($oldPrice * $product['discount'] / 100), 2, '.', '');
                 ?>

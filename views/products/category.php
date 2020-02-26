@@ -11,7 +11,7 @@ else :?>
             $productId = $value['productID'];
             $product = \skwd\models\Product::find('prodId=' . $productId);
             $dbPicture = productsPicture($productId);
-            $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/noPicture.jpg';
+            $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
             $priceOfProduct=$product[0]['standardPrice'];
             if ($product[0]['discount']!==null){
                 $priceOfProduct = $product[0]['standardPrice']-($product[0]['standardPrice']*$product[0]['discount']/100);
