@@ -81,7 +81,7 @@
                         <td class="tdWidth">Product typ:</td>
                         <td><?php echo $this->_params['product'][$key][0]['productType']; ?></td>
                     </tr>
-
+                    <!-- ein produkt besitzt eine unbestimmte anzahl an properties -->
                     <?php foreach ($this->_params['allProducts'][$key] as $key1 => $value1): ?>
                         <tr>
                             <td><?php echo $this->_params['allProducts'][$key][$key1]['name'] . ': '; ?> </td>
@@ -101,6 +101,7 @@
 
                 </table>
                 <div class=orderPictureBox>
+                
                 <?php if(empty($this->_params['picture'][$key][0]['path'])): ?>
                     <img src="assets/images/noPicture.jpg" alt="product has no picture">
                 <?php else: ?>

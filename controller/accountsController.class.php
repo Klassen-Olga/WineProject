@@ -56,7 +56,7 @@ class AccountsController extends \skwd\core\Controller{
         $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
 
         
-        if(isset($_POST['submitEdit']) 
+        if(isset($_POST['submitEdit']) && validateEmail($this->_params['error'] )
             && validatePersonalDataAccount($this->_params['error']
             ,$this->_params['customer'][0]['gender'], $this->_params['customer'][0]['addressID']
             ,$this->_params['customer'][0]['dateOfBirth'],$this->_params['customer'][0]['id']

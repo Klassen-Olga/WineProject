@@ -25,7 +25,7 @@
         <tr><td class="tdWidth"><strong> Total price: </strong></td><td><strong><?php echo  number_format($priceTotal, 2, ".", "" ). ' €';?></strong></td></tr>
     </table>
     
-    <a href="?c=accounts&a=order&i=<?=$this->_params['orders'][$key]['id']?>">go to order</a>
+    <a href="?c=accounts&a=order&i=<?=$this->_params['orders'][$key]['id']?>">proceed to order</a>
     
 
 </div>

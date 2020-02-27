@@ -767,7 +767,8 @@ footer {
 .order table,
 .myOrder table,
 .checkout2 table,
-.checkout1 table {
+.checkout1 table,
+.imprint table {
     table-layout: fixed;
     text-align: left;
     width: 70%;
@@ -794,7 +795,9 @@ footer {
 .order td,
 .myOrder td,
 .personalData td,
-.checkout2 td {
+.checkout2 td,
+.imprint td,
+.imprint th {
     word-wrap: break-word;
     padding-left: 10px;
     height: 30px;

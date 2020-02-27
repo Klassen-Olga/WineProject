@@ -197,7 +197,7 @@ function validateAddressTable(&$errors)
 
 function validateAccountTable(&$errors)
 {
-    if (!validatePassword($errors, $_POST['password1'], $_POST['password2']) || !isUnique($errors, $_POST['email'])) {
+    if (!validatePassword($errors, $_POST['password1'], $_POST['password2']) || !isUnique($errors, $_POST['email']) || !validateEmail($errors)) {
         return false;
     }
     $password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
@@ -315,12 +315,9 @@ function login($password, $email, $rememberMe, &$errors)
 
 function logout()
 {
-    
-   
     unset($_SESSION['id']);
     session_destroy();
     
-  
     setcookie('id', '', -1, '/');
     header('Location: index.php?c=pages&a=start');
 }
@@ -328,9 +325,7 @@ function logout()
 function rememberMe($email, $id)
 {
     $duration = time() + 3600 * 24 * 30;
-    //setcookie('userId',$id,$duration,'/');
-   
-    
+
     setcookie('id', $id, $duration, '/');
 }
 
@@ -343,6 +338,7 @@ function getAccountId()
     } else return null;
 }
 
+// the date is in database is in YYYY-MM-DD but we need DD.MM.YYYY for the website
 function dateOfBirthInRightOrder($dateOfBirth)
 {
     if (!empty($dateOfBirth)) {
@@ -411,7 +407,9 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     else {
         $test = true;
         if (strcmp($email, $_POST['email']) !== 0) {
+
             $test = isUnique($error, $_POST['email']);
+            //falls der user seine email ändert darf diese im system nicht vorhanden sein
             if ($test === true) {
                 updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $email, $password, $error);
                 return true;
@@ -526,7 +524,7 @@ function editPassword(&$error, $email, $accountId, $customerId)
         isPasswordfromUser($_POST['oldPassword'], $email, $error, $isEmail)
         && validatePassword($error, $_POST['newPassword'], $_POST['newPasswordCheck'])
         && validatePasswordForm($error, $_POST['newPassword'])) {
-
+        // the password is saved as hash in database
         $account = ['id' => $accountId,
             'email' => $email,
             'password' => password_hash($_POST['newPassword'], PASSWORD_DEFAULT),
@@ -560,7 +558,7 @@ function editAddress(&$error, $addressId = null)
     }
 
 }
-
+/*
 function requiredCheckCheckout(&$errors)
 {
 
@@ -588,6 +586,7 @@ function requiredCheckCheckout(&$errors)
         return false;
     }
 }
+*/
 
 function shipPrice($orderPrice)
 {
@@ -653,6 +652,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 
         if (count($errors === 0)) {
 
+            //Alle produkte aus dem Warenkorb werden als orderItem in die datenbank eingetragen
             foreach ($shopingcartItems as $key => $value) {
                 $products = \skwd\models\Product::find('prodId=' . $shopingcartItems[$key]['productID']);
                 if ($products !== null && count($products) !== null) {
@@ -670,7 +670,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
                     $orderItem1->save($errors);
                 }
                 if (count($errors === 0)) {
-
+                    //nachdem ein product als orderItem eingetragen wurde muss es aus dem Warenkorb entfernt werden
                     $shoppingCartItem = ['id' => $shopingcartItems[$key]['id'],
                         'qty' => $shopingcartItems[$key]['qty'],
                         'productID' => $shopingcartItems[$key]['productID'],
@@ -801,7 +801,7 @@ function validateUserUrl($available, $queryParameter)
     }
     return false;
 }
-
+/*
 function orderPriceProducts($orderId){
     $orderprice =0.00;
     $orderitems = \skwd\models\OrderItem::find('orderID ='.'\'' . $orderId.'\''.' order by productID');
@@ -809,8 +809,8 @@ function orderPriceProducts($orderId){
        $orderprice += $orderitems[$key]['actualPrice']*$orderitems[$key]['qty'];
     }
     return $orderprice; 
-
 }
+*/
 function  priceIsValid($price){
     if ( validateUserUrl($price,$_GET['minPrice'])==false){
         return false;
@@ -860,6 +860,7 @@ function metaToProducts($name){
     return '';
 }
 
+// needed in layout.php for the change between responsive and normal layout without javascript
 function nav(){
     if(isset($_GET['m']) && ($_GET['m']=='m')){
         $_GET['m'] = null;
@@ -870,3 +871,13 @@ function nav(){
     }
 }
 
+function validateEmail(&$errors){
+   
+        $pattern = '/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+
+        if(preg_match($pattern, $_POST['email'])!==1){
+            array_push($errors, 'Enter a valid email');
+            return false;
+        }
+        return true;
+}
