@@ -12,8 +12,9 @@
 1.2 Both consumers and businesses are a 'customer' within the meaning of these terms and conditions. Consumers within the meaning of the terms and conditions are individuals who conclude contracts for a purpose which can be attributed neither to their commercial nor their professional activities. Business within the meaning of the terms and conditions are individuals or corporate bodies or partnerships vested with legal capacity, which, when the contract is effected, are dealing with us in the exercise of their commercial or independent professional activities.
 <br>
 1.3 As the liability of S&K wine depot GmbH is limited or excluded according to the following conditions, this also applies to the legal representatives and agents of S&K wine depot GmbH.
+</p>
 <br><br><br>
-
+<p>
 <h4>§ 2 Conclusion of contract, formation of the contract</h4>
 <br>
 2.1 By your order you make a binding offer to us to enter into the contract with you. We may accept this offer by sending a confirmation of contract to you by email within 24 hours of our receiving your order. The contract comes into being when this confirmation of order is sent.
@@ -48,28 +49,37 @@ If you have chosen the "Paypal" payment option, you will be re-directed to Paypa
 As a new customer you will not be able to login to our web site, until you have made a successful payment. Existing customers with an expired subscription are able to login to our web site, but without having access to the areas available only to active club members.
 <br>
 2.8 In the case of orders in our on-line shop, the contract comes into being with:
+</p>
 <br><br><br>
 <strong>
+<p>
 S&K Weinedepot <br>
 Musterstrasse 1 <br>
 12345 Erfurt <br>
-Germany <br>
+Germany
+</p> 
 <br>
+<br>
+<p>
 UID-number: DE12345678 <br>
 Economic-ID: DE123456789> <br>
 Phone: 01234/56789 <br>
 Fax: 01234/56789-0 <br>
 E-Mail: office@musterfirma.de <br><br>
+</p>
 </strong>
 <br>
 
 <h4>§ 3 Storing of the contract wording</h4>
 <br>
+<p></p>
 We store your order and the order data entered. We will send you a confirmation of order by email containing all the order information. You will have the opportunity to print the Standard Terms and Conditions out before sending the order to us. Likewise, you will have the opportunity to print out the order after sending the order to us. Finally, you may at any time access the orders you have made via your customer account.
+</p>
 <br><br><br>
 
 <h4>§ 4 Cancellation terms and conditions for consumers on delivery of digital content (downloads)</h4>
 <br>
+<p>
 The following cancellation terms are only for consumers on delivery of digital content which is not supplied on a tangible medium:
 <br>
 Cancellation terms and conditions
@@ -116,18 +126,22 @@ If you withdraw from this contract, we will refund you any and all payments that
 If you request the services to begin during the withdrawal period, you will be liable to pay us a reasonable amount which corresponds to a share of the service, comparable to the total extent of the service as provided in the contract, which has already been provided up to the date on which you notify us of the execution of the right of withdrawal.
 <br>
 The right of cancellation expires in a contract for the provision of services, if the entrepreneur has performed the service fully and has started the execution of the service, only after the consumer has given his explicit consent, and has confirmed at the same time his knowledge that he loses his right of cancellation with the complete performance of the contract by the entrepreneur.
+</p>
 <br><br><br>
 
 <h4>§ 6 Specimen form for cancellation</h4>
 <br>
-(If you want to cancel the contract, please fill out this form and send it back.)
+<p>(If you want to cancel the contract, please fill out this form and send it back.)</p>
 <br><br>
+<p>
 To
 S&K Weinedepot<br>
 Musterstrasse 1<br>
 12345 Erfurt<br>
 Germany<br>
+</p>
 <br>
+<p>
 Hereby I/we (*) cancel the from me/us (*) concluded contract for the purchase of the following products (*)/performance of the following services (*)
 <br><br>
 Ordered at (*)/received at (*)
@@ -160,10 +174,12 @@ The for the purchaser valid Value Added Tax will be shown in the order form toge
 7.2.6 All discounts granted are a voluntary service on our part. We can change the amount of discounts at any time or cease them completely. There is no entitlement to a discount or to a certain amount of a discount.
 <br>
 7.3 Since we supply digital downloads and services exclusively, there are, in principle, no shipping costs. In the case of supply by downloading via a network, the seller bears the costs of making the software available for download on the network, and the purchaser bears the costs of the download and the accruing costs to access the Internet to get support and the online documentation.
+</p>
 <br><br><br>
 
 <h4>§ 8 Payment conditions</h4>
 <br>
+<p>
 8.1 Payment is to be made in advance, either by bank transfer or via PayPal. We reserve the right to refuse individual methods of payment. When you choose the bank transfer payment method, we will provide our bank account details to you in the confirmation of order. Please always quote the order number as a reference, because otherwise we cannot allocate your transfer.
 The invoice amount is to be transferred to our account within 10 days. The club access is enabled only after the money has reached our bank or PayPal account.
 <br>
@@ -174,22 +190,25 @@ If the value of the order is less than €100.00 net, we may charge a processing
 8.3 Purchases from non-EU countries are generally regarded as VAT-exempt.
 <br>
 8.4 Once payment becomes overdue, interest will be charged on the purchase price at a rate of 5% above the base rate during the overdue period. We reserve the right to substantiate, and claim for, any greater loss resulting from the delay in payment.
-
+</p>
 <br><br><br>
 <h4>§ 9 Warranty and liability</h4>
 <br>
+<p>
 The warranty is provided in accordance with the statutory provisions.
 <br>
 We bear no liability whatsoever for free software which we provide for download, nor for software from third party providers, and we likewise do not provide any warranty in respect of such software.
 <br><br><br>
-
+</p>
 <h4>§ 10 Customer service</h4>
 <br>
+<p></p>
 Please contact us if you have any queries or complaints, or if you wish to make a claim. To do this, use our contact form at https://www.s&k/contact-us.
-
+</p>
     <br><br><br>
 <h4>§ 11 Duties of the purchaser</h4>
 <br>
+<p>
 11.1 You have a duty to retain your shop access data and a duty of care in relation to it. Without this data you will have no access to updates, support and documentation resp. to the club area. The password must not be given to third parties.
 <br>
 11.2 Please make sure that the email address you have provided is correct, since otherwise the confirmation of order cannot be sent to you.
@@ -203,10 +222,12 @@ Please contact us if you have any queries or complaints, or if you wish to make 
 <h4>§ 12 Blocking of the user account</h4>
 <br>
 If you sign on with incorrect information, or if there is a suspicion of fraud, we are entitled to block your user account and access to the club area. The same applies if you breach the product's licence conditions by disseminating the product or the documentation in an unauthorised manner.
+</p>
 <br><br><br>
 
 <h4>§ 13 Cancellation of a membership</h4>
 <br>
+<p>
 13.1 There is no obligation on our part to cancel a membership after you have agreed to the information in § 2.3.1 and § 2.3.2.
 <br>
 13.2 If we agree to a cancellation of your membership for any reason, a cancellation fee of 8 Euro net will be charged.
@@ -242,10 +263,12 @@ The S&K Club Membership or Product Membership together with the therein containe
 (2) The source code of the software is a component of the subject matter of the contract. Alterations to the source code are permitted, but they entail the loss of the right to support services.
 <br>
 (3) The nature of the software supplied by us is definitively determined by the description of services which is applicable when the software is downloaded and made available to the purchaser before the contract is concluded, and which is also described again in the application documentation. We are not liable for any additional characteristics of the software. In particular, the purchaser may not adduce any such obligation on our part from other descriptions of the software in public statements or in advertising unless we have explicitly given written confirmation of the additional characteristic(s).
+</p>
 <br><br><br>
 
 <h4>§ 2 Scope of use</h4>
 <br>
+<p>
 (1) We grant the purchaser a non-exclusive right of use in respect of the software with no time restriction, for the installation on any number of domains.
 <br>
 (2) The purchaser is authorised to copy the software on to a data carrier as a back-up. Otherwise, our right to the on-line copy expires in the same way as if the purchaser had received the software on a data carrier.
@@ -263,9 +286,11 @@ The S&K Club Membership or Product Membership together with the therein containe
 In addition, the following additional terms are in effect: the trademark rights to the software, their applications and updates in the relationship of the parties belong exclusively to the S&K wine depot GmbH. This is especially true for the trademarks "Sobi", "SobiPro" and "Sigsiu" and "S&K wine depot". Also, in particular the Sobi, SobiPro and S&K wine depot logos are protected under trademark law.
 <br>
 (8) If in the scope of services, a direct access to software can be carried out within the main software (repository access), a connection from the client’s server to the servers of S&K wine depot GmbH is required. A guarantee of the continued availability of the servers of S&K wine depot GmbH is not given. A minimum availability of the servers of S&K wine depot GmbH is also not guaranteed. With limited availability of the servers, S&K wine depot GmbH's liability is limited to the damage caused by intent or gross negligence.
+</p>
 <br><br><br>
 
 <h4>§ 3 Installation</h4>
+<p>
 <br>
 (1) For installing the software we refer you to the installation instructions described in the application documentation, and in particular to the hardware and software environment that must be in place for the purchaser.
 <br>
@@ -283,9 +308,11 @@ In addition, the following additional terms are in effect: the trademark rights 
 (4) The online available application documentation may be copied for private purposes. A disclosure to third parties or publication of documentation on the internet or print media is not permitted and prohibited by law.
 <br>
 The copyrights to the documentation and the images contained therein are owned by S&K wine depot GmbH. A dissemination or publication without explicit written permission of S&K wine depot GmbH is prohibited. For copyright infringement, we reserve the right to take legal action.
+</p>
 <br><br><br>
 
 <h4>§ 5 Support</h4>
+<p>
 <br>
 (1) The buyer of a membership receives access to our ticket system. Here he receives support to those software contained in the respective membership and unless specified in the product description, to the free main component (SobiPro).
 <br>
@@ -357,6 +384,7 @@ In the download area of our main page ............, we offer software for free d
 5. The contract languages are German or English.
 <br>
 6. If one or several provisions of these STC's are invalid, the contract otherwise remains valid. In so far as the provisions are invalid, the content of the contract is governed by the statutory provisions.
+</p>
 <br><br><br>
 
 

@@ -4,12 +4,12 @@
     
     
         <form action="<?=$_SERVER['PHP_SELF'] .'?a=login';?>" method="post">
-            <label for="email">email: </label>
+            <label for="email">Email: </label>
             <br>
             <input type="text" name="email" id="email" placeholder="your e-mail" required
             <?=isset($_POST['email']) ? 'value="'.htmlspecialchars($_POST['email']).'"' : ''?>> <br>
             
-            <label for="loginPassword">password: </label>
+            <label for="loginPassword">Password: </label>
             <br>
             <input type="password" name="validationPassword" id="loginPassword" placeholder="your password"
              required> <br>

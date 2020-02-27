@@ -11,7 +11,7 @@
             <div class=textBox>
                 <h3>Wine history</h3>
                 <br>
-                <img src="assets/images/wineGuide/history1.jfif" alt="picture(grape)">
+                <img src="assets/images/wineGuide/history1.jfif" alt="picture(history)">
                 <br><br>
                 <input type="checkbox" class="read-more-state" id="post-1" />
 
@@ -57,7 +57,7 @@
             <div class=textBox>
                 <h3>Popular White Wines</h3>
                 <br>
-                <img src="assets/images/wineGuide/white_wine.jpg" alt="picture(grape)">
+                <img src="assets/images/wineGuide/white_wine.jpg" alt="picture(glas white)">
                 <br><br>
 
                 <input type="checkbox" class="read-more-state" id="post-2" />
@@ -86,7 +86,7 @@
             
         <div class=wineGuidePictures>
         <a href="assets/images/wineGuide/trauben1.jpg">
-        <img src="assets/images/wineGuide/trauben1.jpg" alt="picture(grape)">
+        <img src="assets/images/wineGuide/trauben1.jpg" alt="picture(grape green)">
         </a>
        
         </div>
@@ -100,7 +100,7 @@
             <div class=textBox>
                 <h3>Popular Red Wines</h3>
                 <br>
-                <img src="assets/images/wineGuide/red_wine.jpg" alt="picture(grape)">
+                <img src="assets/images/wineGuide/red_wine.jpg" alt="picture(glas red)">
                 <br><br>
                 <input type="checkbox" class="read-more-state" id="post-3" />
                 <p class="read-more-wrap">
@@ -136,7 +136,7 @@
             
         <div class=wineGuidePictures>
         <a href="assets/images/wineGuide/traubenRot.jpg">
-        <img src="assets/images/wineGuide/traubenRot.jpg" alt="picture(grape)">
+        <img src="assets/images/wineGuide/traubenRot.jpg" alt="picture(grape red)">
         </a>
         </div>
         
@@ -151,7 +151,7 @@
             <div class=textBox>
                 <h3>Top Wine Regions of The World</h3>
                 <br>
-                <img src="assets/images/wineGuide/welt.jpg" alt="picture(grape)">
+                <img src="assets/images/wineGuide/welt.jpg" alt="picture(world)">
                 <br><br>
 
                 <input type="checkbox" class="read-more-state" id="post-4" />
@@ -228,7 +228,7 @@ Major Grapes: Tinta Roriz (Tempranillo), Touriga Franca, Castelão, Touriga Naci
             
         <div class=wineGuidePictures>
         <a  href="assets/images/wineGuide/wineRegions.jpg">
-        <img src="assets/images/wineGuide/wineRegions.jpg" alt="picture(grape)">
+        <img src="assets/images/wineGuide/wineRegions.jpg" alt="picture(worldmap)">
         </a>
         </div>
         

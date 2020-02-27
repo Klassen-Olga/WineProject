@@ -58,6 +58,10 @@ noscript {
     margin-left: 0.5%;
 }
 
+.footer2 {
+    display: none !important;
+}
+
 
 /************************************/
 
@@ -203,6 +207,9 @@ noscript {
 }
 
 @media screen and (max-width: 600px) {
+    .error-text {
+        font-size: 0.6em;
+    }
     .menu {
         position: relative;
     }
@@ -767,7 +774,8 @@ footer {
 .order table,
 .myOrder table,
 .checkout2 table,
-.checkout1 table {
+.checkout1 table,
+.imprint table {
     table-layout: fixed;
     text-align: left;
     width: 70%;
@@ -794,7 +802,9 @@ footer {
 .order td,
 .myOrder td,
 .personalData td,
-.checkout2 td {
+.checkout2 td,
+.imprint td,
+.imprint th {
     word-wrap: break-word;
     padding-left: 10px;
     height: 30px;
@@ -1746,6 +1756,10 @@ code {
     }
 }
 
+.wineGuide p {
+    font-size: 0.8em;
+}
+
 .icon-printer {
     cursor: pointer;
     width: 48px;
@@ -2081,6 +2095,25 @@ code {
     background-color: #ddd;
 }
 
-#olga {
-    z-index: 10 !important;
+
+@media print {
+    .order img {
+        display: none;
+    }
+    .footer1 {
+        display: none;
+    }
+    .order .orderPictureBox {
+        display: none;
+    }
+    .fieldset {
+        box-shadow: none;
+    }
+    .footer2 {
+        display: block;
+        font-size: 0.8em;
+    }
+    noscript {
+        display: none;
+    }
 }

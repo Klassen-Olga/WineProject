@@ -35,10 +35,12 @@ class PagesController extends \skwd\core\Controller
 
         if(isset($_POST['submitCheckout'])){
 
-            if(validateAddressTable($this->_params['error'])){
-
+            //go to checkout2
+            if(validateAddressTable($this->_params['error'])&&validatePayMethod($this->_params['error'])){
+                
                 $this->_params['checkoutSite1']=false;
-
+                    /* Data is stored in the session array so that the data from checkout1 is not lost 
+                    when you click the back button in checkout2 */
                         $_SESSION['country']=$_POST['country'];
                         $_SESSION['city']=$_POST['city'];
                         $_SESSION['zip']=$_POST['zip'];
@@ -53,8 +55,8 @@ class PagesController extends \skwd\core\Controller
 
             if(count($this->_params['error'])===0){
                 header('Location: index.php?c=pages&a=start&k=orderFinished');
+                //after the payment via paypal a window of the PayPal login should open (start.php)
                 if($_SESSION['payMethod']=='paypal'){
-                    ///////TODO//////////
                 }
             }
         }
@@ -64,6 +66,7 @@ class PagesController extends \skwd\core\Controller
     public function actionLogin()
     {
         $errors = [];
+        
         $rememberMe = false;
         if (isset($_POST['rememberMe'])) {
             $rememberMe = true;

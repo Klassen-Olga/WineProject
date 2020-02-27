@@ -59,7 +59,6 @@
     <div class="printer-file-bottom" style="background-color: #e0292c"></div>
   </div> 
   <br>
-  
 
         <br>
     </div>
@@ -81,11 +80,13 @@
                         <td class="tdWidth">Product typ:</td>
                         <td><?php echo $this->_params['product'][$key][0]['productType']; ?></td>
                     </tr>
-
+                    <!-- a product has an indefinite number of properties -->
                     <?php foreach ($this->_params['allProducts'][$key] as $key1 => $value1): ?>
+                        <?php $name=preg_replace('/(?<!^)([A-Z])/', ' \\1', $this->_params['allProducts'][$key][$key1]['name']);
+                        $name=strtolower($name);?>
                         <tr>
-                            <td><?php echo $this->_params['allProducts'][$key][$key1]['name'] . ': '; ?> </td>
-                            <td><?php echo $this->_params['allProducts'][$key][$key1]['value']; ?></td>
+                            <td><?php echo ucfirst( $name . ': '); ?> </td>
+                            <td><?php echo ucfirst( $this->_params['allProducts'][$key][$key1]['value']).metaToProducts($this->_params['allProducts'][$key][$key1]['name']); ?></td>
                         </tr>
                     <?php endforeach; ?>
 
@@ -101,14 +102,15 @@
 
                 </table>
                 <div class=orderPictureBox>
+                
                 <?php if(empty($this->_params['picture'][$key][0]['path'])): ?>
                     <img src="assets/images/noPicture.jpg" alt="product has no picture">
                 <?php else: ?>
                     <img src="<?php echo $this->_params['picture'][$key][0]['path']; ?>" alt="product">
                 <?php endif; ?>
                     <br>
-                    <a href="?c=products&a=theProduct&i=<?php echo $this->_params['product'][$key][0]['prodId']; ?>">go
-                        To product</a>
+                    <a href="?c=products&a=theProduct&i=<?php echo $this->_params['product'][$key][0]['prodId']; ?>">Go
+                        to product</a>
                 </div>
             </div>
             <br><br>

@@ -12,7 +12,7 @@
     <div class="site">
 <header>
     <a class="logo1" href="?a=start">
-    <img alt="wine-logo" src="assets/images/weinhandel.jpg" alt="">
+    <img alt="wine-logo" src="assets/images/weinhandel.jpg" alt="logo">
     </a>
 
 </header>
@@ -93,6 +93,44 @@
     <?php endif; ?>
     <script src="assets/js/main2.js"></script>
     </div>
+<!-- footer2 is only for print view -->
+    <div class="footer2">
+        <br><br>
+<p>Information obligation according to § 5 TMG.</p> 
+<br>
+<p> 
+S&K Weinedepot<br>
+Musterstrasse 1<br>
+12345 Erfurt<br>
+Germany<br><br>
+</p>
+<p>
+<strong>
+UID-number: DE12345678  <br>
+Economic-ID: DE123456789<br>
+Phone: 01234/56789<br>
+Fax: 01234/56789-0<br>
+E-Mail: office@musterfirma.de<br>
+</strong>
+</p>
+<br>
+<p>
+Authority <br>
+District Authority Erfurt <br> <br>
+Supervisory Authority website <br>
+https://www.aufsichtsbeoerde-Erfurt.de/<br> <br>
+Address of the supervisory authority<br>
+Musterweg 1, 12345 Erfurt<br><br>
+</p>
+
+<p>Job title: Wine trade</p><br><br>
+
+<p>
+Managing <br>
+Olga Klassen, Benjamin Swarovsky
+</p>
+    </div>
+
 </footer>
 </div>
 </body>
