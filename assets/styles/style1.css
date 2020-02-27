@@ -1471,7 +1471,6 @@ select#month {
 }
 
 .go-back-home-div {
-    position: absolute;
     bottom: 40%;
     margin-left: 5%;
     margin-top: 5%;
@@ -1995,7 +1994,7 @@ code {
 .table-theProduct {
     grid-area: tableTheProduct;
     position: relative;
-    top: 100px;
+    top: 50px;
 }
 
 .max-section {

@@ -41,7 +41,7 @@ $sum=getBasketSubtotal($accountId);
                                         src="<?= $picturePath ?>"></a>
 
                         </div>
-                        <p>Price: <?= $price ?>€</p>
+                        <p>Price: <?= $price ?> €</p>
                         <a href="?c=products&a=theProduct&i=<?=$shoppingCartItem['productID'] ?>"> <?= $productName ?></a><br>
                         <div class="product-basket-content">
                             <form method="post" action="?c=pages&a=shoppingCartShow&i=<?= $shoppingCartItem['productID'] ?>&cartOp=upDate">
