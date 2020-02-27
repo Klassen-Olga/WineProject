@@ -51,7 +51,7 @@ class AccountsController extends \skwd\core\Controller{
 
         $this->_params['customer']= \skwd\models\Customer::find('id= '.'\''. $this->_params['account'][0]['customerID']. '\'');
         $date = $this->_params['customer'][0]['dateOfBirth'];
-        //puts the date in the right format
+        //puts the date in the right format DD.MM.YYYY
         $this->_params['dateOfBirthInRightOrder']= dateOfBirthInRightOrder($date);
         $this->_params['address']= \skwd\models\Address::find('id= '.'\''. $this->_params['customer'][0]['addressID']. '\'');
 

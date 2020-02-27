@@ -58,6 +58,10 @@ noscript {
     margin-left: 0.5%;
 }
 
+.footer2 {
+    display: none;
+}
+
 
 /************************************/
 
@@ -203,6 +207,9 @@ noscript {
 }
 
 @media screen and (max-width: 600px) {
+    .error-text {
+        font-size: 0.6em;
+    }
     .menu {
         position: relative;
     }
@@ -1749,6 +1756,10 @@ code {
     }
 }
 
+.wineGuide p {
+    font-size: 0.8em;
+}
+
 .icon-printer {
     cursor: pointer;
     width: 48px;
@@ -2086,4 +2097,26 @@ code {
 
 #olga {
     z-index: 10 !important;
+}
+
+@media print {
+    .order img {
+        display: none;
+    }
+    .footer1 {
+        display: none;
+    }
+    .order .orderPictureBox {
+        display: none;
+    }
+    .fieldset {
+        box-shadow: none;
+    }
+    .footer2 {
+        display: block;
+        font-size: 0.8em;
+    }
+    noscript {
+        display: none;
+    }
 }

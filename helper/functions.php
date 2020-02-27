@@ -304,6 +304,7 @@ function login($password, $email, $rememberMe, &$errors)
 {
     $isLoginSuccessful = false;
     $isLoginSuccessful = isPasswordfromUser($password, $email, $errors);
+    //if remember me is set, the user should remain logged in after closing the browser window
     if ($isLoginSuccessful == true && $rememberMe == true) {
         $dbQuery = \skwd\models\Account::find('email= ' . '\'' . $email . '\'');
         $id = $dbQuery[0]['id'];
@@ -324,6 +325,7 @@ function logout()
 
 function rememberMe($email, $id)
 {
+    // coockie is set for 1 month
     $duration = time() + 3600 * 24 * 30;
 
     setcookie('id', $id, $duration, '/');
@@ -558,26 +560,13 @@ function editAddress(&$error, $addressId = null)
     }
 
 }
-/*
-function requiredCheckCheckout(&$errors)
+
+function validatePayMethod(&$errors)
 {
-
-
-    if (!isset($_POST['zip'])) {
-        array_push($errors, "Please fill out zip field");
-    }
-    if (!isset($_POST['city'])) {
-        array_push($errors, "Please fill out city field");
-    }
-    if (!isset($_POST['street'])) {
-        array_push($errors, "Please fill out street field");
-    }
 
     if (!isset($_POST['payMethod'])) {
         array_push($errors, "Please choose a pay method");
     }
-
-    validateCountry($errors);
 
 
     if (count($errors) === 0) {
@@ -586,7 +575,7 @@ function requiredCheckCheckout(&$errors)
         return false;
     }
 }
-*/
+
 
 function shipPrice($orderPrice)
 {
@@ -652,7 +641,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
 
         if (count($errors === 0)) {
 
-            //Alle produkte aus dem Warenkorb werden als orderItem in die datenbank eingetragen
+            //All products from the shopping cart are entered in the database as orderItem
             foreach ($shopingcartItems as $key => $value) {
                 $products = \skwd\models\Product::find('prodId=' . $shopingcartItems[$key]['productID']);
                 if ($products !== null && count($products) !== null) {
@@ -670,7 +659,7 @@ function createOrder($shopingcartItems, &$errors, $customer, $shipPrice)
                     $orderItem1->save($errors);
                 }
                 if (count($errors === 0)) {
-                    //nachdem ein product als orderItem eingetragen wurde muss es aus dem Warenkorb entfernt werden
+                    //after a product has been entered as orderItem it must be removed from the shopping cart
                     $shoppingCartItem = ['id' => $shopingcartItems[$key]['id'],
                         'qty' => $shopingcartItems[$key]['qty'],
                         'productID' => $shopingcartItems[$key]['productID'],
@@ -801,7 +790,7 @@ function validateUserUrl($available, $queryParameter)
     }
     return false;
 }
-/*
+
 function orderPriceProducts($orderId){
     $orderprice =0.00;
     $orderitems = \skwd\models\OrderItem::find('orderID ='.'\'' . $orderId.'\''.' order by productID');
@@ -810,7 +799,7 @@ function orderPriceProducts($orderId){
     }
     return $orderprice; 
 }
-*/
+
 function  priceIsValid($price){
     if ( validateUserUrl($price,$_GET['minPrice'])==false){
         return false;

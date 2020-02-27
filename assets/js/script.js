@@ -137,8 +137,7 @@ function validateGender(input) {
 }
 
 function char_count() {
-    //Über die DOM-Methode document.getElementById wird der Wert aus dem Eingabefeld geholt
-    //und der Variablen val zugewiesen.
+
     if (document.getElementById('password1')) {
         var val = document.getElementById('password1').value;
         var call = document.getElementById('feedback');
@@ -147,34 +146,31 @@ function char_count() {
         var val = document.getElementById('newPassword').value;
         var call = document.getElementById('feedback2');
     }
-    //Anschließend wird über die selbe DOM-Methode ein Referenzpunkt für das Feedback erzeugt 
-    //und in der Variablen call gespeichert.
 
-    //Ab hier beginnt die Prüfung.
-    //Das Passwort ist entweder zu kurz, unsicher, sicher oder sehr sicher
-
-    //Ist das Passwort wenigstens 6 Zeichen lang?
     if (val.length > 7) {
 
-        //Wenn das Passwort neben Buchstaben zusätzlich wenigstens eine Zahl 
-        //und ein Sonderzeichen enthält, ist es "sehr sicher".    
+
+        // If the password has at least one number in addition to letters
+        // and contains a special character, it is "very strong".   
         if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) && val.match(/\W/)) {
             call.style.color = "#428c0d";
             call.innerHTML = "<p>Very strong</p>";
         }
 
-        //Wenn das Passwort nur eine Zahl oder ein Sonderzeichen enthält, ist es "sicher"?           
+
+        // If the password contains only a number or a special character, is it "strong"?        
         else if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) || val.match(/\W/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/)) {
             call.style.color = "#56a40c";
             call.innerHTML = "<p>Your password is strong</p>";
-        } else //Hier enthält das Passwort weder Ziffern noch Sonderzeichen und ist somit "unsicher".
+
+        } else
+        // Here the password contains neither digits nor special characters and therefore .. "Please make your password stronger".
         {
 
             call.style.color = "#ff9410";
             call.innerHTML = "<p class='error-text error-text-pass'>Please make your password stronger</p>";
         }
-    } else //Hier enthält das Passwort nicht mal die erforderlichen 6 Zeichen und ist daher "zu kurz"
-    {
+    } else {
         call.style.color = "#ff352c";
         call.innerHTML = "<p class='error-text error-text-pass'>At least 8 characters, a number of symbol</p>";
     }
