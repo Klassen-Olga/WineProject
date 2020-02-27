@@ -60,7 +60,7 @@
             <?php endif; ?>
         </ul>
     </li>
-    <li class="responsive-class-icon"><a <?= !isset($_GET['m']) ? 'href="javascript:void(0);"' : 'href="?m=m"' ; ?>onclick="responsiveNav()">
+    <li class="responsive-class-icon"><a <?= isset($_GET['m']) ? 'href="javascript:void(0);"' : 'href="?m=m"' ; ?>onclick="responsiveNav()">
             <i class="fa fa-bars"></i></a></li>
 
 </ul>
