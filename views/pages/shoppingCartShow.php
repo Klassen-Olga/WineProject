@@ -16,7 +16,7 @@ $sum=getBasketSubtotal($accountId);
     <section class="basket-container" id="basket-container">
         <h1>Your basket products</h1>
         <div class="subtotal">
-            <h2 id="shoppingCartTotal">Subtotal for <?= $itemNumb ?> items: <?= $sum . ' €' ?></h2>
+            <h2 id="shoppingCartTotal">Subtotal for <?= $itemNumb ?> items: <?= number_format($sum, 2, '.', '') . ' €' ?></h2>
             <div class="proceedToCheckout">
                 <a href="?c=pages&a=checkout">Proceed to order</a>
             </div>

@@ -86,7 +86,12 @@ class PagesController extends \skwd\core\Controller
     {
 
     }
-
+    //*//
+    // Implements the processes of adding in shoppingCart,
+    // deleting of a product from choppingCart
+    //Will be realised either simply through form post if js is not activated
+    //or through ajax and js without new loading of the page
+    //*//
     public function actionShoppingCartShow()
     {
         $errors = [];
@@ -97,6 +102,7 @@ class PagesController extends \skwd\core\Controller
         if (is_null($accountId) && isset($_GET['i'])) {
             $_SESSION['destination']="shoppingCartShow";
             $_SESSION['productToBasket']=$_GET['i'];
+            //send data to shoppingCart.js to pop up window and log in
             if (isset($_GET['ajax'])){
                 echo json_encode(['notLoggedIn'=>true]);
                 exit(0);
@@ -110,9 +116,8 @@ class PagesController extends \skwd\core\Controller
             header('Location: index.php?c=pages&a=login');
             return;
         }
-        //else the user is logged in
+        //else the user is logged in and maybe wants to manipulate his shopping cart
         userIsLoggedIn($accountId, $errors);
-        //output of errors from server(also possible for ajax)
         if (isset($_GET['ajax'])===true){
             if (isset($_GET['cartOp'])){
                 echo json_encode([
@@ -120,7 +125,7 @@ class PagesController extends \skwd\core\Controller
                     'subtotal'=>getBasketSubtotal(getAccountId())
                 ]);
                 exit(0);
-            }
+            }//send errors to shoppingCart.js and output them  ajax
             if (count($errors) !== 0){
                 echo json_encode($errors);
                 exit(0);
@@ -130,20 +135,23 @@ class PagesController extends \skwd\core\Controller
                 exit(0);
             }
         }
-        else{
+        else{//output of errors from server
             if(count($errors) !== 0){
                 $this->_params = $errors;
             }
 
         }
     }
-
+    //*//
+    //implements registration process and validation of it from start to end
+    //*//
     public function actionRegister()
     {
 
         if (isset($_POST['submitR']) || isset($_GET['ajax'])) {
             $errors = [];
             requiredCheck($errors);
+            //error output with or without ajax
             if (count($errors) !== 0) {
                 if (isset($_GET['ajax'])){
                     echo  json_encode([0=>"Fill all fields!"]);
@@ -203,6 +211,7 @@ class PagesController extends \skwd\core\Controller
         elseif(ctype_digit($_GET['page'])==false){
             header('Location: index.php?c=pages&a=error');
         }
+        //pagination part
         $this->_params['pagesNumber']=getNumberOfPages(null, $where , $orderBy);
         $this->_params['products']=getProductsAccordingToThePage(null, $where, $orderBy);
     }

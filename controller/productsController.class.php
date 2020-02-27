@@ -3,12 +3,15 @@
 namespace skwd\controller;
 class ProductsController extends \skwd\core\Controller
 {
-    /*        Filter allow to search by drinks from an certain region
-         and/or an certain year
-         and/or price class
-         or drink category(dropdown menu in navigation)*/
+    //*//
+    //implements filter part and pagination af all products
+    //*//
     public function actionAllProducts()
     {
+        /*   Filter allow to search by drinks from an certain region
+     and/or an certain year
+     and/or price class
+     or drink category(dropdown menu in navigation)*/
         $this->_params['year']=getDbYears();
         $this->_params['region']=getDbRegions();
         $this->_params['price']=['0.1', '10', '50', '100', '500', '1000'];
@@ -22,11 +25,13 @@ class ProductsController extends \skwd\core\Controller
             $_GET['page']=1;
         }
         if (isset($_GET['region']) || isset($_GET['year']) || isset($_GET['minPrice'])) {
+            //here complex select clause if user wants to combinate filters
             $where = '';
             $join = ' join PropertyProProduct ppp on product.prodId=ppp.ProductID ';
             $join .= ' join Property on property.id=ppp.propertyID ';
             $others = ' GROUP BY prodId HAVING COUNT(*)=';
-            $numberOfOptions = 0;
+            $numberOfOptions = 0;//how many matches exist(for example product should have value 2015 and value 'Germany')
+                                //with or operator it should appear twice in the list, that is why $numberOfOptions = 2)
             if (isset($_GET['region'])) {
                 if ( validateUserUrl($this->_params['region'],$_GET['region'])==false){
                     header('Location: index.php?c=pages&a=error');
@@ -69,7 +74,9 @@ class ProductsController extends \skwd\core\Controller
             $this->_params['products']=getProductsAccordingToThePage();
         }
     }
-
+    //*//
+    //shows all properties of certain product, its price and picture
+    //*//
     public function actionTheProduct()
     {
         $id = $_GET['i'];

@@ -18,7 +18,7 @@ else :?>
             }
             ?>
             <article>
-                <a href="?c=products&a=theProduct&i=<?= $productId ?>"><img class="container-image" src="<?php echo $picture; ?>"></a><br>
+                <a href="?c=products&a=theProduct&i=<?= $productId ?>"><img alt="products-picture" class="container-image" src="<?php echo $picture; ?>"></a><br>
                 <div class="container-name">
                     <a href="?c=products&a=theProduct&i=<?= $productId ?>"> <?= $product[0]['prodName']; ?></a>
                 </div>

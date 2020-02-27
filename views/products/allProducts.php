@@ -14,13 +14,14 @@ include 'dropdownFilter.php'; ?>
         <?php foreach ($dbQuery as $key => $value): ?>
             <?php $dbPicture = productsPicture($dbQuery[$key]['prodId']);
             $picture = count($dbPicture) !== 0 ? $dbPicture[0]['path'] : 'assets/images/products/noPicture.jpg';
+            $price =floatval($dbQuery[$key]['standardPrice']);
             if ($dbQuery[$key]['discount'] !== null) {
-                $priceOfProduct = $dbQuery[$key]['standardPrice'] - ($dbQuery[0]['standardPrice'] * $dbQuery[$key]['discount'] / 100);
+                $price= number_format($price - ($price * $dbQuery[$key]['discount'] / 100), 2, '.', '');
             }
-            $price = $dbQuery[$key]['standardPrice'] - ($dbQuery[$key]['standardPrice'] * $dbQuery[$key]['discount'] / 100);
+            //$price = $dbQuery[$key]['standardPrice'] - ($dbQuery[$key]['standardPrice'] * $dbQuery[$key]['discount'] / 100);
             ?>
             <article>
-                <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['prodId'] ?>"><img
+                <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['prodId'] ?>"><img alt="products-picture"
                             class="container-image" src="<?php echo $picture; ?>"></a><br>
                 <div class="container-name">
                     <a href="?c=products&a=theProduct&i=<?= $dbQuery[$key]['prodId'] ?>"> <?= $dbQuery[$key]['prodName']; ?></a>

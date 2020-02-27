@@ -1,5 +1,7 @@
 <?php
-
+//*//
+// Make a date of birth to be a certain format for database
+////*//
 function dateOfBirthFilter()
 {
 
@@ -23,7 +25,9 @@ function dateOfBirthFilter()
     return $_POST['year'] . '-' . $resultMonth . '-' . $day;
 
 }
-
+//*//
+//Check if required fields are set
+//*//
 function requiredCheck(&$errors)
 {
     //country, year, month and day can not be unset
@@ -98,7 +102,9 @@ function validatePassword(&$errors, $password1, $password2)
     }
     return true;
 }
-
+//*//
+// checks if user with this id exists in db
+//*//
 function isUnique(&$errors, $email)
 {
     $result = \skwd\models\Account::find('email= ' . '\'' . $email . '\'');
@@ -108,7 +114,9 @@ function isUnique(&$errors, $email)
     array_push($errors, "User with this email already exists");
     return false;
 }
-
+//*//
+// checks if year, month and day aren't set as default values(year, month, day)
+//*//
 function validateDateOfBirth(&$errors)
 {
     if ($_POST['year'] === '') {
@@ -121,14 +129,18 @@ function validateDateOfBirth(&$errors)
         array_push($errors, "Please enter valid day in your date of birth");
     }
 }
-
+//*//
+//checks if country is not set as default value(country)
+//*//
 function validateCountry(&$errors)
 {
     if ($_POST['country'] === 'Country') {
         array_push($errors, "Please enter valid country");
     }
 }
-
+//*//
+//searches the same address in db, returns id of address found
+//*//
 function findAddressInDb($address)
 {
     $country = $address->__get('country');
@@ -213,7 +225,9 @@ function validateAccountTable(&$errors)
         return false;
     }
 }
-
+//*//
+//writes in database users data if data is valid
+//*//
 function register(&$errors)
 {
     $db = $GLOBALS['db'];
@@ -355,7 +369,7 @@ function dateOfBirthInRightOrder($dateOfBirth)
     }
 }
 
-function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $email, $password, &$error)
+function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerID, $password, &$error)
 {
 
     $customer = ['id' => $customerID,
@@ -380,14 +394,10 @@ function updatePersonalDataAccount($gender, $dateOfBirth, $addressID, $customerI
 
 
     $account1 = new \skwd\models\Account($account);
-    // $account1->validate($error);
     $account1->save($error);
     $customer1 = new \skwd\models\Customer($customer);
-
-    //$customer1->validate($error);
     $customer1->save($error);
 
-    // }
 }
 
 function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth, $customerID, $email, $password)
@@ -447,17 +457,17 @@ function actionIfUserIsNotLoggedIn()
 
 function upDateOrInsertProductInShoppingCart($productId, $shoppingCartId, &$errors)
 {
-    //case: change qty upDate=>upDate
-    //case: add product(existx in basket)=>update
-    //case: add product (doesn't exist in basket)=>insert
+    //case: user adds product(it doesn't exist in shopping cart)=>update
     $databaseCheck = \skwd\models\ShoppingCartItem::find('productID=' . $productId . ' and shoppingCartId=' . $shoppingCartId);
     if (count($databaseCheck) === 0) {
         $shoppingCartItem = array('qty' => 1, 'productID' => $productId, 'shoppingCartId' => $shoppingCartId);
     } else {
         $shoppingCartItem = $databaseCheck[0];
+        //product exists in shopping cart, user wants to update qty in shopping cart through button change qty
         if (isset($_GET['cartOp']) && $_GET['cartOp'] === 'upDate') {
             $shoppingCartItem['qty'] = isset($_GET['qty']) ? $_GET['qty'] : $_POST['qty'];//ajax or not
         } else {
+            //product exists in shopping cart, user wants to add it outside of shopping cart(through add to basket)
             if (($shoppingCartItem['qty'] + 1) > 10) {
                 array_push($errors, 'You can not add more than 10 items of the same product');
             } else {
@@ -485,6 +495,7 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
             header('Location: index.php?a=shoppingCartShow');
         } else {
             if (count(\skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCartId)) == 0) {
+                //shopping cart is empty
                 echo json_encode([
                     'lastElement' => 'true'
                 ]);
@@ -494,7 +505,9 @@ function deleteProductFromShoppingCart($productId, $shoppingCartId, &$errors)
 
     }
 }
-
+//*//
+//action if user is logged in and shopping cart was called
+//*//
 function userIsLoggedIn($accountId, &$errors)
 {
 
@@ -507,7 +520,7 @@ function userIsLoggedIn($accountId, &$errors)
     } //case user wanted to show his basket and he was not logged in, now he is
     elseif (isset($_COOKIE['destination']) && ($_COOKIE['destination'] === 'shoppingCartShow')) {
         unset($_SESSION['destination']);
-    }//case user is logged in and wants to delete
+    }//case user is logged in and wants to delete an item
     elseif (isset($_GET['cartOp']) && $_GET['cartOp'] === 'delete') {
         $productId = $_GET['i'];
         //if user wants to delete  his purchase $_GET['cartOp'] must be set
@@ -561,7 +574,7 @@ function editAddress(&$error, $addressId = null)
 
 }
 
-function requiredCheckCheckout(&$errors)
+/*function requiredCheckCheckout(&$errors)
 {
 
 
@@ -587,7 +600,7 @@ function requiredCheckCheckout(&$errors)
     } else {
         return false;
     }
-}
+}*/
 
 function shipPrice($orderPrice)
 {
@@ -698,10 +711,12 @@ function getShoppingCartItems($accountId)
     $shoppingCartItems = \skwd\models\ShoppingCartItem::find('shoppingCartId=' . $shoppingCart['id']);
     return $shoppingCartItems;
 }
-
+//*//
+//calculates subtotal of shopping cart incl. discount or not
+//*//
 function getBasketSubtotal($accountId)
 {
-    $sum = 0;
+    $sum = 0.0;
     $shoppingCartItems = getShoppingCartItems($accountId);
     foreach ($shoppingCartItems as $item) {
         $product = \skwd\models\Product::find('prodId=' . $item['productID']);
@@ -710,7 +725,7 @@ function getBasketSubtotal($accountId)
             if ($product['discount'] === null) {
                 $price = $product['standardPrice'];
             } else {
-                $price = number_format($product['standardPrice'] - ($product['standardPrice'] * $product['discount'] / 100), 2, '.', '');
+                $price = $product['standardPrice'] - ($product['standardPrice'] * $product['discount'] / 100);
             }
             $sum += $price * $item['qty'];
         }
@@ -730,7 +745,10 @@ function getBasketQTY($accountId)
     }
     return $qty;
 }
-
+//*//
+//is used to remove a get parameter from url
+//in the case that user chooses for example 2 times different region in filter, it shouldn't add the region query twice
+//*//
 function removeQuery($queriesArray)
 {
     $matchCounter = 0;
@@ -753,14 +771,18 @@ function removeQuery($queriesArray)
 }
 
 
-//for sorted descend products
+//*//
+//for sorted descent products
+//*//
 function getQueryWithLimitAndOffsetDesc($page)
 {
     $offset = NUMBER_LIMIT * ($page - 1);
     $sqlWithLimitAndOffset = ' limit ' . NUMBER_LIMIT . ' offset ' . $offset;
     return $sqlWithLimitAndOffset;
 }
-
+//*//
+//for sorted ascent products
+//*//
 function getQueryWithLimitAndOffsetAsc($page)
 {
     $offset = $page * NUMBER_LIMIT - NUMBER_LIMIT;
@@ -779,7 +801,9 @@ function getProductsAccordingToThePage($join = null, $where = null, $orderBy = n
     }
     return \skwd\models\Product::findComplex($join, $where, $orderBy, $groupByAndHaving, $sqlWithLimitAndOffset);
 }
-
+//*//
+//returns the number of pages depending on number of all products and number of products should de shown at once
+//*//
 function getNumberOfPages($join = null, $where = null, $orderBy = null, $groupByAndHaving = null)
 {
     // In case of millions of products this value could be stored in database as redundancy
@@ -791,7 +815,9 @@ function getNumberOfPages($join = null, $where = null, $orderBy = null, $groupBy
         return 1;
     }
 }
-
+//*//
+//checks if user didn't modify his url, and url contains only valid queries
+//*//
 function validateUserUrl($available, $queryParameter)
 {
     foreach ($available as $value) {
@@ -850,6 +876,7 @@ function getDbRegions(){
     }
     return 0;
 }
+
 function metaToProducts($name){
     if ($name=='bottleSize'){
         return ' liter';

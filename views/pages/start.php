@@ -12,7 +12,7 @@ $products = $this->_params['products'];
 ?>
 
 <div id="postList">
-    <h1>SKWD ~ Infinity of Wine</h1>
+    <h1><abbr title="Swarovsky Klassen wine depot">SKWD</abbr> ~ Infinity of Wine</h1>
     <?php if ($this->_params['orderFinished'] == true) {
         echo '<div class="checkoutMessage">';
         echo 'thank you for your shopping';

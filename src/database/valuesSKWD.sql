@@ -28,7 +28,7 @@ values
 
 insert into Product(prodName, description, standardPrice, productType, vendorID, discount)
 values
-('Simonsvlei Zenzela Charming Red', 'A well rounded, medium-bodied, easy drinking wine with spicy/smoky aromas.', 70.00, 'Drink',2, 10),
+('Simonsvlei Zenzela Charming Red', 'A well rounded, medium-bodied, easy drinking wine with spicy/smoky aromas.', 74.00, 'Drink',2, 10),
 ('Plaimont Fleur de d`Artagnan Saint Mont La Réserve', 'Wine with intense purple color with aromas resembling fruit such as blueberries, blackberries.', 12.20, 'Drink',3, 50 ),
 ('Gouguenheim Estaciones del Valle Cabernet Sauvignon', 'Deep ruby colour with purple hints. ', 8.50, 'Drink',1, 15),
 ('Pierre Jourdan Brut', 'The lime characteristics of the Chardonnay are leading and are well backed up by the Pinot Noir. ', 16.20, 'Drink',4, 75),
@@ -56,6 +56,7 @@ INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (
 INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_9_.jpg',9,NULL,NULL);
 INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_10_.jpg',10,NULL,NULL);
 INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/product_11_.jpg',11,NULL,NULL);
+INSERT INTO `picture` (`id`,`path`,`productID`,`createdAt`,`updatedAt`) VALUES (NULL,'assets/images/products/packge1_.jpg',12,NULL,NULL);
 
 -- ---------------------------------------------------------
 

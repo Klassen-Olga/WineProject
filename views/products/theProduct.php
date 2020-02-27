@@ -13,7 +13,7 @@ if ($product !== false):
         <?php if (count($pictures) !== 0): ?>
             <div class="image-theProduct">
                 <?php foreach ($pictures as $key => $value): ?>
-                    <img class="image-theProduct" src="<?= $value['path'] ?>">
+                    <img alt="product-picture" class="image-theProduct" src="<?= $value['path'] ?>">
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

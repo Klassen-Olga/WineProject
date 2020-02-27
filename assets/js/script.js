@@ -1,23 +1,28 @@
-//Sticky navigation by scrolling
-window.onscroll = function() { changeNav() };
-
-
-
+//*//
+//if js is activated next and previous button on start should not be shown
+//*//
 var prevNext = document.getElementById('nextPrevious');
 if (prevNext !== null) {
     prevNext.style.display = "none";
 }
+//*//
+//if js is activated load more button on start should be shown
+//*//
 var loadMoreAjax = document.getElementById('loadMore');
 if (loadMoreAjax !== null) {
     loadMoreAjax.style.display = 'block';
 }
+//*//
+//if js is activated the slides on start should not be able to be zoomed
+//*//
 var slides = document.getElementsByClassName("zoom");
-
 for (var i = 0; i < slides.length; i++) {
     slides[i].classList.remove("zoom");
     i--;
 }
-
+//*//
+// expands slides on click on start page
+//*//
 function expandSlide(imgs) {
     var expandImg = document.getElementById("expandedImg");
     var imgText = document.getElementById("imgtext");
@@ -30,7 +35,9 @@ if (slideFirst !== null) {
     slideFirst.addEventListener('load', expandSlide(slideFirst));
 }
 
-
+//*//
+//removes error, which was added by function insertError(input)
+//*//
 function removeError(input) {
     let nextElement = input.parentNode.nextSibling.nextSibling;
     if (nextElement !== null) {
@@ -40,8 +47,9 @@ function removeError(input) {
         }
     }
 }
-
-
+//*//
+//inserts an error to next to element which was triggered
+//*//
 function insertError(input, message) {
     let nextElement = input.parentNode.nextSibling;
     if (nextElement.tagName !== 'BR') {
@@ -87,7 +95,10 @@ function countryValidation(input) {
     }
 
 }
-
+//*//
+//if js is activated and a button is pressed menu will be triggered(for screen<600)
+// and new class will be added to navigation
+//*//
 function responsiveNav() {
     var x = document.getElementById("myTopnav");
     var className = x.className;
@@ -99,7 +110,9 @@ function responsiveNav() {
     }
 
 }
-
+//*//
+//if js is activated and screen(<600) it will be added a new class(with certain slyling)
+//*//
 function responsiveNavSize() {
     var width = window.innerWidth;
 
@@ -123,7 +136,9 @@ function tabChange(link) {
         link.href = "#";
     }
 }
-
+//*//
+//validates gender for register
+//*//
 function validateGender(input) {
     var first = document.getElementById('radio1');
     var second = document.getElementById('radio2');
@@ -135,10 +150,10 @@ function validateGender(input) {
         removeError(input);
     }
 }
-
+//*//
+//validates password for register and password change
+//*//
 function char_count() {
-    //Über die DOM-Methode document.getElementById wird der Wert aus dem Eingabefeld geholt
-    //und der Variablen val zugewiesen.
     if (document.getElementById('password1')) {
         var val = document.getElementById('password1').value;
         var call = document.getElementById('feedback');
@@ -147,33 +162,23 @@ function char_count() {
         var val = document.getElementById('newPassword').value;
         var call = document.getElementById('feedback2');
     }
-    //Anschließend wird über die selbe DOM-Methode ein Referenzpunkt für das Feedback erzeugt 
-    //und in der Variablen call gespeichert.
 
-    //Ab hier beginnt die Prüfung.
-    //Das Passwort ist entweder zu kurz, unsicher, sicher oder sehr sicher
-
-    //Ist das Passwort wenigstens 6 Zeichen lang?
     if (val.length > 7) {
-
-        //Wenn das Passwort neben Buchstaben zusätzlich wenigstens eine Zahl 
-        //und ein Sonderzeichen enthält, ist es "sehr sicher".    
         if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) && val.match(/\W/)) {
             call.style.color = "#428c0d";
             call.innerHTML = "<p>Very strong</p>";
         }
 
-        //Wenn das Passwort nur eine Zahl oder ein Sonderzeichen enthält, ist es "sicher"?           
         else if (val.match(/\d{1,}/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/) || val.match(/\W/) && val.match(/[a-zA-ZäöüÄÖÜ]{1,}/)) {
             call.style.color = "#56a40c";
             call.innerHTML = "<p>Your password is strong</p>";
-        } else //Hier enthält das Passwort weder Ziffern noch Sonderzeichen und ist somit "unsicher".
+        } else
         {
 
             call.style.color = "#ff9410";
             call.innerHTML = "<p class='error-text error-text-pass'>Please make your password stronger</p>";
         }
-    } else //Hier enthält das Passwort nicht mal die erforderlichen 6 Zeichen und ist daher "zu kurz"
+    } else
     {
         call.style.color = "#ff352c";
         call.innerHTML = "<p class='error-text error-text-pass'>At least 8 characters, a number of symbol</p>";
@@ -240,7 +245,7 @@ function sendAjax(method, url, data = null, callback) {
 
 function createCustomAlert(mainText, subText, link = null) {
     var ALERT_TITLE = mainText;
-    var ALERT_BUTTON_TEXT = "Ok"
+    var ALERT_BUTTON_TEXT = "Ok";
     d = document;
 
     if (d.getElementById("modalContainer")) return;
@@ -257,17 +262,13 @@ function createCustomAlert(mainText, subText, link = null) {
 
     h1 = alertObj.appendChild(d.createElement("h1"));
     h1.appendChild(d.createTextNode(ALERT_TITLE));
-
     msg = alertObj.appendChild(d.createElement("p"));
-    //msg.appendChild(d.createTextNode(txt));
     msg.innerHTML = subText;
-
     btn = alertObj.appendChild(d.createElement("a"));
     btn.id = "closeBtn";
     btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
     btn.focus();
     btn.onclick = function() { removeCustomAlert(link); return false; };
-    /*window.location.hash = '#closeBtn';*/
     btn.tabindex = "10";
     alertObj.style.display = "block";
 
@@ -282,11 +283,8 @@ function removeCustomAlert(link) {
 }
 if (document.getElementById("myBtn1") !== null) {
     document.getElementById("myBtn1").style = 'none';
-
     document.getElementById("myBtn1").onclick = function() { printMe() };
-
 }
-
 
 function printMe() {
     window.print();

@@ -12,12 +12,12 @@ function preventDefaultAndUseAjax(event, id) {
     }
     event.preventDefault();
     event.stopPropagation();
-    sendAjax('get', '../../WineProject/index.php?a=shoppingCartShow&i=' + id, null, function (error, resJson, status) {
+    sendAjax('get', 'index.php?a=shoppingCartShow&i=' + id, null, function (error, resJson, status) {
         if (error === null && status < 400) {
             if (typeof resJson.ok !== 'undefined') {
                 createCustomAlert('You have successfully added a purchase!', 'Type ok');
             } else if (typeof resJson.notLoggedIn !== 'undefined') {
-                createCustomAlert("Please Log in", 'Type ok to log in', "../../WineProject?c=pages&a=login");
+                createCustomAlert("Please Log in", 'Type ok to log in', "index.php?c=pages&a=login");
             } else {
                 for (var i = 0; i < resJson.length; i++) {
                     createCustomAlert(resJson[i], 'Type ok');
@@ -53,15 +53,18 @@ function deleteItem(event, input, productId) {
     sendAjax('get', window.location.href + '&i=' + productId + '&cartOp=delete', null, function (error, resJson, status) {
 
         if (error === null && status < 400) {
+            //shopping cart is empty
             if (typeof resJson.lastElement === 'undefined') {
                 input.parentNode.parentNode.parentNode.style.display = 'none';
                 var h2 = document.getElementById('shoppingCartTotal');
+                //change the subtotal and quantity and show changes
                 h2.innerHTML = 'Subtotal for ' + resJson.qty + ' items: ' + resJson.subtotal.toFixed(2) + ' €';
             } else {
-                var footer = document.getElementsByTagName('footer')[0];
+                var body = document.getElementsByClassName('body')[0];
                 document.getElementById('basket-container').style.display = 'none';
-                footer.insertAdjacentHTML("beforebegin", `<h3 class="insertedNoProducts"style="text-align: center">Your shopping cart is empty</h3>`);
-                footer.insertAdjacentHTML("beforebegin", `<p class="insertedNoProducts" style="text-align: center">Continue shopping on your SKWD online shop <a href="?c=products&a=allProducts"> here</a></p>`);
+                body.insertAdjacentHTML("afterbegin", `<p class="insertedNoProducts" style="text-align: center">Continue shopping on your <abbr title="Swarovsky Klassen wine depot">SKWD</abbr> online shop <a href="?c=products&a=allProducts"> here</a></p>`);
+                body.insertAdjacentHTML("afterbegin", `<h3 class="insertedNoProducts"style="text-align: center">Your shopping cart is empty</h3>`);
+
             }
         }
 

@@ -21,6 +21,7 @@ if (form!==null){
         document.getElementById('city').dispatchEvent(event);
         document.getElementById('country').dispatchEvent(event);
         document.getElementById('radio1').dispatchEvent(event);
+        //data will not be send to server till all js-errors are gone
         if (document.getElementsByClassName('error-text').length>0){
             if (submit.parentNode.firstChild.tagName!=="P"){
                 submit.parentNode.insertAdjacentHTML("afterbegin", `<p class="ajaxErr">` + "*Check all fields" + `</p>`);
@@ -30,12 +31,13 @@ if (form!==null){
 
         sendAjax('post', window.location.href, new FormData(form), function (error, resJson, status) {
 
-            if (error === null){
-                if (typeof  resJson.ok !== 'undefined' && status<400){
-                    createCustomAlert('Welcome to SKWD!', 'Sign now in', "../../WineProject?c=pages&a=login");
+            if (error === null  && status<400){
+                //user was registered
+                if (typeof  resJson.ok !== 'undefined'){
+                    createCustomAlert('Welcome to S&K wine depot', 'Sign now in', "index.php?c=pages&a=login");
 
                 }
-                else{
+                else{//print errors from server such as email is already used
                     for (var i=0; i< form.children[0].children.length; i++){
                         if ( form.children[0].children[i].tagName!=='P'){
                             break;
