@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title><?='SKWD'?></title>
 </head>
-<body>
+<body onresize="responsiveNavSize()">
     <div class="site">
 <header>
     <a class="logo1" href="?a=start">
@@ -15,8 +15,10 @@
     </a>
 
 </header>
+<?php $x = nav();  ?>
+
 <div class="above">
-<ul class="menu" id="myTopnav">
+<ul <?php echo 'class = "menu'.$x. 'id="myTopnav" onresize="responsiveNav()"'?>>
     <li><a class="home-icon" href="?c=pages&a=start"><i class="fa fa-home"></i></a></li>
     <li><a href="?a=wineInformation">Wine Guide</a></li>
     <li><a href="?c=pages&a=shoppingCartShow">Basket</a></li>
@@ -30,8 +32,6 @@
             <li><a href="?c=products&a=category&s=Accessory">Accessories</a></li>
         </ul>
 
-    </li>
-
         <?php
 
         if (isset($_SESSION['id'])) {
@@ -44,9 +44,9 @@
 
     <!--Account -->
     <?php if (getAccountId() == null): ?>
-    <li class="logoutLogin"><a href="?a=login">Login</a>
+    <li class="logoutLogin" id="logoutLogin"><a href="?a=login">Login</a>
     <?php else: ?>
-        <li><a href="#" onclick="tabChange(this)">Account</a>
+        <li class="accountList"><a href="#" onclick="tabChange(this)">Account</a>
     <?php endif; ?>
 
         <ul>
@@ -59,7 +59,7 @@
             <?php endif; ?>
         </ul>
     </li>
-    <li class="responsive-class-icon"><a href="javascript:void(0);"onclick="responsiveNav()">
+    <li class="responsive-class-icon"><a <?= !isset($_GET['m']) ? 'href="javascript:void(0);"' : 'href="?m=m"' ; ?>onclick="responsiveNav()">
             <i class="fa fa-bars"></i></a></li>
 
 </ul>
@@ -74,9 +74,10 @@
     ?>
 </div>
 <div class="body">
+    <noscript>
+        Note: JavaScript and cookies are required for many functions of the website.</noscript>
 <?php echo $body; ?>
 </div>
-</main>
 </div>
 <footer>
     <div class="footer1">

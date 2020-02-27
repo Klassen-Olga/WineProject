@@ -1,5 +1,5 @@
-<div class="checkout1">
     <h1>Checkout</h1>
+<div class="checkout1">
 <div class ="register">
 
 <form action="<?= $_SERVER['PHP_SELF'] . '?a=checkout';?>" method="POST" >
@@ -7,22 +7,22 @@
 
     
 <div class="text">
-<h3>consignee </h3>
+<h3>Consignee </h3>
 <table>
-<tr><td class="tdWidth">firstname: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
-<tr><td class="tdWidth">lastname: </td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
+<tr><td class="tdWidth">First name: </td><td><?php echo $this->_params['customer'][0]['firstName'];?></td></tr>
+<tr><td class="tdWidth">Last name: </td> <td><?php echo $this->_params['customer'][0]['lastName'];?></td></tr>
 </table>
 </div>
 </div>
 
 
 <div class="address">
-    <h3>delivery address</h3>
+    <h3>Delivery address</h3>
     <div class=text>
         <label for="street">Street:</label>
         <input type="text" id="street" name="street"
         value="<?= isset($_POST['street']) ? htmlspecialchars($_POST['street']) : $this->_params['address'][0]['street']; ?>"
-       required/><br>
+        onchange="validateLength(this)" required/><br>
     </div>
     
     
@@ -31,14 +31,14 @@
         <div class="input">       
             <label for="zip">Zip: </label>
                     <input type="text" id="zip" name="zip"
-                    value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" required/>
+                    value="<?= isset($_POST['zip']) ? htmlspecialchars($_POST['zip']) : $this->_params['address'][0]['zip']; ?>" onchange="validateLength(this)" required/>
                 </div> <br>
             </div>
             <div class=text> 
                 <label for="city">City:</label>
                 <input type="text" id="city" name="city"
                 value="<?= isset($_POST['city']) ? htmlspecialchars($_POST['city']) : $this->_params['address'][0]['city'] ;?>"
-                required/><br>
+                onchange="validateLength(this)" required/><br>
             </div>
             <div class="address-country">
                 <label for="country">Country: </label>
@@ -55,7 +55,7 @@
                         </div>
             <br>
             <div class="gender">
-                <label for="payment">payment:</label>
+                <label for="payment">Payment:</label>
                 <div class="radio">
                     
                     <input type="radio" name="payMethod" value="cash on delivery" required <?= isset($_POST['payMethod']) ? ($_POST['payMethod'] === 'cash on delivery' ? "checked" : '') : ''?>/>cash on delivery

@@ -35,7 +35,7 @@ class PagesController extends \skwd\core\Controller
 
         if(isset($_POST['submitCheckout'])){
 
-            if(requiredCheckCheckout($this->_params['error'])){
+            if(validateAddressTable($this->_params['error'])){
 
                 $this->_params['checkoutSite1']=false;
 
@@ -241,6 +241,11 @@ class PagesController extends \skwd\core\Controller
 
     }
     public function actionTermsOfService()
+    {
+
+    }
+
+    public function actionDocumentation()
     {
 
     }

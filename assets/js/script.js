@@ -3,21 +3,20 @@ window.onscroll = function() { changeNav() };
 
 
 
-var prevNext=document.getElementById('nextPrevious');
-if (prevNext!==null){
-    prevNext.style.display="none";
+var prevNext = document.getElementById('nextPrevious');
+if (prevNext !== null) {
+    prevNext.style.display = "none";
 }
-var loadMoreAjax=document.getElementById('loadMore');
-if (loadMoreAjax!==null){
-    loadMoreAjax.style.display='block';
+var loadMoreAjax = document.getElementById('loadMore');
+if (loadMoreAjax !== null) {
+    loadMoreAjax.style.display = 'block';
 }
-var slides=document.getElementsByClassName("zoom");
+var slides = document.getElementsByClassName("zoom");
 
-for (var i=0; i< slides.length; i++){
+for (var i = 0; i < slides.length; i++) {
     slides[i].classList.remove("zoom");
     i--;
 }
-
 
 function expandSlide(imgs) {
     var expandImg = document.getElementById("expandedImg");
@@ -94,10 +93,20 @@ function responsiveNav() {
     var className = x.className;
     if (x.className === "menu") {
         x.className += " responsive";
+        x.href = '';
     } else {
         x.className = "menu";
     }
 
+}
+
+function responsiveNavSize() {
+    var width = window.innerWidth;
+
+    var x = document.getElementById("myTopnav");
+    if (width > 600) {
+        x.className = "menu";
+    }
 }
 
 function validateEmail(input) {
@@ -191,7 +200,7 @@ function getXMLHttpRequest() {
 function sendAjax(method, url, data = null, callback) {
 
     var request = getXMLHttpRequest();
-    if (request !== null ) {
+    if (request !== null) {
         url += '&ajax=1';
     }
 
@@ -221,7 +230,7 @@ function sendAjax(method, url, data = null, callback) {
     };
     request.open(method, url, true);
     request.setRequestHeader("Accept", "application/json");
-    if (data===null) {
+    if (data === null) {
         request.send();
     } else {
         request.send(data);
@@ -303,4 +312,3 @@ function filterFunction() {
 function newWindow() {
     window.open("https://www.paypal.com/sg/signin");
 }
-

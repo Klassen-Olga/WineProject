@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5dac970a-bdbe-4644-9279-2c68dd1f4931" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/database/dump/database.mwb.beforefix" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/pages/documentation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/style1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/pagesController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/pagesController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/accounts/PersonalDataEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/accounts/PersonalDataEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/accounts/myOrders.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/accounts/myOrders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/accounts/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/accounts/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/accounts/personalDataNoEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/accounts/personalDataNoEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/checkout1.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/checkout1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/checkout2.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/checkout2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/imprint.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/imprint.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/shoppingCartShow.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/shoppingCartShow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/start.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/start.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\xampp\htdocs\WineProject\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="1XNMmvOOVcE1KrQZLQjKPlyKq0H" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\WineProject\config" />
+      <recent name="C:\xampp\htdocs\WineProject\views\products" />
+      <recent name="C:\xampp\htdocs\WineProject\views\pages" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/index.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5dac970a-bdbe-4644-9279-2c68dd1f4931" name="Default Changelist" comment="" />
+      <created>1580882260806</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580882260806</updated>
+      <workItem from="1580882265263" duration="754000" />
+      <workItem from="1580997733921" duration="5139000" />
+      <workItem from="1581062173088" duration="260000" />
+      <workItem from="1581075820264" duration="568000" />
+      <workItem from="1581080501132" duration="190000" />
+      <workItem from="1581492415362" duration="38028000" />
+      <workItem from="1581664544054" duration="60099000" />
+      <workItem from="1581926617350" duration="4504000" />
+      <workItem from="1581931748299" duration="39558000" />
+      <workItem from="1582012559336" duration="38619000" />
+      <workItem from="1582100235457" duration="33208000" />
+      <workItem from="1582142974183" duration="5098000" />
+      <workItem from="1582192667093" duration="35274000" />
+      <workItem from="1582279922122" duration="8255000" />
+      <workItem from="1582288569289" duration="21812000" />
+      <workItem from="1582383288576" duration="20637000" />
+      <workItem from="1582455506169" duration="29538000" />
+      <workItem from="1582496419005" duration="226000" />
+      <workItem from="1582533683350" duration="17824000" />
+      <workItem from="1582562386710" duration="2442000" />
+      <workItem from="1582619060980" duration="4589000" />
+      <workItem from="1582626907837" duration="5081000" />
+      <workItem from="1582632472093" duration="459000" />
+      <workItem from="1582725576108" duration="24139000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/index.php</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

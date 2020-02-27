@@ -1,7 +1,11 @@
+/************************************/
+
+
+/*          General             */
+
 
 /************************************/
-/*          General             */
-/************************************/
+
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -11,17 +15,16 @@
 
 body,
 html {
-
     background: white;
     height: 100%;
 }
 
-.body {
-    margin-bottom: 100px;
-}
-
 .above {
     padding-bottom: 2em;
+}
+
+.body {
+    margin-bottom: 20%;
 }
 
 .site {
@@ -51,10 +54,19 @@ header img {
     height: 1px;
 }
 
+noscript {
+    margin-left: 0.5%;
+}
+
 
 /************************************/
+
+
 /*          Content Navigation       */
+
+
 /************************************/
+
 .menu,
 .menu ul,
 .menu li,
@@ -154,7 +166,7 @@ header img {
 
 .menu li:hover ul li {
     height: 36px;
-   overflow: visible;
+    overflow: visible;
     padding: 0;
 }
 
@@ -174,11 +186,16 @@ header img {
 .menu .logoutLogin {
     float: right;
     padding-left: 1px;
+    margin-right: 1%;
 }
 
 
 /************************************/
+
+
 /*          Responsive navigation   */
+
+
 /************************************/
 
 .menu .responsive-class-icon {
@@ -186,7 +203,7 @@ header img {
 }
 
 @media screen and (max-width: 600px) {
-    .menu{
+    .menu {
         position: relative;
     }
     .menu li:not(:first-child) {
@@ -199,16 +216,13 @@ header img {
     .menu.responsive {
         position: relative;
         height: auto;
-
     }
-
     .menu.responsive ul {
         float: left;
         background-color: #670808;
         width: 30%;
         height: auto;
         z-index: 1;
-
     }
     .menu.responsive ul li a {
         border: none;
@@ -229,8 +243,6 @@ header img {
         right: 0;
         top: 0;
     }
-
-
 }
 
 @media screen and (max-width: 600px) {
@@ -287,8 +299,39 @@ header img {
     .login {
         font-size: 0.8em;
     }
-
-
+    .body {
+        margin-bottom: 25%;
+    }
+    .menu.responsive {
+        position: relative;
+        height: auto;
+    }
+    .menu.responsive ul {
+        float: left;
+        background-color: #670808;
+        width: 30%;
+        height: auto;
+        z-index: 1;
+    }
+    .menu.responsive ul li a {
+        border: none;
+    }
+    .menu.responsive .logoutLogin [type="submit"] {
+        margin-left: 13px;
+    }
+    .menu.responsive li a {
+        margin-top: 0;
+        padding-top: 7px;
+    }
+    .menu.responsive li ul {
+        position: absolute;
+        width: 100%;
+    }
+    .menu.responsive .responsive-class-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
     header {
         background-repeat: round;
         background-size: cover;
@@ -349,8 +392,6 @@ header img {
     display: block;
     text-align: left;
 }
-
-
 
 @media screen and (max-width: 600px) {
     .wineGuide p {
@@ -534,7 +575,7 @@ footer {
 .basket-button input:hover,
 .product-basket-content button:hover,
 .subtotal .proceedToCheckout a:hover {
-    background-color: rosybrown;
+    background-color: #e0292c;
 }
 
 
@@ -543,17 +584,16 @@ footer {
 
 /*Start slides*/
 
-.zoom:hover{
+.zoom:hover {
     -ms-transform: scale(2);
     -webkit-transform: scale(2);
     transform: scale(2);
-
-
 }
 
-.zoom{
+.zoom {
     opacity: 1 !important;
 }
+
 
 /* The grid: Four equal columns that floats next to each other */
 
@@ -644,6 +684,14 @@ footer {
     margin-left: 9%;
 }
 
+.checkout1 .address h3 {
+    margin-top: 6%;
+}
+
+.checkout1 .text h3 {
+    margin-bottom: 4%;
+}
+
 .checkout1 .button,
 .checkout2 .button {
     margin-top: 10%;
@@ -661,6 +709,7 @@ footer {
     max-width: 800px;
     padding-left: 3%;
     padding-right: 3%;
+    padding-bottom: 0.5%;
 }
 
 .register {
@@ -679,7 +728,7 @@ footer {
 .order a:visited,
 .account a:visited {
     border-radius: 10px;
-    background-color: #d41d20;
+    background-color: #9a0002;
     color: white;
     padding: 5px 10px;
     text-align: center;
@@ -693,7 +742,7 @@ footer {
 .order a:hover,
 .myOrder a:active,
 .order a:active {
-    background-color: #9a0002;
+    background-color: #e0292c;
 }
 
 .myOrder a {
@@ -705,19 +754,12 @@ footer {
     margin-left: 4%;
 }
 
-
-
 .register .address-country {
     margin-top: 6%;
 }
 
 .password2 {
     margin-bottom: 4%;
-}
-
-.personalData {
-    margin-top: 3%;
-    margin-left: 3%;
 }
 
 .address table,
@@ -823,7 +865,7 @@ footer {
 .personalData a:link,
 .personalData a:visited {
     border-radius: 10px;
-    background-color: #e41b1e;
+    background-color: #9a0002;
     color: white;
     padding: 2.8px;
     text-align: center;
@@ -834,7 +876,7 @@ footer {
 
 .personalData a:hover,
 .personalData a:active {
-    background-color: #9a0002;
+    background-color: #e0292c;
 }
 
 .footer1 {
@@ -847,16 +889,16 @@ footer a:visited {
     color: black;
 }
 
-
 footer a:active {
     text-decoration: none;
     color: black;
 }
 
-footer a:hover{
+footer a:hover {
     text-decoration: underline;
 }
-.privacyPolicy{
+
+.privacyPolicy {
     padding-left: 2%;
     padding-right: 2%;
 }
@@ -869,6 +911,10 @@ footer a:hover{
     padding-bottom: 3%;
 }
 
+.h4Top {
+    padding-top: 23px;
+}
+
 .myOrder .fieldset {
     margin: 0 auto;
     max-width: 900px;
@@ -877,8 +923,9 @@ footer a:hover{
     padding-bottom: 4%;
 }
 
-.personalData h4 {
-    margin-top: 6%;
+.personalData .fieldset h4 {
+    margin-top: 20px !important;
+    margin-bottom: 1.5%;
 }
 
 .register .passwordMessage label {
@@ -899,16 +946,6 @@ footer a:hover{
     padding-bottom: 2%;
 }
 
-.myOrder {
-    margin-left: 3%;
-}
-
-.myOrder h1,
-.order h1 {
-    margin-bottom: 20px;
-    margin-top: 30px;
-}
-
 .imprint {
     width: 100% !important;
     padding-left: 3%;
@@ -916,12 +953,10 @@ footer a:hover{
 }
 
 .imprint p {
-    line-height: 1.5;
     width: 700px !important;
 }
 
 .fieldset {
-    padding: 1%;
     background: #f7f7f7;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -941,6 +976,11 @@ hr {
     border-width: 1px;
 }
 
+.noOrder {
+    margin-top: 6%;
+    text-align: center;
+}
+
 .order {
     margin-top: 5%;
     margin-left: 1%;
@@ -950,12 +990,13 @@ hr {
     max-width: 1000px;
     border: white;
     padding-left: 5%;
-    padding-top: 5%;
+    padding-top: 4%;
 }
 
-.personalData fieldset {
-    margin-top: 20px;
-    padding: 20px;
+.personalData .fieldset {
+    margin-top: 20px !important;
+    padding-left: 4% !important;
+    padding-bottom: 2% !important;
 }
 
 .account div {
@@ -1289,9 +1330,6 @@ select#month {
 }
 
 
-
-
-
 /*Start the basket*/
 
 .subtotal {
@@ -1430,7 +1468,6 @@ select#month {
 }
 
 .go-back-home-div {
-    position: absolute;
     bottom: 40%;
     margin-left: 5%;
     margin-top: 5%;
@@ -1571,6 +1608,11 @@ h2 {
     padding: 4px;
 }
 
+h1 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
 code {
     font-size: 1.2em;
     color: #069;
@@ -1643,7 +1685,10 @@ code {
     content: 'Show less';
 }
 
-.read-more-trigger, #loadMore, #nextPrevious a , #nextPreviousNoAjax a{
+.read-more-trigger,
+#loadMore,
+#nextPrevious a,
+#nextPreviousNoAjax a {
     cursor: pointer;
     display: inline-block;
     padding: 0 .5em;
@@ -1653,24 +1698,29 @@ code {
     border: 1px solid #ddd;
     border-radius: .25em;
 }
-.read-more-trigger:hover,#loadMore:hover,#nextPrevious a:hover, #nextPreviousNoAjax a:hover {
+
+.read-more-trigger:hover,
+#loadMore:hover,
+#nextPrevious a:hover,
+#nextPreviousNoAjax a:hover {
     background-color: #666;
     color: white;
 }
+
 .checkoutMessage {
-    border-color: rgb(121, 6, 40) !important;
-    border: 6px;
     margin-left: 2%;
-    border-radius: 6px;
     padding-top: 1%;
     padding-bottom: 1%;
-    max-width: 40%;
+    max-width: 30%;
     box-sizing: content-box;
-    padding-left: 5%;
+    padding-left: 2%;
+    padding-right: 1%;
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 1.8em;
-    border-style: solid;
+    box-shadow: 1px 1px 6px hsla(300, 15%, 25%, 0.3) inset;
+    background-color: #fffefe;
+    text-align: left;
 }
 
 .smallText {
@@ -1813,12 +1863,13 @@ code {
     margin: 20px 0;
     text-align: center;
 }
-.dropdown-wrap{
+
+.dropdown-wrap {
     display: flex;
     justify-content: center;
     margin-top: 30px;
-
 }
+
 .dropbtn {
     background-color: #e2e2e2;
     color: black;
@@ -1860,21 +1911,23 @@ code {
 .dropdown {
     position: relative;
     display: inline-block;
-    }
+}
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-   /* min-width: 120px;*/
+    /* min-width: 120px;*/
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
     width: -webkit-fill-available;
 }
-.dropdown:hover > .dropdown-content{
+
+.dropdown:hover>.dropdown-content {
     display: block;
 }
+
 .dropdown-content a {
     color: black;
     padding: 6px 16px;
@@ -1899,15 +1952,16 @@ code {
 .mainDropdown {
     display: none;
 }
-@media (max-width: 600px) {
-    .dropdown-content a{
-        font-size: small;
-    }
-    .dropdown{
-        font-size: small;
-    }
 
+@media (max-width: 600px) {
+    .dropdown-content a {
+        font-size: small;
+    }
+    .dropdown {
+        font-size: small;
+    }
 }
+
 
 /* Start the Product*/
 
@@ -1937,7 +1991,7 @@ code {
 .table-theProduct {
     grid-area: tableTheProduct;
     position: relative;
-    top: 100px;
+    top: 50px;
 }
 
 .max-section {
@@ -2004,23 +2058,29 @@ code {
 
 /*End the product*/
 
+
 /*End dropdown filter*/
-#loadMore{
+
+#loadMore {
     margin: 0 auto;
     padding: 10px 15px;
     display: none;
-
 }
-#nextPrevious, #nextPreviousNoAjax{
+
+#nextPrevious,
+#nextPreviousNoAjax {
     display: block;
     text-align: center;
 }
-#nextPrevious a, #nextPreviousNoAjax a{
-text-decoration: none;
+
+#nextPrevious a,
+#nextPreviousNoAjax a {
+    text-decoration: none;
     margin: 0 5px;
     padding: 10px 15px;
     background-color: #ddd;
 }
-#olga{
+
+#olga {
     z-index: 10 !important;
 }

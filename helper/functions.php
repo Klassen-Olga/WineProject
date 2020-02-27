@@ -398,14 +398,14 @@ function validatePersonalDataAccount(&$error, $gender, $addressID, $dateOfBirth,
     if (count($error)>0){
         return false;
     }
-    if (strlen($_POST['firstName']) <= 2) {
-        array_push($error, "Please fill out first name field");
+    if (strlen($_POST['firstName']) < 2) {
+        array_push($error, "Your first name should have more characters");
         return false;
-    } else if (strlen($_POST['lastName']) <= 2) {
-        array_push($error, "Please fill out last name field");
+    } else if (strlen($_POST['lastName']) < 2) {
+        array_push($error, "Your last name last name field");
         return false;
-    } else if (strlen($_POST['email']) <= 2) {
-        array_push($error, "Please fill out email field");
+    } else if (strlen($_POST['email']) <= 5) {
+        array_push($error, "Your email should have more characters");
         return false;
     }
     else {
@@ -806,7 +806,7 @@ function orderPriceProducts($orderId){
     $orderprice =0.00;
     $orderitems = \skwd\models\OrderItem::find('orderID ='.'\'' . $orderId.'\''.' order by productID');
     foreach($orderitems as $key => $value){
-       $orderprice += $orderitems[$key]['actualPrice'];
+       $orderprice += $orderitems[$key]['actualPrice']*$orderitems[$key]['qty'];
     }
     return $orderprice; 
 
@@ -858,5 +858,15 @@ function metaToProducts($name){
         return ' %';
     }
     return '';
+}
+
+function nav(){
+    if(isset($_GET['m']) && ($_GET['m']=='m')){
+        $_GET['m'] = null;
+        return ' responsive"';
+    }
+    else{
+        return'"';
+    }
 }
 
